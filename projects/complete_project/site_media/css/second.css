@@ -1,0 +1,127 @@
+html {color: #000;background: #e1d09c;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;}
+table {border-collapse: collapse;border-spacing: 0;}
+fieldset,img {border: 0;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style: normal;font-weight: normal;}
+li {list-style: none;}
+caption,th {text-align: left;}
+h1,h2,h3,h4,h5,h6 {font-size: 100%;font-weight: normal;}
+h1{font-size:36px;font-family:times;color:#14436f;}
+h2{font-size:30px;font-family:times;color:#14436f;}
+h3{font-size:24px;font-family:times;color:#14436f;}
+h4{font-size:18px;}
+q:before,q:after {content: '';}
+a:link, a:visited {text-decoration:none;color:#63bde0;}
+abbr,acronym {border: 0;font-variant: normal;}
+sup {vertical-align: text-top;}
+sub {vertical-align: text-bottom;}
+input,textarea,select {font-family: inherit;font-size: inherit;font-weight: inherit;}
+input,textarea,select {*font-size:100%;}
+legend {color: #000;}
+body {font: 13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;background: url(/site_media/images/second/bg4.jpg) no-repeat top center #d9bc65;}
+table {font-size: inherit;font: 100%;}
+p ul{margin-left:40px;padding-left:0px;}
+pre,code,kbd,samp,tt {font-family: monospace;*font-size:108%;line-height: 100%;}
+#doc-wrapper{margin: auto;width:1026px;min-width: 900px;background:url(/site_media/images/second/fg4.jpg) no-repeat  top center;}
+#doc{margin: auto;text-align: left;width:1026px;}
+
+input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;font-size:18px;}
+/*==========================header=========================*/
+#hd{}
+#one{height:38px;}
+#two{height:116px;}
+#globepic{}
+#hisgpic{padding:0 0 25px 10px;}
+#labelpic{padding:0 0px 30px 30px;}
+#sitesearch{padding:10px 30px 0 0;float:right;color:#14436f;font-family:palatino,new york;}
+#nav{height:66px;}
+ul#navigation {height:36px;padding:10px 0 0 1px;}
+ul#navigation span{display:none;}
+#li1{float:left;width:129px;}
+#li2{float:left;width:164px;}
+#li3{float:left;width:213px;}
+#li4{float:left;width:196px;}
+#li5{float:left;width:134px;}
+#li6{float:left;width:188px;}
+ul#navigation li a {cursor:pointer;display:block;height:35px;}
+ul#navigation li a#nav1 {background:transparent url(/site_media/images/nav2/nav1.jpg) no-repeat scroll 0 0;}
+ul#navigation li a#nav2 {background:transparent url(/site_media/images/nav2/nav2.jpg) no-repeat scroll 0 0;}
+ul#navigation li a#nav3 {background:transparent url(/site_media/images/nav2/nav3.jpg) no-repeat scroll 0 0;}
+ul#navigation li a#nav4 {background:transparent url(/site_media/images/nav2/nav4.jpg) no-repeat scroll 0 0;}
+ul#navigation li a#nav5 {background:transparent url(/site_media/images/nav2/nav5.jpg) no-repeat scroll 0 0;}
+ul#navigation li a#nav6 {background:transparent url(/site_media/images/nav2/nav6.jpg) no-repeat scroll 0 0;}
+ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a#nav3:hover, ul#navigation li a#nav4:hover, ul#navigation li a#nav5:hover, ul#navigation li a#nav6:hover {background-position:0 -36px;}
+#subnavigation{background:url(/site_media/images/subback.bmp) repeat-y;color:#000;margin:0 0 0 1px;}
+#subnavigation a {color:#000;}
+.subnav{padding:0 0 0 50px;}
+.sub1,.sub2,.sub3,.sub4,.sub5,.sub6{display:none;}
+.sub0{display:none;}
+.inyes{display:none;}
+#adminfirst{padding:0 0 0 400px;}
+/*#administration{float:right;padding:0 100px 0 0;}
+#administration li{display:inline;}*/
+/*==========================impacter=========================*/
+#impacter{height:407px;background: #DDD url(/site_media/images/impact2.jpg) no-repeat  top center;}
+#left-impacter{float:left;padding:120px 30px 0 60px;width:290px;text-align:center;}
+#right-impacter{float:right;padding:32px 25px 0 0;}
+#iln{color:#ae5219;font-family:palatino;font-weight:bold;}
+#ilb{color:#783a11;}
+#irp{}
+/*==========================body=========================*/
+#bd{width:1026px;min-height:70em;}
+#left-colomn{float:left;width:338;min-height:500px;padding:20px 0 10px 0;}
+#left-backer{background-color:#d9bc65;width:300px;height:970px;margin:0 0 0 38px;padding:1px 0 0 0;}
+.left-block{background-color:#f2e3a5;margin:10px;width:280px;height:230px;}
+#right-colomn{float:left;min-height:500px;width:660px;margin:0 0 0 10px;padding:20px 0 0 0;}
+.brick{font-family:times;font-weight:bold;text-transform:uppercase;background-color:#14436f;padding:3px 0 3px 0;width:200px;text-align:center;margin:40px 0 0 40px;}
+.brickpic{padding:20px 0 0 10px;}
+#toppic{background-color:#f2e3a5;padding:10px;}
+#toppicin{background:url(/site_media/images/toppicin.jpg);height:257px;}
+#toppicin div{float:left;}
+#toppicintext{width:118px;padding:40px 20px 0 30px;text-align:right;color:#14436f;}
+.newsbox{border:solid 1px #d9bc65;padding:10px;margin:0 0 20px 0;}
+.inpagenav{font-size:10px;}
+.inpagenav{padding:10px 0 20px 0;}
+.inpagenav li{display:inline;padding:0px 10px 0px 0;}
+
+.right{float:right;}
+.left{float:left;}
+.clearer{clear:both;}
+.twoway{min-height:420px;}
+.fourway{width:310px;float:left;padding:0 0 15px 15px;}
+.fourway span{color:#ae5219;}
+.fourway h2{text-align:center;}
+.fourway h2 a{color:#14436f;}
+.rower{min-height:140px;border-bottom:solid 1px #dabc64;}
+
+.rower2{height:150px;border-bottom:solid 1px #dabc64;padding:15px 0 0 0;}
+.rower2 span{color:#ae5219;}
+.rower2 img{padding:0 0 0 20px;}
+
+.rowergallery{height:200px;border-bottom:solid 1px #dabc64;padding:10px 0 0 0;}
+.rowergallery span{color:#ae5219;}
+.rowergallery img{padding:0 40px 0 0;}
+.brown{color:#dabc64;height:1px;border-width:0;background-color:gray;}
+
+.sorter li{display:inline;color:#14436f;}
+/*==========================footer=========================*/
+#ft{text-align:center;padding:20px;font-size:12px;}
+#ft a {color:#1a629d;}
+#ft a:visited{color:#1a629d;}
+
+/*==========================colors=========================*/
+/* #dabc64  -- gold cukjati*/
+/* #d9bc65 -- gold background cukjati*/
+/* #fffccf -- light gold cukjati*/
+/* #f2e3a5 -- left-colomn-gold*/
+/* #ae5219 -- brown text cukjati*/
+/* #783a11 -- darker brown text cukjati*/
+/* #14436f  -- blue cukjati*/
+/* #ce9e4e -- volunteer gold*/
+/* #238fb0 -- updates blue*/
+/* #ff0000 -- urgent red*/
+/* #626262 -- date gray*/
+/* #00a3e6 -- i can blue*/
+/*==========================end=========================*/

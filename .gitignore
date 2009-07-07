@@ -1,0 +1,5 @@
+.DS_Store
+*.pyc
+/projects/complete_project/site_media/videos/
+/projects/complete_project/site_media/images/
+/projects/complete_project/site_media/photologue/

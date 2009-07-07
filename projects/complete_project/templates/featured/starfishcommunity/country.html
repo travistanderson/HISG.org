@@ -1,0 +1,134 @@
+<!-- template/partners/country.html -->
+{% extends 'partners/base.html' %}
+
+{% block body %}
+<h1>Country Profile Reports</h1>
+	<p>
+		<div style="float:right;">
+			<a href="{% url partners_country_create %}">Create a new Country Page</a>
+		</div>
+		{% if africa_list %}
+			<h1>Africa</h1>
+		<ul>
+		{% for page in africa_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+		{% if asia_list %}
+			<h1>Asia</h1>
+		<ul>
+		{% for page in asia_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+		{% if europe_list %}
+			<h1>Europe</h1>
+		<ul>
+		{% for page in europe_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+		{% if middleeast_list %}
+			<h1>Middle East</h1>
+		<ul>
+		{% for page in middleeast_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+		{% if northamerica_list %}
+			<h1>North America</h1>
+		<ul>
+		{% for page in northamerica_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+		{% if other_list %}
+			<h1>Other</h1>
+		<ul>
+		{% for page in other_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+		{% if southamerica_list %}
+			<h1>South America</h1>
+		<ul>
+		{% for page in southamerica_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+		{% if southpacific_list %}
+			<h1>South Pacific</h1>
+		<ul>
+		{% for page in southpacific_list %}
+			<li>
+				<span style="padding:0 0px 0 0;width:500px;">
+					<a href="{% url partners_country_detail page.slug %}">
+						{{ page.country }}
+					</a>
+				</span>
+				<span style="margin:0 0 0 200px;">
+					<a href="{% url partners_country_edit page.slug %}">edit</a></span>
+			</li>
+		{% endfor %}
+		</ul>{% endif %}
+	</p>
+
+
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>{{ site_name }} : {% block pagetitle %}{% endblock %}</title>
+        <!--[if IE]><style>
+            div {zoom: 1; /* trigger hasLayout */}
+        </style><![endif]-->
+        <link rel="stylesheet" type="text/css" href="/site_media/css/second.css" >        
+		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
+		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript">
+		<!--
+		showsecond({% block arrive %}{% endblock arrive %},{% block subarrive %}0{% endblock subarrive %});
+		hoversecond();
+		//-->
+		</script>
+        {% block extra_head %}{% endblock %}
+    </head>
+	<body {# onLoad="show({% block arrive %}{% endblock arrive %})" #}><!--start of the wrapper for whole page-->
+		<div id="doc-wrapper">
+			<div id="doc"><!--start of the custom document declaration-->
+				<div id="hd"><!--this is the start of the header-->
+					<div id="one">
+						<div id="sitesearch">
+							<form action="" id="sitesearchform">
+							<label for="searchinput">SEARCH</label>
+							<input type="text" id="searchinput" name="searchinput">
+							</form>
+						</div>{# end of sitesearch #}
+					</div>{# end of one #}
+					<div id="two">
+						<img src="/site_media/images/second/globe.jpg" id="globepic"></img>
+						<a href="{% url home %}">
+							<img src="/site_media/images/hisg2.jpg" id="hisgpic"></img>
+						</a>
+						<img src="/site_media/images/second/{% block labelpic %}{% endblock labelpic %}" id="labelpic"></img>
+					</div>{# end of two #}
+				</div><!--this is the end of the Header-->	
+			
+				<div id="bd"><!--this is the start of the body-->
+					{% block navigation %}{% endblock %}
+					<div id="left-colomn">{# {% block left_colomn %}{% endblock left_colomn %} #}
+						<div id="left-backer">
+							<div class="left-block">{% block brick1 %}{% endblock brick1 %}
+								
+							</div>
+							<div class="left-block">{% block brick2 %}{% endblock brick2 %}
+								
+							</div>
+							<div class="left-block">{% block brick3 %}{% endblock brick3 %}
+								
+							</div>
+							<div class="left-block">{% block brick4 %}{% endblock brick4 %}
+								
+							</div>
+						</div>
+					</div>
+					<div id="right-colomn">
+						{% block body %}{% endblock body%}
+					</div>
+					{# this is where the main content goes. Look in site_base. #}
+				    {% block extra_body %}{% endblock %}<!-- if you need extra? -->
+					<div style="clear:both"></div>
+					<div id="ft"><!--this is the start of the footer-->
+						{% block footer %}{% endblock %}{# in site_base.html #}
+					</div><!-- this is the end of the footer  -->
+				</div><!--this is the end of the body-->
+			
+
+			
+			</div><!--this is the end of the custom document declaration-->
+		</div>{# end of doc-wrapper #}
+    </body>
+</html>

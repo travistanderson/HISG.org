@@ -1,0 +1,46 @@
+<!-- template/partners/country_d.html -->
+{% extends 'partners/base.html' %}
+{% load markup %}
+
+{% block body %}
+<h1>
+	<span>{{ page.country }} - {{ page.region }}</span>
+	<span style="font-size:.8em;padding:0 0 0 100px;">
+		<a href="{% url partners_country_edit page.slug %}">edit</a> |
+		<a href="{% url partners_country %}">back to Countries</a>
+	</span>
+	<span style="font-size:.7em;padding:0 0 0 100px;">
+		
+	</span>
+</h1>
+<div style="float:left;width:600px;">
+	<h3>Content</h3>
+	{{ page.content|textile }}
+</div>
+<div style="float:left;width:300px;border-left:thin solid;padding:0 0 0 15px">
+	<h2 style="padding:0 0 15px 0;">Editing History</h2>
+	<p>
+		<div class="caption">
+			Created:{{ page.created|date:"M d, Y" }} by {{ page.author }}<br /><br />
+		
+		{% ifequal change_list|length 1 %}
+		no edits so far
+		{% else %}
+		{% for change in change_list %}
+			{% ifequal forloop.counter 1 %}
+			{% else %}	
+				Edit #{{ change.counter }}:
+				 {{ change.update|date:"M d, Y" }}
+				by {{ change.editor }}<br />
+			{% endifequal %}
+		{% endfor %}
+			
+		{% endifequal %}
+		</div>
+	</p>
+</div>
+<div class="clear"></div>
+<hr />
+
+
+{% endblock %}

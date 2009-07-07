@@ -1,0 +1,25 @@
+<!-- templates/news-photos/videos.html -->
+{% extends 'news-photos/base.html' %}
+{% block subarrive %}3{% endblock subarrive %}
+
+{% block body %}
+	<div style="margin:0 0 0 90px">
+		{% if video_list %}
+			{% for video in video_list %}
+				<div style="display:inline; width:300px;float:left;padding:0 0 20px 0">
+					<h2>
+						<a href='/gallery/videos/{{ video.slug }}'>
+							{{ video.name }}
+						</a>
+					</h2>
+					<a href="/gallery/videos/{{ video.slug }}">
+						<img src="{{ video.frame.get_front_page_url }}">
+					</a><br>
+					{{ video.caption }}
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>No videos.</p>
+		{% endif %}
+	</div>
+{% endblock %}

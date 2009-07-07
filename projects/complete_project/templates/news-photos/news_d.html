@@ -1,0 +1,38 @@
+<!-- template/news-photos/news_d.html -->
+{% extends "news-photos/base.html" %}
+{% block subarrive %}1{% endblock subarrive %}
+
+{% block body %}
+	{% if news %}
+
+		<h3><a href='{{ news.id }}'>{{ news.name }}-{{ news.date|date:"M d, Y" }}</a></h3>
+		<h3>news Images</h3>
+		{% for photo in news.photo.all %}
+		<img src="{{ photo.get_display_url }}" /><br>
+		{{ photo.title }} - {{ photo.caption }}<br>
+		{% endfor %}
+		<h3>Story</h3>
+		{{ news.story }}
+		{% for project in news.project_set.all %}
+		<h3>Associated with project <a href="{% url project_detail project.id %}">{{ project.name }}</a></h3>
+		{% endfor %}
+		this news took place in 
+		{% for continent in news.continent.all %}
+			{{ continent }}
+		{% endfor %}
+		in the countries of 
+		{% for country in news.country.all %}
+			{{ country }}
+		{% endfor %}
+		<h3>Videos</h3>
+		{% for video in news.video.all %}
+		<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
+		 AUTOPLAY=false CONTROLLER=true LOOP=false
+		 PLUGINSPAGE=http://www.apple.com/quicktime/ >
+		{{ forloop.counter }}-{{ video.caption }}
+		{% endfor %}
+
+	{% else %}
+	Sorry, There was a problem getting your story.
+	{% endif %}
+{% endblock %}

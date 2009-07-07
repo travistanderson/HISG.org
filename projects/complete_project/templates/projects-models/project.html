@@ -1,0 +1,100 @@
+<!-- templates/projects-models/project.html -->
+{% extends 'projects-models/base.html' %}
+{% block subarrive %}1{% endblock subarrive %}
+{% load markup %}
+{% load pagination_tags %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+
+	<h1 Style="Text-Align:Center;">Projects</h1><hr />
+	<ul class="sorter">
+		<li>
+			{% ifequal sort "country"  %}
+				Sort by Country |
+			{% else %}
+				<a href="{% url project %}">Sort by Country</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "region"  %}
+				Sort by Region |
+			{% else %}
+				<a href="{% url project_region %}">Sort by Region</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "date"  %}
+				Sort by Date |
+			{% else %}
+				<a href="{% url project_date %}">Sort by Date</a>
+			{% endifequal %}
+		</li>
+	</ul>
+	<hr />
+	{% if project_list %}
+		{% autopaginate project_list 5 %}
+		{% for project in project_list %}
+			<div class="rower2">
+				<div class="right">
+					{% for photo in project.photo.all %}
+						{% ifequal forloop.counter 1 %}
+							<img src="{{ photo.get_medium_url }}" />
+						{% endifequal %}
+					{% endfor %}
+				</div>
+		
+				<h3>
+					<a href='{% url project_detail project.id %}'>
+						{{ project.name }}-{{ project.year|date:"Y" }}
+					</a>
+				</h3>
+		
+				{{ project.description|textile|truncatewords:40 }}<br/>
+		
+
+
+				<div class="clearer"></div>
+				{% for country in project.country.all %}
+					<span>
+						{{ country }}
+					</span>
+				{% endfor %}
+				{% for region in project.region.all %}
+					<span style="padding:0 0 0 100px;">
+						{{ region }}
+					</span>
+				{% endfor %}			
+				{% if project.active_now %}
+					<span style="padding:0 0 0 100px;">This project is active</span>
+				{% else %}
+					<span style="padding:0 0 0 100px;">This project has been completed</span>
+				{% endif %}
+				{# <hr /> #}
+			</div>
+		{% endfor %}
+		{% paginate %}
+	{% else %}
+		<p>No Projects.</p>
+	{% endif %}
+
+{% endblock %}

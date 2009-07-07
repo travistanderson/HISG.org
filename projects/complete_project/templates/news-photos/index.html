@@ -1,0 +1,162 @@
+<!-- templates/news-photos/index.html -->
+{% extends 'news-photos/base.html' %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+<div class="twoway">
+	<div class="fourway">
+		<h2>
+			<a href="{% url news %}">News</a>
+		</h2><hr />
+		{% for news in news_list %}
+			<div class="rower">
+				<a href="{% url news_detail news.id %}">
+					<h4>{{ news.name }}</h4>
+				</a>
+				{% for photo in news.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div class="right">
+							<img src="{{ photo.get_news_size_url }}"></img>
+						</div>
+					{% endifequal %}
+				{% endfor %}
+				<span>
+					{{ news.date|date:"M d, Y" }}
+				</span><br/>
+				{{ news.story|truncatewords:13 }}
+				<div class="clearer"></div>
+				<span>
+					{% for country in news.country.all %}
+						{{ country }},
+					{% endfor %}
+				</span>
+				<span>
+					{% for region in news.region.all %}
+						{{ region }}
+					{% endfor %}
+				</span>
+			</div>
+		{% endfor %}
+	</div>
+	
+	<div class="fourway">
+		<h2>
+			<a href="{% url gallery %}">Photos</a>
+		</h2><hr />
+		{% for project in project_list %}
+			<div class="rower">
+				<a href="{% url gallery_detail project.id %}">
+					<h4>{{ project.name }}</h4>
+				</a>
+				{% for photo in project.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div class="right">
+							<img src="{{ photo.get_news_size_url }}"></img>
+						</div>
+					{% endifequal %}
+				{% endfor %}
+				{{ project.description|truncatewords:13 }}
+				<div class="clearer"></div>
+				<span>
+					{% for country in project.country.all %}
+						{{ country }},
+					{% endfor %}
+				</span>
+				<span>
+					{% for region in project.region.all %}
+						{{ region }}
+					{% endfor %}
+				</span>
+				<span style="padding-left:20px;">
+					{{ project.year|date:"Y" }}
+				</span>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="twoway">
+	<div class="fourway">
+		<h2>
+			<a href="{% url videos %}">Videos</a>
+		</h2><hr />
+		{% for gallery in gallery_list %}
+			<div class="rower">
+				<span class="right">
+					{{ gallery.date_added|date:"M d, Y" }}
+				</span>
+				<a href="{% url gallery_detail gallery.id %}">
+					<h4>{{ gallery.title }}</h4>
+				</a>
+				<div>
+					{% for photo in gallery.photos.all %}
+						{% ifequal forloop.counter 1 %}
+							<img src="{{ photo.get_news_size_url }}"></img>
+						{% endifequal %}
+					{% endfor %}
+					{% for photo in gallery.photos.all %}
+						{% ifequal forloop.counter 2 %}
+							<img src="{{ photo.get_news_size_url }}"></img>
+						{% endifequal %}
+					{% endfor %}
+					{% for photo in gallery.photos.all %}
+						{% ifequal forloop.counter 3 %}
+							<img src="{{ photo.get_news_size_url }}"></img>
+						{% endifequal %}
+					{% endfor %}
+				</div>
+
+				{{ gallery.description|truncatewords:13 }}
+				<div class="clearer"></div>
+			</div>
+		{% endfor %}
+	</div>
+	
+	<div class="fourway">
+		<h2>
+			<a href="{% url blog %}">Blog</a>
+		</h2><hr />
+		{% for blog in blog_list %}
+			<div class="rower">
+				<a href="{% url blog_detail blog.id %}">
+					<h4 style="white-space:nowrap;overflow:hidden;">{{ blog.title }}</h4>
+				</a>
+				<div class="right">
+					<img src="{{ blog.photo.get_news_size_url }}"></img>
+				</div>
+				{{ blog.body|truncatewords:13 }}
+				<div class="clearer"></div>
+				<span style="padding-left:20px;">
+					{{ blog.author }}
+				</span>
+				<span style="padding-left:20px;">
+					{{ blog.department }}
+				</span>
+				<span style="padding-left:20px;">
+					{{ blog.publish|date:"M d, Y" }}
+				</span>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

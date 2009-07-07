@@ -1,0 +1,30 @@
+<!-- template/partners/docs.html -->
+{% extends 'partners/base.html' %}
+
+{% block body %}
+<ul style="float:right;">
+	<li><a href="/">Download Starfish<br />Document in PDF</a></li>
+</ul>
+<h1 style="text-align:center;">Starfish Documents</h1>
+<div class="inpagenav">
+
+	<ul>
+		<li {% block exec %}{% endblock exec %}>
+			<a href="{% url partners_docs %}">Executive Summary</a>
+		</li>
+		<li {% block change %}{% endblock change %}>
+			<a href="{% url partners_docs_change %}">Accelerating Change</a>
+		</li>
+		<li {% block move %}{% endblock move %}>
+			<a href="{% url partners_docs_move %}">Starfish Mass Movement</a>
+		</li>
+		<li {% block org %}{% endblock org %}>
+			<a href="{% url partners_docs_org %}">HISG Starfish Organization</a>
+		</li>
+		<li {% block com %}{% endblock com %}>
+			<a href="{% url partners_docs_com %}">HISG Starfish Community</a>
+		</li>
+	</ul>
+</div>
+{% block docs %}{% endblock docs %}
+{% endblock %}

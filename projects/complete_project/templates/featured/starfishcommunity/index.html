@@ -1,0 +1,48 @@
+<!-- templates/featured/starfishcommunity/index.html -->
+{% extends 'featured/starfishcommunity/base.html' %}
+{% block subarrive %}1{% endblock subarrive %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	<div id="toppic">
+		<div id="toppicin">
+			<div id="toppicintext">
+				<b>THE STARFISH COMMUNITY IN ACTION </b><br/><br/>
+				<i>Here is some great text about how the starfish community has real life people in it.</i>
+			</div>
+			<div>
+				<img src="/site_media/photologue/photos/grouphug.jpg"></img>
+			</div>
+		</div>
+	</div>
+	
+	{% block pagenav %}{% endblock pagenav %}
+	<h1>JOIN THE STARFISH COMMUNITY</h1>
+	<h2>TO CONNECT YOUR TALENTS AND</h2>
+	<h2>RESOURCES TO WORLD NEEDS</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae magna vel odio laoreet tempus. Pellentesque ultrices sagittis mauris vitae congue. In at congue purus. Quisque et metus sem. Suspendisse placerat, libero in suscipit pharetra, lacus risus accumsan nulla, in laoreet nibh leo vel magna. Nam sollicitudin lacus et justo condimentum tempor. Cras euismod commodo malesuada. Nulla ullamcorper tincidunt tortor vel sollicitudin. Nunc ipsum magna, ultricies nec vestibulum et, lacinia sed leo. Phasellus faucibus ultrices tellus, id pellentesque nisi egestas rhoncus. Donec rhoncus, est a convallis tristique, tellus lacus dignissim purus, in aliquam tellus nisl quis ante. Nulla laoreet pellentesque accumsan. Suspendisse ornare tellus eros. Quisque euismod tortor in enim volutpat dictum.Nulla malesuada scelerisque sapien sit amet porta. Curabitur nec felis dui, pharetra blandit est.
+	</p><br/>
+	<p>
+		Quisque euismod tortor in enim volutpat dictum.Nulla malesuada scelerisque sapien sit amet porta. Curabitur nec felis dui, pharetra blandit est. Nullam erat enim, tempus in feugiat in, elementum et urna. Quisque dictum auctor diam, ut adipiscing mi elementum ornare. Morbi bibendum diam non turpis placerat dictum. Maecenas fringilla ultrices hendrerit. Vivamus eget turpis risus. Duis nisl ante, faucibus id dignissim ultrices, dignissim in libero. Sed pretium ornare ipsum a gravida. Donec non dui urna. Duis nibh sapien, lobortis in placerat id, tincidunt eu enim. Sed vel purus lectus, sed pulvinar lacus. Suspendisse et elit vel mauris molestie convallis. Maecenas a nunc vel nisl auctor tempor.
+	</p>
+{% endblock %}

@@ -1,0 +1,89 @@
+<!-- templates/news-photos/news.html -->
+{% extends 'news-photos/base.html' %}
+{% block subarrive %}1{% endblock subarrive %}
+{% load markup %}
+{% load pagination_tags %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	<h1 Style="Text-Align:Center;">News</h1><hr />
+	<ul class="sorter">
+		<li>
+			{% ifequal sort "date"  %}
+				Sort by Date |
+			{% else %}
+				<a href="{% url news_index %}">Sort by Date</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "country"  %}
+				Sort by Country |
+			{% else %}
+				<a href="{% url news_country %}">Sort by Country</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "region"  %}
+				Sort by Region
+			{% else %}
+				<a href="{% url news_region %}">Sort by Region</a>
+			{% endifequal %}
+		</li>
+	</ul>
+	<hr />
+	{% if news_list %}
+	{% autopaginate news_list 5 %}	
+		{% for news in news_list %}
+		<div class="rower2">
+			{% for photo in news.photo.all %}
+				{% ifequal forloop.counter 1 %}
+					<div class="right">
+						<img src="{{ photo.get_medium_url }}"></img>
+					</div>
+				{% endifequal %}
+			{% endfor %}
+			<a href="{% url news_detail news.id %}">
+				<h3>{{ news.name }}</h3>
+			</a>
+			<span>
+				{{ news.date|date:"M d, Y" }}
+			</span><br/>
+			{{ news.story|textile|truncatewords:30 }}
+			<div class="clearer"></div>
+			{% for country in news.country.all %}
+				<span>
+					{{ country }}
+				</span>
+			{% endfor %}
+			{% for region in news.region.all %}
+				<span style="padding:0 0 0 100px;">
+					{{ region }}
+				</span>
+			{% endfor %}
+		</div>
+		{% endfor %}
+		{% paginate %}
+	{% else %}
+		<p>No news.</p>
+	{% endif %}
+
+{% endblock %}

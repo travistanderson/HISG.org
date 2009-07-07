@@ -1,0 +1,40 @@
+<!-- template/about/about.html -->
+{% extends "about/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "About" %}{% endblock %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	<div style="padding:0 20px 0 20px">
+		<h2 style="text-align:center;">
+			Humanitarian International Services Group
+		</h2>
+		<p>
+			HISG is a New York state non-profit corporation and a 501(c)3 tax exempt organization. Its incorporation date is December 14, 2001. HISG specializes in private sector resource mobilization and management.  Simply stated: “We connect resources to needs”. As a non-governmental organization, HISG provides support services to US and international for-profit and non-profit organizations for crisis response and humanitarian developmental initiatives.
+
+	Since 2001, HISG has mobilized and moved over $20 Million in humanitarian aid at less than 1% handling costs. Having prototyped new and innovative solutions, HISG has established an institutional capability to mobilize and manage private sector resource capacity.  HISG has now networked over 45 warehouses across the USA to work collaboratively to aid the poor and needy around the world.
+		</p>
+	</div>
+
+{% endblock %}

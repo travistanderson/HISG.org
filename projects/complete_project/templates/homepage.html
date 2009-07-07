@@ -1,0 +1,314 @@
+{% load i18n %}
+{% load chunks %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>{{ site_name }} : Home</title>
+        <!--[if IE]><style>
+            div {zoom: 1; /* trigger hasLayout */}
+        </style><![endif]-->
+        <link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >        
+		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
+		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
+        <script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		<!--
+		var photo = new Array();
+		var impacterthumb_color = new Array();
+		var impacterthumb_bw = new Array();
+		var buttoner = new Array();
+		var namer = new Array();
+		var body = new Array();
+		var link = new Array();
+		{% for impacter in impacter_list %}
+		photo[{{ forloop.counter0 }}] ="{{ impacter.photo.get_impacter_url }}";
+		impacterthumb_color[{{ forloop.counter0 }}] ="{{ impacter.photo.get_impacterthumb_color_url }}";
+		impacterthumb_bw[{{ forloop.counter0 }}] ="{{ impacter.photo.get_impacterthumb_bw_url }}";
+		buttoner[{{ forloop.counter0 }}] ="{{ impacter.button }}";
+		namer[{{ forloop.counter0 }}] = "{{ impacter.name }}";
+		body[{{ forloop.counter0 }}] = "{{ impacter.body }}";
+		link[{{ forloop.counter0 }}] = "{{ impacter.link }}";
+		{% endfor %}
+		var impacterlength = {{ impacter_list|length }} - 1;
+		$z = 0;
+		k = 0;
+		function impacter(){
+			$(document).ready(function() {
+				$("#irp").everyTime(5000, function() {
+					if ( k == impacterlength ){
+						$(this).attr("src",photo[0]);
+						$("#iln").replaceWith("<a href=\"" + link[0] + "\" id=\"iln\">" + namer[0] + "</a>");
+						$("#ilb").replaceWith("<a href='" + link[0] + "' id='ilb'>" + body[0] + "</a>");
+						j = "#ilbut" + String(k);
+						$("#ilbut0").attr("src",impacterthumb_color[0]);
+						l = "#ilbut" + String(k);
+						$(l).attr("src",impacterthumb_bw[k]);
+						$("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[0] + "</div>");
+
+						k = 0;
+					}
+					else{
+						k = ++k;
+						$(this).attr("src",photo[k]);
+						$("#iln").replaceWith("<a href=\"" + link[k] + "\" id=\"iln\">" + namer[k] + "</a>");
+						$("#ilb").replaceWith("<a href=\"" + link[k] + "\" id=\"ilb\">" + body[k] + "</a>");
+						j = "#ilbut" + String(k);
+						$(j).attr("src",impacterthumb_color[k]);
+						l = "#ilbut" + String(k - 1);
+						$(l).attr("src",impacterthumb_bw[k - 1]);
+						$("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[k] + "</div>");
+					}
+				})
+			})
+		}
+
+		function impactersetup(){
+			$(document).ready(function (){
+				$("#ilbut0").attr("src",impacterthumb_color[0]);
+				$(".quickhide").css({display:"none"});
+			})
+		}
+		
+		function quickpick(){
+			$(document).ready(function(){
+				$(".quickpick").hover(function(){
+					$(".quickpick").css({color:"#F00"});
+				})
+			})
+		}
+
+		function gotoandstop(impacter){
+			$(document).ready(function (){
+				$("#irp").stopTime();
+				$("#irp").attr("src",photo[impacter]);
+				$("#iln").replaceWith("<a href=\"" + link[impacter] + "\" id=\"iln\">" + namer[impacter] + "</a>");
+				$("#ilb").replaceWith("<a href=\"" + link[impacter] + "\" id=\"ilb\">" + body[impacter] + "</a>");
+				$("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[impacter] + "</div>");
+				for (b = 0; b<= impacterlength; b = ++b){
+					l = "#ilbut" + String(b);
+					$(l).attr("src",impacterthumb_bw[b]);
+				}
+				j = "#ilbut" + String(impacter);
+				$(j).attr("src",impacterthumb_color[impacter]);
+			})
+		}
+
+		function timest(){
+			$(document).ready(function(){
+				$("#ai").click( function(){
+					$(this).css({backgroundImage: "url(/site_media/images/impact_b_dark.jpg)", color: "#F00"});
+				})
+			})
+		}
+
+		impactersetup();
+		impacter();
+		initial();
+		shower();
+		// hider();
+		// timest();
+		//-->
+		</script>
+    </head>
+	<body><!--start of the wrapper for whole page-->
+		<div id="doc-wrapper">
+			<div id="doc"><!--start of the custom document declaration-->
+				<div id="hd"><!--this is the start of the header-->
+					<div id="one">
+						<div id="sitesearch">
+							<form action="" id="sitesearchform">
+								<ul class="quickpick">
+									{% chunk "quickpicks" %}
+								</ul>
+								<label for="searchinput">SEARCH</label>
+								<input type="text" id="searchinput" name="searchinput">
+							</form>
+						</div>{# end of sitesearch #}
+					</div>{# end of one #}
+					<div id="two">
+						<div id="hisg">
+							<a href="{% url home %}">
+								<img src="/site_media/images/hisg.jpg"></img>
+							</a>
+						</div>{# end of hisg #}
+					</div>{# end of two #}
+				</div><!--this is the end of the Header-->	
+			
+				<div id="bd"><!--this is the start of the body-->
+
+	<div id="impacter">
+		<div id="left-impacter">
+			<div id="phrase">
+				Humanitarian is just another word for caring <br/>
+				<a href="/">First time visitor?</a>
+			</div>
+			<div style="font-size:30px;color:#ae5219;padding:0px 0 0 0;">
+				<a href="{{ impacter_first.link }}" id="iln">{{ impacter_first.name }}</a>
+			</div>
+			<div style="font-style:italic;color:#ae5219;padding:10px 0 0 0;height:75px;">
+				<a href="{{ impacter_first.link }}" id="ilb">
+					{{ impacter_first.body }}
+				</a>
+			</div>
+			<a href="{{ impacter_first.link }}">
+				<div id="buttoner">
+					{{ impacter_first.button }}
+				</div>
+			</a>
+			<div id="thumber">
+				{% for impacter in impacter_list %}
+					<img src="{{ impacter.photo.get_impacterthumb_bw_url }}"  id="ilbut{{ forloop.counter0 }}"  style="cursor:pointer;padding:0 6px 0 0;" onclick="gotoandstop({{ forloop.counter0 }});">
+					</img>
+				{% endfor %}
+			</div>
+		</div>{# end of left #}
+		<div id="right-impacter">
+			<img src="{{ impacter_first.photo.get_impacter_url }}" id="irp" ></img>
+
+		</div>{# end of right #}
+	</div>{# end of impacter #}
+	<div id="nav"><!-- These are the top level navigation links -->
+		<ul id="navigation">
+			<li id="li1">
+				<a id="nav1" href="{% url newsphotos %}">
+					<span>NEWS &amp; photos</span>
+				</a>
+			</li>
+			<li id="li2">
+				<a id="nav2" href="{% url featured %}">
+					<span>featured INITIATIVES</span>
+				</a>
+			</li>
+			<li id="li3">
+				<a id="nav3" href="{% url projectsmodels %}">
+					<span>PROJECTS &amp; models</span>
+				</a>
+			</li>
+			<li id="li4">
+				<a id="nav4" href="{% url about %}">
+					<span>about HISG</span>
+				</a>
+			</li>
+			<li id="li5">
+				<a id="nav5" href="{% url donation %}">
+					<span>DONATION portal</span>
+				</a>
+			</li>
+		</ul><!-- end of navigation -->
+		<div id="subnavigation">
+			<ul class="subnav">
+				<li class="sub0" id="testify">Welcome to HISG</li>
+				<li class="sub1"><a href="{% url news %}">News | </a></li>
+				<li class="sub1"><a href="{% url gallery %}">Photos | </a></li>
+				<li class="sub1"><a href="{% url videos %}">Videos | </a></li>
+				<li class="sub1"><a href="{% url blog %}">Blog</a></li>
+				
+				<li class="sub2"><a href="{% url star %}">Starfish Community | </a></li>
+				<li class="sub2"><a href="{% url lso %}">Let's Save One | </a></li>
+				<li class="sub2"><a href="{% url orphan %}">Orphan Care | </a></li>
+				<li class="sub2"><a href="{% url darfur %}">Darfur Initiative | </a></li>
+				<li class="sub2"><a href="{% url gic %}">Global Informatinon Center | </a></li>
+				<li class="sub2"><a href="{% url hrn %}">Hope Resource Network</a></li>
+				
+				<li class="sub3"><a href="{% url history %}">Projects | </a></li>
+				<li class="sub3"><a href="{% url histmodel %}">HIST Model | </a></li>
+				<li class="sub3"><a href="{% url idrmodel %}">IDR Model | </a></li>
+				<li class="sub3"><a href="{% url capability %}">Capability Survey</a></li>
+
+				<li class="sub4"><a href="{% url history %}">History | </a></li>
+				<li class="sub4"><a href="{% url directors %}">Directors | </a></li>
+				<li class="sub4"><a href="{% url staff %}">Staff | </a></li>
+				<li class="sub4"><a href="{% url office %}">Offices | </a></li>
+				<li class="sub4"><a href="{% url vision %}">Purpose and Vision | </a></li>
+				<li class="sub4"><a href="{% url contact %}">Contact Us</a></li>
+				
+				<li class="sub5"><a href="{% url donation_login %}">Donor Login</a></li>
+			
+		{% if user.is_authenticated %}
+				<li class="inyes" id="adminfirst">
+					<a href="{% url profile_detail user %}">{{ user }} | </a>
+				</li>
+				<li class="inyes">
+					<a href="{% url acct_logout %}">logout</a>
+				</li>
+				{% if perms.tribes %}
+				<li class="inyes">
+					<a href="/admin/"> | admin</a>
+				</li>
+				{% else %}
+					{% if perms.partners %}
+						<li class="inyes">
+							<a href="{% url partners_starfish %}">starfish</a>
+						</li>
+					{% endif %}
+				{% endif %}
+			</ul>
+		{% else %}
+				<li class="inyes" id="adminfirst">
+					<a href="{% url acct_login %}">Login</a>/
+					<a href="{% url acct_signup %}">Signup</a>
+				</li>
+			</ul>
+		{% endif %}
+		</div><!-- end of subnavigation block -->
+	</div><!-- end of nav (top level navigation) -->
+
+
+<div class="homer" id="lefthomer">
+	<h3>DAILY UPDATES</h3>
+<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
+<h4>Destruction in Gaza</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. Recent assessments of the situation show that 21,000 homes were destroyed, and 1,300 people were killed. The small but heavily populated nation's infrastructure is also badly damaged. <span class="ican">READ MORE.</span></p>
+
+<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>  
+<h4>Hope in Bangladesh</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. Recent assessments of the situation show that 21,000 homes were destroyed, and 1,300 people were killed.  <span class="ican">READ MORE.</span></p>
+</div>
+
+
+<div class="homer" id="middlehomer">
+	<h3>VOLUNTEER &amp; EMPLOYMENT OPPORTUNITIES</h3>
+<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
+<h4>Volunteers Needed in Thai Relief Effort</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN COME.</span></p>
+
+<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>  
+<h4>National Project Director Needed in Ghana</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">APPLY.</span></p>
+
+<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>  
+<h4>Join the Starfish Community</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I WANT TO TAKE THE SURVEY.</span></p>
+</div>
+
+
+
+<div class="homer" id="righthomer">
+	<h3>URGENT NEEDS</h3>
+<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
+<h4>Medical Supplies in Malaysia</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN HELP.</span></p>
+
+<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
+<h4>Water Filtration Systems in Darfur</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN HELP.</span></p>
+
+<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
+<h4>Transportation of Materials to Gaza</h4>
+<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN HELP.</span></p>
+</div>
+					<div style="clear:both"></div>
+					<div id="ft"><!--this is the start of the footer-->
+						<div class="legal">
+						    <a href="{% url search %}">SEARCH</a> | <a href="/">FAQS</a>
+						    | <a href="{% url terms %}">SITE MAP</a> | &copy; 2001-2009 HISG<br>
+							Humanitarian International Services Group &nbsp;| &nbsp;4700 Castleton Way, Suite 200, Castle Rock, CO 80109 Phone:(303) 662-0845 &nbsp;| &nbsp;HISG is a non-profit 501(c)3 tax exempt organization
+						</div>						
+					</div><!-- this is the end of the footer  -->
+				</div><!--this is the end of the body-->
+			</div><!--this is the end of the custom document declaration-->
+		</div>{# end of doc-wrapper #}
+    </body>
+</html>
+

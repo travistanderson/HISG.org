@@ -1,0 +1,41 @@
+<!-- templates/about/office.html -->
+{% extends "about/base.html" %}
+
+{% block head_title %}Offices{% endblock %}
+{% block subarrive %}4{% endblock subarrive %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	<div style="padding:0 20px 0 20px">
+		<h2 style="text-align:center;">
+			HISG Offices
+		</h2>
+	{% for office in office_list %}
+		<a href="{% url office_detail office.id %}"><h2>{{ office }}</h2><br>
+		{% for photo in office.photo.all %}
+		<img src="{{ photo.get_thumbnail_url }}" />
+		{% endfor %}</a>{{ office.bio }}<br>
+	{% endfor %}
+	</div>
+
+{% endblock %}
+

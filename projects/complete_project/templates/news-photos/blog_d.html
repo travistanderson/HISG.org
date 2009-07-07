@@ -1,0 +1,17 @@
+<!-- template/news-photos/blog_d.html -->
+{% extends "news-photos/base.html" %}
+{% block subarrive %}4{% endblock subarrive %}
+
+{% block body %}
+	<a href="{% url blog %}"><h1 style="text-align:center;">Blog</h1></a>
+	{% if post %}
+		<h2>{{ post.title }}</h2>
+		<h3>{{ post.department }}-{{ post.publish|date:"M d, Y" }}</h3>
+		<div style="float:right;padding:0 10px 0 0;">
+			<img src="{{ post.photo.get_display_url }}" /><br>
+		<div class="caption">{{ post.photo.title }} - {{ post.photo.caption }}</div></div>
+		<p>{{ post.body }}</p>
+	{% else %}
+		Sorry, There was a problem getting this blog post.
+	{% endif %}
+{% endblock %}

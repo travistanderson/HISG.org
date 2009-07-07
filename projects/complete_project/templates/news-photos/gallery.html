@@ -1,0 +1,97 @@
+<!-- templates/news-photos/gallery.html -->
+{% extends 'news-photos/base.html' %}
+{% block subarrive %}2{% endblock subarrive %}
+{% load markup %}
+{% load pagination_tags %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+
+	<h1 Style="text-align:center;">Photos</h1><hr />
+	<ul class="sorter">
+		<li>
+			{% ifequal sort "date"  %}
+				Sort by Date |
+			{% else %}
+				<a href="{% url blog %}">Sort by Date</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "department"  %}
+				Sort by Department |
+			{% else %}
+				<a href="{% url blog_department %}">Sort by Department</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "author"  %}
+				Sort by Author
+			{% else %}
+				<a href="{% url blog_author %}">Sort by Author</a>
+			{% endifequal %}
+		</li>
+
+	</ul>
+	<hr />
+	{% if gallery_list %}
+		{% autopaginate gallery_list 5 %}
+		{% for gallery in gallery_list %}
+			<div class="rowergallery">
+				<h3>
+					<a href='{% url gallery_detail gallery.id %}'>
+						{{ gallery.title }}
+					</a>
+				</h3>
+				<div>
+					{% for photo in gallery.photos.all %}
+						{% ifequal forloop.counter 1 %}
+							<img src="{{ photo.get_medium_url }}" />
+						{% endifequal %}
+						{% ifequal forloop.counter 2 %}
+							<img src="{{ photo.get_medium_url }}" />
+						{% endifequal %}
+						{% ifequal forloop.counter 3 %}
+							<img src="{{ photo.get_medium_url }}" />
+						{% endifequal %}
+					{% endfor %}
+					
+				</div>
+				{{ gallery.description|textile|truncatewords:40 }}<br/>
+				<div class="clearer"></div>
+					<span style="float:left;width:200px;display:inline;">
+						{{ gallery.date_added|date:"M d, Y" }}
+					</span>
+					<span style="float:left;width:300px;display:inline;">
+						Photos: {{ gallery.photos.all|length }}
+					</span>
+					<span style="float:left;display:inline;">
+						galleryed by: {{ gallery.author }}
+					</span>
+			</div>
+		{% endfor %}
+		{% paginate %}
+	{% else %}
+		<p>No Photos.</p>
+	{% endif %}
+
+{% endblock %}
+

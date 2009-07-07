@@ -1,0 +1,21 @@
+<!-- templates/news-photos/videos_detail.html -->
+{% extends 'news-photos/base.html' %}
+{% block subarrive %}3{% endblock subarrive %}
+
+{% block body %}
+	<div style="margin:0 0 0 90px">
+		{% if video %}
+			<div style="display:inline; width:300px;float:left;padding:0 0 20px 0">
+				<h2>{{ video.name }}</h2>
+				<div>
+					<EMBED SRC="/site_media/{{ video.path }}" WIDTH={{ video.width }} HEIGHT = {{ video.height }}
+				 AUTOPLAY=false CONTROLLER=true LOOP=false
+				 PLUGINSPAGE=http://www.apple.com/quicktime/ >
+				</div><br><br>
+				<div>{{ video.caption }}</div>
+			</div>
+		{% else %}
+			<p>There was a problem with this video.</p>
+		{% endif %}
+	</div>
+{% endblock %}

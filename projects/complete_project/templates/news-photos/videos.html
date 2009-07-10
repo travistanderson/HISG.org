@@ -3,17 +3,19 @@
 {% block subarrive %}3{% endblock subarrive %}
 
 {% block body %}
-	<div style="margin:0 0 0 90px">
+	<h2>Videos</h2> <hr/>
+	<div style="margin:0 0 0 10px">
+		
 		{% if video_list %}
 			{% for video in video_list %}
-				<div style="display:inline; width:300px;float:left;padding:0 0 20px 0">
-					<h2>
-						<a href='/gallery/videos/{{ video.slug }}'>
+				<div style="display:inline; width:190px;float:left;padding:0 0 20px 0">
+					<h3>
+						<a href='{% url videos_detail video.slug %}'>
 							{{ video.name }}
 						</a>
-					</h2>
-					<a href="/gallery/videos/{{ video.slug }}">
-						<img src="{{ video.frame.get_front_page_url }}">
+					</h3>
+					<a href="{% url videos_detail video.slug %}">
+						<img src="{{ video.frame.get_medium_url }}">
 					</a><br>
 					{{ video.caption }}
 				</div>

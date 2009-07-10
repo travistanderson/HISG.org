@@ -1,19 +1,22 @@
 {# templates/featured/starfishcommunity/base.html starfish #}
 {% extends 'featured/base.html' %}
 
-{% block pagenav %}
+{% block tininav %}
+<div class="tininav">
 	<ul>
 		<li>
-			<a href="{% url home %}">Starfish Community Portal | </a>
+			<a href="{% url star %}">Starfish Community Portal</a> | 
 		</li>
 		<li>
-			<a href="{% url home %}">Internships | </a>
+			<a href="{% url home %}">Starfish Concept</a> | 
 		</li>
 		<li>
-			<a href="{% url home %}">Documents | </a>
+			<a href="{% url home %}">Documents</a> | 
 		</li>
 		<li>
-			<a href="{% url home %}">Country Profiles | </a>
+			<a href="{% url home %}">Country Profiles</a>
 		</li>
 	</ul>
-{% endblock pagenav %}
+</div>
+<div class="clearer"></div>
+{% endblock tininav %}

@@ -22,5 +22,70 @@
 {% endblock brick4 %}
 
 {% block body %}
-	<p><h1>This is the featured page.</h1></p>
+
+	<h2>HISG's Featured Initiatives</h2> <hr/>
+	<p style="padding:0 0 15px;">
+		Here are some HISG initiatives you might be interested in.
+	</p>
+	<div class="feabox">
+		<a href="{% url star %}">
+			<img class="right" src="/site_media/photologue/photos/cache/2008_Mauritania_1_front_page.jpg">
+			</img>
+		</a>
+		<h3><a href="{% url star %}">Starfish Community</a></h3>
+		<div>
+			Become part of the Starfish Community along with HISG to help eliminate suffering. Starfish Community is based on the idea of a leaderless organization that can fill the need to help.
+		</div><div class="clearer"></div>
+	</div><div class="clearer"></div>
+	
+	<div class="feabox">
+		<a href="{% url lso %}">
+			<img class="right" src="/site_media/photologue/photos/cache/2008_Mauritania_1_front_page.jpg">
+			</img>
+		</a>
+		<h3><a href="{% url lso %}">Let's Save One</a></h3>
+		<div>
+			When the question "What is the yardstick for success in Darfur?" was put to HISG's Country Director for Sudan, he thought about all the people living in the less-than-human conditions in the Internally Displaced Person (IDP) camps, and then answered: "If we only ever save but one, then we will have done more than we could ever have accomplished sitting at home." Let's Save One was created to provide immediate assistance to people in potentially life threatening situations. It focuses on trying to provide life changing help to one person at a time.
+		</div><div class="clearer"></div>
+	</div>
+	<div class="clearer"></div> 
+	
+	         
+	<div class="feabox">           
+		<a href="{% url orphan %}">
+			<img class="right" src="/site_media/photologue/photos/cache/2008_Mauritania_1_front_page.jpg">
+			</img>
+		</a>
+		<h3><a href="{% url orphan %}">Orphan Care</a></h3>
+		<div>
+			HISG is connecting a network of Orphanages and Orphan Care providers to meet our goal of helping. Find out more about what is happening and how you can help.
+		</div><div class="clearer"></div>
+	</div>
+	<div class="clearer"></div>
+	
+	
+	<div class="feabox">           
+		<a href="{% url gic %}">
+			<img class="right" src="/site_media/photologue/photos/cache/2008_Mauritania_1_front_page.jpg">
+			</img>
+		</a>
+		<h3><a href="{% url gic %}">Global Information Center</a></h3>
+		<div>
+			With the goal of connecting resources to needs, HISG's Global Information Center, in Central Texas, has created technology that will provide real time information during disasters so that the most good can be done with the fewest resources. The Global Information Center also serves as an information hub, connecting people so that communication can happen at any time.
+		</div><div class="clearer"></div>
+	</div>
+	<div class="clearer"></div>
+	
+	
+	<div class="feabox">           
+		<a href="{% url hrn %}">
+			<img class="right" src="/site_media/photologue/photos/cache/2008_Mauritania_1_front_page.jpg">
+			</img>
+		</a>
+		<h3><a href="{% url hrn %}">Hope Resource Network</a></h3>
+		<div>
+			HRN (Hope Resource Network) is a global network of warehouses and distribution centers connected to stage and deliver food, medical supplies, clothing and basic human needs to people all around the world. HISG is working to facilitate the growth of HRN and the delivery of all these life changing goods.
+		</div><div class="clearer"></div>
+	</div>
+	<div class="clearer"></div>
 {% endblock %}

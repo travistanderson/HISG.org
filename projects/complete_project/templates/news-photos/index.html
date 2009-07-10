@@ -62,43 +62,6 @@
 		<h2>
 			<a href="{% url gallery %}">Photos</a>
 		</h2><hr />
-		{% for project in project_list %}
-			<div class="rower">
-				<a href="{% url gallery_detail project.id %}">
-					<h4>{{ project.name }}</h4>
-				</a>
-				{% for photo in project.photo.all %}
-					{% ifequal forloop.counter 1 %}
-						<div class="right">
-							<img src="{{ photo.get_news_size_url }}"></img>
-						</div>
-					{% endifequal %}
-				{% endfor %}
-				{{ project.description|truncatewords:13 }}
-				<div class="clearer"></div>
-				<span>
-					{% for country in project.country.all %}
-						{{ country }},
-					{% endfor %}
-				</span>
-				<span>
-					{% for region in project.region.all %}
-						{{ region }}
-					{% endfor %}
-				</span>
-				<span style="padding-left:20px;">
-					{{ project.year|date:"Y" }}
-				</span>
-			</div>
-		{% endfor %}
-	</div>
-</div>
-
-<div class="twoway">
-	<div class="fourway">
-		<h2>
-			<a href="{% url videos %}">Videos</a>
-		</h2><hr />
 		{% for gallery in gallery_list %}
 			<div class="rower">
 				<span class="right">
@@ -126,6 +89,30 @@
 				</div>
 
 				{{ gallery.description|truncatewords:13 }}
+				<div class="clearer"></div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="twoway">
+	<div class="fourway">
+		<h2>
+			<a href="{% url videos %}">Videos</a>
+		</h2><hr />
+		{% for video in video_list %}
+			<div class="rower">
+				<span class="right">
+					{{ video.date_added|date:"M d, Y" }}
+				</span>
+				<a href="{% url videos_detail video.slug %}">
+					<h4>{{ video.name }}</h4>
+				</a>
+				<div>
+					<img src="{{ video.frame.get_news_size_url }}"></img>
+				</div>
+
+				{{ video.caption|truncatewords:13 }}
 				<div class="clearer"></div>
 			</div>
 		{% endfor %}

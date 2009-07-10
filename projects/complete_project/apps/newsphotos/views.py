@@ -12,15 +12,18 @@ from photologue.models import Gallery, Photo
 from countries.models import Region, Country
 from photologue.models import Photo
 from brick.models import Webpage
+from videos.models import Video
 
 def index(request):
 	n = News.objects.all().order_by('-date')[:3]
 	b = Post.objects.all()[:3]
 	g = Gallery.objects.order_by('-date_added')
+	v = Video.objects.all()[:3]
 	pa = Webpage.objects.get(name = 'index - news and photos')
 	return render_to_response('news-photos/index.html', {'news_list':n,
 														'blog_list':b,
 														'gallery_list':g,
+														'video_list':v,
 														'page': pa,
 														},
 		context_instance = RequestContext(request),

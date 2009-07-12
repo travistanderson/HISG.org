@@ -1,0 +1,36 @@
+{# templates/featured/lso/donate.html #}
+{% extends 'featured/lso/base.html' %}
+{% block subarrive %}2{% endblock subarrive %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	<h2>Donate</h2>
+	
+	 	Let's Save One gives everyone the opportunity to personally connect with people in different parts of the world who are in dire need. Your gift will go directly to the specific need described in the case summary on the Cases page. You can give by clicking on the "Donate" button, or by mailing a check or money order to the address below. Thank you for your concern and generosity.
+
+
+	Let's Save One
+	c/o Humanitarian International Services Group
+	Attn: Steve Lencke
+	4700 Castleton Way #200
+	Castle Rock, CO 80109
+{% endblock %}

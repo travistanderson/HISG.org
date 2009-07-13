@@ -162,6 +162,7 @@ INSTALLED_APPS = (
 	'brick',
 	'histidr',
 	'projectsmodels',
+	'haystack',
 	    
     # internal (for now)
     'analytics',
@@ -249,3 +250,6 @@ except ImportError:
     pass
 
 GEOS_LIBRARY_PATH = "/Library/Frameworks/GEOS.framework/unix/lib/libgeos_c.dylib"
+
+HAYSTACK_SEARCH_ENGINE = "whoosh"
+HAYSTACK_WHOOSH_PATH = '/home/whoosh/mysite_index'

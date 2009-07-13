@@ -10,8 +10,8 @@ caption,th {text-align: left;}
 h1,h2,h3,h4,h5,h6 {font-size: 100%;font-weight: normal;}
 h1{font-size:36px;font-family:times;color:#14436f;}
 h2{font-size:30px;font-family:times;color:#14436f;padding-bottom:20px;}
-h3{font-size:24px;font-family:times;color:#14436f;}
-h4{font-size:18px;font-family:times;color:#14436f;}
+h3{font-size:24px;font-family:times;color:#14436f;padding-bottom:15px;}
+h4{font-size:18px;font-family:times;color:#14436f;padding-bottom:8px;}
 q:before,q:after {content: '';}
 a:link, a:visited {text-decoration:none;color:#3f97ba;}
 abbr,acronym {border: 0;font-variant: normal;}
@@ -91,6 +91,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .right{float:right;}
 .left{float:left;}
 .clearer{clear:both;}
+.bold{font-weight:bold;}
 .twoway{min-height:420px;}
 .fourway{width:300px;float:left;padding:0 15px 15px 0px;}
 .fourway span{color:#ae5219;}
@@ -109,7 +110,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 
 .sorter li{display:inline;color:#14436f;}
 #buttoner{background-color:#14436f;height:20px;width:180px;padding:5px 0 2px 8px;margin:30px 10px 0 70px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:1px #fffccf solid;}
-#buttoner a{color:red;}
+#buttoner a{color:#3f97ba;}
 
 .feabox{border:1px solid #dabc64;padding:15px;margin:0 0 20px 0;}
 .feabox img{padding:0 0 0 15px;}

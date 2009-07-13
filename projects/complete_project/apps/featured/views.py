@@ -140,7 +140,7 @@ def darfur_wms(request):
 def gic(request):
 	pa = Webpage.objects.get(name="index - starfish")	
 	
-	return render_to_response('featured/gic/gic.html',{'page':pa,}, context_instance = RequestContext(request),
+	return render_to_response('featured/gic/index.html',{'page':pa,}, context_instance = RequestContext(request),
 	)
 
 def hrn(request):

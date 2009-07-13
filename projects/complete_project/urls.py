@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 from django.contrib import admin
+import haystack
 
 import os.path
 
@@ -97,3 +98,4 @@ if settings.DEBUG:
             {'document_root': os.path.join(os.path.dirname(__file__), "site_media")}),
     )
 
+haystack.autodiscover()

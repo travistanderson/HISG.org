@@ -48,7 +48,7 @@ def contact(request):
 	
 
 def directors(request):
-	d = Staff.objects.all().filter(director=True)
+	d = Staff.objects.all().filter(director=True).order_by('sorter')
 	pa = Webpage.objects.get(name="index - starfish")	
 	
 	return render_to_response('about/directors.html', {'director_list': d,'page':pa,},
@@ -65,7 +65,7 @@ def directors_detail(request, staff_id):
 	)
 	
 def staff(request):
-	s = Staff.objects.all().filter(director=False)
+	s = Staff.objects.all().filter(director=False).order_by('sorter')
 	pa = Webpage.objects.get(name="index - starfish")
 	
 	return render_to_response('about/staff.html', {'staff_list': s,'page':pa,},

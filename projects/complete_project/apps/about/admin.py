@@ -14,8 +14,8 @@ class OfficeAdmin(admin.ModelAdmin):
 	list_display = ('name', 'description', 'country',)
 	
 class StaffAdmin(admin.ModelAdmin):
-	list_display = ('lastname','firstname',  'director',)
-	ordering = ('lastname',)
+	list_display = ('lastname','firstname', 'sorter', 'director',)
+	ordering = ('sorter', 'lastname',)
 
 admin.site.register(Office, OfficeAdmin)
 admin.site.register(Staff, StaffAdmin)

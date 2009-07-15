@@ -18,10 +18,9 @@ def index(request):
 	)
 
 def star(request):
-	pa = Webpage.objects.get(name="index - starfish")
-	t = Tininav.objects.get(page="Starfish")	
+	pa = Webpage.objects.get(name="index - starfish")	
 	return render_to_response('featured/starfishcommunity/index.html',
-		{'page':pa,'tininav':t}, 
+		{'page':pa,}, 
 		context_instance = RequestContext(request),
 	)
 	

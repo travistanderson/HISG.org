@@ -17,6 +17,7 @@ class Office(models.Model):
 	region = models.ForeignKey(Region, blank=True)
 	photo = models.ManyToManyField(Photo, blank=True, null=True)
 	video = models.ManyToManyField(Video, blank=True, null=True)
+	sorter = models.IntegerField(max_length="3", blank=True, null=True)
 		
 	def __unicode__(self):
 		return self.name
@@ -31,6 +32,7 @@ class Staff(models.Model):
 	office = models.ForeignKey(Office, blank=True, null=True)
 	photo = models.ManyToManyField(Photo, blank=True)
 	video = models.ManyToManyField(Video, blank=True)
+	sorter = models.IntegerField(max_length="3", blank=True, null=True)
 		
 	def __unicode__(self):
 		return "%s %s" % (self.firstname, self.lastname)

@@ -73,7 +73,7 @@
 		function quickpick(){
 			$(document).ready(function(){
 				$(".quickpick").hover(function(){
-					$(".quickpick").css({color:"#F00"});
+					$(".quickpick > *").css({display:"block"});
 				})
 			})
 		}
@@ -106,13 +106,14 @@
 		impacter();
 		initial();
 		shower();
+		quickpick();
 		// hider();
 		// timest();
 		//-->
 		</script>
     </head>
-	<body><!--start of the wrapper for whole page-->
-		<div id="doc-wrapper">
+	<body><!--start of body-->
+		<div id="doc-wrapper"><!--start of the doc-wrapper-->
 			<div id="doc"><!--start of the custom document declaration-->
 				<div id="hd"><!--this is the start of the header-->
 					<div id="one">

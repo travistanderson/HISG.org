@@ -35,8 +35,12 @@ input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;fon
 #two{height:114px;}
 #hisg{padding:30px 0 0 225px;}
 #first-time{padding:35px 0 0 820px;}
-#sitesearch{padding:10px 30px 0 0;float:right;color:#14436f;font-family:palatino,new york;}
-.quickpick{display:inline;float:left;padding:3px 5px 2px 5px;background-color:white;border:1px gray solid;margin:0 20px 0 0;width:100px;}
+
+#quickdiv{width:150px;height:28px;float:left;padding:8px 0 0 550px;color:#14436f;font-family:palatino,new york;}
+.quickpick{display:inline;padding:3px 5px 0px 5px;background-color:white;border:1px gray solid;margin:0 20px 0 0;width:100px;z-index:1;position:absolute;}
+.quickhide{display:none;}
+#searchdiv{width:275px;height:28px;float:left;padding:10px 0px 0 0;color:#14436f;font-family:palatino,new york;}
+
 #nav{height:66px;}
 ul#navigation {height:36px;padding:10px 0 0 1px;}
 ul#navigation span{display:none;}

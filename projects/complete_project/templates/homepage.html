@@ -109,15 +109,17 @@
 			<div id="doc"><!--start of the custom document declaration-->
 				<div id="hd"><!--this is the start of the header-->
 					<div id="one">
-						<div id="sitesearch">
+						<div id="quickdiv">
+							<ul class="quickpick">
+								{% chunk "quickpicks" %}
+							</ul>{# end of quickpick #}
+						</div>{# end of quickdiv #}
+						<div id="searchdiv">
 							<form action="" id="sitesearchform">
-								<span><ul class="quickpick">
-									{% chunk "quickpicks" %}
-								</ul></span>
 								<label for="searchinput">SEARCH</label>
 								<input type="text" id="searchinput" name="searchinput">
 							</form>
-						</div>{# end of sitesearch #}
+						</div>{# end of searchdiv #}
 					</div>{# end of one #}
 					<div id="two">
 						<div id="hisg">

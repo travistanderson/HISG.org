@@ -11,7 +11,8 @@ class VideoInline(admin.TabularInline):
 	model = Video
 
 class OfficeAdmin(admin.ModelAdmin):
-	list_display = ('name', 'description', 'country',)
+	list_display = ('name', 'sorter', 'description', 'country',)
+	ordering = ('sorter', 'name')
 	
 class StaffAdmin(admin.ModelAdmin):
 	list_display = ('lastname','firstname', 'sorter', 'director',)

@@ -27,7 +27,11 @@
 					<div id="one">
 						<div id="quickdiv">
 							<ul class="quickpick">
-								{% chunk "quickpicks" %}
+								{% if searchpage %}
+									<li>Quick Pick</li>{# this is a patch to fix search #}
+								{% else %}
+									{% chunk "quickpicks" %}
+								{% endif %}
 							</ul>{# end of quickpick #}
 						</div>{# end of quickdiv #}
 						<div id="searchdiv">

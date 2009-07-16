@@ -1,0 +1,91 @@
+{# templates/lookfor/search.html #}
+{% extends "lookfor/base.html" %}
+
+{% block body %}
+	<h2>Search HISG.org</h2>
+
+	<form action="." method="GET">
+		{# <label for="q">Search: </label> #}
+		<input type="text" name="q" value="{{ query|escape }}">
+		<input type="submit" value="Search">
+	</form>
+	
+	{% if query %}
+		<h3>Results for "{{ query|escape }}":</h3>
+
+		{% if officeresults %}
+			<h4>Offices</h4>
+			<ul>
+			{% for office in officeresults %}
+				<li><a href="{% url office_detail office.id %}">{{ office|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
+		{% if directorsresults %}
+		<h4>Staff</h4>
+			<ul>
+			{% for director in directorsresults %}
+				<li><a href="{% url directors_detail director.id %}">{{ director|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
+		{% if staffresults %}
+		<h4>Staff</h4>
+			<ul>
+			{% for staff in staffresults %}
+				<li><a href="{% url staff_detail staff.id %}">{{ staff|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
+		{% if histidrresults %}
+		<h4>HIST and IDR Models</h4>
+			<ul>
+			{% for histidr in histidrresults %}
+				<li><a href="{% url projectsmodels %}">{{ histidr|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
+		{% if newsresults %}
+		<h4>News</h4>
+			<ul>
+			{% for news in newsresults %}
+				<li><a href="{% url news_detail news.id %}">{{ news|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
+		{% if postresults %}
+		<h4>Blog Posts</h4>
+			<ul>
+			{% for post in postresults %}
+				<li>{{ post|escape }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
+		{% if faqsresults %}
+		<h4>FAQ's</h4>
+			<ul>
+			{% for faqs in faqsresults %}
+				<li>{{ faqs|escape }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
+		{% if partnersresults %}
+		<h4>Partner Organizations</h4>
+			<ul>
+			{% for partners in partnersresults %}
+				<li>{{ partners|escape }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	
+	
+
+	{% endif %}
+{% endblock %}

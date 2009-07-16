@@ -2,7 +2,6 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 from django.contrib import admin
-#import haystack
 
 import os.path
 
@@ -45,7 +44,7 @@ urlpatterns = patterns('',
 
     (r'^admin/(.*)', admin.site.root),
     (r'^photos/', include('photos.urls')),
-    url(r'^search/$', direct_to_template, {"template": "search.html","queryset": News.objects.all(),}, name="search"),
+    url(r'^search/$', include('lookfor.urls')),
     
     (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
     # (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
@@ -98,4 +97,11 @@ if settings.DEBUG:
             {'document_root': os.path.join(os.path.dirname(__file__), "site_media")}),
     )
 
-#haystack.autodiscover()
+import haystack
+haystack.autodiscover()
+# from haystack import site
+# from haystack.sites import SearchSite
+# from about.models import Staff, Office
+# 
+# 
+# site.register(Staff)

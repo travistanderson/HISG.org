@@ -4,7 +4,8 @@ from django.shortcuts import render_to_response
 from about.models import Office, Staff
 from histidr.models import HistIdr
 from homepage.models import Impacter
-from newsphotos.models import News, Post, Faqs, Partner
+from newsphotos.models import News, Post, Partner
+from faqs.models import Faqs
 from django.contrib.auth.models import User
 
 def search(request):

@@ -62,7 +62,7 @@
 		<h4>Blog Posts</h4>
 			<ul>
 			{% for post in postresults %}
-				<li>{{ post|escape }}</li>
+				<li><a href="{% url blog_detail blog.id %}">{{ post|escape }}</a></li>
 			{% endfor %}
 			</ul>
 		{% endif %}

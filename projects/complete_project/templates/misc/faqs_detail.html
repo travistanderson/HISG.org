@@ -1,0 +1,37 @@
+{# template/misc/faqs_detail.html #}
+{% extends "misc/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% endblock %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	<div style="padding:0 20px 0 20px">
+		<h2 style="text-align:center;">
+			Frequently Asked Questions
+		</h2>
+			Q: {{ question.question }}<br/>
+			A: {{ question.answer }}
+	</div>
+
+{% endblock %}

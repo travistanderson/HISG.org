@@ -39,6 +39,7 @@ urlpatterns = patterns('',
     (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^photologue/', include('photologue.urls')),
     (r'^profiles/', include('profiles.urls')),
+    (r'^frequently-asked-questions/', include('faqs.urls')),
     # (r'^gallery/', include('gallery.urls')),
     #(r'^starfish-portal/', include('partners.urls')),
 
@@ -97,8 +98,8 @@ if settings.DEBUG:
             {'document_root': os.path.join(os.path.dirname(__file__), "site_media")}),
     )
 
-import haystack
-haystack.autodiscover()
+# import haystack
+# haystack.autodiscover()
 # from haystack import site
 # from haystack.sites import SearchSite
 # from about.models import Staff, Office

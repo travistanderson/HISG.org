@@ -85,9 +85,9 @@ class News(models.Model):
 	class Meta(object):
 		verbose_name_plural = "News"
 
-class Faqs(models.Model):
-	question = models.CharField(max_length=300)
-	answer = models.CharField(max_length=1000)
+# class Faqs(models.Model):
+# 	question = models.CharField(max_length=300)
+# 	answer = models.CharField(max_length=1000)
 
 	
 

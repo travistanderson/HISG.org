@@ -24,7 +24,4 @@ admin.site.register(News)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(PartnerType, PartnerTypeAdmin)
-# admin.site.register(Continent)
-# admin.site.register(Country)
-# admin.site.register(Picture, PictureAdmin)
-#admin.site.register(Video)
+

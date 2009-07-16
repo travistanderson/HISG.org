@@ -70,14 +70,6 @@
 			})
 		}
 		
-		function quickpick(){
-			$(document).ready(function(){
-				$(".quickpick").hover(function(){
-					$(".quickpick > *").css({display:"block"});
-				})
-			})
-		}
-
 		function gotoandstop(impacter){
 			$(document).ready(function (){
 				$("#irp").stopTime();
@@ -119,9 +111,9 @@
 					<div id="one">
 						<div id="sitesearch">
 							<form action="" id="sitesearchform">
-								<ul class="quickpick">
+								<span><ul class="quickpick">
 									{% chunk "quickpicks" %}
-								</ul>
+								</ul></span>
 								<label for="searchinput">SEARCH</label>
 								<input type="text" id="searchinput" name="searchinput">
 							</form>

@@ -43,6 +43,16 @@ function hoversecond(shower){
 	})
 }
 
+function quickpick(){
+	$(document).ready(function(){
+		$(".quickpick").hover(
+			function(){$(".quickhide").css({display:"block"});},
+			function(){$(".quickhide").css({display:"none"});}
+		)
+		
+	})
+}
+
 function shower(){
 	$(document).ready(function(){
 		$("#navigation > li").mouseover(function(){

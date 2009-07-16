@@ -7,6 +7,5 @@ class FaqsAdmin(admin.ModelAdmin):
 	list_display = ('sorter', 'question',)
 	ordering = ('sorter', 'question',)
 	
-
 admin.site.register(Faqs, FaqsAdmin)
 

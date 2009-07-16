@@ -71,7 +71,7 @@
 		<h4>FAQ's</h4>
 			<ul>
 			{% for faqs in faqsresults %}
-				<li>{{ faqs|escape }}</li>
+				<li><a href="{% url faqs_detail faqs.id %}">{{ faqs|escape }}</a></li>
 			{% endfor %}
 			</ul>
 		{% endif %}

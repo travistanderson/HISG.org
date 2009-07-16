@@ -30,8 +30,9 @@
 		<h2 style="text-align:center;">
 			Frequently Asked Questions
 		</h2>
-			Q: {{ question.question }}<br/>
-			A: {{ question.answer }}
+			<b>Q:</b> {{ question.question }}<br/>
+			<b>A:</b> {{ question.answer }}<br/><br/>
+			<a href="{% url faqs %}">Back to all questions</a>
 	</div>
 
 {% endblock %}

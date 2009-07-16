@@ -35,9 +35,10 @@
 							</ul>{# end of quickpick #}
 						</div>{# end of quickdiv #}
 						<div id="searchdiv">
-							<form action="" id="sitesearchform">
+							<form action="{% url search %}" method="GET" id="sitesearchform">
 								<label for="searchinput">SEARCH</label>
-								<input type="text" id="searchinput" name="searchinput">
+								<input type="text" id="q" name="q" value="{{ query|escape }}">
+								<input type="image" src="/site_media/images/magnifier_small.png" alt="search" id="magnifier">
 							</form>
 						</div>{# end of searchdiv #}
 					</div>{# end of one #}

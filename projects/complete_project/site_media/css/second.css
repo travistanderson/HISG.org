@@ -40,6 +40,7 @@ input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;fon
 .quickpick{display:inline;padding:3px 5px 2px 5px;background-color:white;border:1px gray solid;margin:0 20px 0 0;width:100px;z-index:1;position:absolute;}
 .quickhide{display:none;}
 #searchdiv{width:275px;height:28px;float:left;padding:10px 0px 0 0;color:#14436f;font-family:palatino,new york;}
+#magnifier{float:right;position:relative;top:-19px;left:-2px;}
 
 #nav{height:66px;}
 ul#navigation {height:36px;padding:10px 0 0 1px;}

@@ -115,9 +115,10 @@
 							</ul>{# end of quickpick #}
 						</div>{# end of quickdiv #}
 						<div id="searchdiv">
-							<form action="" id="sitesearchform">
+							<form action="{% url search %}" method="GET" id="sitesearchform">
 								<label for="searchinput">SEARCH</label>
-								<input type="text" id="searchinput" name="searchinput">
+								<input type="text" id="q" name="q" value="{{ query|escape }}">
+								<input type="image" src="/site_media/images/magnifier_small.png" alt="search" id="magnifier">
 							</form>
 						</div>{# end of searchdiv #}
 					</div>{# end of one #}
@@ -296,7 +297,7 @@
 					<div style="clear:both"></div>
 					<div id="ft"><!--this is the start of the footer-->
 						<div class="legal">
-						    <a href="{% url search %}">SEARCH</a> | <a href="/">FAQS</a>
+						    <a href="{% url search %}">SEARCH</a> | <a href="{% url faqs %}">FAQS</a>
 						    | <a href="{% url terms %}">SITE MAP</a> | &copy; 2001-2009 HISG<br>
 							Humanitarian International Services Group &nbsp;| &nbsp;4700 Castleton Way, Suite 200, Castle Rock, CO 80109 Phone:(303) 662-0845 &nbsp;| &nbsp;HISG is a non-profit 501(c)3 tax exempt organization
 						</div>						

@@ -26,14 +26,16 @@
 {% endblock brick4 %}
 
 {% block body %}
-	<div style="padding:0 20px 0 20px">
-		<h2 style="text-align:center;">
-			Frequently Asked Questions
-		</h2>
-		{% for question in faqs_list %}
-			Q: {{ question.question }}<br/>
-			A: {{ question.answer }}
-		{% endfor %}
-	</div>
+	<h2 style="text-align:center;">
+		Frequently Asked Questions
+	</h2><hr/>
+	{% for question in faqs_list %}
+		<a href="{% url faqs_detail question.id %}">
+			<div style="border:1px solid #d9bc65;padding:10px;">
+				<b>Q:</b> {{ question.question }}<br/>
+				<b>A:</b> {{ question.answer }}
+			</div>
+		</a><br/>
+	{% endfor %}
 
 {% endblock %}

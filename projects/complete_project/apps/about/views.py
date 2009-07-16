@@ -81,7 +81,7 @@ def staff_detail(request, staff_id):
 	)
 	
 def office(request):
-	o = Office.objects.all()
+	o = Office.objects.all().order_by('sorter')
 	pa = Webpage.objects.get(name="index - starfish")
 	
 	return render_to_response('about/office.html', {'office_list': o,'page':pa,},

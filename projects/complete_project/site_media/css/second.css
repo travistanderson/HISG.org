@@ -36,6 +36,8 @@ input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;fon
 #hisgpic{padding:0 0 25px 10px;}
 #labelpic{padding:0 0px 30px 30px;}
 #sitesearch{padding:10px 30px 0 0;float:right;color:#14436f;font-family:palatino,new york;}
+.quickpick{display:inline;float:left;padding:3px 5px 2px 5px;background-color:white;border:1px gray solid;margin:0 20px 0 0;width:100px;}
+.quickhide{display:none;}
 #nav{height:66px;}
 ul#navigation {height:36px;padding:10px 0 0 1px;}
 ul#navigation span{display:none;}

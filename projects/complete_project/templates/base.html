@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load chunks %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -14,6 +15,7 @@
 		<!--
 		showsecond({% block arrive %}{% endblock arrive %},{% block subarrive %}0{% endblock subarrive %});
 		hoversecond();
+		quickpick();
 		//-->
 		</script>
         {% block extra_head %}{% endblock %}
@@ -25,8 +27,11 @@
 					<div id="one">
 						<div id="sitesearch">
 							<form action="" id="sitesearchform">
-							<label for="searchinput">SEARCH</label>
-							<input type="text" id="searchinput" name="searchinput">
+								<ul class="quickpick">
+									{% chunk "quickpicks" %}
+								</ul>
+								<label for="searchinput">SEARCH</label>
+								<input type="text" id="searchinput" name="searchinput">
 							</form>
 						</div>{# end of sitesearch #}
 					</div>{# end of one #}

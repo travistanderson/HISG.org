@@ -62,7 +62,7 @@
 		<h4>Blog Posts</h4>
 			<ul>
 			{% for post in postresults %}
-				<li><a href="{% url blog_detail blog.id %}">{{ post|escape }}</a></li>
+				<li><a href="{% url blog_detail post.id %}">{{ post|escape }}</a></li>
 			{% endfor %}
 			</ul>
 		{% endif %}
@@ -80,12 +80,37 @@
 		<h4>Partner Organizations</h4>
 			<ul>
 			{% for partners in partnersresults %}
-				<li>{{ partners|escape }}</li>
+				<li>{{ partners|escape }}</li>{# what to do about a url here? #}
 			{% endfor %}
 			</ul>
 		{% endif %}
 	
+		{% if projectresults %}
+		<h4>Projects</h4>
+			<ul>
+			{% for project in projectresults %}
+				<li><a href="{% url project_detail project.id %}">{{ project|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
 	
+		{% if videoresults %}
+		<h4>Videos</h4>
+			<ul>
+			{% for video in videoresults %}
+				<li><a href="{% url videos_detail video.slug %}">{{ video|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
 
+		{% if galleryresults %}
+		<h4>Galleries</h4>
+			<ul>
+			{% for gallery in galleryresults %}
+				<li><a href="{% url gallery_detail gallery.id %}">{{ gallery|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
 	{% endif %}
 {% endblock %}

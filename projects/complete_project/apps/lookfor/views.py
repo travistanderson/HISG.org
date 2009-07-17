@@ -6,6 +6,9 @@ from histidr.models import HistIdr
 from homepage.models import Impacter
 from newsphotos.models import News, Post, Partner
 from faqs.models import Faqs
+from projectsmodels.models import Project
+from videos.models import Video
+from photologue.models import Gallery, Photo
 from django.contrib.auth.models import User
 
 def search(request):
@@ -76,6 +79,30 @@ def search(request):
 			Q(website__icontains=query)
 		)
 		partnersresults = Partner.objects.filter(partnersqset).distinct()
+		
+		projectqset = (
+			Q(name__icontains=query) |
+			Q(description__icontains=query)
+		)
+		projectresults = Project.objects.filter(projectqset).distinct()
+		
+		videoqset = (
+			Q(name__icontains=query) |
+			Q(caption__icontains=query)
+		)
+		videoresults = Video.objects.filter(videoqset).distinct()
+		
+		galleryqset = (
+			Q(title__icontains=query) |
+			Q(description__icontains=query)
+		)
+		galleryresults = Gallery.objects.filter(galleryqset).distinct()
+		
+		photoqset = (
+			Q(title__icontains=query) |
+			Q(caption__icontains=query)
+		)
+		photoresults = Photo.objects.filter(photoqset).distinct()
 	else:
 		officeresults = []
 		directorsresults = []
@@ -86,6 +113,10 @@ def search(request):
 		postresults = []
 		faqsresults = []
 		partnersresults = []
+		projectresults = []
+		videoresults = []
+		galleryresults = []
+		photoresults = []
 	
 	return render_to_response("lookfor/search.html", {
 		"searchpage": searchpage,
@@ -98,6 +129,10 @@ def search(request):
 		"postresults": postresults,
 		"faqsresults": faqsresults,
 		"partnersresults": partnersresults,
+		"projectresults": projectresults,
+		"videoresults": videoresults,
+		"galleryresults": galleryresults,
+		"photoresults": photoresults,
 		"query": query
 	})
 

@@ -1,6 +1,8 @@
+# pages/admin.py
 from django import forms
 from django.contrib import admin
 from pages.models import Page
+from django.utils.translation import ugettext_lazy as _
 
 
 class PageForm(forms.ModelForm):

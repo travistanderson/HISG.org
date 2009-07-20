@@ -24,14 +24,18 @@ def pager(request, url):
         return HttpResponseRedirect("%s/" % request.path)
     if not url.startswith('/'):
         url = "/" + url
-    f = get_object_or_404(Page, url__exact=url)
-
-    if f.template_name:
-        t = loader.select_template((f.template_name, DEFAULT_TEMPLATE))
+    f = get_object_or_404(Page, url__exact=url, sites__id__exact=settings.SITE_ID)
+    # If registration is required for accessing this page, and the user isn't
+    # logged in, redirect to the login page.
+    if f.registration_required and not request.user.is_authenticated():
+        from django.contrib.auth.views import redirect_to_login
+        return redirect_to_login(request.path)
+    if f.templatr:
+        t = loader.select_template((f.templatr, DEFAULT_TEMPLATE))
     else:
         t = loader.get_template(DEFAULT_TEMPLATE)
 
-    # To avoid having to always use the "|safe" filter in pages templates,
+    # To avoid having to always use the "|safe" filter in flatpage templates,
     # mark the title and content as already safe (since they are raw HTML
     # content in the first place).
     f.title = mark_safe(f.title)
@@ -43,3 +47,6 @@ def pager(request, url):
     response = HttpResponse(t.render(c))
     populate_xheaders(request, response, Page, f.id)
     return response
+
+
+

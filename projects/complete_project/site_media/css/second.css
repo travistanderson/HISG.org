@@ -98,6 +98,8 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .left{float:left;}
 .clearer{clear:both;}
 .bold{font-weight:bold;}
+.center{text-align:center;}
+
 .twoway{min-height:420px;}
 .fourway{width:300px;float:left;padding:0 15px 15px 0px;}
 .fourway span{color:#ae5219;}

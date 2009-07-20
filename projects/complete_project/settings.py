@@ -73,7 +73,8 @@ MIDDLEWARE_CLASSES = (
     'misc.middleware.SortOrderMiddleware',
     'crashlog.CrashLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
-	'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+	# 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+	'pages.middleware.PageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'complete_project.urls'
@@ -116,7 +117,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.markup',
-	'django.contrib.flatpages',
+	# 'django.contrib.flatpages',
+	'pages',
     
     # external
     #'notification', # must be first
@@ -164,7 +166,6 @@ INSTALLED_APPS = (
 	'projectsmodels',
 	# 'haystack',
 	'faqs',
-	# 'pages',
 	    
     # internal (for now)
     'analytics',

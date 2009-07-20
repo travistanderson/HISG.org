@@ -6,7 +6,7 @@
 {% block head_title %}{% trans "About" %}{% endblock %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
 	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
 {% endblock brick1 %}
 
@@ -26,6 +26,6 @@
 {% endblock brick4 %}
 
 {% block body %}
-<h2 class="center">{{ page.title }}</h2><hr/>
-	{{ page.content }}
+<h2 class="center">{{ pager.title }}</h2><hr/>
+	{{ pager.content }}
 {% endblock %}

@@ -112,5 +112,14 @@
 			</ul>
 		{% endif %}
 		
+		{% if pagesresults %}
+		<h4>Other Results</h4>
+			<ul>
+			{% for pager in pagesresults %}
+				<li><a href="{{ pager.url }}">{{ pager.title|escape }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		
 	{% endif %}
 {% endblock %}

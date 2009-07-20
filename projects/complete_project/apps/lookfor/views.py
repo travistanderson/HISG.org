@@ -10,6 +10,7 @@ from projectsmodels.models import Project
 from videos.models import Video
 from photologue.models import Gallery, Photo
 from django.contrib.auth.models import User
+from pages.models import Page
 
 def search(request):
 	query = request.GET.get('q', '')
@@ -103,6 +104,12 @@ def search(request):
 			Q(caption__icontains=query)
 		)
 		photoresults = Photo.objects.filter(photoqset).distinct()
+		
+		pagesqset = (
+			Q(title__icontains=query) |
+			Q(content__icontains=query)
+		)
+		pagesresults = Page.objects.filter(pagesqset).distinct()
 	else:
 		officeresults = []
 		directorsresults = []
@@ -117,6 +124,7 @@ def search(request):
 		videoresults = []
 		galleryresults = []
 		photoresults = []
+		pagesresults = []
 	
 	return render_to_response("lookfor/search.html", {
 		"searchpage": searchpage,
@@ -133,6 +141,7 @@ def search(request):
 		"videoresults": videoresults,
 		"galleryresults": galleryresults,
 		"photoresults": photoresults,
+		"pagesresults": pagesresults,
 		"query": query
 	})
 

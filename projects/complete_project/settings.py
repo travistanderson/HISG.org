@@ -146,7 +146,7 @@ INSTALLED_APPS = (
     #'blog',
     'ajax_validation',
     'photologue',
-#    'avatar',
+    #'avatar',
     'things',
     #'flag',
 	'newsphotos',
@@ -164,6 +164,7 @@ INSTALLED_APPS = (
 	'projectsmodels',
 	# 'haystack',
 	'faqs',
+	# 'pages',
 	    
     # internal (for now)
     'analytics',

@@ -45,7 +45,8 @@ urlpatterns = patterns('',
 
     (r'^admin/(.*)', admin.site.root),
     (r'^photos/', include('photos.urls')),
-    url(r'^search/$', include('lookfor.urls')),
+    (r'^search/', include('lookfor.urls')),
+	# (r'^(.*)', include('pages.urls')),
     
     (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
     # (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),

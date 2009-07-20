@@ -5,7 +5,7 @@ from django.views.generic.simple import direct_to_template
 urlpatterns = patterns('',
     # url(r'^$', direct_to_template, {"template": "about/about.html"}, name="about"),
 	url(r'^$', 'about.views.about', name="about"),
-	url(r'^history/$', direct_to_template, {"template": "about/history.html"}, name="history"),
+	# url(r'^history/$', direct_to_template, {"template": "about/history.html"}, name="history"),
 	url(r'^directors/$', 'about.views.directors', name="directors"),
 	url(r'^directors/(?P<staff_id>\d+)$', 'about.views.directors_detail', name="directors_detail"),
 	url(r'^staff/$', 'about.views.staff', name="staff"),

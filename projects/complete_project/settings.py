@@ -99,13 +99,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "misc.context_processors.contact_email",
     "misc.context_processors.site_name",
     "messages.context_processors.inbox",
-    "friends_app.context_processors.invitations",
+    # "friends_app.context_processors.invitations",
     "misc.context_processors.combined_inbox_count",
 )
 
 COMBINED_INBOX_COUNT_SOURCES = (
     "messages.context_processors.inbox",
-    "friends_app.context_processors.invitations",
+    # "friends_app.context_processors.invitations",
     "notification.context_processors.notification",
 )
 
@@ -160,7 +160,7 @@ INSTALLED_APPS = (
 	'about',
 	'homepage',
 	'featured',
-	'partners',
+	# 'partners',
 	'brick',
 	'histidr',
 	'projectsmodels',

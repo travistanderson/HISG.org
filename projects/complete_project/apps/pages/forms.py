@@ -2,7 +2,7 @@
 from django import forms
 from django.forms.models import ModelForm
 from django.db.models import get_model
-from partners.widgets import WYMEditor
+from pages.widgets import WYMEditor
 from pages.models import Page
 
 		

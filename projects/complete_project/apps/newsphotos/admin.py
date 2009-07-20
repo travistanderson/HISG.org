@@ -1,27 +1,27 @@
 # newsphotos/admin.py
 from django.contrib import admin
 from newsphotos.models import News, Partner, PartnerType, Post
+from newsphotos.forms import PostAdminModelForm, PartnerAdminModelForm, NewsAdminModelForm
 
-# class PictureInline(admin.TabularInline):
-	# model = Picture
-	
-#class VideoInline(admin.TabularInline):
-#	model = Video
-	
+
+class NewsAdmin(admin.ModelAdmin):
+	form = NewsAdminModelForm
+
 class PartnerAdmin(admin.ModelAdmin):
+	form = PartnerAdminModelForm
 	list_display = ('name', 'contact', 'partner_type')
 	
 class PartnerTypeAdmin(admin.ModelAdmin):
 	list_display = ('types', 'types_short',)
+	ordering = ('types',)
 
 class PostAdmin(admin.ModelAdmin):
+	form = PostAdminModelForm
 	list_display = ('title', 'author','department',)
 
-# class PictureAdmin(admin.ModelAdmin):
-	# list_display = ['name','caption', 'admin_thumbnail']
 
-admin.site.register(News)
-admin.site.register(Post, PostAdmin)
+admin.site.register(News, NewsAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(PartnerType, PartnerTypeAdmin)
+admin.site.register(Post, PostAdmin)
 

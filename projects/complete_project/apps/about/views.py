@@ -11,7 +11,6 @@ from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
 from brick.models import Webpage
-from about.forms import ContactForm
 
 def about(request):
 	d = Staff.objects.all().filter(director=True)

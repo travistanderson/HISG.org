@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 	url(r'^starfish/download/$', 'featured.views.download', name='star_download'),
 	url(r'^starfish/country/$', 'featured.views.country', name='star_country'),
 	
-	url(r'^lets-save-one/$', 'featured.views.lso', name="lso"),
+	# url(r'^lets-save-one/$', 'featured.views.lso', name="lso"),
 	url(r'^lets-save-one/cases/$', 'featured.views.lso_cases', name="lso_cases"),
 	url(r'^lets-save-one/donate/$', 'featured.views.lso_donate', name="lso_donate"),
 	url(r'^orphan-care/$', 'featured.views.orphan', name="orphan"),

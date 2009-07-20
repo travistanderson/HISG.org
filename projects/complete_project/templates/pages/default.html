@@ -1,8 +1,12 @@
-<!-- template/about/history.html -->
-{% extends "about/base.html" %}
+<!-- template/pages/default.html -->
+{% extends "site_base.html" %}
 
 {% load i18n %}
-{% block subarrive %}1{% endblock subarrive %}
+{% block labelpic %}{{ pager.labelpic }}{% endblock labelpic %}
+{% block pagetitle %}{{ pager.title }}{% endblock %}
+{% block arrive %}{{ pager.arrive }}{% endblock arrive %}
+{% block subarrive %}{{ pager.subarrive }}{% endblock subarrive %}
+
 {% block head_title %}{% trans "About" %}{% endblock %}
 
 {% block brick1 %}
@@ -26,6 +30,5 @@
 {% endblock brick4 %}
 
 {% block body %}
-<h2 class="center">{{ pager.title }}</h2><hr/>
 	{{ pager.content }}
 {% endblock %}

@@ -8,7 +8,7 @@ from django.core.xheaders import populate_xheaders
 from django.utils.safestring import mark_safe
 from brick.models import Webpage
 
-DEFAULT_TEMPLATE = 'about/history.html'
+DEFAULT_TEMPLATE = 'pages/default.html'
 
 def pager(request, url):
     """

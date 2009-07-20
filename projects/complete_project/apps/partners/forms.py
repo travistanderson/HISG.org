@@ -1,6 +1,8 @@
 # partners/forms.py
 from django import forms
 from django.forms.models import ModelForm
+from django.db.models import get_model
+from partners.widgets import WYMEditor
 from partners.models import Page, Change
 from countries.models import Country, Region
 
@@ -19,3 +21,9 @@ class EditPageForm(ModelForm):
 	class Meta:
 		model = Page
 		fields = ('slug', 'content',)
+		
+class PageAdminModelForm(forms.ModelForm):
+    content = forms.CharField(widget=WYMEditor())
+
+    class Meta:
+        model = get_model('partners', 'page')

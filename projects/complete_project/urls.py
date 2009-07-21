@@ -40,13 +40,10 @@ urlpatterns = patterns('',
     (r'^photologue/', include('photologue.urls')),
     (r'^profiles/', include('profiles.urls')),
     (r'^frequently-asked-questions/', include('faqs.urls')),
-    # (r'^gallery/', include('gallery.urls')),
-    #(r'^starfish-portal/', include('partners.urls')),
 
     (r'^admin/(.*)', admin.site.root),
     (r'^photos/', include('photos.urls')),
     (r'^search/', include('lookfor.urls')),
-	# (r'^(.*)', include('pages.urls')),
     
     (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
     # (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
@@ -85,25 +82,16 @@ friends_bookmarks_kwargs = {
         "user_bookmarks": lambda request: Bookmark.objects.filter(saved_instances__user=request.user),
     },
 }
-
-urlpatterns += patterns('',
-    url('^photos/friends_photos/$', 'friends_app.views.friends_objects', kwargs=friends_photos_kwargs, name="friends_photos"),
-    url('^blog/friends_blogs/$', 'friends_app.views.friends_objects', kwargs=friends_blogs_kwargs, name="friends_blogs"),
-    url('^tweets/friends_tweets/$', 'friends_app.views.friends_objects', kwargs=friends_tweets_kwargs, name="friends_tweets"),
-    url('^bookmarks/friends_bookmarks/$', 'friends_app.views.friends_objects', kwargs=friends_bookmarks_kwargs, name="friends_bookmarks"),
-)
+# 
+# urlpatterns += patterns('',
+#     url('^photos/friends_photos/$', 'friends_app.views.friends_objects', kwargs=friends_photos_kwargs, name="friends_photos"),
+#     url('^blog/friends_blogs/$', 'friends_app.views.friends_objects', kwargs=friends_blogs_kwargs, name="friends_blogs"),
+#     url('^tweets/friends_tweets/$', 'friends_app.views.friends_objects', kwargs=friends_tweets_kwargs, name="friends_tweets"),
+#     url('^bookmarks/friends_bookmarks/$', 'friends_app.views.friends_objects', kwargs=friends_bookmarks_kwargs, name="friends_bookmarks"),
+# )
 
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': os.path.join(os.path.dirname(__file__), "site_media")}),
     )
-
-# import haystack
-# haystack.autodiscover()
-# from haystack import site
-# from haystack.sites import SearchSite
-# from about.models import Staff, Office
-# 
-# 
-# site.register(Staff)

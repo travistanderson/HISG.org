@@ -7,9 +7,9 @@ from projectsmodels.models import Project
 from countries.models import Country, Region, UsState
 
 class Office(models.Model):
-	name = models.CharField(max_length="20")
-	description = models.TextField(max_length="1000")
-	address = models.CharField(max_length="50")
+	name = models.CharField(max_length="80")
+	description = models.TextField(max_length="4000")
+	address = models.CharField(max_length="80")
 	city = models.CharField(max_length="30")
 	zipcode = models.CharField(max_length="5", blank=True, null=True)
 	state = models.ForeignKey(UsState, blank=True, null=True)
@@ -23,9 +23,9 @@ class Office(models.Model):
 		return self.name
 		
 class Staff(models.Model):
-	firstname = models.CharField(max_length="20")
-	lastname = models.CharField(max_length="20")
-	title = models.CharField(max_length="60")
+	firstname = models.CharField(max_length="80")
+	lastname = models.CharField(max_length="80")
+	title = models.CharField(max_length="80")
 	email = models.EmailField()
 	director = models.BooleanField(default=False)
 	bio = models.TextField(max_length=1000)

@@ -17,7 +17,7 @@ from videos.models import Video
 def index(request):
 	n = News.objects.all().order_by('-date')[:3]
 	b = Post.objects.all()[:3]
-	g = Gallery.objects.order_by('-date_added')
+	g = Gallery.objects.order_by('-date_added')[:3]
 	v = Video.objects.all()[:3]
 	pa = Webpage.objects.get(name = 'index - news and photos')
 	return render_to_response('news-photos/index.html', {'news_list':n,

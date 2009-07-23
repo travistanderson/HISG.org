@@ -75,7 +75,7 @@
 					{% endfor %}
 					
 				</div>
-				{{ gallery.description|truncatewords:40|safe }}<br/>
+				{{ gallery.description|safe|truncatewords:40 }}<br/>
 				<div class="clearer"></div>
 					<span style="float:left;width:200px;display:inline;">
 						{{ gallery.date_added|date:"M d, Y" }}

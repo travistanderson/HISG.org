@@ -39,7 +39,7 @@
 						</div>
 					{% endifequal %}
 				{% endfor %}
-				{{ project.description|truncatewords:13|safe }}
+				{{ project.description|safe|truncatewords:13 }}
 				<div class="clearer"></div>
 				<span>
 					{% for country in project.country.all %}
@@ -79,6 +79,7 @@
 		
 	</div>
 </div>
+<div class="clearer"></div>
 <div class="twoway">
 	<div class="fourway">
 		<h2>

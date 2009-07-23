@@ -31,6 +31,9 @@
 			<img src="{{ post.photo.get_display_url }}" /><br>
 		<div class="caption">{{ post.photo.caption }}</div></div>
 		<p>{{ post.body|safe }}</p>
+		
+		<div class="clearer"></div><br/><br/>
+		<div class="center"><a href="{% url blog %}">Back to list of posts</a></div>
 	{% else %}
 		Sorry, There was a problem getting this blog post.
 	{% endif %}

@@ -66,7 +66,7 @@
 			<span>
 				{{ news.date|date:"M d, Y" }}
 			</span><br/>
-			{{ news.story|truncatewords:30|safe }}
+			{{ news.story|safe|truncatewords:30 }}
 			<div class="clearer"></div>
 			{% for country in news.country.all %}
 				<span>

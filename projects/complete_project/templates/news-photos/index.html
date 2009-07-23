@@ -42,7 +42,7 @@
 				<span>
 					{{ news.date|date:"M d, Y" }}
 				</span><br/>
-				{{ news.story|truncatewords:13|safe }}
+				{{ news.story|safe|truncatewords:13 }}
 				<div class="clearer"></div>
 				<span>
 					{% for country in news.country.all %}
@@ -88,7 +88,7 @@
 					{% endfor %}
 				</div>
 
-				{{ gallery.description|truncatewords:13|safe }}
+				{{ gallery.description|safe|truncatewords:13 }}
 				<div class="clearer"></div>
 			</div>
 		{% endfor %}
@@ -112,7 +112,7 @@
 					<img src="{{ video.frame.get_news_size_url }}"></img>
 				</div>
 
-				{{ video.caption|truncatewords:13|safe }}
+				{{ video.caption|safe|truncatewords:13 }}
 				<div class="clearer"></div>
 			</div>
 		{% endfor %}
@@ -130,7 +130,7 @@
 				<div class="right">
 					<img src="{{ blog.photo.get_news_size_url }}"></img>
 				</div>
-				{{ blog.body|truncatewords:13|safe }}
+				{{ blog.body|safe|truncatewords:13 }}
 				<div class="clearer"></div>
 				<span style="padding-left:20px;">
 					{{ blog.author }}

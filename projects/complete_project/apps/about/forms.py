@@ -18,4 +18,5 @@ class StaffAdminModelForm(forms.ModelForm):
     class Meta:
         model = get_model('about', 'staff')	
 
-		
+class ContactForm(forms.Form):
+	email = forms.EmailField()

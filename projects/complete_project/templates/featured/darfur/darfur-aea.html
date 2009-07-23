@@ -5,22 +5,22 @@
 {% block subarrive %}4{% endblock subarrive %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
 
@@ -29,19 +29,26 @@
 	<div class="right">
 		<img src="/site_media/images/sections/featured/darfur/aea1.jpg" style="padding:0 0 10px 20px;">
 		</img><br/>
-		<p style="padding:0 0 0 20px;">Girls sharing desks in a crowded school room</p>
+		<span class="caption" style="padding:0 0 0 20px;">Girls sharing desks in a crowded school room</span>
 	</div>
 	<p>
-		HISG Staff recently toured a secondary school for girls in one of the poorest communities of Nyala, Darfur. HISG was invited to the school by the Assistant Deputy Director for the Ministry of South Darfur Humanitarian Affairs. Approximately 400 girls attend this school, and most of them cannot afford to buy textbooks, so they go without. Many of the students also share a worn out or even broken chair and makeshift desk with at least one other student.
+		HISG Staff recently toured a secondary school for girls in one of the poorest communities of Nyala, 
+		Darfur. HISG was invited to the school by the Assistant Deputy Director for the Ministry of South 
+		Darfur Humanitarian Affairs. Approximately 400 girls attend this school, and most of them cannot 
+		afford to buy textbooks, so they go without. Many of the students also share a worn out or even broken 
+		chair and makeshift desk with at least one other student.
 	</p><br/>
 
 	<p>
-		HISG is hoping to provide US$ 6,000 of textbooks, classroom tables and chairs for this school in Nyala. The girls in this school are disciplined and eager to learn, and the faculty are motivated to teach, even with such meager resources. This project will communicate a sincere respect for education and gender equality in Darfur. Please click here to donate to this project.
+		HISG is hoping to provide US$ 6,000 of textbooks, classroom tables and chairs for this school in 
+		Nyala. The girls in this school are disciplined and eager to learn, and the faculty are motivated 
+		to teach, even with such meager resources. This project will communicate a sincere respect for 
+		education and gender equality in Darfur. Please click here to donate to this project.
 	</p><br/>
 	<div>
 		<img src="/site_media/images/sections/featured/darfur/aea2.jpg" style="padding:0 0 10px 0px;">
 		</img>
- 		<p>Students in the school</p>
+ 		<div class="caption">Students in the school</div>
 	</div>
 	
 	

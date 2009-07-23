@@ -2,22 +2,22 @@
 {% extends 'news-photos/base.html' %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
 
@@ -42,7 +42,7 @@
 				<span>
 					{{ news.date|date:"M d, Y" }}
 				</span><br/>
-				{{ news.story|truncatewords:13 }}
+				{{ news.story|truncatewords:13|safe }}
 				<div class="clearer"></div>
 				<span>
 					{% for country in news.country.all %}
@@ -88,7 +88,7 @@
 					{% endfor %}
 				</div>
 
-				{{ gallery.description|truncatewords:13 }}
+				{{ gallery.description|truncatewords:13|safe }}
 				<div class="clearer"></div>
 			</div>
 		{% endfor %}
@@ -112,7 +112,7 @@
 					<img src="{{ video.frame.get_news_size_url }}"></img>
 				</div>
 
-				{{ video.caption|truncatewords:13 }}
+				{{ video.caption|truncatewords:13|safe }}
 				<div class="clearer"></div>
 			</div>
 		{% endfor %}
@@ -130,7 +130,7 @@
 				<div class="right">
 					<img src="{{ blog.photo.get_news_size_url }}"></img>
 				</div>
-				{{ blog.body|truncatewords:13 }}
+				{{ blog.body|truncatewords:13|safe }}
 				<div class="clearer"></div>
 				<span style="padding-left:20px;">
 					{{ blog.author }}

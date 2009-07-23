@@ -5,22 +5,22 @@
 {% load pagination_tags %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
 
@@ -64,7 +64,7 @@
 						{{ post.title }}
 					</a>
 				</h3>
-				{{ post.body|textile|truncatewords:40 }}<br/>
+				{{ post.body|truncatewords:30|safe }}<br/>
 				<div class="clearer"></div>
 					<span style="float:left;width:200px;display:inline;">
 						{{ post.publish|date:"M d, Y" }}

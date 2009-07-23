@@ -7,6 +7,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.template import RequestContext
 from datetime import datetime, timedelta
 from about.models import Staff, Office
+from about.forms import ContactForm
 from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
@@ -22,6 +23,7 @@ def about(request):
 
 	
 def contact(request):
+	pa = Webpage.objects.get(name="index - starfish")
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		toemail = 'trav.anderson@mac.com'
@@ -35,13 +37,13 @@ def contact(request):
 		else:
 			form = ContactForm(request.POST)
 			return render_to_response(
-				'about/contact.html', {'form':form,},
+				'about/contact.html', {'form':form,'page':pa,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		form = ContactForm()
 	return render_to_response(
-		'about/contact.html', {'form':form,},
+		'about/contact.html', {'form':form,'page':pa,},
 		context_instance = RequestContext(request),
 	)
 	

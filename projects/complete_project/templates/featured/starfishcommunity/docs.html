@@ -1,44 +1,106 @@
 <!-- templates/featured/starfishcommunity/docs.html -->
 {% extends 'featured/starfishcommunity/base.html' %}
 
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+
 {% block body %}
 <h2 style="text-align:center;">Starfish Concept</h2>
 <h3>Executive Summary</h3>
 
 <p>
-	The world, as you know it, will not exist in 10 years.  The top 10 jobs of 2020, do not even exist today.  By 2010 technical knowledge will be doubling every 72 hours, <a href="http://www.youtube.com/watch?v=ljbI-363A2Q"> watch this You Tube Video</a>. Everything is changing; people, information, technology, communications, economies, even the global climate.  The world is shrinking, challenges and opportunities are growing, and change is accelerating.  Where are we going? What does this mean?  One thing is for sure, life, as you know it, will never be the same.
+	The world, as you know it, will not exist in 10 years.  The top 10 jobs of 2020, do not even exist today.  
+	By 2010 technical knowledge will be doubling every 72 hours, 
+	<a href="http://www.youtube.com/watch?v=ljbI-363A2Q"> watch this You Tube Video</a>. Everything is changing; 
+	people, information, technology, communications, economies, even the global climate.  The world is shrinking, 
+	llenges and opportunities are growing, and change is accelerating.  Where are we going? What does this mean?  
+	One thing is for sure, life, as you know it, will never be the same.
 </p><br/>
 
 <p>
-	A global shift is occurring in communications, information sharing, and social networking.  This shift is leading to profound changes in how we live, learn, and solve problems.  In order to manage an overflow of information, we have struggled for years to build a bigger database with more information that we could access at a faster rate.  Now, we have begun to realize that people are the “database” and social networks are the “software” to access that database.
+	A global shift is occurring in communications, information sharing, and social networking.  
+	This shift is leading to profound changes in how we live, learn, and solve problems.  In order to manage an 
+	overflow of information, we have struggled for years to build a bigger database with more information that 
+	we could access at a faster rate.  Now, we have begun to realize that people are the “database” and social 
+	networks are the “software” to access that database.
 </p><br/> 
 
 <p>
-	The HISG Starfish Community Concept Document is being written to share a little about this global shift and what it could mean to the hundreds of millions of people that live in abject poverty and need.  It will also help us, as caring individuals, understand a new way to make an extraordinary difference.  Changes in technology and information sharing now enable us to operate in a more unified fashion. Many people working together make the job light.  Working together is the key.  We all need a place to plug in, preferably. a place we can connect with our friends.  That is what this document is all about.
+	The HISG Starfish Community Concept Document is being written to share a little about this global shift and 
+	what it could mean to the hundreds of millions of people that live in abject poverty and need.  It will also 
+	help us, as caring individuals, understand a new way to make an extraordinary difference.  Changes in 
+	technology and information sharing now enable us to operate in a more unified fashion. Many people working 
+	together make the job light.  Working together is the key.  We all need a place to plug in, preferably. a 
+	place we can connect with our friends.  That is what this document is all about.
 </p><br/> 
 
 <p>
-	This document sets the stage by introducing our world of accelerating change.  By looking at a few key domains of change, we begin to understand the scope and depth of our current challenges and future opportunities.   Some will resign themselves to routines and rituals to escape the overload, others will charge forward, at home in the chaos.  Purpose and meaning will provide a beacon for all.  We have all been given a gift that we can employ to help others.  Our purpose at HISG, is to provide a platform where we can all work together and use our gifts to help those in need.  We specialize in connecting resources to needs.
+	This document sets the stage by introducing our world of accelerating change.  By looking at a few key 
+	domains of change, we begin to understand the scope and depth of our current challenges and future 
+	opportunities.   Some will resign themselves to routines and rituals to escape the overload, others will 
+	charge forward, at home in the chaos.  Purpose and meaning will provide a beacon for all.  We have all been 
+	given a gift that we can employ to help others.  Our purpose at HISG, is to provide a platform where we 
+	can all work together and use our gifts to help those in need.  We specialize in connecting resources to 
+	needs.
 </p><br/> 
 
 <p>
-	In order to work together more effectively, we must understand how emerging social systems have increased our ability to interact.  We do this by exploring three types of social interaction concepts including the rise of social networking, decentralized starfish-like organizations, and mass movements.  By combining and leveraging the attributes of each, we hope to catalyze, support, empower, and influence the emergence and establishment of a decentralized starfish-like mass movement that will enable ordinary people to make an extraordinary difference.
+	In order to work together more effectively, we must understand how emerging social systems have increased 
+	our ability to interact.  We do this by exploring three types of social interaction concepts including the 
+	rise of social networking, decentralized starfish-like organizations, and mass movements.  By combining and 
+	leveraging the attributes of each, we hope to catalyze, support, empower, and influence the emergence and 
+	establishment of a decentralized starfish-like mass movement that will enable ordinary people to make an 
+	extraordinary difference.
 </p><br/> 
 
 <p>
-	To support this outcome, HISG is using the internet and social networking concepts to evolve our own organization from a centralized hierarchical infrastructure to a decentralized starfish-like network.  Our hope is to identify and connect our global “tribe” who rally to the common cause of liberating the poor.
+	To support this outcome, HISG is using the internet and social networking concepts to evolve our own 
+	organization from a centralized hierarchical infrastructure to a decentralized starfish-like network.  
+	Our hope is to identify and connect our global “tribe” who rally to the common cause of liberating the poor.
 </p><br/> 
 
 <p>
-	The HISG transformation is occurring at many levels from our operational structure to knitting of the network.  Each change is designed to support the overall HISG Starfish Community through establishment of common internet-based platforms for increased communications, information sharing, and resourcing to creating a common picture that we can all use to self-synchronize our efforts relative to community development and disaster response operations.   Our relief and development models have been designed so that a comprehensive range of private sector practitioners can all work together to achieve sustainable and transformation change at the community level.  Training and best practices ensure success.   Performance metrics and an outcomes based approach ensure our partnering is not just talk but actually makes a difference.
+	The HISG transformation is occurring at many levels from our operational structure to knitting of the 
+	network.  Each change is designed to support the overall HISG Starfish Community through establishment of 
+	common internet-based platforms for increased communications, information sharing, and resourcing to 
+	creating a common picture that we can all use to self-synchronize our efforts relative to community 
+	development and disaster response operations.   Our relief and development models have been designed so 
+	that a comprehensive range of private sector practitioners can all work together to achieve sustainable 
+	and transformation change at the community level. Training and best practices ensure success. Performance 
+	metrics and an outcomes based approach ensure our partnering is not just talk but actually makes a difference.
 </p><br/> 
 
 <p>
-	In the final section, we provide step-by-step guidelines (with flowchart) for anyone interested in participating in the HISG Starfish Community.  There are no fees, no legal agreements, and no papers to sign.  The Starfish Community is about friends working together to help the less fortunate.  Participation is as easy as going to www.HISG.org and learning about the community.  The more you learn the more opportunities there are to get involved.   A contact list of HISG members has been provided at the end of this document.  Feel free to give us a call if you have any questions or want more information about how to plug in and get started today.
+	In the final section, we provide step-by-step guidelines (with flowchart) for anyone interested in 
+	participating in the HISG Starfish Community.  There are no fees, no legal agreements, and no papers to 
+	sign.  The Starfish Community is about friends working together to help the less fortunate.  Participation 
+	is as easy as going to www.HISG.org and learning about the community.  The more you learn the more 
+	opportunities there are to get involved.   A contact list of HISG members has been provided at the end of 
+	this document.  Feel free to give us a call if you have any questions or want more information about how 
+	to plug in and get started today.
 </p><br/> 
 
 <p>
-	The HISG Starfish Community is about ordinary people, like you and me, making an extraordinary difference in the lives of the poor and needy.  Join the Starfish Community today, and bring your friends!
+	The HISG Starfish Community is about ordinary people, like you and me, making an extraordinary difference 
+	in the lives of the poor and needy.  Join the Starfish Community today, and bring your friends!
 </p><br/>
 
 

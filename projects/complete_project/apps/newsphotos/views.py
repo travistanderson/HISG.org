@@ -53,7 +53,7 @@ def newsdetail(request, news_id):
 def newslatest(request):
 	n = News.objects.latest('date')	
 	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('news-photos/news_latest.html', {'news': n,'page': pa,},
+	return render_to_response('news-photos/news_d.html', {'news': n,'page': pa,},
 		context_instance = RequestContext(request),
 	)
 	

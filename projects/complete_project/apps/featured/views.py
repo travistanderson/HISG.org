@@ -63,7 +63,8 @@ def country(request):
 	p_other = Page.objects.filter(region__name__exact='Other')
 	p_southamerica = Page.objects.filter(region__name__exact='South America')
 	p_southpacific = Page.objects.filter(region__name__exact='South Pacific')
-
+	pa = Webpage.objects.get(name="index - starfish")
+	
 	return render_to_response('featured/starfishcommunity/country.html',{'africa_list':p_africa,
 													   'asia_list':p_asia,
 													   'europe_list':p_europe,
@@ -71,7 +72,8 @@ def country(request):
 													   'northamerica_list':p_northamerica,
 													   'other_list':p_other,
 													   'southamerica_list':p_southamerica,
-													   'southpacific_list':p_southpacific,},
+													   'southpacific_list':p_southpacific,
+													   'page':pa,},
 		context_instance = RequestContext(request),    
 	)
 

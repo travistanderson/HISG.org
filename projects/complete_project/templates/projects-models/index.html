@@ -2,22 +2,22 @@
 {% extends 'projects-models/base.html' %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
 
@@ -39,7 +39,7 @@
 						</div>
 					{% endifequal %}
 				{% endfor %}
-				{{ project.description|truncatewords:13 }}
+				{{ project.description|truncatewords:13|safe }}
 				<div class="clearer"></div>
 				<span>
 					{% for country in project.country.all %}
@@ -96,7 +96,7 @@
 			<a href="{% url idrmodel %}">IDR Model</a>
 		</h2><hr />
 
-		<h4>15 Service Categories for Private Sector Disaster Responders</h4>
+		<h4>14 Service Categories for Private Sector Disaster Responders</h4>
 		<br/>
 		1. Water Services<br/>
 		2. Food Service<br/>
@@ -104,15 +104,14 @@
 		4. Medical Service<br/>
 		5. Individual Assistance Service<br/>
 		6. Personal Hygiene Service<br/>
-		7. Mental Health and Spiritual Suppor<br/>
+		7. Counseling and Spiritual Suppor<br/>
 		8. Physical Reconstruction Service<br/>
 		9. Logistics Management and Service<br/>
 		10. IT/Communication<br/>
-		11. Transportation Management and Service<br/>
-		12. Special Needs Service<br/>
-		13. Case Management Service<br/>
-		14. Financial Aid<br/>
-		15. Professional Responder<br/>
+		11. Special Needs Services<br/>
+		12. Donations Management<br/>
+		13. Professional Responders<br/>
+		14. Transition and Recovery<br/>
 
 	</div>
 </div>

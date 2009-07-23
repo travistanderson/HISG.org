@@ -4,35 +4,33 @@
 {% block subarrive %}4{% endblock subarrive %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
 
 {% block body %}
-	<div style="padding:0 50px 0 50px;">
-		<h1>{{ office }}</h1><hr>
-		<h3>{{ office.title }}</h3><br>
+		<h2>{{ office }}</h2><hr>
 		{% if office.photo %}
 			{% for photo in office.photo.all %}
 			<div style="display:inline; float:right; margin:5px;"><img src="{{ photo.get_display_url }}" /></div>
 			{% endfor %}
 		{% endif %}
-		<p>{{ office.bio }}	</p>
+		<p>{{ office.description|safe }}</p>
 		
 		{% if office.video %}
 			{% for video in office.video.all %}
@@ -44,8 +42,8 @@
 		{% endif %}
 		<br><br>
 		<div style="text-align:center;clear:both;">
-			<a href="{% url office %}">Back to offices Page</a></div>
-	</div>
+			<a href="{% url office %}">Back to offices Page</a>
+		</div>
 {% endblock %}
 
 

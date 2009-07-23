@@ -1,52 +1,90 @@
 <!-- template/projects-models/project_d.html -->
 {% extends "projects-models/base.html" %}
 {% block subarrive %}1{% endblock subarrive %}
-{% load markup %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
 {% block body %}
-	<h2>{{ project.name }}</h2><br/>
-	{% if project.photo.all %}
-		<div class="right">
-			<div>
-				{% for photo in project.photo.all %}
-					{% ifequal forloop.counter 1 %}
-						<img src="{{ photo.get_front_page_url }}" />
-					{% endifequal %}
-				{% endfor %}
-			</div>
-			{% for photo in project.photo.all %}
-				{% ifnotequal forloop.counter 1 %}
-					<span>
-						<img src="{{ photo.get_thumbnail_url }}" />
-					</span>
-				{% endifnotequal %}
-			{% endfor %}
-		</div>
-	{% endif %}
-	{{ project.description|textile }}
-	<div class="clearer"></div>
-	{% if project.active_now %}
-		<p>Active</p><br>
-	{% else %}
-		<p>Not Active</p><br>
-	{% endif %}
 
-
-	<span>
+	<span class="news-detail-country">
 		{% for country in project.country.all %}
 			{{ country }},
 		{% endfor %}
-		{% for region in project.region.all %}
-			{{ region }}
-		{% endfor %}
-	</span><br/>
+		{# {% for region in project.region.all %} #}
+		{# 	{{ region }} #}
+		{# {% endfor %} #}
+	</span>
+	<h2>{{ project.name }}</h2><br/>
+
+	{% if project.photo.all %}
+			<div class="news-detail-photo">
+				{% for photo in project.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div id="mainpic">
+							<img src="{{ photo.get_display_url }}" />
+						</div>
+						<div class="caption" style="padding:0 0 15px 0;">
+							{{ photo.caption }}
+						</div>
+					{% endifequal %}
+				{% endfor %}
+
+				<div>{# thumbnails #}
+					{% for photo in project.photo.all %}
+						{% ifnotequal forloop.counter 1 %}
+							<span id="thumbpic{{ forloop.counter }}">
+								<img src="{{ photo.get_thumbnail_url }}" />
+							</span>
+						{% endifnotequal %}
+					{% endfor %}
+				</div>{# end of thumbnails #}
+			</div>{# end of news-detail-photo #}
+	{% endif %}
+
+
+
+	{{ project.description|safe }}
+	<div class="clearer"></div><br/><br/>
+	
+	
+	{% if project.active_now %}
+		<p>Active project.</p><br>
+	{% else %}
+		<p>Not an active project</p><br>
+	{% endif %}
+
+
+
 	{{ project.histidr.histidr }}<br/>
-	<h3>Project Videos</h3>
-	{% for video in project.video.all %}
-		{{ video.name }}-{{ video.caption }}
-		<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
-		 AUTOPLAY=false CONTROLLER=true LOOP=false
-		 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
-	{% endfor %}
+	
+	{% if project.video.all %}
+		<h3>Project Videos</h3>
+		{% for video in project.video.all %}
+			{{ video.name }}-{{ video.caption }}
+			<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
+			 AUTOPLAY=false CONTROLLER=true LOOP=false
+			 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
+		{% endfor %}
+	{% endif %}
+	
 	{% if project.news.all %}
 		<h3>Related News</h3>
 		These news stories are updates to this project
@@ -55,6 +93,7 @@
 			{{ forloop.counter }}-{{ news.name }}</a>
 		{% endfor %}
 	{% endif %}
+	
 	<div class="clearer"></div>
 	{{ world.name }}{{ maps_num }}
 	<div id="map_canvas" style="width: 500px; height: 300px;"></div>

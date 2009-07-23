@@ -17,6 +17,7 @@ def index(request):
 	)
 
 def detail(request):
-	return render_to_response('donation-portal/detail.html',
+	pa = Webpage.objects.get(name="index - starfish")
+	return render_to_response('donation-portal/detail.html',{'page':pa,},
 		context_instance = RequestContext(request),
 	)

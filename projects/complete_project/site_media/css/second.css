@@ -99,6 +99,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .clearer{clear:both;}
 .bold{font-weight:bold;}
 .center{text-align:center;}
+.caption{color:#666666;font-weight:bold;font-size:10px;}
 
 .twoway{min-height:420px;}
 .fourway{width:300px;float:left;padding:0 15px 15px 0px;}
@@ -115,6 +116,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .rowergallery span{color:#ae5219;}
 .rowergallery img{padding:0 40px 0 0;}
 .brown{color:#dabc64;height:1px;border-width:0;background-color:gray;}
+
+.news-detail-photo{padding:0 0 10px 20px;float:right;width:420px;}
+.news-detail-country{color:#ae5219;font-weight:bold;font-size:13px;float:right;}
 
 .sorter li{display:inline;color:#14436f;}
 #buttoner{background-color:#14436f;height:20px;width:180px;padding:5px 0 2px 8px;margin:30px 10px 0 70px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:1px #fffccf solid;}

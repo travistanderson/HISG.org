@@ -2,22 +2,22 @@
 {% extends 'featured/base.html' %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_display_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
 
@@ -39,11 +39,11 @@
 	</div><div class="clearer"></div>
 	
 	<div class="feabox">
-		<a href="{% url lso %}">
+		<a href="/initiatives/lets-save-one/">
 			<img class="right" src="/site_media/photologue/photos/cache/2008_Mauritania_1_front_page.jpg">
 			</img>
 		</a>
-		<h3><a href="{% url lso %}">Let's Save One</a></h3>
+		<h3><a href="/initiatives/lets-save-one/">Let's Save One</a></h3>
 		<div>
 			When the question "What is the yardstick for success in Darfur?" was put to HISG's Country Director for Sudan, he thought about all the people living in the less-than-human conditions in the Internally Displaced Person (IDP) camps, and then answered: "If we only ever save but one, then we will have done more than we could ever have accomplished sitting at home." Let's Save One was created to provide immediate assistance to people in potentially life threatening situations. It focuses on trying to provide life changing help to one person at a time.
 		</div><div class="clearer"></div>

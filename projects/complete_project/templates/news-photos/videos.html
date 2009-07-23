@@ -2,8 +2,29 @@
 {% extends 'news-photos/base.html' %}
 {% block subarrive %}3{% endblock subarrive %}
 
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
 {% block body %}
-	<h2>Videos</h2> <hr/>
+	<h2 class="center">Videos</h2> <hr/>
 	<div style="margin:0 0 0 10px">
 		
 		{% if video_list %}
@@ -17,11 +38,12 @@
 					<a href="{% url videos_detail video.slug %}">
 						<img src="{{ video.frame.get_medium_url }}">
 					</a><br>
-					{{ video.caption }}
+					{{ video.caption|safe }}
 				</div>
 			{% endfor %}
 		{% else %}
 			<p>No videos.</p>
 		{% endif %}
+		
 	</div>
 {% endblock %}

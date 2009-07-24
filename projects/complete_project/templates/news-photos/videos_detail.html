@@ -23,23 +23,19 @@
 {% endblock brick4 %}
 
 {% block body %}
-	<div style="margin:0 0 0 90px">
-		{% if video %}
-			<div style="display:inline; width:300px;float:left;padding:0 0 20px 0">
-				<h2>{{ video.name }}</h2>
-				<div>
-					<EMBED SRC="/site_media/{{ video.path }}" WIDTH={{ video.width }} HEIGHT = {{ video.height }}
-				 		AUTOPLAY=false CONTROLLER=true LOOP=false
-				 		PLUGINSPAGE=http://www.apple.com/quicktime/ >
-				</div><br><br>
-				<div>{{ video.caption|safe }}</div>
-			</div>
-		{% else %}
-			<p>There was a problem with this video.</p>
-		{% endif %}
-		<div class="clearer"></div>
-		<div>
-			<a href="{% url videos %}">Back to Videos</a>
-		</div>
+	{% if video %}
+		<h2 class="center">{{ video.name }}</h2><hr/>
+		<div class="gold5" style="margin:30px 0 0 0;height:{{ video.height }}px;width:{{ video.width }}px;">
+			<EMBED SRC="/site_media/{{ video.path }}" WIDTH={{ video.width }} HEIGHT = {{ video.height }}
+		 		AUTOPLAY=false CONTROLLER=true LOOP=false
+		 		PLUGINSPAGE=http://www.apple.com/quicktime/ >
+		</div><br>
+		<div class="caption">{{ video.caption|safe }}</div>
+	{% else %}
+		<p>There was a problem with this video.</p>
+	{% endif %}
+	<div class="clearer"></div><br/><br/>
+	<div>
+		<a href="{% url videos %}">Back to Videos</a>
 	</div>
 {% endblock %}

@@ -23,78 +23,77 @@
 {% endblock brick4 %}
 
 {% block body %}
+	{% if project %}
+		<h2 class="center">{{ project.name }}</h2><hr/>
 
-	<span class="news-detail-country">
-		{% for country in project.country.all %}
-			{{ country }},
-		{% endfor %}
-		{# {% for region in project.region.all %} #}
-		{# 	{{ region }} #}
-		{# {% endfor %} #}
-	</span>
-	<h2>{{ project.name }}</h2><br/>
-
-	{% if project.photo.all %}
-			<div class="news-detail-photo">
-				{% for photo in project.photo.all %}
-					{% ifequal forloop.counter 1 %}
-						<div id="mainpic">
-							<img src="{{ photo.get_display_url }}" />
-						</div>
-						<div class="caption" style="padding:0 0 15px 0;">
-							{{ photo.caption }}
-						</div>
-					{% endifequal %}
-				{% endfor %}
-
-				<div>{# thumbnails #}
+		{% if project.photo.all %}
+				<div class="news-detail-photo">
 					{% for photo in project.photo.all %}
-						{% ifnotequal forloop.counter 1 %}
-							<span id="thumbpic{{ forloop.counter }}">
-								<img src="{{ photo.get_thumbnail_url }}" />
-							</span>
-						{% endifnotequal %}
+						{% ifequal forloop.counter 1 %}
+							<div id="mainpic">
+								<img class="gold5" src="{{ photo.get_display_url }}" />
+							</div>
+							<div class="caption" style="padding:0 0 15px 0;">
+								{{ photo.caption }}
+							</div>
+						{% endifequal %}
 					{% endfor %}
-				</div>{# end of thumbnails #}
-			</div>{# end of news-detail-photo #}
+
+					<div>{# thumbnails #}
+						{% for photo in project.photo.all %}
+							{% ifnotequal forloop.counter 1 %}
+								<span id="thumbpic{{ forloop.counter }}" style="padding:0 2px 3px 0;">
+									<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
+								</span>
+							{% endifnotequal %}
+						{% endfor %}
+					</div>{# end of thumbnails #}
+				</div>{# end of news-detail-photo #}
+		{% endif %}
+		
+		<div class="news-detail-country">
+			{% for country in project.country.all %}
+				{{ country }}, 
+			{% endfor %}
+			{{ project.year|date:"Y" }}
+		</div><br/>
+
+		{{ project.description|safe }}
+		
+		<div class="clearer"></div><br/>
+	
+
+		{{ project.histidr.histidr }}<br/>
+	
+		{% if project.video.all %}
+			<h3>Project Videos</h3>
+			{% for video in project.video.all %}
+				<div class="gold5" style="width:320px;height:256px;">
+					<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
+					 AUTOPLAY=false CONTROLLER=true LOOP=false
+					 PLUGINSPAGE=http://www.apple.com/quicktime/ >
+				</div><br/>
+				<div class="caption">{{ video.caption }}</div>
+			{% endfor %}
+		{% endif %}
+	
+		{% if project.news.all %}
+			<h3 style="padding:30px 0 0 0;">
+				Related News 
+				<span style="font-size:12px;font-weight:bold;">
+					These news stories are updates to this project
+				</span>
+			</h3><br/>
+			
+			{% for news in project.news.all %}
+				<a href="{% url news_detail news.pk %}">
+					{{ news.name }}, {{ news.date|date:"M d, Y" }}
+				</a>
+			{% endfor %}
+		{% endif %}
+	
+		<div class="clearer"></div>
+		{{ world.name }}{{ maps_num }}
+		<div id="map_canvas" style="width: 500px; height: 300px;"></div>
 	{% endif %}
-
-
-
-	{{ project.description|safe }}
-	<div class="clearer"></div><br/><br/>
-	
-	
-	{% if project.active_now %}
-		<p>Active project.</p><br>
-	{% else %}
-		<p>Not an active project</p><br>
-	{% endif %}
-
-
-
-	{{ project.histidr.histidr }}<br/>
-	
-	{% if project.video.all %}
-		<h3>Project Videos</h3>
-		{% for video in project.video.all %}
-			{{ video.name }}-{{ video.caption }}
-			<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
-			 AUTOPLAY=false CONTROLLER=true LOOP=false
-			 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
-		{% endfor %}
-	{% endif %}
-	
-	{% if project.news.all %}
-		<h3>Related News</h3>
-		These news stories are updates to this project
-		{% for news in project.news.all %}
-			<a href="{% url news_detail news.pk %}">
-			{{ forloop.counter }}-{{ news.name }}</a>
-		{% endfor %}
-	{% endif %}
-	
-	<div class="clearer"></div>
-	{{ world.name }}{{ maps_num }}
-	<div id="map_canvas" style="width: 500px; height: 300px;"></div>
 {% endblock %}

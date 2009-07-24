@@ -29,7 +29,7 @@
 		
 		{% if video_list %}
 			{% for video in video_list %}
-				<div style="display:inline; width:190px;float:left;padding:0 0 20px 0">
+				<div style="display:inline; width:180px;float:left;padding:0 30px 30px 0">
 					<h3>
 						<a href='{% url videos_detail video.slug %}'>
 							{{ video.name }}
@@ -38,7 +38,7 @@
 					<a href="{% url videos_detail video.slug %}">
 						<img src="{{ video.frame.get_medium_url }}">
 					</a><br>
-					{{ video.caption|safe }}
+					<div class="caption">{{ video.caption|safe }}</div>
 				</div>
 			{% endfor %}
 		{% else %}

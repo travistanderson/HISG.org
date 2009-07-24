@@ -64,17 +64,17 @@ a:hover{color:#67a;}
 .caption{font-style:italic;color:#887;}
 .demo{position:relative;margin-top:2em;}
 .gallery_demo{width:702px;margin:0 auto;}
-.gallery_demo li{width:68px;height:50px;border:3px double #111;margin: 0 2px;background:#ae5219;}
+.gallery_demo li{width:68px;height:50px;border:3px solid #d9bc65;margin: 0 2px;background:#dddddd;}
 .gallery_demo li div{left:240px}
 .gallery_demo li div .caption{font:italic 0.7em/1.4 georgia,serif;}
 
-#main_image{margin:0 auto 60px auto;height:438px;width:584px;background-color:#ae5219;}
+#main_image{margin:0 auto 40px auto;height:438px;width:584px;background-color:#d9bc65;border:5px solid #d9bc65;}
 #main_image img{margin-bottom:10px;}
 
-.nav{text-align:center;padding-top:15px;clear:both;font:80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
+.nav{text-align:center;padding:0px;clear:both;font:80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
 
-.info{text-align:left;width:700px;margin:30px auto;border-top:1px dotted #221;padding-top:30px;}
-.info p{margin-top:1.6em;}
+.info{text-align:left;width:700px;margin:30px auto;padding-top:10px;}
+.info p{margin-top:0em;}
 
 </style>
 
@@ -105,21 +105,30 @@ a:hover{color:#67a;}
 <h1 style="font-size:1.5em;text-align:center;">{{ gallery.title }}</h1>
 <h3 style="text-align:center;">{{ gallery.description|safe }}</h3>
 <div class="demo">
-<div id="main_image"></div>
+	<div id="main_image"></div>
 
-<ul class="gallery_demo_unstyled">
-	{% for photo in gallery.photos.all %}
-	    <li><img src="{{ photo.get_gallery_url }}" alt="{{ photo.title }}" title="{{ photo.caption }}">
-		</li>
-	{% endfor %}
-</ul>
 	<p class="nav">
-		<a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a> | <a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a>
-		<span style="float:right;margin:0 100px 0 0;">
-			<a href="{% url gallery %}">Back to Galleries</a>
-		</span>
-	</p>
-</div>
-<div class="info">
+		<div class="left">
+			<a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a>
+		</div>
+		<div class="right">
+			<a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a>
+		</div>
+		<div class="clearer"></div>
+	</p><br/><br/>
+
+	<ul class="gallery_demo">
+		{% for photo in gallery.photos.all %}
+		    <li><img src="{{ photo.get_gallery_url }}" alt="{{ photo.title }}" title="{{ photo.caption }}">
+			</li>
+		{% endfor %}
+	</ul>
+	<div class="clearer"></div>
+	<div class="center" style="padding:50px 0 0 0;">
+		<a href="{% url gallery %}">Back to Galleries</a>
+	</div>
+
+</div>{# end of demo #}
+<div class="info"></div>
 
 {% endblock %}

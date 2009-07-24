@@ -23,13 +23,22 @@
 {% endblock brick4 %}
 
 {% block body %}
-	<a href="{% url blog %}"><h2 style="text-align:center;">Blog</h2></a><hr/>
 	{% if post %}
-		<h3>{{ post.title }}</h3>
-		<h4>{{ post.department }}-{{ post.publish|date:"M d, Y" }}</h4>
-		<div style="float:right;padding:0 10px 0 0;">
-			<img src="{{ post.photo.get_display_url }}" /><br>
-		<div class="caption">{{ post.photo.caption }}</div></div>
+		<h2 class="center">{{ post.title }}</h2><hr/>
+
+		<div class="news-detail-photo">
+			<div id="mainpic">
+				<img class="gold5" src="{{ post.photo.get_display_url }}" />
+			</div>
+			<div class="caption" style="padding:0 0 15px 0;">
+				{{ post.photo.caption }}
+			</div>
+		</div>{# end of news-detail-photo #}
+
+		<div class="news-detail-country">
+			{{ post.department }}, {{ post.publish|date:"M d, Y" }}
+		</div><br/>
+
 		<p>{{ post.body|safe }}</p>
 		
 		<div class="clearer"></div><br/><br/>

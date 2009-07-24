@@ -89,8 +89,14 @@ def blogdetail(request, blog_id):
 		context_instance = RequestContext(request),
 	)
 
-def galleryindex(request):
-	g = Gallery.objects.order_by('title')
+def galleryindex(request, sort):
+	if sort == 'date':
+		g = Gallery.objects.all().order_by('-date_added')
+	elif sort == 'title':
+		g = Gallery.objects.all().order_by('title')
+	else:
+		g = Gallery.objects.all()
+
 	pa = Webpage.objects.get(name = 'index - news and photos')
 	return render_to_response('news-photos/gallery.html', {'gallery_list': g,'page': pa,},
 		context_instance = RequestContext(request),

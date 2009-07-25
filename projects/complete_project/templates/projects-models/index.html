@@ -26,32 +26,30 @@
 	<div class="fourway">
 		<h2>
 			<a href="{% url project %}">Projects</a>
-		</h2><hr />
+		</h2>
 		{% for project in project_list %}
 			<div class="rower">
-				<a href="{% url project_detail project.id %}">
-					<h4>{{ project.name }}</h4>
-				</a>
 				{% for photo in project.photo.all %}
 					{% ifequal forloop.counter 1 %}
 						<div class="right">
-							<img src="{{ photo.get_news_size_url }}"></img>
+							<a href="{% url project_detail project.id %}">
+								<img class="gold5x" style="margin:0 0 0 4px;" src="{{ photo.get_news_size_url }}"></img>
+							</a>
 						</div>
 					{% endifequal %}
 				{% endfor %}
-				{{ project.description|safe|truncatewords:13 }}
+				<a href="{% url project_detail project.id %}">
+					<h4>{{ project.name }}</h4>
+				</a>
+
+				{{ project.description|safe|truncatewords:16 }}
 				<div class="clearer"></div>
-				<span>
+				<span class="left">
 					{% for country in project.country.all %}
 						{{ country }},
 					{% endfor %}
 				</span>
-				<span>
-					{% for region in project.region.all %}
-						{{ region }}
-					{% endfor %}
-				</span>
-				<span style="padding-left:20px;">
+				<span class="right">
 					{{ project.year|date:"Y" }}
 				</span>
 			</div>
@@ -60,26 +58,30 @@
 	<div class="fourway">
 		<h2>
 			<a href="{% url histmodel %}">HIST Model</a>
-		</h2><hr />
-		<h4>12 Service Categories for Holistic Community Development</h4> <br/>
-
-
-		1. Agriculture and Animal Husbandry <br/>
-		2. Arts and Entertainment <br/>
-		3. Economic Development <br/>
-		4. Information / Communications / Technology <br/>
-		5. Education  <br/>
-		6. Family Development / Support <br/>
-		7. Government <br/>
-		8. Security, Justice, and the Rule of Law <br/>
-		9. Health / Hygiene <br/>
-		10.	Medical <br/>
-		11.	Infrastructure <br/>
-		12.	Non-Profit Organizations <br/>
-		
-	</div>
+		</h2>
+		<div class="rower">
+			<a href="{% url histmodel %}">	
+				<h4>12 Service Categories for Holistic Community Development</h4> <br/>
+			</a>	
+			<ol class="numvis">
+				<li>Agriculture and Animal Husbandry</li>
+				<li>Arts and Entertainment</li>
+				<li>Economic Development</li>
+				<li>Information / Communications / Technology</li>
+				<li>Education</li>
+				<li>Family Development / Support</li>
+				<li>Government</li>
+				<li>Security, Justice, and the Rule of Law</li>
+				<li>Health / Hygiene</li>
+				<li>Medical</li>
+				<li>Infrastructure</li>
+				<li>Non-Profit Organizations</li>
+			</ol>
+		</div>
+	</div>{# end of fourway #}
 </div>
 <div class="clearer"></div>
+
 <div class="twoway">
 	<div class="fourway">
 		<h2>
@@ -99,20 +101,22 @@
 
 		<h4>14 Service Categories for Private Sector Disaster Responders</h4>
 		<br/>
-		1. Water Services<br/>
-		2. Food Service<br/>
-		3. Shelter Service<br/>
-		4. Medical Service<br/>
-		5. Individual Assistance Service<br/>
-		6. Personal Hygiene Service<br/>
-		7. Counseling and Spiritual Suppor<br/>
-		8. Physical Reconstruction Service<br/>
-		9. Logistics Management and Service<br/>
-		10. IT/Communication<br/>
-		11. Special Needs Services<br/>
-		12. Donations Management<br/>
-		13. Professional Responders<br/>
-		14. Transition and Recovery<br/>
+		<ol class="numvis">
+			<li>Water Services</li>
+			<li>Food Service</li>
+			<li>Shelter Service</li>
+			<li>Medical Service</li>
+			<li>Individual Assistance Service</li>
+			<li>Personal Hygiene Service</li>
+			<li>Counseling and Spiritual Suppor</li>
+			<li>Physical Reconstruction Service</li>
+			<li>Logistics Management and Service</li>
+			<li>IT/Communication</li>
+			<li>Special Needs Services</li>
+			<li>Donations Management</li>
+			<li>Professional Responders</li>
+			<li>Transition and Recovery</li>
+		</ol>
 
 	</div>
 </div>

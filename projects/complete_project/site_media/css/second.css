@@ -28,6 +28,7 @@ pre,code,kbd,samp,tt {font-family: monospace;*font-size:108%;line-height: 100%;}
 #doc{margin: auto;text-align: left;width:1026px;}
 input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;font-size:18px;}
 
+.numvis li{list-style-type:decimal;list-style-position:inside;padding:0 0 0 8px;}
 /*==========================header=========================*/
 #hd{}
 #one{height:38px;}
@@ -103,10 +104,11 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 
 .twoway{min-height:420px;}
 .fourway{width:300px;float:left;padding:0 15px 15px 0px;}
-.fourway span{color:#ae5219;}
+.fourway span{color:#666666;font-weight:bold;font-size:10px;padding:8px 0 0 0;}
 .fourway h2{text-align:center;}
 .fourway h2 a{color:#14436f;}
-.rower{min-height:140px;border-bottom:solid 1px #dabc64;}
+.rower{min-height:80px;border-top:solid 4px #dabc64;padding:0 0 10px 0;margin:0 0 30px 0;}
+.rower img{padding:0;margin:0;}
 
 .rower2{height:150px;border-bottom:solid 1px #dabc64;padding:15px 0 0 0;}
 .rower2 span{color:#ae5219;}
@@ -121,6 +123,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .news-detail-country{color:#ae5219;font-weight:bold;font-size:13px;}
 
 .gold5{border:5px solid #dabc64;}
+.gold5x{border-bottom:5px solid #dabc64;border-left:5px solid #dabc64;border-right:5px solid #dabc64;}
 
 .sorter li{display:inline;color:#14436f;}
 #buttoner{background-color:#14436f;height:20px;width:180px;padding:5px 0 2px 8px;margin:30px 10px 0 70px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:1px #fffccf solid;}
@@ -154,5 +157,6 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 /* #ff0000 -- urgent red*/
 /* #626262 -- date gray*/
 /* #00a3e6 -- i can blue*/
+/* #666666 -- here is the caption color*/
 
 /*==========================end=========================*/

@@ -26,42 +26,40 @@
 	<div class="fourway">
 		<h2>
 			<a href="{% url news %}">News</a>
-		</h2><hr />
+		</h2>{# <hr /> #}
 		{% for news in news_list %}
 			<div class="rower">
-				<a href="{% url news_detail news.id %}">
-					<h4>{{ news.name }}</h4>
-				</a>
 				{% for photo in news.photo.all %}
 					{% ifequal forloop.counter 1 %}
 						<div class="right">
-							<img src="{{ photo.get_news_size_url }}"></img>
+							<a href="{% url news_detail news.id %}">
+								<img class="gold5x" style="margin:0 0 0 3px;" src="{{ photo.get_news_size_url }}"></img>
+							</a>
 						</div>
 					{% endifequal %}
 				{% endfor %}
-				<span>
-					{{ news.date|date:"M d, Y" }}
-				</span><br/>
-				{{ news.story|safe|truncatewords:13 }}
+				<a href="{% url news_detail news.id %}">
+					<h4>{{ news.name }}</h4>
+				</a>
+				{{ news.story|safe|truncatewords:16 }}
 				<div class="clearer"></div>
-				<span>
+				<span class="left"> 
+					{{ news.date|date:"M d, Y" }}
+				</span>
+				<span class="right">
 					{% for country in news.country.all %}
 						{{ country }},
 					{% endfor %}
 				</span>
-				<span>
-					{% for region in news.region.all %}
-						{{ region }}
-					{% endfor %}
-				</span>
-			</div>
+			</div>{# end of rower #}
+			<div class="clearer"></div>
 		{% endfor %}
-	</div>
+	</div>{# end of fourway #}
 	
 	<div class="fourway">
 		<h2>
 			<a href="{% url gallery %}">Photos</a>
-		</h2><hr />
+		</h2>
 		{% for gallery in gallery_list %}
 			<div class="rower">
 				<span class="right">
@@ -73,17 +71,17 @@
 				<div>
 					{% for photo in gallery.photos.all %}
 						{% ifequal forloop.counter 1 %}
-							<img src="{{ photo.get_news_size_url }}"></img>
+							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
 						{% endifequal %}
 					{% endfor %}
 					{% for photo in gallery.photos.all %}
 						{% ifequal forloop.counter 2 %}
-							<img src="{{ photo.get_news_size_url }}"></img>
+							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
 						{% endifequal %}
 					{% endfor %}
 					{% for photo in gallery.photos.all %}
 						{% ifequal forloop.counter 3 %}
-							<img src="{{ photo.get_news_size_url }}"></img>
+							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
 						{% endifequal %}
 					{% endfor %}
 				</div>
@@ -94,23 +92,25 @@
 		{% endfor %}
 	</div>
 </div>
+<div class="clearer"></div>
+
 
 <div class="twoway">
 	<div class="fourway">
 		<h2>
 			<a href="{% url videos %}">Videos</a>
-		</h2><hr />
+		</h2>
 		{% for video in video_list %}
 			<div class="rower">
-				<span class="right">
-					{{ video.date_added|date:"M d, Y" }}
-				</span>
+				<div class="left">
+					<a href="{% url videos_detail video.slug %}">
+						<img class="gold5x" style="margin:0 4px 3px 0;" src="{{ video.frame.get_news_size_url }}"></img>
+					</a>
+				</div>
 				<a href="{% url videos_detail video.slug %}">
 					<h4>{{ video.name }}</h4>
 				</a>
-				<div>
-					<img src="{{ video.frame.get_news_size_url }}"></img>
-				</div>
+
 
 				{{ video.caption|safe|truncatewords:13 }}
 				<div class="clearer"></div>
@@ -121,27 +121,30 @@
 	<div class="fourway">
 		<h2>
 			<a href="{% url blog %}">Blog</a>
-		</h2><hr />
+		</h2>
 		{% for blog in blog_list %}
 			<div class="rower">
-				<a href="{% url blog_detail blog.id %}">
-					<h4 style="white-space:nowrap;overflow:hidden;">{{ blog.title }}</h4>
-				</a>
 				<div class="right">
-					<img src="{{ blog.photo.get_news_size_url }}"></img>
+					<a href="{% url blog_detail blog.id %}">
+						<img class="gold5x" style="margin:0 0 0 3px;" src="{{ blog.photo.get_news_size_url }}"></img>
+					</a>
 				</div>
+				<a href="{% url blog_detail blog.id %}">
+					<h4>{{ blog.title }}</h4>
+				</a>
 				{{ blog.body|safe|truncatewords:13 }}
 				<div class="clearer"></div>
-				<span style="padding-left:20px;">
+				<span class="left">
 					{{ blog.author }}
 				</span>
-				<span style="padding-left:20px;">
+				<span class="left" style="margin-left:80px;">
 					{{ blog.department }}
 				</span>
-				<span style="padding-left:20px;">
+				<span class="right">
 					{{ blog.publish|date:"M d, Y" }}
 				</span>
-			</div>
+			</div>{# end of rower #}
+			<div class="clearer"></div>
 		{% endfor %}
 	</div>
 </div>

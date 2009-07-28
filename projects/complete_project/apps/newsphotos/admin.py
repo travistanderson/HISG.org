@@ -6,6 +6,9 @@ from newsphotos.forms import PostAdminModelForm, PartnerAdminModelForm, NewsAdmi
 
 class NewsAdmin(admin.ModelAdmin):
 	form = NewsAdminModelForm
+	list_display = ('date', 'name',)
+	list_filter = ['date', 'name']
+	search_fields = ['name',]
 
 class PartnerAdmin(admin.ModelAdmin):
 	form = PartnerAdminModelForm
@@ -24,4 +27,3 @@ admin.site.register(News, NewsAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(PartnerType, PartnerTypeAdmin)
 admin.site.register(Post, PostAdmin)
-

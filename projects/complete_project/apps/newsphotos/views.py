@@ -98,7 +98,7 @@ def galleryindex(request, sort):
 		g = Gallery.objects.all()
 
 	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('news-photos/gallery.html', {'gallery_list': g,'page': pa,},
+	return render_to_response('news-photos/gallery.html', {'gallery_list': g,'page': pa,'sort':sort},
 		context_instance = RequestContext(request),
 	)
 	

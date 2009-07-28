@@ -1,4 +1,4 @@
-<!-- templates/projects-models/project.html -->
+{# templates/projects-models/project.html #}
 {% extends 'projects-models/base.html' %}
 {% block subarrive %}1{% endblock subarrive %}
 {% load markup %}
@@ -58,7 +58,7 @@
 				<div class="right">
 					{% for photo in project.photo.all %}
 						{% ifequal forloop.counter 1 %}
-							<img src="{{ photo.get_medium_url }}" />
+							<img class="gold5x" style="margin:0 0 0 6px;" src="{{ photo.get_medium_url }}" />
 						{% endifequal %}
 					{% endfor %}
 				</div>
@@ -83,12 +83,7 @@
 					<span style="padding:0 0 0 100px;">
 						{{ region }}
 					</span>
-				{% endfor %}			
-				{% if project.active_now %}
-					<span style="padding:0 0 0 100px;">This project is active</span>
-				{% else %}
-					<span style="padding:0 0 0 100px;">This project has been completed</span>
-				{% endif %}
+				{% endfor %}
 				{# <hr /> #}
 			</div>
 		{% endfor %}

@@ -11,8 +11,10 @@ from videos.models import Video
 from photologue.models import Gallery, Photo
 from django.contrib.auth.models import User
 from pages.models import Page
+from brick.models import Webpage
 
 def search(request):
+	pa = Webpage.objects.get(name = 'index - news and photos')
 	query = request.GET.get('q', '')
 	searchpage = True
 	if query:
@@ -142,7 +144,8 @@ def search(request):
 		"galleryresults": galleryresults,
 		"photoresults": photoresults,
 		"pagesresults": pagesresults,
-		"query": query
+		"query": query,
+		"page":pa,
 	})
 
 

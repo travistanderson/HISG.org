@@ -2,9 +2,9 @@
 {% extends "site_base.html" %}
 
 {% load i18n %}
-{% block labelpic %}{{ pager.labelpic }}{% endblock labelpic %}
+{% block labelpic %}{{ labelpic }}{% endblock labelpic %}
 {% block pagetitle %}{{ pager.title }}{% endblock %}
-{% block arrive %}{{ pager.arrive }}{% endblock arrive %}
+{% block arrive %}{{ pager.section }}{% endblock arrive %}
 {% block subarrive %}{{ pager.subarrive }}{% endblock subarrive %}
 
 {% block head_title %}{% trans "About" %}{% endblock %}
@@ -28,6 +28,18 @@
 	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
+
+	{% block tininav %}
+{% if pager.hasnav %}
+	<div class="tininav">
+		<ul>
+			{{ pager.tininav.content|safe }}
+		</ul>
+	</div>
+	<div class="clearer"></div>
+{% endif %}
+	{% endblock tininav %}
+
 
 {% block body %}
 	{{ pager.content }} {# this is already escaped safe #}

@@ -13,13 +13,13 @@ from countries.models import Region, Country, UsState
 from photologue.models import Photo
 from brick.models import Webpage
 
-def about(request):
-	d = Staff.objects.all().filter(director=True)
-	pa = Webpage.objects.get(name="index - starfish")	
-	
-	return render_to_response('about/about.html', {'director_list': d,'page':pa,},
-		context_instance = RequestContext(request),
-	)
+# def about(request):
+# 	d = Staff.objects.all().filter(director=True)
+# 	pa = Webpage.objects.get(name="index - starfish")	
+# 	
+# 	return render_to_response('about/about.html', {'director_list': d,'page':pa,},
+# 		context_instance = RequestContext(request),
+# 	)
 
 	
 def contact(request):
@@ -97,10 +97,10 @@ def office_detail(request, office_id):
 		context_instance = RequestContext(request),
 	)
 
-def models(request):
-	pa = Webpage.objects.get(name="index - starfish")
-	
-	return render_to_response('about/models.html', {'page':pa,},
-		context_instance = RequestContext(request),
-	)	
+# def models(request):
+# 	pa = Webpage.objects.get(name="index - starfish")
+# 	
+# 	return render_to_response('about/models.html', {'page':pa,},
+# 		context_instance = RequestContext(request),
+# 	)	
 

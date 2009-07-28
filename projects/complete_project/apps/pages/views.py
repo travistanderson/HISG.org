@@ -10,6 +10,8 @@ from brick.models import Webpage
 
 DEFAULT_TEMPLATE = 'pages/default.html'
 
+ARRIVE_CHOICES = ['empty-zero based list','home-not used','news.jpg','feature.jpg','project.jpg','about.jpg','donation.jpg','search.jpg','',]
+
 def pager(request, url):
     """
     Page view.
@@ -42,8 +44,10 @@ def pager(request, url):
     # content in the first place).
     f.title = mark_safe(f.title)
     f.content = mark_safe(f.content)
+    labelpic = ARRIVE_CHOICES[int(f.section)]
 
     c = RequestContext(request, {
+		'labelpic':labelpic,
         'pager': f,
 		'page': p,
     })

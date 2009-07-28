@@ -110,9 +110,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .rower{min-height:80px;border-top:solid 4px #dabc64;padding:0 0 10px 0;margin:0 0 30px 0;}
 .rower img{padding:0;margin:0;}
 
-.rower2{height:150px;border-bottom:solid 1px #dabc64;padding:15px 0 0 0;}
+.rower2{min-height:50px;border-top:solid 4px #dabc64;padding:0px 0 20px 0;margin:10px 0 0px 0;}
 .rower2 span{color:#ae5219;}
-.rower2 img{padding:0 0 0 20px;}
+/*.rower2 img{padding:0 0 0 20px;}*/
 
 .rowergallery{height:210px;border-bottom:solid 1px #dabc64;padding:10px 0 0 0;}
 .rowergallery span{color:#ae5219;}
@@ -130,7 +130,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #buttoner a{color:#3f97ba;}
 
 .feabox{border:1px solid #dabc64;padding:15px;margin:0 0 20px 0;}
-.feabox img{padding:0 0 0 15px;}
+.feabox img{margin:0 0 0 15px;}
 .feabox h3{padding:0 0 20px 0;}
 
 .tininav{background:#dabc64;padding:5px;margin:0 0 20px 0;}

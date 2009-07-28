@@ -1,7 +1,6 @@
 <!-- templates/news-photos/blog.html -->
 {% extends 'news-photos/base.html' %}
 {% block subarrive %}4{% endblock subarrive %}
-{% load markup %}
 {% load pagination_tags %}
 
 {% block brick1 %}
@@ -57,9 +56,9 @@
 		{% for post in post_list %}
 			<div class="rower2">
 				<div class="right">
-					<img src="{{ post.photo.get_medium_url }}" />
+					<img class="gold5x" src="{{ post.photo.get_medium_url }}" />
 				</div>
-				<h3>
+				<h3 style="padding:5px 0 0 0;">
 					<a href='{% url blog_detail post.id %}'>
 						{{ post.title }}
 					</a>
@@ -73,9 +72,9 @@
 						Department: {{ post.department }}
 					</span>
 					<span style="float:left;display:inline;">
-						Posted by: {{ post.author }}
+						By: {{ post.author }}
 					</span>
-			</div>
+			</div><div class="clearer"></div>
 		{% endfor %}
 		{% paginate %}
 	{% else %}

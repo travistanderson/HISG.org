@@ -30,7 +30,7 @@
 			{% ifequal sort "date"  %}
 				Sort by Date |
 			{% else %}
-				<a href="{% url news_index %}">Sort by Date</a> |
+				<a href="{% url news %}">Sort by Date</a> |
 			{% endifequal %}
 		</li>
 		<li>
@@ -55,30 +55,47 @@
 		<div class="rower2">
 			{% for photo in news.photo.all %}
 				{% ifequal forloop.counter 1 %}
-					<div class="right">
-						<img src="{{ photo.get_medium_url }}"></img>
+					<div class="right" style="margin:0 0 0 5px;">
+						<img class="gold5x" src="{{ photo.get_medium_url }}"></img>
 					</div>
 				{% endifequal %}
 			{% endfor %}
 			<a href="{% url news_detail news.id %}">
-				<h3>{{ news.name }}</h3>
+				<h3 style="padding:8px 0 4px 0;">{{ news.name }}</h3>
 			</a>
-			<span>
+			<span style="padding:0 0 5px 0;">
 				{{ news.date|date:"M d, Y" }}
-			</span><br/>
-			{{ news.story|safe|truncatewords:30 }}
+			</span>
+			<div style="padding:8px 0 8px 0;">
+				{{ news.story|safe|truncatewords:30 }}
+			</div>
 			<div class="clearer"></div>
-			{% for country in news.country.all %}
-				<span>
-					{{ country }}
-				</span>
-			{% endfor %}
-			{% for region in news.region.all %}
-				<span style="padding:0 0 0 100px;">
-					{{ region }}
-				</span>
-			{% endfor %}
+			{% if news.country.all %}
+				<div style="width:250px;float:left;" class="caption">
+					{% for country in news.country.all %}
+						{% ifequal forloop.counter 1 %}
+							{{ country }}
+						{% endifequal %}
+					{% endfor %}
+					{% ifnotequal news.country.count 1 %}
+						and {{ news.country.count|add:"-1" }} other{{ news.country.count|pluralize }}
+					{% endifnotequal %}
+				</div>
+			{% endif %}
+			{% if news.region.all %}
+				<div style="padding:0 0 0 100px;float:left;" class="caption">
+					{% for region in news.region.all %}
+						{% ifequal forloop.counter 1 %}
+							{{ region }}
+						{% endifequal %}
+					{% endfor %}
+					{% ifnotequal news.region.count 1 %}
+						and {{ news.region.count|add:"-1" }} other{{ news.region.count|pluralize }}
+					{% endifnotequal %}
+				</div>
+			{% endif %}
 		</div>
+		<div class="clearer"></div>
 		{% endfor %}
 		{% paginate %}
 	{% else %}

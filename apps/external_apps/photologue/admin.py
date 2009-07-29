@@ -16,6 +16,7 @@ class PhotoAdmin(admin.ModelAdmin):
     list_filter = ['date_added', 'is_public']
     list_per_page = 10
     prepopulated_fields = {'title_slug': ('title',)}
+    search_fields = ('title','tags',)
 
 class PhotoEffectAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'color', 'brightness', 'contrast', 'sharpness', 'filters', 'admin_sample')

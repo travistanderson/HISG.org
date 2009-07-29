@@ -85,8 +85,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #lefthomer h3{color:#238fb0;}
 #middlehomer h3{color:#ce9e4e;}
 #righthomer h3{color:#ff0000;}
+.homenews{padding:0 0 35px 0;}
 .homer h4{font-size:12px;font-weight:bold;padding:0 0 10px 0;}
-.homer p{padding:0 0 30px 0;line-height:1.5em;}
+.homer p{padding:0 0 0px 0;line-height:1.5em;}
 .homer .date{font-size:9px;font-weight:bold;color:#626262;padding:0 0 7px 0;}
 .homer .ican{color:#00a3e6;}
 

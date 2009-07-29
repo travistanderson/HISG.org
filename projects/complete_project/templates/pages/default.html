@@ -29,16 +29,16 @@
 	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
 {% endblock brick4 %}
 
-	{% block tininav %}
-{% if pager.hasnav %}
-	<div class="tininav">
-		<ul>
-			{{ pager.tininav.content|safe }}
-		</ul>
-	</div>
-	<div class="clearer"></div>
-{% endif %}
-	{% endblock tininav %}
+{% block tininav %}
+	{% if pager.hasnav %}
+		<div class="tininav">
+			<ul>
+				{{ pager.tininav.content|safe }}
+			</ul>
+		</div>
+		<div class="clearer"></div>
+	{% endif %}
+{% endblock tininav %}
 
 
 {% block body %}

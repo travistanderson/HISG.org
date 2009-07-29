@@ -14,14 +14,13 @@ from photologue.models import Photo
 def homepage(request):
 	i = Impacter.objects.all().order_by('order').filter(active=True)
 	f = i.get(order = 1)
-	n = News.objects.latest('date')
+	n = News.objects.all().order_by('-date')[:3]
 	p = Project.objects.latest('year')
 	
 	return render_to_response('homepage.html', {
 	'impacter_list': i,
 	'impacter_first': f,
-	'news': n,
-	'project': p,
+	'news_list': n,
 	},
 		context_instance = RequestContext(request),
 	)	

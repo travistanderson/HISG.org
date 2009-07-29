@@ -41,7 +41,6 @@ urlpatterns = patterns('',
     (r'^photologue/', include('photologue.urls')),
     (r'^profiles/', include('profiles.urls')),
 	(r'^info/', include('faqs.urls')),
-    # (r'^frequently-asked-questions/', include('faqs.urls')),
 
     (r'^admin/(.*)', admin.site.root),
     (r'^photos/', include('photos.urls')),

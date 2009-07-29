@@ -26,3 +26,20 @@ def faqsdetail(request, faqs_id):
 		context_instance = RequestContext(request),
 	)
 	
+def sitemap(request):
+	pa = Webpage.objects.get(name="index - starfish")
+	
+	return render_to_response('misc/sitemap.html', {
+	'page': pa,
+	},
+		context_instance = RequestContext(request),
+	)
+
+# def firsttime(request):
+# 	pa = Webpage.objects.get(name="index - starfish")
+# 	
+# 	return render_to_response('misc/firsttime.html', {
+# 	'page': pa,
+# 	},
+# 		context_instance = RequestContext(request),
+# 	)

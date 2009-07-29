@@ -10,7 +10,7 @@ from brick.models import Webpage
 
 DEFAULT_TEMPLATE = 'pages/default.html'
 
-ARRIVE_CHOICES = ['empty-zero based list','home-not used','news.jpg','feature.jpg','project.jpg','about.jpg','donation.jpg','search.jpg','',]
+ARRIVE_CHOICES = ['empty-zero based list','home-not used','news.jpg','feature.jpg','project.jpg','about.jpg','donation.jpg','search.jpg','connect.jpg',]
 
 def pager(request, url):
     """

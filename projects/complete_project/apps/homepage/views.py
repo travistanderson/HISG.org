@@ -29,7 +29,7 @@ def homepage(request):
 def sitemap(request):
 	pa = Webpage.objects.get(name="index - starfish")
 	
-	return render_to_response('homepage/sitemap.html', {
+	return render_to_response('misc/sitemap.html', {
 	'page': pa,
 	},
 		context_instance = RequestContext(request),

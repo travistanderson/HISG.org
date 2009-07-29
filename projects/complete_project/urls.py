@@ -28,7 +28,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', include('homepage.urls')),
-    (r'^info/', include('homepage.infourls')),
+    
     (r'^news-and-photos/', include('newsphotos.urls')),
     (r'^initiatives/', include('featured.urls')),
     (r'^projects-and-models/', include('projectsmodels.urls')),
@@ -40,7 +40,8 @@ urlpatterns = patterns('',
     (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^photologue/', include('photologue.urls')),
     (r'^profiles/', include('profiles.urls')),
-    (r'^frequently-asked-questions/', include('faqs.urls')),
+	(r'^info/', include('faqs.urls')),
+    # (r'^frequently-asked-questions/', include('faqs.urls')),
 
     (r'^admin/(.*)', admin.site.root),
     (r'^photos/', include('photos.urls')),

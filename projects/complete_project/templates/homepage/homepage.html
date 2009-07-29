@@ -251,65 +251,81 @@
 	</div><!-- end of nav (top level navigation) -->
 
 
-<div class="homer" id="lefthomer">
-	<h3><a href="{% url news %}">NEWS UPDATES</a></h3>
+					<div class="homer" id="lefthomer">
+						<h3><a href="{% url news %}">NEWS UPDATES</a></h3>
 	
-	{% for news in news_list %}
-		<div class="homenews">
-			<div class="date">
-				{{ news.date|date:"D. F d, Y. f A" }}
-			</div>
-			<h4>
-				<a style="color:#000;" href="{% url news_detail news.id %}">
-					{{ news.name }}
-				</a>
-			</h4>
-			<p>
-				{{ news.story|safe|truncatewords:30 }}
-				<span class="ican"><a href="{% url news_detail news.id %}">READ MORE</a>.</span>
-			</p>
-		</div>
-	{% endfor %}
+						{% for news in news_list %}
+							<div class="homenews">
+								<div class="date">
+									{{ news.date|date:"D. F d, Y. f A" }}
+								</div>
+								<h4>
+									<a style="color:#000;" href="{% url news_detail news.id %}">
+										{{ news.name }}
+									</a>
+								</h4>
+								<p>
+									{{ news.story|safe|truncatewords:30 }}
+									<span class="ican"><a href="{% url news_detail news.id %}">READ MORE</a>.</span>
+								</p>
+							</div>
+						{% endfor %}
 
-</div>{# end of lefthomer #}
+					</div>{# end of lefthomer #}
 
+					<div class="homer" id="middlehomer">
+						<h3>STARFISH COMMUNITY ACTIVITY</h3>
+						<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
+						<h4>Volunteers Needed in Thai Relief Effort</h4>
+						<p>Three weeks of fighting between Gaza and Israel in early January caused widespread 
+							devastation in the Gaza Strip. <span class="ican">I CAN COME.</span>
+						</p>
 
-<div class="homer" id="middlehomer">
-	<h3>VOLUNTEER &amp; EMPLOYMENT OPPORTUNITIES</h3>
-<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
-<h4>Volunteers Needed in Thai Relief Effort</h4>
-<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN COME.</span></p>
+						<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>  
+						<h4>National Project Director Needed in Ghana</h4>
+						<p>Three weeks of fighting between Gaza and Israel in early January caused widespread 
+							devastation in the Gaza Strip. <span class="ican">APPLY.</span>
+						</p>
 
-<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>  
-<h4>National Project Director Needed in Ghana</h4>
-<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">APPLY.</span></p>
+						<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>  
+						<h4>Join the Starfish Community</h4>
+						<p>Three weeks of fighting between Gaza and Israel in early January caused widespread 
+							devastation in the Gaza Strip. <span class="ican">I WANT TO TAKE THE SURVEY.</span>
+						</p>
+					</div>{# end of middlehomer #}
 
-<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>  
-<h4>Join the Starfish Community</h4>
-<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I WANT TO TAKE THE SURVEY.</span></p>
-</div>
+					<div class="homer" id="righthomer">
+						<h3>URGENT NEEDS</h3>
+						<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
+						<h4>Medical Supplies in Malaysia</h4>
+						<p>
+							Three weeks of fighting between Gaza and Israel in early January caused widespread 
+							devastation in the Gaza Strip. 
+							<span class="ican">I CAN HELP.</span>
+						</p>
 
+						<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
+						<h4>Water Filtration Systems in Darfur</h4>
+						<p>
+							Three weeks of fighting between Gaza and Israel in early January caused widespread 
+							devastation in the Gaza Strip. 
+							<span class="ican">I CAN HELP.</span>
+						</p>
 
-
-<div class="homer" id="righthomer">
-	<h3>URGENT NEEDS</h3>
-<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
-<h4>Medical Supplies in Malaysia</h4>
-<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN HELP.</span></p>
-
-<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
-<h4>Water Filtration Systems in Darfur</h4>
-<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN HELP.</span></p>
-
-<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
-<h4>Transportation of Materials to Gaza</h4>
-<p>Three weeks of fighting between Gaza and Israel in early January caused widespread devastation in the Gaza Strip. <span class="ican">I CAN HELP.</span></p>
-</div>
+						<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
+						<h4>Transportation of Materials to Gaza</h4>
+						<p>
+							Three weeks of fighting between Gaza and Israel in early January caused widespread 
+							devastation in the Gaza Strip. 
+							<span class="ican">I CAN HELP.</span>
+						</p>
+					</div>{# end of right homer #}
 					<div style="clear:both"></div>
+					
 					<div id="ft"><!--this is the start of the footer-->
 						<div class="legal">
-						    <a href="{% url search %}">SEARCH</a> | <a href="{% url faqs %}">FAQS</a>
-						    | <a href="{% url terms %}">SITE MAP</a> | &copy; 2001-2009 HISG<br>
+						    <a href="{% url search %}">SEARCH</a> | <a href="{% url home %}">FIRST TIME HERE</a> | <a href="{% url faqs %}">FAQS</a>
+						    | <a href="{% url sitemap %}">SITE MAP</a> | &copy; 2001-2009 HISG<br>
 							Humanitarian International Services Group &nbsp;| &nbsp;4700 Castleton Way, Suite 200, Castle Rock, CO 80109 Phone:(303) 662-0845 &nbsp;| &nbsp;HISG is a non-profit 501(c)3 tax exempt organization
 						</div>						
 					</div><!-- this is the end of the footer  -->

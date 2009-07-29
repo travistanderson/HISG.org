@@ -10,6 +10,7 @@ from homepage.models import Impacter
 from newsphotos.models import News
 from projectsmodels.models import Project
 from photologue.models import Photo
+from brick.models import Webpage
 
 def homepage(request):
 	i = Impacter.objects.all().order_by('order').filter(active=True)
@@ -17,10 +18,19 @@ def homepage(request):
 	n = News.objects.all().order_by('-date')[:3]
 	p = Project.objects.latest('year')
 	
-	return render_to_response('homepage.html', {
+	return render_to_response('homepage/homepage.html', {
 	'impacter_list': i,
 	'impacter_first': f,
 	'news_list': n,
+	},
+		context_instance = RequestContext(request),
+	)
+	
+def sitemap(request):
+	pa = Webpage.objects.get(name="index - starfish")
+	
+	return render_to_response('homepage/sitemap.html', {
+	'page': pa,
 	},
 		context_instance = RequestContext(request),
 	)	

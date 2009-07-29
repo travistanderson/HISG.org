@@ -28,6 +28,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', include('homepage.urls')),
+    (r'^info/', include('homepage.infourls')),
     (r'^news-and-photos/', include('newsphotos.urls')),
     (r'^initiatives/', include('featured.urls')),
     (r'^projects-and-models/', include('projectsmodels.urls')),

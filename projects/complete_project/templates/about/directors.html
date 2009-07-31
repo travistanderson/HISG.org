@@ -30,10 +30,32 @@
 		Directors
 	</h2><hr/>
 	{% for director in director_list %}
-		<a href="{% url directors_detail director.id %}"><h2>{{ director }}</h2><br>
-		{% for photo in director.photo.all %}
-		<img src="{{ photo.get_thumbnail_url }}" />
-		{% endfor %}</a>{{ director.bio|safe|truncatewords:30 }}<br>
+		<div class="director">
+			{% for photo in director.photo.all %}
+				{% ifequal forloop.counter 1 %}
+					<a href="{% url directors_detail director.id %}">
+						<img class="gold5" style="float:right;" src="{{ photo.get_medium_url }}" />
+					</a>
+				{% endifequal %}
+			{% endfor %}
+			<a href="{% url directors_detail director.id %}">
+				<h3 style="padding:0 0 0px 0;">{{ director }}</h3>
+			</a>
+			<h4>
+				{{ director.title }}
+			</h4>
+			<p>
+				{{ director.bio|safe|truncatewords:50 }}
+			</p><br/>
+			<div class="clearer"></div>
+			<div class="left" style="width:200px;">
+				Email {{ director }}
+			</div>
+			<div class="left" style="width:200px;">
+				Videos
+			</div>
+			<div class="clearer"></div>
+		</div>
 	{% endfor %}
 
 

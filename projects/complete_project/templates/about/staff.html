@@ -1,5 +1,6 @@
 <!-- templates/about/staff.html -->
 {% extends "about/base.html" %}
+{% load pagination_tags %}
 
 {% block head_title %}Staff{% endblock %}
 {% block subarrive %}3{% endblock subarrive %}
@@ -28,17 +29,30 @@
 	<h2 class="center">
 		Staff
 	</h2><hr/>
-	
+	{% autopaginate staff_list 5 %}
 	{% for staff in staff_list %}
-		<a href="{% url staff_detail staff.id %}">
-			<h2>{{ staff }}</h2>
+		<div class="staff">
 			{% for photo in staff.photo.all %}
-				<img src="{{ photo.get_thumbnail_url }}" />
+				{% ifequal forloop.counter 1 %}
+					<a href="{% url staff_detail staff.id %}">
+						<img class="gold5" style="float:right;margin:0 0 0 15px;" src="{{ photo.get_medium_url }}" />
+					</a>
+				{% endifequal %}
 			{% endfor %}
-		</a>
-		{{ staff.bio|safe|truncatewords:30 }}<br>
+			<a href="{% url staff_detail staff.id %}">
+				<h3 style="padding:0 0 0px 0;">{{ staff }}</h3>
+			</a>
+			<h4>
+				{{ staff.title }}
+			</h4>
+			<p>
+				{{ staff.bio|safe|truncatewords:50 }}
+			</p><br/>
+			<div class="clearer"></div>
+		</div>
 	{% endfor %}
-
+	{% paginate %}
 
 {% endblock %}
+
 

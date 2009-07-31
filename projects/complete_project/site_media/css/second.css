@@ -140,6 +140,12 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .tininav a:active{text-decoration:none;color:#3f97ba;}
 .tininav a:hover{text-decoration:none;color:#3f97ba;}
 
+.director{border:3px solid #dabc64;padding:10px;margin:0 0 30px 0;min-height:130px;}
+.staff{border:3px solid #dabc64;padding:10px;margin:0 0 30px 0;min-height:130px;}
+
+.searchfilter{float:right;width:200px;}
+.squareofsearch{border:3px solid #dabc64;width:400px;padding:5px;}
+
 .sitemap{background:url(/site_media/images/sections/misc/sitemap.png) no-repeat; width:600px;height:900px;font-weight:bold;}
 .sitemap p{position:relative;}
 .firsttime{padding:8px 0 0 0;}

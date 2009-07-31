@@ -24,31 +24,46 @@
 {% endblock brick4 %}
 
 {% block body %}
-		<h2 class="center">{{ director }}</h2><hr>
-		<h4>{{ director.title }}</h4><br>
-		{% if director.photo %}
+<h2>{{ director }}</h2>
+<h3>{{ director.title }}</h3><hr>
+	{% if director.photo %}
+		<div class="news-detail-photo">
 			{% for photo in director.photo.all %}
-			<div style="display:inline; float:right; margin:5px;"><img src="{{ photo.get_display_url }}" /></div>
+				{% ifequal forloop.counter 1 %}
+					<div id="mainpic">
+						<img class="gold5" src="{{ photo.get_display_url }}" />
+					</div>
+					<div class="caption" style="padding:0 0 15px 0;">
+						{{ photo.caption }}
+					</div>
+				{% endifequal %}
 			{% endfor %}
-		{% endif %}
-		<p>
-			{{ director.bio|safe }}
-		</p>
-		
-		{% if director.video %}
-			{% for video in director.video.all %}
-			{{ video.name }}-{{ video.caption }}
-			<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
-			 AUTOPLAY=false CONTROLLER=true LOOP=false
-			 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
-			{% endfor %}
-		{% endif %}
-		<div class="clearer"></div>
-		<br><br>
-		
-		<div style="text-align:center;">
-			<a href="{% url directors %}">Back to Directors Page</a>
+			<div>
+				{% for photo in director.photo.all %}
+					{% ifnotequal forloop.counter 1 %}
+						<span id="thumbpic{{ forloop.counter }}" style="padding:0 2px 3px 0;">
+							<img class="gold5" src="{{ photo.get_smallish_url }}"></img>
+						</span>
+					{% endifnotequal %}
+				{% endfor %}
+			</div>
 		</div>
+	{% endif %}
+	
+	<p>{{ director.bio|safe }}</p>
+	
+	{% if director.video %}
+		{% for video in director.video.all %}
+		{{ video.name }}-{{ video.caption }}
+		<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
+		 AUTOPLAY=false CONTROLLER=true LOOP=false
+		 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
+		{% endfor %}
+	{% endif %}
+	<br><br>
+	<div style="clear:both;text-align:center;">
+		<a href="{% url directors %}">Back to Directors Page</a>
+	</div>
 
 {% endblock %}
 

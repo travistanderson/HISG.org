@@ -17,6 +17,33 @@ def search(request):
 	pa = Webpage.objects.get(name = 'index - news and photos')
 	query = request.GET.get('q', '')
 	searchpage = True
+	choiceoffice = request.GET.get('office')
+	choicedirector = request.GET.get('director')
+	choicestaff = request.GET.get('staff')
+	choicemodel = request.GET.get('model')
+	choicenews = request.GET.get('news')
+	choiceblog = request.GET.get('blog')
+	choicefaq = request.GET.get('faq')
+	choicepartner = request.GET.get('partner')
+	choiceproject = request.GET.get('project')
+	choicevideo = request.GET.get('video')
+	choicegallery = request.GET.get('gallery')
+	choiceother = request.GET.get('other')
+	choiceall = request.GET.get('all')
+	if choiceall:
+		choiceoffice = 'office'
+		choicedirector = 'director'
+		choicestaff = 'staff'
+		choicemodel = 'model'
+		choicenews = 'news'
+		choiceblog = 'blog'
+		choicefaq = 'faq'
+		choicepartner = 'partner'
+		choiceproject = 'project'
+		choicevideo = 'video'
+		choicegallery = 'gallery'
+		choiceother = 'other'
+	
 	if query:
 		officeqset = (
 			Q(name__icontains=query) |
@@ -146,10 +173,20 @@ def search(request):
 		"pagesresults": pagesresults,
 		"query": query,
 		"page":pa,
+		"choiceoffice":choiceoffice,
+		"choicedirector":choicedirector,
+		"choicestaff":choicestaff,
+		"choicemodel":choicemodel,
+		"choicenews":choicenews,
+		"choiceblog":choiceblog,
+		"choicefaq":choicefaq,
+		"choicepartner":choicepartner,
+		"choiceproject":choiceproject,
+		"choicevideo":choicevideo,
+		"choicegallery":choicegallery,
+		"choiceother":choiceother,
+		"choiceall":choiceall,
 	})
-
-
-
 
 
 

@@ -27,11 +27,27 @@
 	<h2>{{ staff }}</h2>
 	<h3>{{ staff.title }}</h3><hr>
 		{% if staff.photo %}
-			{% for photo in staff.photo.all %}
-				<div style="display:inline; float:right; margin:5px;">
-					<img src="{{ photo.get_display_url }}" />
+			<div class="news-detail-photo">
+				{% for photo in staff.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div id="mainpic">
+							<img class="gold5" src="{{ photo.get_display_url }}" />
+						</div>
+						<div class="caption" style="padding:0 0 15px 0;">
+							{{ photo.caption }}
+						</div>
+					{% endifequal %}
+				{% endfor %}
+				<div>
+					{% for photo in staff.photo.all %}
+						{% ifnotequal forloop.counter 1 %}
+							<span id="thumbpic{{ forloop.counter }}" style="padding:0 2px 3px 0;">
+								<img class="gold5" src="{{ photo.get_smallish_url }}"></img>
+							</span>
+						{% endifnotequal %}
+					{% endfor %}
 				</div>
-			{% endfor %}
+			</div>
 		{% endif %}
 		
 		<p>{{ staff.bio|safe }}</p>

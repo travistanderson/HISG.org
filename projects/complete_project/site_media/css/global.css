@@ -79,6 +79,12 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #buttoner a{color:red;}
 #thumber{padding:10px 0 0 5px;}
 /*==========================body=========================*/
+.left{float:left;}
+.right{float:right;}
+.center{text-align:center;}
+.bold{font-weight:bold;}
+.clearer{clear:both;}
+
 #bd{width:1026px;min-height:70em;}
 .homer{width:300px;padding:10px 0 0 30px;float:left;font-size:12px;}
 .homer h3{font-size:15px;font-family:times;font-weight:bold;padding:0 0 20px 0;}
@@ -90,6 +96,8 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .homer p{padding:0 0 0px 0;line-height:1.5em;}
 .homer .date{font-size:9px;font-weight:bold;color:#626262;padding:0 0 7px 0;}
 .homer .ican{color:#00a3e6;}
+
+.connect{padding:0 0 35px 0;}
 
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}

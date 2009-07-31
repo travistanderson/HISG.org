@@ -7,25 +7,31 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.template import RequestContext
 from datetime import datetime, timedelta
 from about.models import Staff, Office
-from about.forms import ContactForm
+from about.forms import ContactForm, InternForm
 from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
 from brick.models import Webpage
+from django.conf import settings
+if "mailer" in settings.INSTALLED_APPS:
+    from mailer import send_mail
+else:
+    from django.core.mail import send_mail
 
 	
 def contact(request):
 	pa = Webpage.objects.get(name="index - starfish")
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
-		toemail = 'trav.anderson@mac.com'
+		toemail = 'tanderson@hisg.org'
+		toemail2 = 'kadams@hisg.org'
 		if form.is_valid():
 			name = form.cleaned_data['name']
 			email = form.cleaned_data['email']
-			subject = form.cleaned_data['subject']
-			content = form.cleaned_data['content']
-			send_mail(subject, content, email,[toemail,], fail_silently=True)
-			return HttpResponseRedirect('/about/contact-success/')
+			subject = "HISG.org Contact Form -- From:" + name + ", Subject:" + form.cleaned_data['subject']
+			content = "From:" + name + "\n\n" + form.cleaned_data['content']
+			send_mail(subject, content, email,[toemail,toemail2,])
+			return HttpResponseRedirect('/about-hisg/contact/success/')
 		else:
 			form = ContactForm(request.POST)
 			return render_to_response(
@@ -36,6 +42,14 @@ def contact(request):
 		form = ContactForm()
 	return render_to_response(
 		'about/contact.html', {'form':form,'page':pa,},
+		context_instance = RequestContext(request),
+	)
+
+def contactsuccess(request):
+	d = Staff.objects.all().filter(director=True).order_by('sorter')
+	pa = Webpage.objects.get(name="index - starfish")	
+	
+	return render_to_response('about/contact-success.html', {'director_list': d,'page':pa,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -86,6 +100,32 @@ def office_detail(request, office_id):
 	pa = Webpage.objects.get(name="index - starfish")
 
 	return render_to_response('about/office_d.html', {'office': o,'page':pa,},
+		context_instance = RequestContext(request),
+	)
+	
+def intern(request):
+	pa = Webpage.objects.get(name="index - starfish")
+	if request.method == 'POST':
+		form = InternForm(request.POST)
+		toemail = 'tanderson@hisg.org'
+		toemail2 = 'kadams@hisg.org'
+		if form.is_valid():
+			name = form.cleaned_data['name']
+			email = form.cleaned_data['email']
+			subject = "HISG.org Contact Form -- From:" + name + ", Subject:" + form.cleaned_data['subject']
+			content = "From:" + name + "\n\n" + form.cleaned_data['content']
+			send_mail(subject, content, email,[toemail,toemail2,])
+			return HttpResponseRedirect('/about-hisg/intern/success/')
+		else:
+			form = InternForm(request.POST)
+			return render_to_response(
+				'about/intern.html', {'form':form,'page':pa,},
+				context_instance = RequestContext(request),
+			)
+	else:
+		form = InternForm()
+	return render_to_response(
+		'about/intern.html', {'form':form,'page':pa,},
 		context_instance = RequestContext(request),
 	)
 	

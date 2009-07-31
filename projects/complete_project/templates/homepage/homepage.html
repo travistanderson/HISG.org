@@ -137,7 +137,7 @@
 		<div id="left-impacter">
 			<div id="phrase">
 				Humanitarian is just another word for caring <br/>
-				<a href="/">First time visitor?</a>
+				<a href="/info/first-time-here/">First time visitor?</a>
 			</div>
 			<div style="font-size:30px;color:#ae5219;padding:0px 0 0 0;">
 				<a href="{{ impacter_first.link }}" id="iln">{{ impacter_first.name }}</a>
@@ -217,6 +217,7 @@
 				<li class="sub4"><a href="{% url staff %}">Staff | </a></li>
 				<li class="sub4"><a href="{% url office %}">Offices | </a></li>
 				<li class="sub4"><a href="/about-hisg/vision/">Purpose and Vision | </a></li>
+				<li class="sub4"><a href="{% url intern %}">Internship | </a></li>				
 				<li class="sub4"><a href="{% url contact %}">Contact Us</a></li>
 				
 				<li class="sub5"><a href="{% url donation_login %}">Donor Login</a></li>
@@ -295,30 +296,48 @@
 					</div>{# end of middlehomer #}
 
 					<div class="homer" id="righthomer">
-						<h3>URGENT NEEDS</h3>
-						<div class="date">WED. APRIL 22, 2009. 11:30 AM</div>  
-						<h4>Medical Supplies in Malaysia</h4>
-						<p>
-							Three weeks of fighting between Gaza and Israel in early January caused widespread 
-							devastation in the Gaza Strip. 
-							<span class="ican">I CAN HELP.</span>
-						</p>
-
-						<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
-						<h4>Water Filtration Systems in Darfur</h4>
-						<p>
-							Three weeks of fighting between Gaza and Israel in early January caused widespread 
-							devastation in the Gaza Strip. 
-							<span class="ican">I CAN HELP.</span>
-						</p>
-
-						<div class="date">TUES. APRIL 21, 2009. 1:30 PM</div>
-						<h4>Transportation of Materials to Gaza</h4>
-						<p>
-							Three weeks of fighting between Gaza and Israel in early January caused widespread 
-							devastation in the Gaza Strip. 
-							<span class="ican">I CAN HELP.</span>
-						</p>
+						<h3>CONNECT WITH HISG</h3> 
+						<div class="connect" id="facebook">
+							<div class="right" style="width:125px;height:125px;">
+								<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
+									<img src="/site_media/images/facebook2.png"></img>
+								</a>
+							</div>						
+							<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
+								<h4>Go to the HISG Facebook Group</h4>
+							</a>
+							There are over 450 members in our group and we would love for you to be the next one.
+						</div><div class="clearer"></div>
+						
+						<div class="connect" id="intern">
+							<a href="{% url intern %}">
+								<h4>Become part of the HISG Internship Program</h4>
+							</a>
+							<div class="left" style="width:125px;height:125px;padding:0 10px 0 0;">
+								<a href="{% url intern %}">
+									<img src="/site_media/images/intern2.png"></img>
+								</a>
+							</div>
+							You can <a href="{% url intern %}">volunteer</a> to be an intern or if you are 
+							an organization you can <a href="{% url intern %}">send interns</a> to 
+							volunteer or we can try to <a href="{% url intern %}">get interns</a> to help 
+							with your humanitarian work.						
+						</div><div class="clearer"></div>
+						
+						<div class="connect" id="pulse"> 
+							<div class="right" style="width:125px;height:125px;">
+								<a href="{% url pulse %}">
+									<img src="/site_media/images/pulse-report.png"></img>
+								</a>
+							</div>						
+							<a href="{% url pulse %}">
+								<h4>View the latest HISG Pulse Reports</h4>
+							</a>
+							This Pulse Report is a regular publication of Humanitarian International 
+							Services Group, updating readers on the worldwide disaster relief and 
+							community development operations of HISG.<br/>
+							<a href="{% url pulse %}">Sign up to receive the Pulse Report</a>
+						</div><div class="clearer"></div>					
 					</div>{# end of right homer #}
 					<div style="clear:both"></div>
 					

@@ -99,6 +99,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .left{float:left;}
 .clearer{clear:both;}
 .bold{font-weight:bold;}
+.italic{font-style:italic;}
 .center{text-align:center;}
 .caption{color:#666666;font-weight:bold;font-size:10px;}
 
@@ -141,6 +142,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 
 .sitemap{background:url(/site_media/images/sections/misc/sitemap.png) no-repeat; width:600px;height:900px;font-weight:bold;}
 .sitemap p{position:relative;}
+.firsttime{padding:8px 0 0 0;}
+.firsttime p{color:#FFF;font-weight:bold;font-size:22px;text-align:center;}
+.firsttime li{background:#fffccf;margin:4px;font-weight:bold;padding:3px 0 3px 5px;}
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}

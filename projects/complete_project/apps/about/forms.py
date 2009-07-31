@@ -19,4 +19,16 @@ class StaffAdminModelForm(forms.ModelForm):
         model = get_model('about', 'staff')	
 
 class ContactForm(forms.Form):
-	email = forms.EmailField()
+	email = forms.EmailField(label='Your Email')
+	name = forms.CharField(max_length=100,label='Your Name')
+	subject = forms.CharField(max_length=100,label='Subject')
+	content = forms.CharField(widget=forms.Textarea,label='Message')
+	
+class PulseForm(forms.Form):
+	email = forms.EmailField(label='Your Email')	
+	
+class InternForm(forms.Form):
+	email = forms.EmailField(label='Your Email')
+	name = forms.CharField(max_length=100,label='Your Name')
+	subject = forms.CharField(max_length=100,label='Subject')
+	content = forms.CharField(widget=forms.Textarea,label='Message')

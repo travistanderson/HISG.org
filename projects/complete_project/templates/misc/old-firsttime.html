@@ -1,0 +1,91 @@
+{# templates/homepage/old-firsttime.html #}
+
+{% extends "misc/base.html" %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	<h2 class="center">Welcome to HISG</h2><hr/>
+	<div>
+		<div style="width:170px;background-color:#14436f;float:left;">
+			<div class="firsttime">
+				<p>We have resources for</p>
+				<ul>
+					<li>Partner Organizations</li>
+					<li>Corporations &amp; Businesses</li>
+					<li>Volunteers</li>
+					<li>Advocates</li>
+					<li>Teachers and Students</li>
+					<li>Journalists</li>
+				</ul>
+			</div>
+		</div>
+		<h3 class="left" style="padding:0 0px 10px 10px;">
+			Humanitarian is simply another word for caring
+		</h3>
+		<div class="left" style="width:200px;padding:0 0px 0 10px;">
+			<span class="italic">
+				Humanitarian International Services Group (HISG) has worked to bring hope and help to 
+				suffering communities in more than 80 countries around the world. Through disaster relief
+				operations, community development projects, gift-in-kind shipments and volunteer service,
+				we are making a difference by connecting resources to those in great need. We invite you 
+				to join with us in touching lives of men, women and children, both at home and abroad.
+			</span>
+		</div>
+		<div class="right" style="width:250px;padding:0 0 0 10px;">
+			<img src="/site_media/images/sections/misc/steve.jpg"></img>
+			<img src="/site_media/images/sections/misc/kids.jpg"></img>
+			<img src="/site_media/images/sections/misc/blacksmith.jpg"></img>						
+		</div>
+		<p style="clear:left;padding:10px 0 0 0;">
+			The information on our website is divided into five major categories
+			<ul style="list-style-position:inside;padding:0 0 0 20px;font-weight:bold;color:#444444;">
+				<li>News and Photos</li>
+				<li>Projects and Models</li>
+				<li>Featured Initiatives</li>
+				<li>About HISG</li>
+				<li>Donation Portal</li>
+			</ul>
+			You can watch <a href="/">this video</a> introducing each section or read about them below <br/>
+		</p><br/>
+		<p>
+			In <a href="/news-and-photos/">News and Photos</a>, you can read the latest updates from HISG's
+			relief and development projects and browse photo galleries from around the world.
+		</p><br/>
+		<p>
+			HISG's <a href="/initiatives/">Featured Initiatives</a> are the overarching strategic efforts that
+			drive what HISG is doing. There is and initiative for Orphan Care; the Hope Resource Network, which
+			manages gift-in-kind donations, the first of its kind Global Information Center; the much talked-about
+			Let's Save One campaign, and the Starfish Community.
+		</p><br/>
+		<p>
+			In <a href="/about-hisg/">About HISG</a>, you can read about our organization's international 
+			offices, background, purpose, mission and vision; find staff biographies and pictures; and
+			contact us via email.
+		</p><br/>
+		<p>
+			Our <a href="/donation-portal/">Donation Portal</a> is for people who have partnered with us
+			financially and for those who would like to do so. It offers a secure and convenient method of
+			giving through HISG to serve those in need. Donors can direct where their money goes, can read
+			the latest information from projects they support, and view printable donation records.
+		</p><br/>
+	</div>
+{% endblock body %}

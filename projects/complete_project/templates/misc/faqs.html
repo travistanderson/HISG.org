@@ -30,12 +30,11 @@
 		Frequently Asked Questions
 	</h2><hr/>
 	{% for question in faqs_list %}
-		<a href="{% url faqs_detail question.id %}">
-			<div style="border:1px solid #d9bc65;padding:10px;">
-				<b>Q:</b> {{ question.question }}<br/>
-				<b>A:</b> {{ question.answer }}
-			</div>
-		</a><br/>
+		<div style="border:1px solid #d9bc65;padding:10px;margin:0 0 30px 0;">
+			<h3>{{ question.question|safe }}</h3>
+			
+			 {{ question.answer|safe }}
+		</div>
 	{% endfor %}
 
 {% endblock %}

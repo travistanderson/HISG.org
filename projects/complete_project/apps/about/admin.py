@@ -18,7 +18,7 @@ class OfficeAdmin(admin.ModelAdmin):
 	
 class StaffAdmin(admin.ModelAdmin):
 	form = StaffAdminModelForm
-	list_display = ('lastname','firstname', 'sorter', 'director',)
+	list_display = ('sorter','firstname','lastname', 'director',)
 	ordering = ('sorter', 'lastname',)
 
 admin.site.register(Office, OfficeAdmin)

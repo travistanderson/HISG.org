@@ -7,7 +7,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.template import RequestContext
 from datetime import datetime, timedelta
 from about.models import Staff, Office
-from about.forms import ContactForm, InternForm
+from about.forms import ContactForm, InternBecomeForm, InternFindForm, InternPlaceForm
 from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
@@ -102,11 +102,18 @@ def office_detail(request, office_id):
 	return render_to_response('about/office_d.html', {'office': o,'page':pa,},
 		context_instance = RequestContext(request),
 	)
-	
+
 def intern(request):
 	pa = Webpage.objects.get(name="index - starfish")
+	
+	return render_to_response('about/intern.html', {'page':pa,},
+		context_instance = RequestContext(request),
+	)
+	
+def internbecome(request):
+	pa = Webpage.objects.get(name="index - starfish")
 	if request.method == 'POST':
-		form = InternForm(request.POST)
+		form = InternBecomeForm(request.POST)
 		toemail = 'tanderson@hisg.org'
 		toemail2 = 'kadams@hisg.org'
 		if form.is_valid():
@@ -117,16 +124,73 @@ def intern(request):
 			send_mail(subject, content, email,[toemail,toemail2,])
 			return HttpResponseRedirect('/about-hisg/intern/success/')
 		else:
-			form = InternForm(request.POST)
+			form = InternBecomeForm(request.POST)
 			return render_to_response(
-				'about/intern.html', {'form':form,'page':pa,},
+				'about/intern-become.html', {'form':form,'page':pa,},
 				context_instance = RequestContext(request),
 			)
 	else:
-		form = InternForm()
+		form = InternBecomeForm()
 	return render_to_response(
-		'about/intern.html', {'form':form,'page':pa,},
+		'about/intern-become.html', {'form':form,'page':pa,},
 		context_instance = RequestContext(request),
 	)
 	
-
+def internfind(request):
+	pa = Webpage.objects.get(name="index - starfish")
+	if request.method == 'POST':
+		form = InternFindForm(request.POST)
+		toemail = 'tanderson@hisg.org'
+		toemail2 = 'kadams@hisg.org'
+		if form.is_valid():
+			name = form.cleaned_data['name']
+			email = form.cleaned_data['email']
+			subject = "HISG.org Contact Form -- From:" + name + ", Subject:" + form.cleaned_data['subject']
+			content = "From:" + name + "\n\n" + form.cleaned_data['content']
+			send_mail(subject, content, email,[toemail,toemail2,])
+			return HttpResponseRedirect('/about-hisg/intern/success/')
+		else:
+			form = InternFindForm(request.POST)
+			return render_to_response(
+				'about/intern-find.html', {'form':form,'page':pa,},
+				context_instance = RequestContext(request),
+			)
+	else:
+		form = InternFindForm()
+	return render_to_response(
+		'about/intern-find.html', {'form':form,'page':pa,},
+		context_instance = RequestContext(request),
+	)
+	
+def internplace(request):
+	pa = Webpage.objects.get(name="index - starfish")
+	if request.method == 'POST':
+		form = InternPlaceForm(request.POST)
+		toemail = 'tanderson@hisg.org'
+		toemail2 = 'kadams@hisg.org'
+		if form.is_valid():
+			name = form.cleaned_data['name']
+			email = form.cleaned_data['email']
+			subject = "HISG.org Contact Form -- From:" + name + ", Subject:" + form.cleaned_data['subject']
+			content = "From:" + name + "\n\n" + form.cleaned_data['content']
+			send_mail(subject, content, email,[toemail,toemail2,])
+			return HttpResponseRedirect('/about-hisg/intern/success/')
+		else:
+			form = InternPlaceForm(request.POST)
+			return render_to_response(
+				'about/intern-place.html', {'form':form,'page':pa,},
+				context_instance = RequestContext(request),
+			)
+	else:
+		form = InternPlaceForm()
+	return render_to_response(
+		'about/intern-place.html', {'form':form,'page':pa,},
+		context_instance = RequestContext(request),
+	)	
+	
+def internsuccess(request):
+	pa = Webpage.objects.get(name="index - starfish")	
+	
+	return render_to_response('about/intern-success.html', {'page':pa,},
+		context_instance = RequestContext(request),
+	)

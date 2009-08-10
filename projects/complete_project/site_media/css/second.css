@@ -130,6 +130,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #buttoner{background-color:#14436f;height:20px;width:180px;padding:5px 0 2px 8px;margin:30px 10px 0 70px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:1px #fffccf solid;}
 #buttoner a{color:#3f97ba;}
 
+.buttoner{background-color:#14436f;height:20px;width:180px;padding:5px 0 2px 8px;font-family:palatino,times;font-size:14px;font-weight:bold;border:5px #dabc64 solid;text-align:center;}
+.buttoner a{color:#3f97ba;}
+
 .feabox{border:1px solid #dabc64;padding:15px;margin:0 0 20px 0;}
 .feabox img{margin:0 0 0 15px;}
 .feabox h3{padding:0 0 20px 0;}
@@ -151,6 +154,14 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .firsttime{padding:8px 0 0 0;}
 .firsttime p{color:#FFF;font-weight:bold;font-size:22px;text-align:center;}
 .firsttime li{background:#fffccf;margin:4px;font-weight:bold;padding:3px 0 3px 5px;}
+
+.intern{padding:0 0 80px 0;}
+#intern1{margin:0 20px 5px 0;float:left;}
+#intern2{margin:0 0 5px 20px;float:right;}
+#intern3{margin:0 20px 5px 0;float:left;}
+.internbutton{margin:0 0 0 200px;}
+
+.formerror{font-weight:bold;color:#F00;font-size:11px;}
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}

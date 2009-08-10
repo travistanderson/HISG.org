@@ -23,19 +23,64 @@
 {% endblock brick4 %}
 
 {% block body %}
-<h2 class="center">HISG Internship Program</h2><hr/>
+<h2 class="center">HISG Internship and Field Assignments Program </h2><hr/>
 
-<form action="" method="POST">
-	{{ form.name.label }}<br/>
-	{{ form.name }}{{ form.name.errors }}<br/>
-	{{ form.email.label }}<br/>
-	{{ form.email }}{{ form.email.errors }}<br/>
-	{{ form.subject.label }}<br/>
-	{{ form.subject }}{{ form.subject.errors }}<br/>
-	{{ form.content.label }}<br/>
-	{{ form.content }}{{ form.content.errors }}<br/><br/>
-	<p><input type="submit" value="Send &rarr;"></p>
-</form>
+<div class="intern" style="padding-right:20px;">
+	<a href="{% url internfind %}">
+		<h4>
+			Organizations needing interns and field assignments from HISG
+		</h4>
+		<img src="/site_media/images/sections/about/find_interns.jpg" class="gold5" id="intern1">		
+		</img>
+	</a>
+	<p>
+		HISG helps national and international organizations find qualified individuals suited to their 
+		specific needs. If your organization is looking for interns or long-term field workers to help 
+		you in humanitarian aid work, please use the form below to tell us about your organization and 
+		what kind of help you are looking for.
+	</p><br/>
+	<div class="buttoner" style="margin-left:190px;">
+		<a href="{% url internfind %}">Find an Intern</a>
+	</div>
+</div>
+
+<div class="intern" style="padding-right:20px;">
+	<a href="{% url internplace %}">
+		<h4>
+			Organizations looking to place interns and field assignments through HISG
+		</h4>
+		<img src="/site_media/images/sections/about/place_interns.jpg" class="gold5" id="intern2">
+		</img>
+	</a>
+	<p>
+		HISG helps organizations place individuals into internships and short-term field assignments 
+		with humanitarian organizations that give people opportunites to learn and challenge themselves. 
+		If your organization is trying to place individuals looking for meaningful and valuable 
+		experience, please use the form below to contact us.
+	</p><br/>
+	<div class="buttoner" style="margin-left:190px;">
+		<a href="{% url internplace %}">Place an Intern</a>
+	</div>
+</div>
+
+<div class="intern">
+	<a href="{% url internbecome %}">
+		<h4>
+			I want information about the HISG Intern and field assignments program
+		</h4>
+		<img src="/site_media/images/sections/about/become_interns.jpg" class="gold5" id="intern3">
+		</img>
+	</a>
+	<p>
+		HISG helps interns and field workers find ways to plug in to humanitarian aid work. Whether 
+		you want to do relief work in underprivileged nations, develop software for humanitarian 
+		operations, or some other kind of internship, HISG can help find the right place for you. 
+		Use form below to tell us about yourself and what kind of internship you are looking for.
+	</p><br/>
+	<div class="buttoner"  style="margin-left:190px;">
+		<a href="{% url internbecome %}">Become an Intern</a>
+	</div>
+</div>
 
 
 

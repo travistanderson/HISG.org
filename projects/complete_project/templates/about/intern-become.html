@@ -1,0 +1,67 @@
+<!-- templates/about/intern-become.html -->
+{% extends "about/base.html" %}
+{% block subarrive %}6{% endblock subarrive %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+<h2 class="center">Becoming an HISG Intern</h2><hr/>
+
+<img src="/site_media/images/sections/about/become_interns.jpg" class="gold5">
+</img>
+
+{# <form action="" method="POST"> #}
+{# 	{{ form }} #}
+{# 	<!-- {{ form.name }}{{ form.name.errors }}<br/> #}
+{# 	{{ form.email.label }}<br/> #}
+{# 	{{ form.email }}{{ form.email.errors }}<br/> #}
+{# 	{{ form.subject.label }}<br/> #}
+{# 	{{ form.subject }}{{ form.subject.errors }}<br/> #}
+{# 	{{ form.content.label }}<br/> #}
+{# 	{{ form.content }}{{ form.content.errors }}<br/><br/> --> #}
+{# 	<p><input type="submit" value="Send &rarr;"></p> #}
+{# </form> #}
+<form action="." method="POST">
+	<table>
+		{% for f in form %}
+			<tr>
+				<td>
+				</td>
+				<td>
+					<span class="formerror">{{ f.errors }}</span>
+				</td> 
+			</tr>
+			<tr>
+				<td>
+					{{ f.label }}
+				</td>
+				<td>
+					{{ f }}
+				</td> 
+			</tr>
+		{% endfor %}
+	</table>
+	<input type="submit" name="submit" value="Accept &amp; Send">
+</form>
+
+
+
+{% endblock body %}

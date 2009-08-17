@@ -167,28 +167,34 @@ def videos_detail(request, video_slug):
 		if v.aspect == "Standard":
 			width = "260px"
 			flash = "smallstan.swf"
+			pad = "180px"
 		else:
 			width = "322px"
 			flash = "smallwide.swf"
+			pad = "149px"
 		height = "230px"
 	elif v.size == "Medium":
 		if v.aspect == "Standard":
 			width = "320px"
 			flash = "mediumstan.swf"
+			pad = "150px"
 		else:
 			width = "420px"
 			flash = "mediumwide.swf"
+			pad = "100px"
 		height = "285px"
 	else:
 		if v.aspect == "Standard":
 			width = "428px"
 			flash = "largestan.swf"
+			pad = "96px"
 		else:
 			width = "564px"
 			flash = "largewide.swf"
+			pad = "28px"
 		height = "366px"
 	path = "../../" + str(v.path)
 	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('news-photos/videos_detail.html', {'video': v,'path':path,'page': pa,'width': width,'height': height,'flash': flash,},
+	return render_to_response('news-photos/videos_detail.html', {'video': v,'path':path,'page': pa,'width': width,'height': height,'flash': flash,'pad':pad},
 		context_instance = RequestContext(request),
 	)

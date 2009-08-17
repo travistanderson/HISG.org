@@ -23,20 +23,10 @@
 {% endblock brick4 %}
 
 {% block body %}
-	{# {% if video %} #}
-	{# 		<h2 class="center">{{ video.name }}</h2><hr/> #}
-	{# 		<div class="gold5" style="margin:30px 0 0 0;height:{{ video.height }}px;width:{{ video.width }}px;"> #}
-	{# 			<EMBED SRC="/site_media/{{ video.path }}" WIDTH={{ video.width }} HEIGHT = {{ video.height }} #}
-	{# 		 		AUTOPLAY=false CONTROLLER=true LOOP=false #}
-	{# 		 		PLUGINSPAGE=http://www.apple.com/quicktime/ > #}
-	{# 		</div><br> #}
-	{# 		<div class="caption">{{ video.caption|safe }}</div> #}
-	{# 	{% else %} #}
-	{# 		<p>There was a problem with this video.</p> #}
-	{# 	{% endif %} #}
+<h2 class="center">{{ video.name }}</h2><hr/>
 	
 	
-	<div>
+	<div style="padding:0 0 0 {{ pad }};">
 	
 		<object width="{{ width }}" height="{{ height }}">
 		<param name="movie" value="/site_media/flash/hisgvideos/{{ flash }}">

@@ -1,9 +1,11 @@
 # videos/admin.py
 from django.contrib import admin
 from videos.models import Video
+from videos.forms import VideoAdminModelForm
 
 class VideoAdmin(admin.ModelAdmin):
-
-	list_display = ('name', 'caption', 'width', 'height', 'file_type',)
+	form = VideoAdminModelForm
+	list_display = ('name', 'caption', 'size', 'aspect',)
+	prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Video, VideoAdmin)

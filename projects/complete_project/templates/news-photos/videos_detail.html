@@ -23,19 +23,32 @@
 {% endblock brick4 %}
 
 {% block body %}
-	{% if video %}
-		<h2 class="center">{{ video.name }}</h2><hr/>
-		<div class="gold5" style="margin:30px 0 0 0;height:{{ video.height }}px;width:{{ video.width }}px;">
-			<EMBED SRC="/site_media/{{ video.path }}" WIDTH={{ video.width }} HEIGHT = {{ video.height }}
-		 		AUTOPLAY=false CONTROLLER=true LOOP=false
-		 		PLUGINSPAGE=http://www.apple.com/quicktime/ >
-		</div><br>
-		<div class="caption">{{ video.caption|safe }}</div>
-	{% else %}
-		<p>There was a problem with this video.</p>
-	{% endif %}
+	{# {% if video %} #}
+	{# 		<h2 class="center">{{ video.name }}</h2><hr/> #}
+	{# 		<div class="gold5" style="margin:30px 0 0 0;height:{{ video.height }}px;width:{{ video.width }}px;"> #}
+	{# 			<EMBED SRC="/site_media/{{ video.path }}" WIDTH={{ video.width }} HEIGHT = {{ video.height }} #}
+	{# 		 		AUTOPLAY=false CONTROLLER=true LOOP=false #}
+	{# 		 		PLUGINSPAGE=http://www.apple.com/quicktime/ > #}
+	{# 		</div><br> #}
+	{# 		<div class="caption">{{ video.caption|safe }}</div> #}
+	{# 	{% else %} #}
+	{# 		<p>There was a problem with this video.</p> #}
+	{# 	{% endif %} #}
+	
+	
+	<div>
+	
+		<object width="{{ width }}" height="{{ height }}">
+		<param name="movie" value="/site_media/flash/hisgvideos/{{ flash }}">
+		<PARAM NAME=FlashVars VALUE="videoPath={{ path }}">
+		<embed src="/site_media/flash/hisgvideos/{{ flash }}" width="{{ width }}" height="{{ height }}" FlashVars="videoPath={{ path }}">
+		</embed>
+		</object>
+	</div>
+		<br/><br/><br/><br/>
 	<div class="clearer"></div><br/><br/>
 	<div>
 		<a href="{% url videos %}">Back to Videos</a>
 	</div>
+	
 {% endblock %}

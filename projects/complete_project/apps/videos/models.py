@@ -8,15 +8,19 @@ VIDEO_FILE_TYPES = (
 	('wmv', 'wmv'),
 )
 
+ASPECT_CHOICES = (('Widescreen', 'Widescreen'),('Standard', 'Standard'),)
+
+SIZE_CHOICES = (('Small', 'Small'),('Medium', 'Medium'),('Large', 'Large'),)
+
 class Video(models.Model):
+	path = models.FileField(upload_to='videos/',help_text="Select a .FLV, .MP4 or .MOV file",)
+	frame = models.ForeignKey(Photo,help_text="This picture will be the display frame of the video. You must provide your own picture.",)
 	name = models.CharField(max_length=100)
-	slug = models.SlugField(max_length=50)
-	caption = models.CharField(max_length=100)
-	path = models.FileField(upload_to='videos/')
-	width = models.PositiveIntegerField()
-	height = models.PositiveIntegerField()
-	file_type = models.CharField(max_length=3, choices=VIDEO_FILE_TYPES)
-	frame = models.ForeignKey(Photo, blank=True, null=True)
+	slug = models.SlugField(max_length=100)
+	caption = models.TextField(max_length=20000,blank=True, null=True)
+	aspect = models.CharField(max_length=3,choices=ASPECT_CHOICES,default="Standard",help_text="Standard is 4x3 and Widescreen is 16x9.")
+	size = models.CharField(max_length=3,choices=SIZE_CHOICES,default="Small",help_text="Small=170,  Medium=285,  Large=366  These are the heights the video will display as, not it's native resolution. The width will be determined by the Standard or Widescreen Selection",)
+
 	
 	def __unicode__(self):
 		return self.name

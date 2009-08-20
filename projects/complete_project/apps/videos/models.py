@@ -18,8 +18,8 @@ class Video(models.Model):
 	name = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=100)
 	caption = models.TextField(max_length=20000,blank=True, null=True)
-	aspect = models.CharField(max_length=3,choices=ASPECT_CHOICES,default="Standard",help_text="Standard is 4x3 and Widescreen is 16x9.")
-	size = models.CharField(max_length=3,choices=SIZE_CHOICES,default="Small",help_text="Small=170,  Medium=285,  Large=366  These are the heights the video will display as, not it's native resolution. The width will be determined by the Standard or Widescreen Selection",)
+	aspect = models.CharField(max_length=30,choices=ASPECT_CHOICES,default="Standard",help_text="Standard is 4x3 and Widescreen is 16x9.")
+	size = models.CharField(max_length=30,choices=SIZE_CHOICES,default="Small",help_text="Small=170,  Medium=285,  Large=366  These are the heights the video will display as, not it's native resolution. The width will be determined by the Standard or Widescreen Selection",)
 
 	
 	def __unicode__(self):

@@ -162,6 +162,25 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .internbutton{margin:0 0 0 200px;}
 
 .formerror{font-weight:bold;color:#F00;font-size:11px;}
+
+.video_list{display:inline; width:130px;height:190px;float:left;padding:0 30px 30px 0;}
+.bt_vid_row{border:solid 1px #dabc64;height:120px;width:610px;padding:10px;}
+.bt_vid_wrap{width:110px;float:left;}
+.bt_vid_inner{height:51px;width:100px;padding:24px 0 0 0;border:5px solid #dabc64;}
+.bt_blank{height:51px;width:100px;padding:24px 0 0 0;border:5px solid #dabc64;background-color:#fffccf;}
+.button_vid{color:white;background-color:#3f97ba;border:1px solid white;width:50px;padding:5px 0px 5px 15px;margin:0px 0 0px 17px; font-weight:bold;font-size:11px;}
+.button_vid a{color:white;}
+#back_vid{float:left;padding:40px 0 0 0px;width:390px;height:102px;text-align:center;}
+
+.histidr{border:solid 1px #dabc64;width:600px;height:194px;padding:10px;background-color:#00a3e6;}
+.histidr_st{float:left;height:194px;width:77px;}
+.histidr_info{float:left;height:174px;border:solid 10px #dabc64;width:503px;background-color:#fffccf;}
+.histidr_title{color:#FFF;font-weight:bold;background-color:#dabc64;width:300px;margin:0 0 0 100px;text-align:center;}
+.histidr_cats{padding:10px 0 0 20px;}
+.histbold{font-size:12px;font-weight:bold;height:14px;}
+.histgray{font-size:10px;color:#888888;height:14px;}
+.histidr_third{width:150px;float:left;padding:0 11px 0 0;}
+
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}

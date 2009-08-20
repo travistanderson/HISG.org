@@ -163,6 +163,16 @@ def videos(request):
 	
 def videos_detail(request, video_slug):
 	v = Video.objects.get(slug=video_slug)
+	pnum = int(v.id) - 1
+	nnum = int(v.id) + 1
+	try:
+		p = Video.objects.get(id = pnum)
+	except Video.DoesNotExist:
+		p = False
+	try:
+		n = Video.objects.get(id = nnum)
+	except Video.DoesNotExist:
+		n = False
 	if v.size == "Small":
 		if v.aspect == "Standard":
 			width = "260px"
@@ -195,6 +205,36 @@ def videos_detail(request, video_slug):
 		height = "366px"
 	path = "../../" + str(v.path)
 	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('news-photos/videos_detail.html', {'video': v,'path':path,'page': pa,'width': width,'height': height,'flash': flash,'pad':pad},
+	return render_to_response('news-photos/videos_detail.html', 
+		{'video': v,
+		'path':path,
+		'page': pa,
+		'width': width,
+		'height': height,
+		'flash': flash,
+		'pad':pad,
+		'next':n,
+		'prev':p,
+		},
+		context_instance = RequestContext(request),
+	)
+
+
+
+def videosdetail(request, video_id):
+	v = Video.objects.get(id = video_id)
+	pnum = int(video_id) - 1
+	nnum = int(video_id) + 1
+
+	try:
+		p = Video.objects.get(id = pnum)
+	except Video.DoesNotExist:
+		p = False
+	try:
+		n = Video.objects.get(id = nnum)
+	except Video.DoesNotExist:
+		n = False
+		
+	return render_to_response('life/videos_d.html', {'video': v,'prev':p,'next':n,},
 		context_instance = RequestContext(request),
 	)

@@ -50,14 +50,12 @@
 		</div>
 	{% endif %}
 	
-	<p>{{ director.bio|safe }}</p>
+	<p>{{ director.bio|safe }}</p><div class="clearer"></div>
+	<br/><br/>
 	
 	{% if director.video %}
 		{% for video in director.video.all %}
-		{{ video.name }}-{{ video.caption }}
-		<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
-		 AUTOPLAY=false CONTROLLER=true LOOP=false
-		 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
+			{% include "projects-models/detail_video.html" %}
 		{% endfor %}
 	{% endif %}
 	<br><br>

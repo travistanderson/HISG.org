@@ -13,9 +13,11 @@ from photologue.models import Photo
 from brick.models import Webpage
 
 def index(request):
-	p = Project.objects.all().order_by('-year')[:3]
+	ph = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
+	pi = Project.objects.filter(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
 	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/index.html', {'project_list': p,
+	return render_to_response('projects-models/index.html', {'hist_list': ph,
+														'idr_list':pi,
 														'page': pa,
 														},
 		context_instance = RequestContext(request),
@@ -23,11 +25,11 @@ def index(request):
 	
 def projectindex(request, sort):
 	if sort == 'country':
-		p = Project.objects.all().order_by('country')
+		p = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('country')
 	elif sort == 'region':
-		p = Project.objects.all().order_by('region')
+		p = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('region')
 	elif sort == 'date':
-		p = Project.objects.all().order_by('-year')
+		p = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('-year')
 	else:
 		p = Project.objects.all()	
 
@@ -40,6 +42,28 @@ def projectdetail(request, proj_id):
 	p = get_object_or_404(Project, pk = proj_id)
 	pa = Webpage.objects.get(name = 'index - news and photos')
 	return render_to_response('projects-models/project_d.html', {'project': p,'page': pa,},
+		context_instance = RequestContext(request),
+	)
+	
+def idrprojectindex(request, sort):
+	if sort == 'country':
+		p = Project.objects.filter(histidr__histidr__iexact = "IDR").order_by('country')
+	elif sort == 'region':
+		p = Project.objects.filter(histidr__histidr__iexact = "IDR").order_by('region')
+	elif sort == 'date':
+		p = Project.objects.filter(histidr__histidr__iexact = "IDR").order_by('-year')
+	else:
+		p = Project.objects.all()	
+
+	pa = Webpage.objects.get(name = 'index - news and photos')
+	return render_to_response('projects-models/idrproject.html', {'project_list': p,'page': pa,'sort':sort,},
+		context_instance = RequestContext(request),
+	)	
+	
+def idrprojectdetail(request, proj_id):
+	p = get_object_or_404(Project, pk = proj_id)
+	pa = Webpage.objects.get(name = 'index - news and photos')
+	return render_to_response('projects-models/idrproject_d.html', {'project': p,'page': pa,},
 		context_instance = RequestContext(request),
 	)
 

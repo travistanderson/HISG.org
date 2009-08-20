@@ -1,0 +1,93 @@
+<!-- template/projects-models/idrproject_d.html -->
+{% extends "projects-models/base.html" %}
+{% block subarrive %}3{% endblock subarrive %}
+
+{% block brick1 %}
+	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+{% endblock brick1 %}
+
+{% block brick2 %}
+	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+{% endblock brick2 %}
+
+{% block brick3 %}
+	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+{% endblock brick3 %}
+
+{% block brick4 %}
+	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+{% endblock brick4 %}
+
+{% block body %}
+	{% if project %}
+		<h2 class="center">{{ project.name }}</h2><hr/>
+
+		{% if project.photo.all %}
+				<div class="news-detail-photo">
+					{% for photo in project.photo.all %}
+						{% ifequal forloop.counter 1 %}
+							<div id="mainpic">
+								<img class="gold5" src="{{ photo.get_display_url }}" />
+							</div>
+							<div class="caption" style="padding:0 0 15px 0;">
+								{{ photo.caption }}
+							</div>
+						{% endifequal %}
+					{% endfor %}
+
+					<div>{# thumbnails #}
+						{% for photo in project.photo.all %}
+							{% ifnotequal forloop.counter 1 %}
+								<span id="thumbpic{{ forloop.counter }}" style="padding:0 2px 3px 0;">
+									<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
+								</span>
+							{% endifnotequal %}
+						{% endfor %}
+					</div>{# end of thumbnails #}
+				</div>{# end of news-detail-photo #}
+		{% endif %}
+		
+		<div class="news-detail-country">
+			{% for country in project.country.all %}
+				{{ country }}, 
+			{% endfor %}
+			{{ project.year|date:"Y" }}
+		</div><br/>
+
+		{{ project.description|safe }}
+		
+		<div class="clearer"></div><br/>
+		
+		{% include "projects-models/histidr_box.html" %}
+		<br/><br/>
+		{% if project.video.all %}
+			<h3>Project Videos</h3>
+			{% for video in project.video.all %}
+				{% include "projects-models/detail_video.html" %}
+			{% endfor %}
+		{% endif %}
+	
+		{% if project.news.all %}
+			<h3 style="padding:30px 0 0 0;">
+				Related News 
+				<span style="font-size:12px;font-weight:bold;">
+					These news stories are updates to this project
+				</span>
+			</h3><br/>
+			
+			{% for news in project.news.all %}
+				<a href="{% url news_detail news.pk %}">
+					{{ news.name }}, {{ news.date|date:"M d, Y" }}
+				</a>
+			{% endfor %}
+		{% endif %}
+	
+		<div class="clearer"></div>
+		{{ world.name }}{{ maps_num }}
+		<div id="map_canvas" style="width: 500px; height: 300px;"></div>
+	{% endif %}
+{% endblock %}

@@ -23,11 +23,11 @@
 
 {% block body %}
 <div class="twoway">
-	<div class="fourway">
+	<div class="fourway">{# start of fourway for HIST Projects #}
 		<h2>
-			<a href="{% url project %}">Projects</a>
+			<a href="{% url project %}">HIST Projects</a>
 		</h2>
-		{% for project in project_list %}
+		{% for project in hist_list %}
 			<div class="rower">
 				{% for photo in project.photo.all %}
 					{% ifequal forloop.counter 1 %}
@@ -54,7 +54,7 @@
 				</span>
 			</div>
 		{% endfor %}
-	</div>
+	</div>{# end of fourway for HIST Projects #}
 	<div class="fourway">
 		<h2>
 			<a href="{% url histmodel %}">HIST Model</a>
@@ -85,22 +85,38 @@
 <div class="clearer"></div>
 
 <div class="twoway">
-	<div class="fourway">
+	<div class="fourway">{# start of fourway for IDR Projects #}
 		<h2>
-			<a href="{% url capability %}">Capability Survey</a>
+			<a href="{% url idrproject %}">IDR Projects</a>
 		</h2>
-		<div class="rower">
-			<p style="padding:5px 0 0 0;">
-				Please join us in helping to eliminate suffering by filling out the capability 
-				survey and sharing your skills and interests.
-			</p>
-			<a href="{% url capability %}">
-				<div id="buttoner">
-					Partner Capability Survey
-				</div>
-			</a>
-		</div>
-	</div>{# end of fourway #}
+		{% for project in idr_list %}
+			<div class="rower">
+				{% for photo in project.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div class="right">
+							<a href="{% url idrproject_detail project.id %}">
+								<img class="gold5x" style="margin:0 0 0 4px;" src="{{ photo.get_news_size_url }}"></img>
+							</a>
+						</div>
+					{% endifequal %}
+				{% endfor %}
+				<a href="{% url idrproject_detail project.id %}">
+					<h4>{{ project.name }}</h4>
+				</a>
+
+				{{ project.description|safe|truncatewords:16 }}
+				<div class="clearer"></div>
+				<span class="left">
+					{% for country in project.country.all %}
+						{{ country }},
+					{% endfor %}
+				</span>
+				<span class="right">
+					{{ project.year|date:"Y" }}
+				</span>
+			</div>
+		{% endfor %}
+	</div>{# end of fourway for HIST Projects #}
 	
 	<div class="fourway">
 		<h2>

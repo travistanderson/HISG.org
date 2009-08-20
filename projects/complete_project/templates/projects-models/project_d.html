@@ -62,18 +62,12 @@
 		
 		<div class="clearer"></div><br/>
 	
-
-		{{ project.histidr.histidr }}<br/>
-	
+		{% include "projects-models/histidr_box.html" %}
+		<br/><br/>
 		{% if project.video.all %}
 			<h3>Project Videos</h3>
 			{% for video in project.video.all %}
-				<div class="gold5" style="width:320px;height:256px;">
-					<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
-					 AUTOPLAY=false CONTROLLER=true LOOP=false
-					 PLUGINSPAGE=http://www.apple.com/quicktime/ >
-				</div><br/>
-				<div class="caption">{{ video.caption }}</div>
+				{% include "projects-models/detail_video.html" %}
 			{% endfor %}
 		{% endif %}
 	

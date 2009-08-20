@@ -3,7 +3,6 @@ from django.contrib import admin
 from newsphotos.models import News, Partner, PartnerType, Post
 from newsphotos.forms import PostAdminModelForm, PartnerAdminModelForm, NewsAdminModelForm
 
-
 class NewsAdmin(admin.ModelAdmin):
 	form = NewsAdminModelForm
 	list_display = ('date', 'name')

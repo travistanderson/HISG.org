@@ -1,4 +1,4 @@
-# projects/models.py
+# projectsmodels/models.py
 from django.db import models
 from datetime import datetime, timedelta
 from photologue.models import ImageModel
@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from photologue.models import Photo
 from videos.models import Video
 from countries.models import Region, Country, UsState
-from histidr.models import HistIdr
+# from histidr.models import HistIdr
 from newsphotos.models import Partner, News
 
 class Project(models.Model):
@@ -20,7 +20,7 @@ class Project(models.Model):
 	news = models.ManyToManyField(News, blank=True, null=True)
 	video = models.ManyToManyField(Video, blank=True, null=True)
 	photo = models.ManyToManyField(Photo, blank=True, null=True)
-	histidr = models.ForeignKey(HistIdr, blank=True, null=True)
+	# histidr = models.ForeignKey(HistIdr, blank=True, null=True)
 	
 	def __unicode__(self):
 		return self.name

@@ -25,25 +25,22 @@
 
 {% block body %}
 	<h2 class="center">Videos</h2> <hr/>
-	<div style="margin:0 0 0 10px">
-		
+	<div>{# videos all #}
 		{% if video_list %}
 			{% for video in video_list %}
-				<div style="display:inline; width:180px;float:left;padding:0 30px 30px 0">
-					<h3>
+				<div class="video_list">
+					<a href="{% url videos_detail video.slug %}">
+						<img src="{{ video.frame.get_video_on_list_url }}" class="gold5" >
+					</a><br>
+					<h4>
 						<a href='{% url videos_detail video.slug %}'>
 							{{ video.name }}
 						</a>
-					</h3>
-					<a href="{% url videos_detail video.slug %}">
-						<img src="{{ video.frame.get_medium_url }}">
-					</a><br>
-					<div class="caption">{{ video.caption|safe }}</div>
+					</h4>
 				</div>
 			{% endfor %}
 		{% else %}
 			<p>No videos.</p>
 		{% endif %}
-		
-	</div>
+	</div>{# end of videos all #}
 {% endblock %}

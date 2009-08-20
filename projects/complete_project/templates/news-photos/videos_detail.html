@@ -35,10 +35,52 @@
 		</embed>
 		</object>
 	</div>
-		<br/><br/><br/><br/>
 	<div class="clearer"></div><br/><br/>
-	<div>
-		<a href="{% url videos %}">Back to Videos</a>
+	<div class="caption">
+		{{ video.caption|safe }}
 	</div>
+		<br/><br/><br/><br/><div class="clearer"></div>
+	
+
+
+
+	<div class="bt_vid_row">
+		<div class="bt_vid_wrap">{# start of previous button #}
+			{% if prev %}
+				<div class="bt_vid_inner" style="background:url({{ prev.frame.get_thumbnail_url }}) no-repeat;">
+					<a href="{% url videos_detail prev.slug %}">
+						<div class="button_vid">
+							&lt;&lt; Prev
+						</div>
+					</a>
+				</div>
+				<div class="caption" style="padding:10px 0 0 0;">
+					{{ prev.name }}
+				</div>
+			{% else %}
+				<div class="bt_blank"></div>
+			{% endif %}
+		</div>{# end of previous button #}
+		<div id="back_vid">
+			<a href="{% url videos %}">Back to all videos</a>
+		</div>{# end of back button #}
+		<div class="bt_vid_wrap">
+			{% if next %}
+				<div class="bt_vid_inner" style="background:url({{ next.frame.get_thumbnail_url }}) no-repeat;">
+					<a href="{% url videos_detail next.slug %}">
+						<div class="button_vid">
+							Next &gt;&gt;
+						</div>
+					</a>
+				</div>
+				<div class="caption" style="padding:10px 0 0 0;">
+					{{ next.name }}
+				</div>
+			{% else %}
+				<div class="bt_blank"></div>
+			{% endif %}
+		</div>{# end of next button #}
+	</div>{# end of bt_vid_row #}
+
 	
 {% endblock %}

@@ -1,6 +1,7 @@
 # histidr/models.py
 from django.db import models
 from datetime import datetime, timedelta
+from projectsmodels.models import Project
 
 HISTIDR = (
     ('HIST', 'HIST',),
@@ -37,62 +38,66 @@ class HistIdr(models.Model):
 	idr12 = models.BooleanField(default=False, verbose_name="Donations Management",)
 	idr13 = models.BooleanField(default=False, verbose_name="Professional Responders",)
 	idr14 = models.BooleanField(default=False, verbose_name="Transition and Recovery",)
+	project = models.ForeignKey(Project,)
 
 	def __unicode__(self):
-		unic = "" + self.histidr
-		if self.hist1:
-			unic = unic + ", Agriculture and Animal Husbandry"
-		if self.hist2:
-			unic = unic + ", Arts and Entertainment"
-		if self.hist3:                  
-			unic = unic + ", Economic Development"
-		if self.hist4:                  
-			unic = unic + ", Information, Communications, Technology"
-		if self.hist5:                  
-			unic = unic + ", Education"
-		if self.hist6:                  
-			unic = unic + ", Family Development, Support"
-		if self.hist7:                  
-			unic = unic + ", Government"
-		if self.hist8:                  
-			unic = unic + ", Security, Justice, and the Rule of Law"
-		if self.hist9:                  
-			unic = unic + ", Health, Hygiene"
-		if self.hist10:                 
-			unic = unic + ", Medical"
-		if self.hist11:                 
-			unic = unic + ", Infrastructure"
-		if self.hist12:                 
-			unic = unic + ", Non-Profit Organizations"
-		if self.idr1:                   
-			unic = unic + ", Water Services"
-		if self.idr2:                   
-			unic = unic + ", Food Services"
-		if self.idr3:                   
-			unic = unic + ", Shelter Services"
-		if self.idr4:                   
-			unic = unic + ", Medical Services"
-		if self.idr5:                   
-			unic = unic + ", Individual Assistance Services"
-		if self.idr6:                   
-			unic = unic + ", Personal Hygiene Services"
-		if self.idr7:                   
-			unic = unic + ", Counseling and Spiritual Support"
-		if self.idr8:                   
-			unic = unic + ", Physical Reconstruction Services"
-		if self.idr9:                   
-			unic = unic + ", Logistics Management and Services"
-		if self.idr10:                   
-			unic = unic + ", IT, Telecommunications"
-		if self.idr11:                   
-			unic = unic + ", Special Needs Services"
-		if self.idr12:                   
-			unic = unic + ", Donations Management"
-		if self.idr13:                   
-			unic = unic + ", Professional Responders"
-		if self.idr14:                   
-			unic = unic + ", Transition and Recovery"
-		return unic
+		return self.histidr
+
+	# def __unicode__(self):
+	# 	unic = "" + self.histidr
+	# 	if self.hist1:
+	# 		unic = unic + ", Agriculture and Animal Husbandry"
+	# 	if self.hist2:
+	# 		unic = unic + ", Arts and Entertainment"
+	# 	if self.hist3:                  
+	# 		unic = unic + ", Economic Development"
+	# 	if self.hist4:                  
+	# 		unic = unic + ", Information, Communications, Technology"
+	# 	if self.hist5:                  
+	# 		unic = unic + ", Education"
+	# 	if self.hist6:                  
+	# 		unic = unic + ", Family Development, Support"
+	# 	if self.hist7:                  
+	# 		unic = unic + ", Government"
+	# 	if self.hist8:                  
+	# 		unic = unic + ", Security, Justice, and the Rule of Law"
+	# 	if self.hist9:                  
+	# 		unic = unic + ", Health, Hygiene"
+	# 	if self.hist10:                 
+	# 		unic = unic + ", Medical"
+	# 	if self.hist11:                 
+	# 		unic = unic + ", Infrastructure"
+	# 	if self.hist12:                 
+	# 		unic = unic + ", Non-Profit Organizations"
+	# 	if self.idr1:                   
+	# 		unic = unic + ", Water Services"
+	# 	if self.idr2:                   
+	# 		unic = unic + ", Food Services"
+	# 	if self.idr3:                   
+	# 		unic = unic + ", Shelter Services"
+	# 	if self.idr4:                   
+	# 		unic = unic + ", Medical Services"
+	# 	if self.idr5:                   
+	# 		unic = unic + ", Individual Assistance Services"
+	# 	if self.idr6:                   
+	# 		unic = unic + ", Personal Hygiene Services"
+	# 	if self.idr7:                   
+	# 		unic = unic + ", Counseling and Spiritual Support"
+	# 	if self.idr8:                   
+	# 		unic = unic + ", Physical Reconstruction Services"
+	# 	if self.idr9:                   
+	# 		unic = unic + ", Logistics Management and Services"
+	# 	if self.idr10:                   
+	# 		unic = unic + ", IT, Telecommunications"
+	# 	if self.idr11:                   
+	# 		unic = unic + ", Special Needs Services"
+	# 	if self.idr12:                   
+	# 		unic = unic + ", Donations Management"
+	# 	if self.idr13:                   
+	# 		unic = unic + ", Professional Responders"
+	# 	if self.idr14:                   
+	# 		unic = unic + ", Transition and Recovery"
+	# 	return unic
 
 
 

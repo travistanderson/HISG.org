@@ -50,16 +50,15 @@
 			</div>
 		{% endif %}
 		
-		<p>{{ staff.bio|safe }}</p>
-		
+		<p>{{ staff.bio|safe }}</p><div class="clearer"></div>
+		<br/><br/>
 		{% if staff.video %}
 			{% for video in staff.video.all %}
-			{{ video.name }}-{{ video.caption }}
-			<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
-			 AUTOPLAY=false CONTROLLER=true LOOP=false
-			 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
+				{% include "projects-models/detail_video.html" %}
 			{% endfor %}
 		{% endif %}
+		
+		
 		<br><br>
 		<div style="clear:both;text-align:center;">
 			<a href="{% url staff %}">Back to Staff Page</a>

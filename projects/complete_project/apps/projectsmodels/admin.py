@@ -13,6 +13,7 @@ class ProjectAdmin(admin.ModelAdmin):
 	form = ProjectAdminModelForm
 	inlines = [HistIdrInline,]
 	list_display = ('name', 'description', 'year', 'active_now',)
+	search_fields = ['name','description',]
 
 
 admin.site.register(Project, ProjectAdmin)

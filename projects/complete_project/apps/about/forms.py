@@ -4,7 +4,9 @@ from django.forms.models import ModelForm
 from django.contrib.admin import widgets
 from django.db.models import get_model
 from pages.widgets import WYMEditor
+from django.contrib.admin.widgets import FilteredSelectMultiple
 from about.models import Office, Staff
+from photologue.models import Photo
 
 
 		
@@ -15,10 +17,11 @@ class OfficeAdminModelForm(forms.ModelForm):
         model = get_model('about', 'office')
 
 class StaffAdminModelForm(forms.ModelForm):
-    bio = forms.CharField(widget=WYMEditor())
+	bio = forms.CharField(widget=WYMEditor())
+	# photo = forms.CharField(widget=FilteredSelectMultiple('photos',False,Photo.objects.all()))
 
-    class Meta:
-        model = get_model('about', 'staff')	
+	class Meta:
+		model = get_model('about', 'staff')	
 
 class ContactForm(forms.Form):
 	email = forms.EmailField(label='Your Email')

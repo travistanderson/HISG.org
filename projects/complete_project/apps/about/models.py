@@ -22,6 +22,8 @@ class Office(models.Model):
 	def __unicode__(self):
 		return self.name
 		
+		
+		
 class Staff(models.Model):
 	firstname = models.CharField(max_length="80")
 	lastname = models.CharField(max_length="80")
@@ -39,3 +41,19 @@ class Staff(models.Model):
 		
 	class Meta(object):
 		verbose_name_plural = "Staff"
+
+	def pictured(self):
+		if self.photo.count() > 0:
+			for photo in self.photo.all():
+				idp = photo.id
+				im = self.photo.get(pk=idp).image
+			if self.photo.count() == 1:
+				ms = str(self.photo.get(pk=idp).title)
+			else:
+				ms = str(self.photo.get(pk=idp).title) + ' and ' + str(self.photo.count()) + ' others'
+		else:
+			im = 'images/sections/misc/user_icon.jpg'
+			ms = 'no picture selected'
+			
+		return '<div style="width:82px;"><img src="/site_media/%s" style="height:60px;width:80px;"></img>%s</div>' %(im,ms)
+	pictured.allow_tags = True

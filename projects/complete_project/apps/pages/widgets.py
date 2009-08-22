@@ -26,3 +26,13 @@ class WYMEditor(forms.Textarea):
                 lang: '%s',
             });
             </script>''' % (name, self.language))
+
+class PhotoWithThumb(forms.Textarea):
+	class Media:
+		js = ('/site_media/js/widgets.js',)
+		
+	def __init__(self, attrs=None):
+		pass
+		
+	def render(self, name, value, attrs=None):
+		pass

@@ -32,7 +32,14 @@ class PhotoWithThumb(forms.Textarea):
 		js = ('/site_media/js/widgets.js',)
 		
 	def __init__(self, attrs=None):
-		pass
+		self.attrs = {'class': 'photowiththumb'}
+		if attrs:
+			self.attrs.update(attrs)
+		super(PhotoWithThumb, self).__init__(attrs)
 		
 	def render(self, name, value, attrs=None):
-		pass
+		rendered = super(PhotoWithThumb, self).render(name, value, attrs)
+		return rendered + mark_safe(u'''<script type="text/javascript">
+            jQuery('#id_%s').
+            });
+            </script>''' % (name))

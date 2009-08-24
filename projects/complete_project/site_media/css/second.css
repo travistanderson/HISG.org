@@ -181,6 +181,11 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .histgray{font-size:10px;color:#888888;height:14px;}
 .histidr_third{width:150px;float:left;padding:0 11px 0 0;}
 
+#donate{width:540px;padding:15px 30px 30px 30px;border:10px solid #dabc64;margin:20px 0 0 0;}
+.donate_box{padding:15px 0 0 0;}
+.donate_form{float:right;}
+#donate_under{padding:20px 0 0 190px;width:300px;}
+
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}

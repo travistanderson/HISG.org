@@ -18,7 +18,7 @@ class OfficeAdminModelForm(forms.ModelForm):
 
 class StaffAdminModelForm(forms.ModelForm):
 	bio = forms.CharField(widget=WYMEditor())
-	photo = forms.CharField(widget=PhotoWithThumb())
+	# photo = forms.CharField(widget=PhotoWithThumb())
 
 	class Meta:
 		model = get_model('about', 'staff')	

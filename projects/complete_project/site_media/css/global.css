@@ -75,6 +75,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #irp{}
 #phrase{height:115px;color:#783a11;font-size:20px;font-family:palatino,times;padding:15px 0 0 0;}
 #phrase a{}
+#phrase_top{height:65px;}
+#phrase_bottom{float:right;padding:0px 0 0 0;}
+
 #buttoner{background-color:#14436f;height:20px;width:150px;padding:5px 0 2px 0;margin:0 10px 0 70px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:1px #fffccf solid;}
 #buttoner a{color:red;}
 #thumber{padding:10px 0 0 5px;}

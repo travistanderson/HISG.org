@@ -93,12 +93,34 @@
 				})
 			})
 		}
+		var phrase_list = new Array();
+		{% for phrase in phrase_list %}
+		phrase_list[{{ forloop.counter0 }}] ="{{ phrase.phrase }}";
+		{% endfor %}
+		var k1 =0;
+		var k2 = {{ phrase_list|length }} - 1;
+		function phraser(){
+			$(document).ready(function() {
+				$("#phrase_top").everyTime(12000, function() {
+					if (k1 == k2){
+						$(this).html(phrase_list[0])
+						k1 = 0;
+					}
+					else {
+						k1 = ++k1;
+						$(this).fadeOut("slow")
+						$(this).html(phrase_list[k1])
+					}
+				})
+			})
+		}
 
 		impactersetup();
 		impacter();
 		initial();
 		shower();
 		quickpick();
+		phraser();
 		// hider();
 		// timest();
 		//-->
@@ -137,8 +159,12 @@
 	<div id="impacter">
 		<div id="left-impacter">
 			<div id="phrase">
-				Humanitarian is just another word for caring <br/>
-				<a href="/info/first-time-here/">First time visitor?</a>
+				<div id="phrase_top">
+					{{ phrase_first }}
+				</div>
+				<div id="phrase_bottom">
+					<a href="/info/first-time-here/">First time visitor?</a>
+				</div>
 			</div>
 			<div style="font-size:30px;color:#ae5219;padding:0px 0 0 0;">
 				<a href="{{ impacter_first.link }}" id="iln">{{ impacter_first.name }}</a>

@@ -11,6 +11,9 @@ ORDER_CHOICES = (
 	(4, '4'),
 	(5, '5'),
 	(6, '6'),
+	(7, '7'),
+	(8, '8'),
+	(9, '9'),
 )
 class Impacter(models.Model):
 	name = models.CharField(max_length=20)
@@ -24,3 +27,11 @@ class Impacter(models.Model):
 	
 	def __unicode__(self):
 		return self.name
+		
+class Phrase(models.Model):
+	phrase = models.CharField(max_length=100)
+	active = models.BooleanField(default=True)
+	order = models.PositiveIntegerField(choices=ORDER_CHOICES)
+	
+	def __unicode__(self):
+		return self.phrase

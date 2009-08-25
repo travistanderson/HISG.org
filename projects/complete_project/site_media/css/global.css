@@ -68,19 +68,23 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #administration li{display:inline;}*/
 /*==========================impacter=========================*/
 #impacter{height:395px;}
-#left-impacter{float:left;padding:50px 30px 0 60px;width:290px;text-align:center;}
-#right-impacter{float:right;padding:32px 25px 0 0;}
-#iln{color:#ae5219;font-family:palatino;font-weight:bold;}
-#ilb{color:#783a11;}
-#irp{}
+
 #phrase{height:115px;color:#783a11;font-size:20px;font-family:palatino,times;padding:15px 0 0 0;}
 #phrase a{}
 #phrase_top{height:65px;}
 #phrase_bottom{float:right;padding:0px 0 0 0;}
 
+#left-impacter{float:left;padding:50px 30px 0 60px;width:290px;text-align:center;}
+#iln{color:#ae5219;font-family:palatino;font-weight:bold;}/*iln is impacter left name*/
+#ilb{color:#783a11;}/*ilb is impacter left body*/
+
 #buttoner{background-color:#14436f;height:20px;width:150px;padding:5px 0 2px 0;margin:0 10px 0 70px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:1px #fffccf solid;}
 #buttoner a{color:red;}
 #thumber{padding:10px 0 0 5px;}
+
+#right-impacter{float:right;padding:32px 25px 0 0;}
+#irp{}
+
 /*==========================body=========================*/
 .left{float:left;}
 .right{float:right;}

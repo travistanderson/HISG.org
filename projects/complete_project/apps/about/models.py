@@ -41,7 +41,8 @@ class Staff(models.Model):
 		
 	class Meta(object):
 		verbose_name_plural = "Staff"
-
+		
+	# this is for manyToManyFields were you want a picture to show up	
 	def pictured(self):
 		if self.photo.count() > 0:
 			for photo in self.photo.all():

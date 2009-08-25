@@ -44,7 +44,8 @@
 						$("#ilbut0").attr("src",impacterthumb_color[0]);
 						l = "#ilbut" + String(k);
 						$(l).attr("src",impacterthumb_bw[k]);
-						$("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[0] + "</div>");
+						// $("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[0] + "</div>");
+						$('#buttoner_link').replaceWith("<a href='" + link[0] + "' id='buttoner_link'><div id='buttoner'>" + buttoner[0] + "</div></a>");
 
 						k = 0;
 					}
@@ -57,7 +58,8 @@
 						$(j).attr("src",impacterthumb_color[k]);
 						l = "#ilbut" + String(k - 1);
 						$(l).attr("src",impacterthumb_bw[k - 1]);
-						$("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[k] + "</div>");
+						// $("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[k] + "</div>");
+						$('#buttoner_link').replaceWith("<a href='" + link[k] + "' id='buttoner_link'><div id='buttoner'>" + buttoner[k] + "</div></a>");
 					}
 				})
 			})
@@ -76,7 +78,8 @@
 				$("#irp").attr("src",photo[impacter]);
 				$("#iln").replaceWith("<a href=\"" + link[impacter] + "\" id=\"iln\">" + namer[impacter] + "</a>");
 				$("#ilb").replaceWith("<a href=\"" + link[impacter] + "\" id=\"ilb\">" + body[impacter] + "</a>");
-				$("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[impacter] + "</div>");
+				// $("#buttoner").replaceWith("<div id='buttoner'>" + buttoner[impacter] + "</div>");
+				$('#buttoner_link').replaceWith("<a href='" + link[impacter] + "' id='buttoner_link'><div id='buttoner'>" + buttoner[impacter] + "</div></a>");
 				for (b = 0; b<= impacterlength; b = ++b){
 					l = "#ilbut" + String(b);
 					$(l).attr("src",impacterthumb_bw[b]);
@@ -101,16 +104,25 @@
 		var k2 = {{ phrase_list|length }} - 1;
 		function phraser(){
 			$(document).ready(function() {
+				// this first part fades out the initial after 11 seconds - it only does this once
+				$("#phrase_top").oneTime(11000, function(){
+					$(this).fadeOut(1000);
+				})
+				// this second part sets up a timer that sets up a recuring timer every 12 seconds and fades out the old one and fades in a new one
 				$("#phrase_top").everyTime(12000, function() {
 					if (k1 == k2){
-						$(this).html(phrase_list[0])
+						$(this).html(phrase_list[0]);
+						$(this).fadeIn(1000);
 						k1 = 0;
 					}
 					else {
 						k1 = ++k1;
-						$(this).fadeOut("slow")
-						$(this).html(phrase_list[k1])
+						$(this).html(phrase_list[k1]);
+						$(this).fadeIn(1000);
 					}
+					$(this).oneTime(11000, function(){
+						$(this).fadeOut(1000);
+					})
 				})
 			})
 		}
@@ -161,11 +173,11 @@
 			<div id="phrase">
 				<div id="phrase_top">
 					{{ phrase_first }}
-				</div>
+				</div>{# end of phrase_top #}
 				<div id="phrase_bottom">
 					<a href="/info/first-time-here/">First time visitor?</a>
-				</div>
-			</div>
+				</div>{# end of phrase bottom #}
+			</div>{# end of phrase #}
 			<div style="font-size:30px;color:#ae5219;padding:0px 0 0 0;">
 				<a href="{{ impacter_first.link }}" id="iln">{{ impacter_first.name }}</a>
 			</div>
@@ -174,7 +186,7 @@
 					{{ impacter_first.body }}
 				</a>
 			</div>
-			<a href="{{ impacter_first.link }}">
+			<a href="{{ impacter_first.link }}" id="buttoner_link">
 				<div id="buttoner">
 					{{ impacter_first.button }}
 				</div>
@@ -185,11 +197,10 @@
 					</img>
 				{% endfor %}
 			</div>
-		</div>{# end of left #}
+		</div>{# end of left-impacter #}
 		<div id="right-impacter">
 			<img src="{{ impacter_first.photo.get_impacter_url }}" id="irp" ></img>
-
-		</div>{# end of right #}
+		</div>{# end of right-impacter #}
 	</div>{# end of impacter #}
 	<div id="nav"><!-- These are the top level navigation links -->
 		<ul id="navigation">

@@ -53,28 +53,31 @@ $(document).ready(function(){
 		}
 	});
 });
-
+// $.galleria.next()
+$(document).ready(function (){
+	$.galleria.activate('{% for photo in gallery.photos.all %}{% ifequal forloop.counter 1 %}{{ photo.get_gallery_url }}{% endifequal %}{% endfor %}');
+})
 </script>
 <style media="screen,projection" type="text/css">
 
-/* BEGIN DEMO STYLE */
-h1,h2{font:bold 80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
-a{color:#348;text-decoration:none;outline:none;}
-a:hover{color:#67a;}
-.caption{font-style:italic;color:#887;}
-.demo{position:relative;margin-top:2em;}
-.gallery_demo{width:702px;margin:0 auto;}
-.gallery_demo li{width:68px;height:50px;border:3px solid #d9bc65;margin: 0 2px;background:#dddddd;}
-.gallery_demo li div{left:240px}
-.gallery_demo li div .caption{font:italic 0.7em/1.4 georgia,serif;}
+	/* BEGIN DEMO STYLE */
+	h1,h2{font:bold 80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
+	a{color:#348;text-decoration:none;outline:none;}
+	a:hover{color:#67a;}
+	.caption{font-style:italic;color:#887;}
+	.demo{position:relative;margin-top:2em;}
+	.gallery_demo{width:702px;margin:0 auto;}
+	.gallery_demo li{width:68px;height:50px;border:3px solid #d9bc65;margin: 0 2px;background:#dddddd;}
+	.gallery_demo li div{left:240px}
+	.gallery_demo li div .caption{font:italic 0.7em/1.4 georgia,serif;}
 
-#main_image{margin:0 auto 40px auto;height:438px;width:584px;background-color:#d9bc65;border:5px solid #d9bc65;}
-#main_image img{margin-bottom:10px;}
+	#main_image{margin:0 auto 40px auto;height:438px;width:584px;background-color:#d9bc65;border:5px solid #d9bc65;}
+	#main_image img{margin-bottom:10px;}
 
-.nav{text-align:center;padding:0px;clear:both;font:80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
+	.nav{text-align:center;padding:0px;clear:both;font:80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
 
-.info{text-align:left;width:700px;margin:30px auto;padding-top:10px;}
-.info p{margin-top:0em;}
+	.info{text-align:left;width:700px;margin:30px auto;padding-top:10px;}
+	.info p{margin-top:0em;}
 
 </style>
 
@@ -82,23 +85,23 @@ a:hover{color:#67a;}
 
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+	<a href="{{ brickgroup.brick1.link }}"><div class="brickpic"><img src="{{ brickgroup.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick1.link }}"><div class="brick">{{ brickgroup.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+	<a href="{{ brickgroup.brick2.link }}"><div class="brickpic"><img src="{{ brickgroup.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick2.link }}"><div class="brick">{{ brickgroup.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+	<a href="{{ brickgroup.brick3.link }}"><div class="brickpic"><img src="{{ brickgroup.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick3.link }}"><div class="brick">{{ brickgroup.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+	<a href="{{ brickgroup.brick4.link }}"><div class="brickpic"><img src="{{ brickgroup.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick4.link }}"><div class="brick">{{ brickgroup.brick4.body }}</div></a>
 {% endblock brick4 %}
 
 {% block body %}
@@ -117,9 +120,10 @@ a:hover{color:#67a;}
 		<div class="clearer"></div>
 	</p><br/><br/>
 
-	<ul class="gallery_demo">
+	<ul class="gallery_demo" style="width:640px;">
 		{% for photo in gallery.photos.all %}
-		    <li><img src="{{ photo.get_gallery_url }}" alt="{{ photo.title }}" title="{{ photo.caption }}">
+		    <li>
+				<img src="{{ photo.get_gallery_url }}" alt="{{ photo.title }}" title="{{ photo.caption }}"></img>
 			</li>
 		{% endfor %}
 	</ul>
@@ -127,7 +131,6 @@ a:hover{color:#67a;}
 	<div class="center" style="padding:50px 0 0 0;">
 		<a href="{% url gallery %}">Back to Galleries</a>
 	</div>
-
 </div>{# end of demo #}
 <div class="info"></div>
 

@@ -2,142 +2,144 @@
 {% extends 'donation-portal/base.html' %}
 
 {% block brick1 %}
-	<a href="{{ page.brick1.link }}"><div class="brickpic"><img src="{{ page.brick1.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick1.link }}"><div class="brick">{{ page.brick1.body }}</div></a>
+	<a href="{{ brickgroup.brick1.link }}"><div class="brickpic"><img src="{{ brickgroup.brick1.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick1.link }}"><div class="brick">{{ brickgroup.brick1.body }}</div></a>
 {% endblock brick1 %}
 
 {% block brick2 %}
-	<a href="{{ page.brick2.link }}"><div class="brickpic"><img src="{{ page.brick2.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick2.link }}"><div class="brick">{{ page.brick2.body }}</div></a>
+	<a href="{{ brickgroup.brick2.link }}"><div class="brickpic"><img src="{{ brickgroup.brick2.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick2.link }}"><div class="brick">{{ brickgroup.brick2.body }}</div></a>
 {% endblock brick2 %}
 
 {% block brick3 %}
-	<a href="{{ page.brick3.link }}"><div class="brickpic"><img src="{{ page.brick3.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick3.link }}"><div class="brick">{{ page.brick3.body }}</div></a>
+	<a href="{{ brickgroup.brick3.link }}"><div class="brickpic"><img src="{{ brickgroup.brick3.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick3.link }}"><div class="brick">{{ brickgroup.brick3.body }}</div></a>
 {% endblock brick3 %}
 
 {% block brick4 %}
-	<a href="{{ page.brick4.link }}"><div class="brickpic"><img src="{{ page.brick4.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ page.brick4.link }}"><div class="brick">{{ page.brick4.body }}</div></a>
+	<a href="{{ brickgroup.brick4.link }}"><div class="brickpic"><img src="{{ brickgroup.brick4.photo.get_brick_url }}"></img></div></a>
+	<a href="{{ brickgroup.brick4.link }}"><div class="brick">{{ brickgroup.brick4.body }}</div></a>
 {% endblock brick4 %}
 
 
 {% block body %}
-<h3 class="center">Donation Portal</h3><hr/>
-<h4>Reach out to your Worldwide Neighbors: Contribute Resources To Meet the Needs</h4>
-<p>The lives of our neighbors all over the world are impacted daily by natural disasters.  
-	Whether it is a Tsunami (Indonesia), Earthquake (Pakistan) or Hurricane (U.S. Gulf Coast), 
-	lives are often changed in an instant.  Can you help us make a difference?  Your tax deductible 
-	donation will reach out and touch those in need.  Your gift can provide for general disaster 
-	response, humanitarian aid &amp; relief effort or a development project of your choice.  We have 
-	trusted friends, associates and counterparts throughout the world that will commit your gift to 
-	its most beneficial use.</p><br>
+	<h3 class="center">Donation Portal</h3><hr/>
+	<h4>Reach out to your Worldwide Neighbors: Contribute Resources To Meet the Needs</h4>
+	<p>
+		The lives of our neighbors all over the world are impacted daily by natural disasters.  
+		Whether it is a Tsunami (Indonesia), Earthquake (Pakistan) or Hurricane (U.S. Gulf Coast), 
+		lives are often changed in an instant.  Can you help us make a difference?  Your tax deductible 
+		donation will reach out and touch those in need.  Your gift can provide for general disaster 
+		response, humanitarian aid &amp; relief effort or a development project of your choice.  We have 
+		trusted friends, associates and counterparts throughout the world that will commit your gift to 
+		its most beneficial use.
+	</p><br>
 
-<h4>Contributions can be made by sending checks or money orders to:</h4>
-<p style="margin:0 0 0 50px;">
-	HISG Resources<br>
-	Attn: Steve Lencke<br>
-	4700 Castleton Way, Suite 200<br>
-	Castle Rock, CO 80109
-</p><br>
+	<h4>Contributions can be made by sending checks or money orders to:</h4>
+	<p style="margin:0 0 0 50px;">
+		HISG Resources<br>
+		Attn: Steve Lencke<br>
+		4700 Castleton Way, Suite 200<br>
+		Castle Rock, CO 80109
+	</p><br>
 
-<p>Or click below to contribute by credit card securely on-line through our PayPal account.</p>
+	<p>Or click below to contribute by credit card securely on-line through our PayPal account.</p>
 
-<div id="donate">
-	<div class="donate_box">
-		<div class="donate_form">
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="410331">
-			<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
-			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>{# end of donate form #}
-		<h4>DISASTER RESPONSE FUND</h4>
+	<div id="donate">
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410331">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>DISASTER RESPONSE FUND</h4>
 
-		All donations to the disaster response fund will be designated 
-		for use during urgent disaster relief initiatives, such as the response to 
-		<a href="http://test.hisg.org/projects-and-models/projects/106/">Hurricane Katrina in 
-		2005</a>, and relief efforts for the 
-		<a href="http://test.hisg.org/projects-and-models/projects/44/">Asian Tsunami in 2004</a>.<br/><br/><hr/>
-	</div>{# end of donate_box #}
+			All donations to the disaster response fund will be designated 
+			for use during urgent disaster relief initiatives, such as the response to 
+			<a href="http://test.hisg.org/projects-and-models/projects/106/">Hurricane Katrina in 
+			2005</a>, and relief efforts for the 
+			<a href="http://test.hisg.org/projects-and-models/projects/44/">Asian Tsunami in 2004</a>.<br/><br/><hr/>
+		</div>{# end of donate_box #}
 
 
-	<div class="donate_box">
-		<div class="donate_form">
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="410309">
-			<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
-			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>{# end of donate form #}
-		<h4>GENERAL FUND</h4>
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410309">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>GENERAL FUND</h4>
 		
-		A donation to the general fund will be used for <a href="{% url project %}">HISG projects</a>
-		such as community development, care for orphans and other vulnerable children, or HISG infrastructure.<br/><br/><hr/>
-	</div>{# end of donate_box #}
+			A donation to the general fund will be used for <a href="{% url project %}">HISG projects</a>
+			such as community development, care for orphans and other vulnerable children, or HISG infrastructure.<br/><br/><hr/>
+		</div>{# end of donate_box #}
 
 
-	<div class="donate_box">
-		<div class="donate_form">
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="410279">
-			<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
-			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>{# end of donate form #}
-		<h4>CHINA</h4>
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410279">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>CHINA</h4>
 		
-		All donations to the China fund are marked for use in relief and 
-		recovery projects for the people affected by the earthquake in the Sichuan province in May, 2008. 
-		You can read more about the different projects 
-		<a href="http://test.hisg.org/projects-and-models/projects/39/">here</a>.<br/><br/><hr/>
-	</div>{# end of donate_box #}
+			All donations to the China fund are marked for use in relief and 
+			recovery projects for the people affected by the earthquake in the Sichuan province in May, 2008. 
+			You can read more about the different projects 
+			<a href="http://test.hisg.org/projects-and-models/projects/39/">here</a>.<br/><br/><hr/>
+		</div>{# end of donate_box #}
 
 
-	<div class="donate_box">
-		<div class="donate_form">
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="410235">
-			<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
-			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>{# end of donate form #}
-		<h4>LET'S SAVE ONE</h4>
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410235">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>LET'S SAVE ONE</h4>
 		
-		Let's Save One is a campaign to help people connect on a personal 
-		level with individuals who need urgent medical attention.  You can read more about the specific 
-		cases <a href="http://test.hisg.org/initiatives/lets-save-one/">here</a>.  All donations will go directly 
-		to the need described in the "Cases" section.<br/><br/><hr/>
-	</div>{# end of donate_box #}
+			Let's Save One is a campaign to help people connect on a personal 
+			level with individuals who need urgent medical attention.  You can read more about the specific 
+			cases <a href="http://test.hisg.org/initiatives/lets-save-one/">here</a>.  All donations will go directly 
+			to the need described in the "Cases" section.<br/><br/><hr/>
+		</div>{# end of donate_box #}
 	
 
-	<div class="donate_box">
-		<div class="donate_form">
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="410031">
-			<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
-			<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>{# end of donate form #}
-		<h4>MYANMAR</h4>
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410031">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>MYANMAR</h4>
 
-		All donations to the Myanmar fund will be used for relief and 
-		recovery projects for the people affected by Cyclone Nargis in May, 2008. 
-		You can read more about the different projects <a href="/projects-and-models/projects/idr/120/">here</a>.
-	</div>{# end of donate_box #}	
-</div>{# end of donate #}
+			All donations to the Myanmar fund will be used for relief and 
+			recovery projects for the people affected by Cyclone Nargis in May, 2008. 
+			You can read more about the different projects <a href="/projects-and-models/projects/idr/120/">here</a>.
+		</div>{# end of donate_box #}	
+	</div>{# end of donate #}
 
-<div id="donate_under">
-	<span class="bold">Questions?</span><br/>
-	Contact us  via email at <a href="mailto:donations@hisg.org">donations@hisg.org</a><br/>
-	or <br/>
-	call us at 303-662-0845.<br/>
-	Thank you in advance for your generosity!
-</div>{# end of donate_under #}
+	<div id="donate_under">
+		<span class="bold">Questions?</span><br/>
+		Contact us  via email at <a href="mailto:donations@hisg.org">donations@hisg.org</a><br/>
+		or <br/>
+		call us at 303-662-0845.<br/>
+		Thank you in advance for your generosity!
+	</div>{# end of donate_under #}
 	
 {% endblock %}

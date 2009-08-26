@@ -1,0 +1,54 @@
+{# templates/brick.html #}
+<div id="left-colomn">{# start of left-column #}
+	<div id="left-backer" style="height:{{ brickheight }}px;">{# start of left-backer #}
+		<div class="left-block" style="height:{{ brickgroup.brick1.size }}px;">
+			<a href="{{ brickgroup.brick1.link }}" target="{% if brickgroup.brick1.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brickpic">
+					<img src="{{ brickgroup.brick1.photo.get_brick_url }}"></img>
+					
+				</div>
+			</a>
+			<a href="{{ brickgroup.brick1.link }}" target="{% if brickgroup.brick1.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brick">
+					{{ brickgroup.brick1.body }}
+				</div>
+			</a>
+		</div>
+		<div class="left-block" style="height:{{ brickgroup.brick2.size }}px;">
+			<a href="{{ brickgroup.brick2.link }}" target="{% if brickgroup.brick2.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brickpic">
+					<img src="{{ brickgroup.brick2.photo.get_brick_url }}"></img>
+				</div>
+			</a>
+			<a href="{{ brickgroup.brick2.link }}" target="{% if brickgroup.brick2.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brick">
+					{{ brickgroup.brick2.body }}
+				</div>
+			</a>
+		</div>
+		<div class="left-block" style="height:{{ brickgroup.brick3.size }}px;">
+			<a href="{{ brickgroup.brick3.link }}" target="{% if brickgroup.brick3.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brickpic">
+					<img src="{{ brickgroup.brick3.photo.get_brick_url }}"></img>
+				</div>
+			</a>
+			<a href="{{ brickgroup.brick3.link }}" target="{% if brickgroup.brick3.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brick">
+					{{ brickgroup.brick3.body }}
+				</div>
+			</a>
+		</div>
+		<div class="left-block" style="height:{{ brickgroup.brick4.size }}px;">
+			<a href="{{ brickgroup.brick4.link }}" target="{% if brickgroup.brick4.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brickpic">
+					<img src="{{ brickgroup.brick4.photo.get_brick_url }}"></img>
+				</div>
+			</a>
+			<a href="{{ brickgroup.brick4.link }}" target="{% if brickgroup.brick4.linktarget %}_blank{% else %}_self{% endif %}">
+				<div class="brick">
+					{{ brickgroup.brick4.body }}
+				</div>
+			</a>
+		</div>
+	</div>{# end of left-backer #}
+</div>{# end of left-column #}

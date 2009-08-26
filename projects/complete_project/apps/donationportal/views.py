@@ -6,18 +6,20 @@ from django.forms import ModelForm
 from django.template import RequestContext
 from datetime import datetime, timedelta
 from donationportal.models import Donation
-from brick.models import Webpage
+from brick.views import bricker, brickerheight
 
 def index(request):
 	d = Donation.objects.all().order_by('list_order')
-	pa = Webpage.objects.get(name="index - starfish")	
+	bg = bricker('donate','index')
+	bgheight = brickerheight(bg)	
 	
-	return render_to_response('donation-portal/index.html', {'donations_list': d,'page':pa,},
+	return render_to_response('donation-portal/index.html', {'donations_list': d,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
 def detail(request):
-	pa = Webpage.objects.get(name="index - starfish")
-	return render_to_response('donation-portal/detail.html',{'page':pa,},
+	bg = bricker('donate','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('donation-portal/detail.html',{'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)

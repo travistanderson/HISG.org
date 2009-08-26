@@ -1,6 +1,6 @@
 # pages/models.py
 from django.db import models
-from brick.models import Webpage
+from brick.models import BrickGroup
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 from chunks.models import Chunk
@@ -22,7 +22,7 @@ class Page(models.Model):
 	content = models.TextField(blank=True)
 	templatr = models.CharField(max_length=70, blank=True,help_text="optional",)
 	active = models.BooleanField(default=True)
-	bricks = models.ForeignKey(Webpage, blank=True, null=True)
+	bricks = models.ForeignKey(BrickGroup, blank=True, null=True)
 	section = models.CharField(max_length=200,choices=LP_CHOICES, default=2)
 	subarrive = models.IntegerField(max_length=2,default=0,)
 	hasnav = models.BooleanField(default=False,)

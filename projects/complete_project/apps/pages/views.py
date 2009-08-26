@@ -3,10 +3,11 @@ from pages.models import Page
 from django.template import loader, RequestContext
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
+from django.http import Http404
 from django.conf import settings
 from django.core.xheaders import populate_xheaders
 from django.utils.safestring import mark_safe
-from brick.models import Webpage
+from brick.views import bricker, brickerheight
 
 DEFAULT_TEMPLATE = 'pages/default.html'
 
@@ -28,7 +29,13 @@ def pager(request, url):
     if not url.startswith('/'):
         url = "/" + url
     f = get_object_or_404(Page, url__exact=url)
-    p = get_object_or_404(Webpage, name=f.bricks.name)
+    # bg = get_object_or_404(BrickGroup, name=f.bricks.name section=f.bricks.section)
+    # try:
+    #     bg = BrickGroup.objects.get(name=f.bricks.name, section=f.bricks.section)
+    # except BrickGroup.DoesNotExist:
+    #     raise Http404
+	bg = bricker('news','index')
+	bgheight = brickerheight(bg)
     # If registration is required for accessing this page, and the user isn't
     # logged in, redirect to the login page.
     # if f.registration_required and not request.user.is_authenticated():
@@ -49,7 +56,8 @@ def pager(request, url):
     c = RequestContext(request, {
 		'labelpic':labelpic,
         'pager': f,
-		'page': p,
+		'brickgroup': bg,
+		'brickheight':bgheight,
     })
     response = HttpResponse(t.render(c))
     populate_xheaders(request, response, Page, f.id)

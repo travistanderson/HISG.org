@@ -9,7 +9,7 @@ from partners.models import Page, Change
 from featured.forms import EditPageForm
 from videos.models import Video
 from photologue.models import Photo
-from brick.models import Webpage
+from brick.models import BrickGroup
 
 # def index(request):
 # 	pa = Webpage.objects.get(name="index - starfish")	

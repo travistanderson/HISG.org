@@ -69,23 +69,27 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #adminfirst{padding:0 0 0 400px;}
 /*#administration{float:right;padding:0 100px 0 0;}
 #administration li{display:inline;}*/
-
-/*==========================impacter=========================*/
+/*
+/*==========================impacter=========================
 #impacter{height:407px;background: #DDD url(/site_media/images/impact2.jpg) no-repeat  top center;}
 #left-impacter{float:left;padding:120px 30px 0 60px;width:290px;text-align:center;}
 #right-impacter{float:right;padding:32px 25px 0 0;}
 #iln{color:#ae5219;font-family:palatino;font-weight:bold;}
 #ilb{color:#783a11;}
 #irp{}
+*/
+
 
 /*==========================body=========================*/
 #bd{width:1026px;min-height:70em;}
+
 #left-colomn{float:left;width:338;min-height:500px;padding:20px 0 10px 0;}
-#left-backer{background-color:#d9bc65;width:300px;height:970px;margin:0 0 0 38px;padding:1px 0 0 0;}
-.left-block{background-color:#f2e3a5;margin:10px;width:280px;height:230px;}
-#right-colomn{float:left;min-height:500px;width:640px;margin:0 0 0 30px;padding:20px 0 0 0;}
+#left-backer{background-color:#d9bc65;width:300px;margin:0 0 0 38px;padding:1px 0 0 0;}
+.left-block{background-color:#f2e3a5;margin:10px;width:280px;}
 .brick{font-family:times;font-weight:bold;text-transform:uppercase;background-color:#14436f;padding:3px 0 3px 0;width:200px;text-align:center;margin:40px 0 0 40px;}
 .brickpic{padding:20px 0 0 10px;}
+
+#right-colomn{float:left;min-height:500px;width:640px;margin:0 0 0 30px;padding:20px 0 0 0;}
 #toppic{background-color:#f2e3a5;padding:10px;}
 #toppicin{background:url(/site_media/images/toppicin.jpg);height:257px;}
 #toppicin div{float:left;}

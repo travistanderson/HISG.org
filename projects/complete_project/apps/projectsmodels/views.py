@@ -10,15 +10,17 @@ from videos.models import Video
 from photologue.models import Gallery, Photo
 from countries.models import Region, Country
 from photologue.models import Photo
-from brick.models import Webpage
+from brick.views import bricker, brickerheight
 
 def index(request):
 	ph = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
 	pi = Project.objects.filter(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
-	pa = Webpage.objects.get(name = 'index - news and photos')
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
 	return render_to_response('projects-models/index.html', {'hist_list': ph,
 														'idr_list':pi,
-														'page': pa,
+														'brickgroup': bg,
+														'brickheight':bgheight,
 														},
 		context_instance = RequestContext(request),
 	)
@@ -33,15 +35,17 @@ def projectindex(request, sort):
 	else:
 		p = Project.objects.all()	
 
-	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/project.html', {'project_list': p,'page': pa,'sort':sort,},
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('projects-models/project.html', {'project_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
 		context_instance = RequestContext(request),
 	)	
 	
 def projectdetail(request, proj_id):
 	p = get_object_or_404(Project, pk = proj_id)
-	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/project_d.html', {'project': p,'page': pa,},
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('projects-models/project_d.html', {'project': p,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -55,32 +59,37 @@ def idrprojectindex(request, sort):
 	else:
 		p = Project.objects.all()	
 
-	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/idrproject.html', {'project_list': p,'page': pa,'sort':sort,},
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('projects-models/idrproject.html', {'project_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
 		context_instance = RequestContext(request),
 	)	
 	
 def idrprojectdetail(request, proj_id):
 	p = get_object_or_404(Project, pk = proj_id)
-	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/idrproject_d.html', {'project': p,'page': pa,},
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('projects-models/idrproject_d.html', {'project': p,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
 def histmodel(request):
-	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/histmodel.html', {'page': pa,},
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('projects-models/histmodel.html', {'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def idrmodel(request):
-	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/idrmodel.html', {'page': pa,},
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('projects-models/idrmodel.html', {'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def capability(request):
-	pa = Webpage.objects.get(name = 'index - news and photos')
-	return render_to_response('projects-models/capability.html', {'page': pa,},
+	bg = bricker('projects','index')
+	bgheight = brickerheight(bg)
+	return render_to_response('projects-models/capability.html', {'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)

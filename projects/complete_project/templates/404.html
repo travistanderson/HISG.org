@@ -1,9 +1,12 @@
+{# templates/404.html #}
 {% extends "site_base.html" %}
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Not Found" %}{% endblock %}
+{% block brick %}
+	{% include "brick.html" %}
+{% endblock brick %}
 
 {% block body %}
-    <p>{% trans "We're sorry but that page could not be found." %}</p>
+    <p>We're sorry but that page could not be found.</p>
 {% endblock %}

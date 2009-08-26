@@ -11,7 +11,7 @@ from about.forms import ContactForm, InternBecomeForm, InternFindForm, InternPla
 from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
-from brick.models import Webpage
+from brick.views import bricker, brickerheight
 from django.conf import settings
 if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
@@ -20,7 +20,9 @@ else:
 
 	
 def contact(request):
-	pa = Webpage.objects.get(name="index - starfish")
+	# bg = BrickGroup.objects.get(name = 'index', section = "about")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -35,83 +37,92 @@ def contact(request):
 		else:
 			form = ContactForm(request.POST)
 			return render_to_response(
-				'about/contact.html', {'form':form,'page':pa,},
+				'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		form = ContactForm()
 	return render_to_response(
-		'about/contact.html', {'form':form,'page':pa,},
+		'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
 def contactsuccess(request):
 	d = Staff.objects.all().filter(director=True).order_by('sorter')
-	pa = Webpage.objects.get(name="index - starfish")	
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)	
 	
-	return render_to_response('about/contact-success.html', {'director_list': d,'page':pa,},
+	return render_to_response('about/contact-success.html', {'director_list': d,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 
 def directors(request):
 	d = Staff.objects.all().filter(director=True).order_by('sorter')
-	pa = Webpage.objects.get(name="index - starfish")	
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)	
 	
-	return render_to_response('about/directors.html', {'director_list': d,'page':pa,},
+	return render_to_response('about/directors.html', {'director_list': d,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
 	
 def directors_detail(request, staff_id):
 	d = get_object_or_404(Staff, pk = staff_id)
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 
-	return render_to_response('about/directors_detail.html', {'director': d,'page':pa,},
+	return render_to_response('about/directors_detail.html', {'director': d,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def staff(request):
 	s = Staff.objects.all().filter(director=False).order_by('sorter')
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 	
-	return render_to_response('about/staff.html', {'staff_list': s,'page':pa,},
+	return render_to_response('about/staff.html', {'staff_list': s,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def staff_detail(request, staff_id):
 	s = get_object_or_404(Staff, pk = staff_id)
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 
-	return render_to_response('about/staff_detail.html', {'staff': s,'page':pa,},
+	return render_to_response('about/staff_detail.html', {'staff': s,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def office(request):
 	o = Office.objects.all().order_by('sorter')
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 	
-	return render_to_response('about/office.html', {'office_list': o,'page':pa,},
+	return render_to_response('about/office.html', {'office_list': o,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def office_detail(request, office_id):
 	o = get_object_or_404(Office, pk = office_id)
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 
-	return render_to_response('about/office_d.html', {'office': o,'page':pa,},
+	return render_to_response('about/office_d.html', {'office': o,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
 def intern(request):
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 	
-	return render_to_response('about/intern.html', {'page':pa,},
+	return render_to_response('about/intern.html', {'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def internbecome(request):
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 	if request.method == 'POST':
 		form = InternBecomeForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -126,18 +137,19 @@ def internbecome(request):
 		else:
 			form = InternBecomeForm(request.POST)
 			return render_to_response(
-				'about/intern-become.html', {'form':form,'page':pa,},
+				'about/intern-become.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		form = InternBecomeForm()
 	return render_to_response(
-		'about/intern-become.html', {'form':form,'page':pa,},
+		'about/intern-become.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def internfind(request):
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 	if request.method == 'POST':
 		form = InternFindForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -152,18 +164,19 @@ def internfind(request):
 		else:
 			form = InternFindForm(request.POST)
 			return render_to_response(
-				'about/intern-find.html', {'form':form,'page':pa,},
+				'about/intern-find.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		form = InternFindForm()
 	return render_to_response(
-		'about/intern-find.html', {'form':form,'page':pa,},
+		'about/intern-find.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def internplace(request):
-	pa = Webpage.objects.get(name="index - starfish")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
 	if request.method == 'POST':
 		form = InternPlaceForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -178,19 +191,20 @@ def internplace(request):
 		else:
 			form = InternPlaceForm(request.POST)
 			return render_to_response(
-				'about/intern-place.html', {'form':form,'page':pa,},
+				'about/intern-place.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		form = InternPlaceForm()
 	return render_to_response(
-		'about/intern-place.html', {'form':form,'page':pa,},
+		'about/intern-place.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)	
 	
 def internsuccess(request):
-	pa = Webpage.objects.get(name="index - starfish")	
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)	
 	
-	return render_to_response('about/intern-success.html', {'page':pa,},
+	return render_to_response('about/intern-success.html', {'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)

@@ -53,38 +53,23 @@
 				</div><!--this is the end of the Header-->	
 			
 				<div id="bd"><!--this is the start of the body-->
-					{% block navigation %}{% endblock %}
-					<div id="left-colomn">{# {% block left_colomn %}{% endblock left_colomn %} #}
-						<div id="left-backer">
-							<div class="left-block">{% block brick1 %}{% endblock brick1 %}
-								
-							</div>
-							<div class="left-block">{% block brick2 %}{% endblock brick2 %}
-								
-							</div>
-							<div class="left-block">{% block brick3 %}{% endblock brick3 %}
-								
-							</div>
-							<div class="left-block">{% block brick4 %}{% endblock brick4 %}
-								
-							</div>
-						</div>
-					</div>
+					{% block navigation %}{% endblock %}{# start and end of navigation #}
+					
+					{% block brick %}{% endblock brick %}{# start and end of left-column #}
+					
 					<div id="right-colomn">
 						{% block tininav %}{% endblock %}
-						{% block body %}{% endblock body%}
-					</div>
-					{# this is where the main content goes. Look in site_base. #}
-				    {% block extra_body %}{% endblock %}<!-- if you need extra? -->
+						{% block body %}{% endblock body %}
+					</div>{# this is where the main content goes. Look in site_base. #}
+					
+				    {% block extra_body %}{% endblock %}{# if you need extra? #}
 					<div style="clear:both"></div>
-					<div id="ft"><!--this is the start of the footer-->
+					
+					<div id="ft">{# this is the start of the footer #}
 						{% block footer %}{% endblock %}{# in site_base.html #}
-					</div><!-- this is the end of the footer  -->
-				</div><!--this is the end of the body-->
-			
-
-			
-			</div><!--this is the end of the custom document declaration-->
+					</div>{# this is the end of the footer #}
+				</div>{# this is the end of the body #}
+			</div>{# this is the end of doc #}
 		</div>{# end of doc-wrapper #}
     </body>
 </html>

@@ -8,10 +8,10 @@ from django.template import RequestContext
 from datetime import datetime, timedelta
 from partners.models import Page, Change
 from partners.forms import EditPageForm
-from brick.models import Webpage
+from brick.models import BrickGroup
 
 def index(request):
-	pa = Webpage.objects.get(name="index - starfish")
+	pa = BrickGroup.objects.get(name="index - starfish")
 
 	return render_to_response('partners/index.html',{'page':pa,},
 		context_instance = RequestContext(request),

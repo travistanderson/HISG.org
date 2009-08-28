@@ -15,17 +15,17 @@ SECTION_CHOICES = (
 )
 
 SIZE_CHOICES = (
-    ('190', 'Small'),
+    ('160', 'Small'),
     ('230', 'Medium'),
-	('270', 'Large'),
+	('350', 'Large'),
 )
 
 class Brick(models.Model):
 	name = models.CharField(max_length=200)
-	body = models.TextField('body')
+	body = models.TextField('body',blank=True, null=True)
 	link = models.CharField(max_length=200)
 	linktarget = models.BooleanField(default=False,help_text="True means opens in a new window, False means opens in same window.")
-	size = models.CharField(choices=SIZE_CHOICES,max_length=20)
+	size = models.CharField(choices=SIZE_CHOICES,max_length=20, help_text="Small = 160px,  Medium = 230px,  Large = 350px.")
 	photo = models.ForeignKey(Photo, blank=True, null=True)
 	    
 	class Meta:

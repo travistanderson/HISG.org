@@ -46,8 +46,8 @@ def newsindex(request, sort):
 		n = News.objects.all().order_by('-date')
 	else:
 		n = News.objects.all()
-		bg = bricker('news','index')
-		bgheight = brickerheight(bg)
+	bg = bricker('news','index')
+	bgheight = brickerheight(bg)
 	return render_to_response('news-photos/news.html', {'news_list': n,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
 		context_instance = RequestContext(request),
 	)

@@ -1,54 +1,67 @@
 {# templates/brick.html #}
 <div id="left-colomn">{# start of left-column #}
-	<div id="left-backer" style="height:{{ brickheight }}px;">{# start of left-backer #}
-		<div class="left-block" style="height:{{ brickgroup.brick1.size }}px;">
+	<div id="left-backer" style="height:{{ brickheight.height }}px;">{# start of left-backer #}
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick1.size }}px;background:url({{ brickheight.b1path }}) no-repeat;">
 			<a href="{{ brickgroup.brick1.link }}" target="{% if brickgroup.brick1.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brickpic">
-					<img src="{{ brickgroup.brick1.photo.get_brick_url }}"></img>
-					
-				</div>
-			</a>
-			<a href="{{ brickgroup.brick1.link }}" target="{% if brickgroup.brick1.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brick">
-					{{ brickgroup.brick1.body }}
-				</div>
+				{{ brickgroup.brick1.body|safe }}
+				
+				{% if brickheight.b1gallery_latest %} {# this test to see whether it is the photo brick #}
+					<div class="br_ph_title">{{ brickheight.b1gallery_latest.title }}</div>
+					{% for photo in brickheight.b1gallery_latest_list %}
+						<div class="br_ph_photo"><img src="{{ photo.get_thumbnail_url }}" class="gold5"></img></div>
+					{% endfor %}
+					<div class="clearer"></div>
+					<div class="br_ph_body">{{ brickheight.b1gallery_latest.description|truncatewords:16 }}</div>
+				{% endif %}
 			</a>
 		</div>
-		<div class="left-block" style="height:{{ brickgroup.brick2.size }}px;">
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick2.size }}px;background:url({{ brickheight.b2path }}) no-repeat;">
 			<a href="{{ brickgroup.brick2.link }}" target="{% if brickgroup.brick2.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brickpic">
-					<img src="{{ brickgroup.brick2.photo.get_brick_url }}"></img>
-				</div>
-			</a>
-			<a href="{{ brickgroup.brick2.link }}" target="{% if brickgroup.brick2.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brick">
-					{{ brickgroup.brick2.body }}
-				</div>
+				{{ brickgroup.brick2.body|safe }}
+
+				{% if brickheight.b2gallery_latest %} {# this test to see whether it is the photo brick #}
+					<div class="br_ph_title">{{ brickheight.b2gallery_latest.title }}</div>
+					{% for photo in brickheight.b2gallery_latest_list %}
+						<div class="br_ph_photo"><img src="{{ photo.get_thumbnail_url }}" class="gold5"></img></div>
+					{% endfor %}
+					<div class="clearer"></div>
+					<div class="br_ph_body">{{ brickheight.b2gallery_latest.description|truncatewords:16 }}</div>
+				{% endif %}
 			</a>
 		</div>
-		<div class="left-block" style="height:{{ brickgroup.brick3.size }}px;">
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick3.size }}px;background:url({{ brickheight.b3path }}) no-repeat;">
 			<a href="{{ brickgroup.brick3.link }}" target="{% if brickgroup.brick3.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brickpic">
-					<img src="{{ brickgroup.brick3.photo.get_brick_url }}"></img>
-				</div>
-			</a>
-			<a href="{{ brickgroup.brick3.link }}" target="{% if brickgroup.brick3.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brick">
-					{{ brickgroup.brick3.body }}
-				</div>
-			</a>
-		</div>
-		<div class="left-block" style="height:{{ brickgroup.brick4.size }}px;">
-			<a href="{{ brickgroup.brick4.link }}" target="{% if brickgroup.brick4.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brickpic">
-					<img src="{{ brickgroup.brick4.photo.get_brick_url }}"></img>
-				</div>
-			</a>
-			<a href="{{ brickgroup.brick4.link }}" target="{% if brickgroup.brick4.linktarget %}_blank{% else %}_self{% endif %}">
-				<div class="brick">
-					{{ brickgroup.brick4.body }}
-				</div>
+				{{ brickgroup.brick3.body|safe }}
+				
+				{% if brickheight.b3gallery_latest %} {# this test to see whether it is the photo brick #}
+					<div class="br_ph_title">{{ brickheight.b3gallery_latest.title }}</div>
+					{% for photo in brickheight.b3gallery_latest_list %}
+						<div class="br_ph_photo"><img src="{{ photo.get_thumbnail_url }}" class="gold5"></img></div>
+					{% endfor %}
+					<div class="clearer"></div>
+					<div class="br_ph_body">{{ brickheight.b3gallery_latest.description|truncatewords:16 }}</div>
+				{% endif %}
 			</a>
 		</div>
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick4.size }}px;background:url({{ brickheight.b4path }}) no-repeat;">
+			<a href="{{ brickgroup.brick4.link }}" target="{% if brickgroup.brick4.linktarget %}_blank{% else %}_self{% endif %}">
+				{{ brickgroup.brick4.body|safe }}
+				
+				{% if brickheight.b4gallery_latest %} {# this test to see whether it is the photo brick #}
+					<div class="br_ph_title">{{ brickheight.b4gallery_latest.title }}</div>
+					{% for photo in brickheight.b4gallery_latest_list %}
+						<div class="br_ph_photo"><img src="{{ photo.get_thumbnail_url }}" class="gold5"></img></div>
+					{% endfor %}
+					<div class="clearer"></div>
+					<div class="br_ph_body">{{ brickheight.b4gallery_latest.description|truncatewords:16 }}</div>
+				{% endif %}
+			</a>
+		</div>
+
+		
 	</div>{# end of left-backer #}
 </div>{# end of left-column #}

@@ -34,8 +34,8 @@ def pager(request, url):
     #     bg = BrickGroup.objects.get(name=f.bricks.name, section=f.bricks.section)
     # except BrickGroup.DoesNotExist:
     #     raise Http404
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
+    bg = bricker(str(f.bricks.section),str(f.bricks.name))
+    bgheight = brickerheight(bg)
     # If registration is required for accessing this page, and the user isn't
     # logged in, redirect to the login page.
     # if f.registration_required and not request.user.is_authenticated():

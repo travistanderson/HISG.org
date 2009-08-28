@@ -1,6 +1,13 @@
 {# templates/projectsmodels/histidr_box.html #}
 {% if project.histidr_set.get %}
 	<div class="histidr">
+		<div class="histidr_top_info">
+			{% ifequal project.histidr_set.get.histidr 'IDR' %}
+				This project has been tagged as an International Disaster Response project. Of the 14 IDR Primary Service Categories, activities took place in these areas.
+			{% else %}	
+				This project has been tagged as a Holistic Integrated Sustainable Transformation project. Of the 12 HIST Primary Service Categories, activities took place in these areas.
+			{% endifequal %}
+		</div>{# end of histidr_top_info #}
 		<div class="histidr_st">
 			{% ifequal project.histidr_set.get.histidr 'IDR' %}
 				<img src="/site_media/images/sections/projects/idr-iconst.bmp"></img>
@@ -60,6 +67,11 @@
 				{% endifequal %}
 			</div>
 		</div>{# end of histidr_info #}
+		<div class="clearer"></div>
+		<div class="histidr_bottom_info">
+			Want to learn more about the models developed by HISG for sustainable development and disaster response? Click here 
+			<a href="{% url histmodel %}">HIST Model</a> or here <a href="{% url idrmodel %}">IDR Model</a>.
+		</div>{# end of histidr_bottom_info #}
 	</div>{# end of histidr #}
 	<div class="clearer"></div>
 {% endif %}

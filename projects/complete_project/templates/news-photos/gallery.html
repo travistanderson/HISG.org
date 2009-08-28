@@ -3,25 +3,9 @@
 {% block subarrive %}2{% endblock subarrive %}
 {% load pagination_tags %}
 
-{% block brick1 %}
-	<a href="{{ brickgroup.brick1.link }}"><div class="brickpic"><img src="{{ brickgroup.brick1.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick1.link }}"><div class="brick">{{ brickgroup.brick1.body }}</div></a>
-{% endblock brick1 %}
-
-{% block brick2 %}
-	<a href="{{ brickgroup.brick2.link }}"><div class="brickpic"><img src="{{ brickgroup.brick2.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick2.link }}"><div class="brick">{{ brickgroup.brick2.body }}</div></a>
-{% endblock brick2 %}
-
-{% block brick3 %}
-	<a href="{{ brickgroup.brick3.link }}"><div class="brickpic"><img src="{{ brickgroup.brick3.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick3.link }}"><div class="brick">{{ brickgroup.brick3.body }}</div></a>
-{% endblock brick3 %}
-
-{% block brick4 %}
-	<a href="{{ brickgroup.brick4.link }}"><div class="brickpic"><img src="{{ brickgroup.brick4.photo.get_brick_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick4.link }}"><div class="brick">{{ brickgroup.brick4.body }}</div></a>
-{% endblock brick4 %}
+{% block brick %}
+	{% include "brick.html" %}
+{% endblock brick %}
 
 {% block body %}
 
@@ -49,9 +33,7 @@
 		{% for gallery in gallery_list %}
 			<div class="rowergallery">
 				<a href='{% url gallery_detail gallery.id %}'>
-					<h4>
-							{{ gallery.title }}
-					</h4>
+					<h4>{{ gallery.title }}</h4>
 					<div>
 						{% for photo in gallery.photos.all %}
 							{% ifequal forloop.counter 1 %}
@@ -67,18 +49,19 @@
 					</div>
 				</a>
 				<div class="caption">{{ gallery.description|safe|truncatewords:40 }}</div><br/>
-				{# <div class="clearer"></div> #}
-					<span style="float:left;width:200px;display:inline;">
-						{{ gallery.date_added|date:"M d, Y" }}
-					</span>
-					<span style="float:left;width:300px;display:inline;">
-						Photos: {{ gallery.photos.all|length }}
-					</span>
-			</div>
+				<span style="float:left;width:200px;display:inline;">
+					{{ gallery.date_added|date:"M d, Y" }}
+				</span>
+				<span style="float:left;width:300px;display:inline;">
+					Photos: {{ gallery.photos.all|length }}
+				</span>
+				<div class="clearer"></div>
+			</div>{# end of rowergallery #}
 		{% endfor %}
+		<div class="clearer" style="width:640px;height:15px;"></div>
 		{% paginate %}
 	{% else %}
-		<p>No Photos.</p>
+		<p>No Photo Galleries.</p>
 	{% endif %}
 
 {% endblock %}

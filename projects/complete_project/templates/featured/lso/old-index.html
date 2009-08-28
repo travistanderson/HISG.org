@@ -2,25 +2,9 @@
 {% extends 'featured/lso/base.html' %}
 {% block subarrive %}2{% endblock subarrive %}
 
-{% block brick1 %}
-	<a href="{{ brickgroup.brick1.link }}"><div class="brickpic"><img src="{{ brickgroup.brick1.photo.get_display_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick1.link }}"><div class="brick">{{ brickgroup.brick1.body }}</div></a>
-{% endblock brick1 %}
-
-{% block brick2 %}
-	<a href="{{ brickgroup.brick2.link }}"><div class="brickpic"><img src="{{ brickgroup.brick2.photo.get_display_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick2.link }}"><div class="brick">{{ brickgroup.brick2.body }}</div></a>
-{% endblock brick2 %}
-
-{% block brick3 %}
-	<a href="{{ brickgroup.brick3.link }}"><div class="brickpic"><img src="{{ brickgroup.brick3.photo.get_display_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick3.link }}"><div class="brick">{{ brickgroup.brick3.body }}</div></a>
-{% endblock brick3 %}
-
-{% block brick4 %}
-	<a href="{{ brickgroup.brick4.link }}"><div class="brickpic"><img src="{{ brickgroup.brick4.photo.get_display_url }}"></img></div></a>
-	<a href="{{ brickgroup.brick4.link }}"><div class="brick">{{ brickgroup.brick4.body }}</div></a>
-{% endblock brick4 %}
+{% block brick %}
+	{% include "brick.html" %}
+{% endblock brick %}
 
 {% block body %}
 	<div class="right">

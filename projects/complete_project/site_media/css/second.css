@@ -67,27 +67,21 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .sub0{display:none;}
 .inyes{display:none;}
 #adminfirst{padding:0 0 0 400px;}
-/*#administration{float:right;padding:0 100px 0 0;}
-#administration li{display:inline;}*/
-/*
-/*==========================impacter=========================
-#impacter{height:407px;background: #DDD url(/site_media/images/impact2.jpg) no-repeat  top center;}
-#left-impacter{float:left;padding:120px 30px 0 60px;width:290px;text-align:center;}
-#right-impacter{float:right;padding:32px 25px 0 0;}
-#iln{color:#ae5219;font-family:palatino;font-weight:bold;}
-#ilb{color:#783a11;}
-#irp{}
-*/
-
 
 /*==========================body=========================*/
+
 #bd{width:1026px;min-height:70em;}
 
 #left-colomn{float:left;width:338;min-height:500px;padding:20px 0 10px 0;}
 #left-backer{background-color:#d9bc65;width:300px;margin:0 0 0 38px;padding:1px 0 0 0;}
 .left-block{background-color:#f2e3a5;margin:10px;width:280px;}
-.brick{font-family:times;font-weight:bold;text-transform:uppercase;background-color:#14436f;padding:3px 0 3px 0;width:200px;text-align:center;margin:40px 0 0 40px;}
-.brickpic{padding:20px 0 0 10px;}
+/*.brick{font-family:times;font-weight:bold;text-transform:uppercase;background-color:#14436f;padding:3px 0 3px 0;width:200px;text-align:center;margin:40px 0 0 40px;}*/
+.brick{text-align:center;font-size:24px;}
+.brickhide{visibility:hidden;}
+.br_ph_info{font-weight:bold;width:260px;padding:10px 0 0 10px;text-align:center;}
+.br_ph_title{font-weight:bold;width:260px;padding:10px 0 0 10px;text-align:center;color:#14436f;}
+.br_ph_photo{float:left;width:100px;padding:20px 0 0 22px;}
+.br_ph_body{width:238px;padding:10px 0 0 22px;color:#14436f;}
 
 #right-colomn{float:left;min-height:500px;width:640px;margin:0 0 0 30px;padding:20px 0 0 0;}
 #toppic{background-color:#f2e3a5;padding:10px;}
@@ -119,7 +113,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .rower2 span{color:#ae5219;}
 /*.rower2 img{padding:0 0 0 20px;}*/
 
-.rowergallery{height:210px;border-bottom:solid 1px #dabc64;padding:10px 0 0 0;}
+.rowergallery{min-height:100px;border-bottom:solid 1px #dabc64;padding:10px 0 0 0;margin:0 0 15px 0;}
 .rowergallery span{color:#ae5219;}
 .rowergallery img{padding:0 0px 0 0;margin:0 40px 0 0;}
 .brown{color:#dabc64;height:1px;border-width:0;background-color:gray;}
@@ -176,7 +170,8 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .button_vid a{color:white;}
 #back_vid{float:left;padding:40px 0 0 0px;width:390px;height:102px;text-align:center;}
 
-.histidr{border:solid 1px #dabc64;width:600px;height:194px;padding:10px;background-color:#00a3e6;}
+.histidr{border:solid 1px #dabc64;width:600px;height:274px;padding:10px;background-color:#00a3e6;}
+.histidr_top_info{color:#FFF;padding:0 0 10px 0;}
 .histidr_st{float:left;height:194px;width:77px;}
 .histidr_info{float:left;height:174px;border:solid 10px #dabc64;width:503px;background-color:#fffccf;}
 .histidr_title{color:#FFF;font-weight:bold;background-color:#dabc64;width:300px;margin:0 0 0 100px;text-align:center;}
@@ -184,11 +179,21 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .histbold{font-size:12px;font-weight:bold;height:14px;}
 .histgray{font-size:10px;color:#888888;height:14px;}
 .histidr_third{width:150px;float:left;padding:0 11px 0 0;}
+.histidr_bottom_info{color:#FFF;padding:0px 0 10px 0;margin:10px 0 0 0;}
+.histidr_bottom_info a {color:#14436f;}
 
 #donate{width:540px;padding:15px 30px 30px 30px;border:10px solid #dabc64;margin:20px 0 0 0;}
 .donate_box{padding:15px 0 0 0;}
 .donate_form{float:right;}
 #donate_under{padding:20px 0 0 190px;width:300px;}
+
+.pagination{width:640px;}
+.pagination a{color:#FFF;}
+.page{background-color:#3f97ba;padding:1px 3px;border:2px solid #14436f;}
+.prev{background-color:#3f97ba;padding:1px 3px;border:2px solid #14436f;}
+.next{background-color:#3f97ba;padding:1px 3px;border:2px solid #14436f;}
+.disabled{color:#FFF;padding:1px 5px;}
+.current{background-color:#FFF;color:#14436f;padding:1px 8px;margin:0 10px 0 10px;}
 
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}

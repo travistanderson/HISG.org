@@ -1,15 +1,9 @@
-{# templates/misc/old-firsttime.html #}
-
-{% extends "misc/base.html" %}
-
-{% block brick %}
-	{% include "brick.html" %}
-{% endblock brick %}
-
-{% block body %}
 	<h2 class="center">Welcome to HISG</h2><hr/>
 	<div>
-		<div style="width:170px;background-color:#14436f;float:left;">
+		<h3 class="left" style="padding:0 0px 10px 10px;">
+			Humanitarian is simply another word for caring
+		</h3><div class="clearer"></div>
+		<div class="firsttime_wrap">
 			<div class="firsttime">
 				<p>We have resources for</p>
 				<ul>
@@ -22,10 +16,12 @@
 				</ul>
 			</div>
 		</div>
-		<h3 class="left" style="padding:0 0px 10px 10px;">
-			Humanitarian is simply another word for caring
-		</h3>
-		<div class="left" style="width:200px;padding:0 0px 0 10px;">
+		<div class="right" style="width:250px;padding:0 30px 0 10px;">
+			<img src="/site_media/images/sections/misc/steve.jpg" class="gold5"></img>
+			<img src="/site_media/images/sections/misc/kids.jpg" class="gold5"></img>
+			<img src="/site_media/images/sections/misc/blacksmith.jpg" class="gold5"></img>						
+		</div>
+		<div class="left" style="width:330px;padding:0 0px 0 10px;">
 			<span class="italic">
 				Humanitarian International Services Group (HISG) has worked to bring hope and help to 
 				suffering communities in more than 80 countries around the world. Through disaster relief
@@ -34,21 +30,15 @@
 				to join with us in touching lives of men, women and children, both at home and abroad.
 			</span>
 		</div>
-		<div class="right" style="width:250px;padding:0 0 0 10px;">
-			<img src="/site_media/images/sections/misc/steve.jpg"></img>
-			<img src="/site_media/images/sections/misc/kids.jpg"></img>
-			<img src="/site_media/images/sections/misc/blacksmith.jpg"></img>						
-		</div>
 		<p style="clear:left;padding:10px 0 0 0;">
-			The information on our website is divided into five major categories
-			<ul style="list-style-position:inside;padding:0 0 0 20px;font-weight:bold;color:#444444;">
+			The information on our website is divided into five major categories <br/>
+			<ul style="list-style-position:inside;padding:20px 0 0 20px;font-weight:bold;color:#444444;">
 				<li>News and Photos</li>
-				<li>Projects and Models</li>
 				<li>Featured Initiatives</li>
+				<li>Projects and Models</li>
 				<li>About HISG</li>
 				<li>Donation Portal</li>
 			</ul>
-			You can watch <a href="/">this video</a> introducing each section or read about them below <br/>
 		</p><br/>
 		<p>
 			In <a href="/news-and-photos/">News and Photos</a>, you can read the latest updates from HISG's
@@ -59,6 +49,12 @@
 			drive what HISG is doing. There is and initiative for Orphan Care; the Hope Resource Network, which
 			manages gift-in-kind donations, the first of its kind Global Information Center; the much talked-about
 			Let's Save One campaign, and the Starfish Community.
+		</p><br/>
+		<p>
+			In <a href="/projects-and-models/">Projects and Models</a>, you can see HISG's projects from every country. They are divided
+			into community development and disaster relief or what we call the<a href="/projects-and-models/models/HIST-model/">"HIST"</a> and 
+			<a href="/projects-and-models/models/IDR-model/">"IDR"</a> models. There is also a description of these models and why
+			HISG developed them to address community development and disaster response.
 		</p><br/>
 		<p>
 			In <a href="/about-hisg/">About HISG</a>, you can read about our organization's international 
@@ -72,4 +68,3 @@
 			the latest information from projects they support, and view printable donation records.
 		</p><br/>
 	</div>
-{% endblock body %}

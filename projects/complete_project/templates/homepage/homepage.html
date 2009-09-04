@@ -313,73 +313,75 @@
 					</div>{# end of lefthomer #}
 
 					<div class="homer" id="middlehomer">
-						<h3>STARFISH COMMUNITY ACTIVITY</h3> 
-						<h4>
-							Please join us at the <span style="color:#14436f;font-size:14px;">Starfish Community Expo</span>
-							October 20-22, Fort Mill, SC
-						</h4>
-						<p>This conference will further the Starfish Community's ability to 
-							connect resource providers with end-users from 10 Community Development and Disaster Response 
-							categories across 6 geographic regions.<br/><br/>
-							<h4><a href="http://starfishcommunity.net" target="_blank">I WANT TO LEARN MORE</a>.</h4>
-						</p>
-						<div style="padding:5px 0 10px 0;">
-							<a href="http://starfishcommunity.net" target="_blank">
-								<img src="/site_media/images/starfish-small.png"></img>
-							</a>	
-						</div>
-						<p>
-							<span class="ican">
-								<a href="http://starfishcommunity.net/registration.html" target="_blank">
-									STARFISH EXPO SIGNUP FORM
-								</a>
-							</span>
-						</p>
+						{% chunk "homepage_middle_column" %}
+						<!-- <h3>STARFISH COMMUNITY ACTIVITY</h3> 
+												<h4>
+													Please join us at the <span style="color:#14436f;font-size:14px;">Starfish Community Expo</span>
+													October 20-22, Fort Mill, SC
+												</h4>
+												<p>This conference will further the Starfish Community's ability to 
+													connect resource providers with end-users from 10 Community Development and Disaster Response 
+													categories across 6 geographic regions.<br/><br/>
+													<h4><a href="http://starfishcommunity.net" target="_blank">I WANT TO LEARN MORE</a>.</h4>
+												</p>
+												<div style="padding:5px 0 10px 0;">
+													<a href="http://starfishcommunity.net" target="_blank">
+														<img src="/site_media/images/starfish-small.png"></img>
+													</a>	
+												</div>
+												<p>
+													<span class="ican">
+														<a href="http://starfishcommunity.net/registration.html" target="_blank">
+															STARFISH EXPO SIGNUP FORM
+														</a>
+													</span>
+												</p> -->
 					</div>{# end of middlehomer #}
 
 					<div class="homer" id="righthomer">
-						<h3>CONNECT WITH HISG</h3> 
-						<div class="connect" id="facebook">
-							<div class="right" style="width:125px;height:125px;">
-								<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
-									<img src="/site_media/images/facebook2.png"></img>
-								</a>
-							</div>						
-							<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
-								<h4>Go to the HISG Facebook Group</h4>
-							</a>
-							There are over 450 members in our group and we would love for you to be the next one.
-						</div><div class="clearer"></div>
-						
-						<div class="connect" id="intern">
-							<a href="{% url intern %}">
-								<h4>Become part of the HISG Internship Program</h4>
-							</a>
-							<div class="left" style="width:125px;height:125px;padding:0 10px 0 0;">
-								<a href="{% url intern %}">
-									<img src="/site_media/images/intern2.png"></img>
-								</a>
-							</div>
-							You can <a href="{% url intern %}">volunteer</a> to be an intern or if you are 
-							an organization you can <a href="{% url intern %}">send interns</a> to 
-							volunteer or we can try to <a href="{% url intern %}">get interns</a> to help 
-							with your humanitarian work.						
-						</div><div class="clearer"></div>
-						
-						<div class="connect" id="pulse"> 
-							<div class="right" style="width:125px;height:125px;">
-								<a href="{% url pulse %}">
-									<img src="/site_media/images/pulse-report.png"></img>
-								</a>
-							</div>						
-							<a href="{% url pulse %}">
-								<h4>View the latest HISG Pulse Reports</h4>
-							</a>
-							This Pulse Report is a regular publication of Humanitarian International 
-							Services Group, updating readers on the worldwide disaster relief and 
-							community development operations of HISG.<br/>
-							<a href="{% url pulse %}">Sign up to receive the Pulse Report</a>
-						</div><div class="clearer"></div>					
+						{% chunk "homepage_right_column" %}
+						<!-- <h3>CONNECT WITH HISG</h3> 
+												<div class="connect" id="facebook">
+													<div class="right" style="width:125px;height:125px;">
+														<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
+															<img src="/site_media/images/facebook2.png"></img>
+														</a>
+													</div>						
+													<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
+														<h4>Go to the HISG Facebook Group</h4>
+													</a>
+													There are over 450 members in our group and we would love for you to be the next one.
+												</div><div class="clearer"></div>
+												
+												<div class="connect" id="intern">
+													<a href="{% url intern %}">
+														<h4>Become part of the HISG Internship Program</h4>
+													</a>
+													<div class="left" style="width:125px;height:125px;padding:0 10px 0 0;">
+														<a href="{% url intern %}">
+															<img src="/site_media/images/intern2.png"></img>
+														</a>
+													</div>
+													You can <a href="{% url intern %}">volunteer</a> to be an intern or if you are 
+													an organization you can <a href="{% url intern %}">send interns</a> to 
+													volunteer or we can try to <a href="{% url intern %}">get interns</a> to help 
+													with your humanitarian work.						
+												</div><div class="clearer"></div>
+												
+												<div class="connect" id="pulse"> 
+													<div class="right" style="width:125px;height:125px;">
+														<a href="{% url pulse %}">
+															<img src="/site_media/images/pulse-report.png"></img>
+														</a>
+													</div>						
+													<a href="{% url pulse %}">
+														<h4>View the latest HISG Pulse Reports</h4>
+													</a>
+													This Pulse Report is a regular publication of Humanitarian International 
+													Services Group, updating readers on the worldwide disaster relief and 
+													community development operations of HISG.<br/>
+													<a href="{% url pulse %}">Sign up to receive the Pulse Report</a>
+												</div><div class="clearer"></div> -->					
 					</div>{# end of right homer #}
 					<div style="clear:both"></div>
 					

@@ -91,7 +91,17 @@ function initial(){
 	})
 }
 
-
+function tininav(){
+	$(document).ready(function(){
+		var text = $(".tini_highlight").text();
+		var tiniArray = new Array();
+		tiniArray = text.split(",");
+		for (i=0;i<tiniArray.length;i++){
+			var whichone = "#tini" + tiniArray[i];
+	 		$(whichone).css({color: "#3f97ba",});
+		}
+	})
+}
 
 // 
 // function restore(event){

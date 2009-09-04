@@ -10,11 +10,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = 'dev.db4'       # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
+DATABASE_ENGINE = 'mysql'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
+DATABASE_NAME = 'hisg_org'       # Or path to database file if using sqlite3.
+DATABASE_USER = 'hisg_org_admin'             # Not used with sqlite3.
+DATABASE_PASSWORD = 'Qrt63Lm0Zp'         # Not used with sqlite3.
+DATABASE_HOST = '10.3.20.12'             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 # Local time zone for this installation. Choices can be found here:
@@ -40,7 +40,8 @@ USE_I18N = True
 
 import os.path
 
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "site_media")
+#MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "site_media")
+MEDIA_ROOT = "/home/tanderson/public/site_media/"
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
@@ -94,7 +95,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
-    "account.context_processors.openid",
+    # "account.context_processors.openid",
     "account.context_processors.account",
     "misc.context_processors.contact_email",
     "misc.context_processors.site_name",

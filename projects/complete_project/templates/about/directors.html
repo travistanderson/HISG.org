@@ -10,9 +10,8 @@
 
 
 {% block body %}
-	<h2 style="text-align:center;">
-		Directors
-	</h2><hr/>
+	<h2 class="center">Directors</h2><hr/>
+	
 	{% for director in director_list %}
 		<div class="director">
 			{% for photo in director.photo.all %}

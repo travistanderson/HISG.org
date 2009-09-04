@@ -59,7 +59,7 @@ def contactsuccess(request):
 
 def directors(request):
 	d = Staff.objects.all().filter(director=True).order_by('sorter')
-	bg = bricker('about','contact')
+	bg = bricker('about','directors')
 	bgheight = brickerheight(bg)	
 	
 	return render_to_response('about/directors.html', {'director_list': d,'brickgroup':bg,'brickheight':bgheight,},

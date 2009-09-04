@@ -5,12 +5,12 @@ from django.contrib import admin
 
 import os.path
 
-from zwitschern.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
-tweets_feed_dict = {"feed_dict": {
-    'all': TweetFeedAll,
-    'only': TweetFeedUser,
-    'with_friends': TweetFeedUserWithFriends,
-}}
+#from zwitschern.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
+#tweets_feed_dict = {"feed_dict": {
+#    'all': TweetFeedAll,
+#    'only': TweetFeedUser,
+#    'with_friends': TweetFeedUserWithFriends,
+#}}
 
 # from blog.feeds import BlogFeedAll, BlogFeedUser
 # blogs_feed_dict = {"feed_dict": {
@@ -46,9 +46,9 @@ urlpatterns = patterns('',
     (r'^photos/', include('photos.urls')),
     (r'^search/', include('lookfor.urls')),
     
-    (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
+    # (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
     # (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
-    (r'^feeds/bookmarks/(.*)/?$', 'django.contrib.syndication.views.feed', bookmarks_feed_dict),
+    # (r'^feeds/bookmarks/(.*)/?$', 'django.contrib.syndication.views.feed', bookmarks_feed_dict),
 )
 
 ## @@@ for now, we'll use friends_app to glue this stuff together
@@ -67,12 +67,12 @@ friends_blogs_kwargs = {
     "friends_objects_function": lambda users: Post.objects.filter(author__in=users),
 }
 
-from zwitschern.models import Tweet
+#from zwitschern.models import Tweet
 
-friends_tweets_kwargs = {
-    "template_name": "zwitschern/friends_tweets.html",
-    "friends_objects_function": lambda users: Tweet.objects.filter(sender__in=users),
-}
+#friends_tweets_kwargs = {
+#    "template_name": "zwitschern/friends_tweets.html",
+#    "friends_objects_function": lambda users: Tweet.objects.filter(sender__in=users),
+#}
 
 from bookmarks.models import Bookmark
 

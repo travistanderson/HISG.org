@@ -5,6 +5,13 @@ from django.contrib import admin
 
 import os.path
 
+#from zwitschern.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
+#tweets_feed_dict = {"feed_dict": {
+#    'all': TweetFeedAll,
+#    'only': TweetFeedUser,
+#    'with_friends': TweetFeedUserWithFriends,
+#}}
+
 # from zwitschern.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
 # tweets_feed_dict = {"feed_dict": {
 #     'all': TweetFeedAll,

@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('travis', 'trav.anderson@mac.com'),
+    # ('travis', 'tanderson@hisg.org'),
 )
 
 MANAGERS = ADMINS
@@ -66,7 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_openidconsumer.middleware.OpenIDMiddleware',
+    # 'django_openidconsumer.middleware.OpenIDMiddleware',
     'account.middleware.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
     # 'djangologging.middleware.LoggingMiddleware',
@@ -172,7 +172,7 @@ INSTALLED_APPS = (
     'analytics',
     #'profiles',
     #'zwitschern',
-    'account',
+    #'account',
     #'tribes',
     #'projects',
     'misc',

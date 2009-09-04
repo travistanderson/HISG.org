@@ -34,7 +34,7 @@ def sitemap(request):
 	
 	return render_to_response('misc/sitemap.html', {
 	'brickgroup': bg,
-	'brickheight':bgheight,
+        'brickheight':bgheight,
 	},
 		context_instance = RequestContext(request),
 	)

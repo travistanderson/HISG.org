@@ -192,9 +192,11 @@ NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
-EMAIL_HOST_USER = 'hisg'
-EMAIL_HOST_PASSWORD = 'hisg1234'
-CONTACT_EMAIL = "trav.anderson@mac.com"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = "465"
+EMAIL_HOST_USER = 'hisg.contact'
+EMAIL_HOST_PASSWORD = '1qaz2wsx'
+CONTACT_EMAIL = "hisg.contact@gmail.com"
 SITE_NAME = "HISG"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "what_next"

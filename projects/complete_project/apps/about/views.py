@@ -30,8 +30,8 @@ def contact(request):
 		if form.is_valid():
 			name = form.cleaned_data['name']
 			email = form.cleaned_data['email']
-			subject = "HISG.org Contact Form -- From:" + name + ", Subject:" + form.cleaned_data['subject']
-			content = "From:" + name + "\n\n" + form.cleaned_data['content']
+			subject = "HISG.org Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
+			content = "From:" + name + ": " + email + "\n\n" + form.cleaned_data['content']
 			send_mail(subject, content, email,[toemail,toemail2,])
 			return HttpResponseRedirect('/about-hisg/contact/success/')
 		else:

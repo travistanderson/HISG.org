@@ -108,8 +108,8 @@ def pulse(request, sort):
 		toemail2 = 'kadams@hisg.org'
 		if form.is_valid():
 			email = form.cleaned_data['email']
-			subject = "Pulse Report Signup from hisg.org"
-			content = "From:" + email + "\n\n" + "Please sign me up for the Pulse Report Kyle."
+			subject = "Pulse Report Signup Request from " + email
+			content = "This request came from hisg.org on the Pulse Report Page." + "\n\n" + "Please sign me (" + email + ") up for the Pulse Report Kyle."
 			send_mail(subject, content, email,[toemail,toemail2,])
 			m = "You are now signed up for the Pulse Report"
 			return render_to_response('news-photos/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form,'message':m},

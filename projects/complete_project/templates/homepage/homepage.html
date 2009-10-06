@@ -171,12 +171,16 @@
 	<div id="impacter">
 		<div id="left-impacter">
 			<div id="phrase">
-				<div id="phrase_top">
-					{{ phrase_first }}
-				</div>{# end of phrase_top #}
-				<div id="phrase_bottom">
-					<a href="/info/first-time-here/">First time visitor?</a>
-				</div>{# end of phrase bottom #}
+				Learn about urgent disaster relief efforts now
+				<a href="{% url donation %}"><div id="buttoner">
+					Donate
+				</div></a>
+				{# <div id="phrase_top"> #}
+				{# 					{{ phrase_first }} #}
+				{# 				</div>{# end of phrase_top #}
+				{# 				<div id="phrase_bottom"> #}
+				{# 					<a href="/info/first-time-here/">First time visitor?</a> #}
+				{# 				</div>{# end of phrase bottom #}
 			</div>{# end of phrase #}
 			<div style="font-size:30px;color:#ae5219;padding:0px 0 0 0;">
 				<a href="{{ impacter_first.link }}" id="iln">{{ impacter_first.name }}</a>

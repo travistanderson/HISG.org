@@ -3,7 +3,8 @@ from models import Error, ErrorBatch
 import traceback
 import socket
 import warnings
-import md5
+# import md5
+import hashlib
 
 class CrashLogMiddleware(object):
     def process_exception(self, request, exception):

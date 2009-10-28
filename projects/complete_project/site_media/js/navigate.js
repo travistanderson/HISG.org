@@ -6,8 +6,8 @@ var activenav = ""
 var activesub = ""
 var showernav = ""
 var showersub = ""
-var navarrayhome = new Array(0,0,50,300,450,750);
-var navarraysecond = new Array(0,0,80,100,400,500,800);
+var navarrayhome = new Array(0,0,50,373,450,750);
+var navarraysecond = new Array(0,0,80,100,450,500,800);
 var switcharray = new Array();
 
 function showsecond(shower,subshower){

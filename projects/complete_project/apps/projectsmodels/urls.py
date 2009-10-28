@@ -17,6 +17,8 @@ urlpatterns = patterns('',
 	url(r'^projects/idr/(?P<proj_id>\d+)/$', 'projectsmodels.views.idrprojectdetail', name='idrproject_detail'),
 	
 	url(r'^models/HIST-model/$', 'projectsmodels.views.histmodel', name='histmodel'),
+	(r'^models/hist-model/$', 'projectsmodels.views.histmodel',),
 	url(r'^models/IDR-model/$', 'projectsmodels.views.idrmodel', name='idrmodel'),
+	(r'^models/idr-model/$', 'projectsmodels.views.idrmodel',),
 	url(r'^capability-survey/$', 'projectsmodels.views.capability', name='capability'),
 )

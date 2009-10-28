@@ -14,6 +14,7 @@ class ProjectAdmin(admin.ModelAdmin):
 	inlines = [HistIdrInline,]
 	list_display = ('name', 'description', 'year', 'active_now',)
 	search_fields = ['name','description',]
+	# list_editable = ('year',)
 
 
 admin.site.register(Project, ProjectAdmin)

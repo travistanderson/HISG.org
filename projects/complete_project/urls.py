@@ -49,7 +49,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('profiles.urls')),
 	(r'^info/', include('faqs.urls')),
 
-    (r'^admin/(.*)', admin.site.root),
+    (r'^admin/', include(admin.site.urls)),
     (r'^photos/', include('photos.urls')),
     (r'^search/', include('lookfor.urls')),
     

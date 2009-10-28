@@ -197,25 +197,33 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 
 .about_box{border:solid 2px #dabc64;padding:10px;height:100px;margin:0 0 20px 0;}
 
+.schedtable{border-collapse: collapse;}
+.schedtable th{padding:8px;border:2px solid gray;background-color:#dabc64;}
+.schedtable td{padding:8px;border:2px solid gray;}
+
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}
 #ft a:visited{color:#1a629d;}
 
 /*==========================colors=========================*/
-/* #dabc64  -- gold cukjati*/
-/* #d9bc65 -- gold background cukjati*/
-/* #fffccf -- light gold cukjati*/
-/* #f2e3a5 -- left-colomn-gold*/
-/* #ae5219 -- brown text cukjati*/
-/* #783a11 -- darker brown text cukjati*/
-/* #3f97ba -- medium blue for links*/
-/* #14436f  -- blue cukjati*/
-/* #ce9e4e -- volunteer gold*/
-/* #238fb0 -- updates blue*/
-/* #ff0000 -- urgent red*/
-/* #626262 -- date gray*/
-/* #00a3e6 -- i can blue*/
-/* #666666 -- here is the caption color*/
+/* #dabc64 -- gold 		cukjati*/
+/* #d9bc65 -- gold 		background cukjati*/
+/* #fffccf -- gold 		light cukjati*/
+/* #f2e3a5 -- gold		left-colomn*/
+/* #ce9e4e -- gold 		volunteer*/
+
+/* #ae5219 -- brown		text cukjati*/
+/* #783a11 -- brown 	darker text cukjati*/
+
+/* #3f97ba -- blue 		medium for links*/
+/* #14436f -- blue 		cukjati*/
+/* #238fb0 -- blue 		updates*/
+/* #00a3e6 -- blue 		i can*/
+
+/* #ff0000 -- red 		urgent*/
+
+/* #626262 -- gray 		date */
+/* #666666 -- gray 		caption color*/
 
 /*==========================end=========================*/

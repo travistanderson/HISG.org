@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     'things',
     #'flag',
 	'newsphotos',
-	'donationportal',
+	# 'donationportal',
 	'chunks',
 	#'gallery',
 	'videos',

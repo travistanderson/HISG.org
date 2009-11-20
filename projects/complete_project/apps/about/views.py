@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.forms import ModelForm
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.template import RequestContext
+from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 from about.models import Staff, Office
 from about.forms import ContactForm, InternBecomeForm, InternFindForm, InternPlaceForm
@@ -55,7 +56,40 @@ def contactsuccess(request):
 	return render_to_response('about/contact-success.html', {'director_list': d,'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
+
+
+def contactperson(request, contact_id, fromp):
+	contact = User.objects.get(id=contact_id)
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		toemail = contact.email
+		if fromp = "training":
+			toemail2 = 'cjennings@hisg.org'
+		else:
+			toemail2 = 'kadams@hisg.org'
+		if form.is_valid():
+			name = form.cleaned_data['name']
+			email = form.cleaned_data['email']
+			subject = "HISG.org Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
+			content = "From:" + name + ": " + email + "\n\n" + form.cleaned_data['content']
+			send_mail(subject, content, email,[toemail,toemail2,])
+			return HttpResponseRedirect('/about-hisg/contact/success/')
+		else:
+			form = ContactForm(request.POST)
+			return render_to_response(
+				'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
+				context_instance = RequestContext(request),
+			)
+	else:
+		form = ContactForm()
+	return render_to_response(
+		'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'contact':contact,},
+		context_instance = RequestContext(request),
+	)
 	
+
 
 def directors(request):
 	d = Staff.objects.all().filter(director=True).order_by('sorter')

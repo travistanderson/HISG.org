@@ -41,11 +41,17 @@
 	<div class="schedtable">
 		<table>
 			<tbody>
-				<tr><th>Location</th><th>Contact</th><th>Subject</th><th>Date</th><th>Info</th></tr>
+				<tr>
+					<th id="tb_location">Location</th>
+					<th id="tb_contact">Contact</th>
+					<th id="tb_subject">Subject</th>
+					<th id="tb_date">Date</th>
+					<th id="tb_info">Info</th>
+				</tr>
 				{% for train in training_list %}
 					<tr>
 						<td>{{ train.location }}</td>
-						<td><a href="/contact/{{ train.contact.id }}">
+						<td><a href="{% url contactperson train.contact.id "training" %}">
 							{{ train.contact.first_name }} {{ train.contact.last_name }}</a><br/><span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
@@ -70,11 +76,17 @@
 	<div class="schedtable">
 		<table>
 			<tbody>
-				<tr><th>Location</th><th>Contact</th><th>Subject</th><th>Date</th><th>Info</th></tr>
+				<tr>
+					<th id="tb_location">Location</th>
+					<th id="tb_contact">Contact</th>
+					<th id="tb_subject">Subject</th>
+					<th id="tb_date">Date</th>
+					<th id="tb_info">Info</th>
+				</tr>
 				{% for train in past_list %}
 					<tr>
 						<td>{{ train.location }}</td>
-						<td><a href="/contact/{{ train.contact.id }}">
+						<td><a href="{% url contactperson train.contact.id  "training" %}">
 							{{ train.contact.first_name }} {{ train.contact.last_name }}</a><br/><span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
@@ -82,7 +94,9 @@
 						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
 					</tr>
 					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
-						<td colspan="5" >Description:<br/>{{ train.description }}</td>
+						<td colspan="5" >Description:<br/>{% if train.description %}
+							{{ train.description }}{% else %}Description is still on the way for this event.{% endif %}
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>

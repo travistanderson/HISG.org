@@ -198,11 +198,17 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .about_box{border:solid 2px #dabc64;padding:10px;height:100px;margin:0 0 20px 0;}
 
 .schedtable{border-collapse: collapse;}
-.schedtable th{padding:8px;border:2px solid gray;background-color:#dabc64;}
+.schedtable th{padding:8px;border:2px solid gray;background-color:#dabc64;font-weight:bold;color:#14436f;font-family:Georgia, Serif;}
 .schedtable td{padding:8px;border:2px solid gray;}
 .train_email{font-size:9px;color:#AAA;padding:0 0 0 16px;}
-.train_desc_bt{color:#3f97ba;}
+.train_desc_bt{color:#3f97ba;cursor:pointer;}
 .train_desc_bt a{display:block;}
+.train_desc{background-color:#b1d9fe;}
+#tb_location{width:90px;}
+#tb_contact{width:95px;}
+#tb_subject{width:170px;}
+#tb_date{width:130px;}
+#tb_info{width:70px;}
 
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
@@ -220,9 +226,10 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 /* #783a11 -- brown 	darker text cukjati*/
 
 /* #3f97ba -- blue 		medium for links*/
-/* #14436f -- blue 		cukjati*/
+/* #14436f -- blue 		darker cukjati*/
 /* #238fb0 -- blue 		updates*/
 /* #00a3e6 -- blue 		i can*/
+/* #b1d9fe -- blue		light for table backgrounds */
 
 /* #ff0000 -- red 		urgent*/
 

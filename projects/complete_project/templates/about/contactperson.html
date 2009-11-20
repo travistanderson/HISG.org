@@ -1,0 +1,32 @@
+<!-- templates/about/contactperson.html -->
+{% extends "about/base.html" %}
+{% block subarrive %}7{% endblock subarrive %}
+
+{% block brick %}
+	{% include "brick.html" %}
+{% endblock brick %}	
+
+{% block body %}
+<h2 class="center">Contact Us</h2><hr/>
+{% if contact %}
+	This message will be sent to:<br/><br/>
+	<h2>
+		{{ contact.first_name }} {{ contact.last_name }}
+	</h2><br/>
+{% endif %}
+<form action="" method="POST">
+	{{ form.name.label }}<br/>
+	{{ form.name }}{{ form.name.errors }}<br/>
+	{{ form.email.label }}<br/>
+	{{ form.email }}{{ form.email.errors }}<br/>
+	{{ form.subject.label }}<br/>
+	{{ form.subject }}{{ form.subject.errors }}<br/>
+	{{ form.content.label }}<br/>
+	{{ form.content }}{{ form.content.errors }}<br/><br/>
+	<p><input type="submit" value="Send &rarr;"></p>
+</form>
+
+
+
+{% endblock body %}
+

@@ -11,6 +11,7 @@ from photologue.models import Gallery, Photo
 from countries.models import Region, Country
 from photologue.models import Photo
 from brick.views import bricker, brickerheight
+from training.models import Session
 
 def index(request):
 	ph = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
@@ -87,9 +88,12 @@ def idrmodel(request):
 		context_instance = RequestContext(request),
 	)
 	
-def capability(request):
+def training(request):
+	today = datetime.today()
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/capability.html', {'brickgroup': bg,'brickheight':bgheight,},
+	tf = Session.objects.all().filter(end_date__gte = today)
+	tp = Session.objects.all().filter(end_date__lt = today)
+	return render_to_response('projects-models/training.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,},
 		context_instance = RequestContext(request),
 	)

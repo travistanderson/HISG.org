@@ -20,5 +20,6 @@ urlpatterns = patterns('',
 	(r'^models/hist-model/$', 'projectsmodels.views.histmodel',),
 	url(r'^models/IDR-model/$', 'projectsmodels.views.idrmodel', name='idrmodel'),
 	(r'^models/idr-model/$', 'projectsmodels.views.idrmodel',),
-	url(r'^capability-survey/$', 'projectsmodels.views.capability', name='capability'),
+	# url(r'^capability-survey/$', 'projectsmodels.views.capability', name='capability'),
+	url(r'^training/$', 'projectsmodels.views.training', name='training'),
 )

@@ -72,7 +72,7 @@ MIDDLEWARE_CLASSES = (
     # 'djangologging.middleware.LoggingMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'misc.middleware.SortOrderMiddleware',
-    'crashlog.CrashLogMiddleware',
+    # 'crashlog.CrashLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
 	# 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 	'pages.middleware.PageFallbackMiddleware',
@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     #'django_openidconsumer',
     #'django_openidauth',
     #'oembed',
-    'crashlog',
+    # 'crashlog',
     'pagination',
     'gravatar',
     'threadedcomments',
@@ -167,6 +167,7 @@ INSTALLED_APPS = (
 	'projectsmodels',
 	# 'haystack',
 	'faqs',
+	'training',
 	    
     # internal (for now)
     'analytics',

@@ -1,0 +1,116 @@
+{# templates/projects-models/training.html #}
+{% extends 'projects-models/base.html' %}
+{% block subarrive %}4{% endblock subarrive %}
+{% load markup %}
+{% load pagination_tags %}
+{% block extra_head %}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('.train_desc').css({'display':'none'});
+			$('.train_desc_bt').toggle(
+		      function(){
+					var item = $(this).attr('id');
+					item = item.split("_")[1];
+		   		$(this).html("Hide <br />Description");
+					$('#trainDescLow_'+item).css({'display':''});
+		      },
+		      function(){
+					var item = $(this).attr('id');
+					item = item.split("_")[1];
+					$(this).html("Read More");
+					$('#trainDescLow_'+item).css({'display':'none'});
+		      }
+		    );
+		});
+		
+	</script>
+{% endblock %}
+
+{% block brick %}{% include "brick.html" %}{% endblock brick %}
+
+{% block body %}
+
+
+
+	<h3>Upcoming Community Development and Disaster Response Training Sessions</h3>
+	<p>
+		HISG staff has been training the HIST and IDR models worldwide to organizations that want to see lasting change and be prepared for disasters. We continue to add new dates and locations all the time.
+	</p><br /><br />
+
+
+	<div class="schedtable">
+		<table>
+			<tbody>
+				<tr><th>Location</th><th>Contact</th><th>Subject</th><th>Date</th><th>Info</th></tr>
+				{% for train in training_list %}
+					<tr>
+						<td>{{ train.location }}</td>
+						<td><a href="/contact/{{ train.contact.id }}">
+							{{ train.contact.first_name }} {{ train.contact.last_name }}</a><br/><span class="train_email">click to email</span>
+						</td>
+						<td>{{ train.subject }}</td>
+						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d, y" }}</td>
+						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
+					</tr>
+					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
+						<td colspan="5" >Description:<br/>{% if train.description %}
+							{{ train.description }}{% else %}Description is still on the way for this event.{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div><br/><br/><br/>
+	
+	<h3>Completed Training Sessions</h3>
+	<p>
+		We are so excited about how many people have received training all around the world. Together we can create lasting change!
+	</p><br /><br />
+	
+	<div class="schedtable">
+		<table>
+			<tbody>
+				<tr><th>Location</th><th>Contact</th><th>Subject</th><th>Date</th><th>Info</th></tr>
+				{% for train in past_list %}
+					<tr>
+						<td>{{ train.location }}</td>
+						<td><a href="/contact/{{ train.contact.id }}">
+							{{ train.contact.first_name }} {{ train.contact.last_name }}</a><br/><span class="train_email">click to email</span>
+						</td>
+						<td>{{ train.subject }}</td>
+						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d, y" }}</td>
+						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
+					</tr>
+					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
+						<td colspan="5" >Description:<br/>{{ train.description }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div><br/><br/><br/>
+	
+	<p>
+		If you would like information about receiving training from HISG please <a href="/about-hisg/contact/">contact us</a>
+	</p><br/><br/>
+	
+	
+	<h3>
+		Holistic, Integrated, Sustainable Transformation
+	</h3>
+	<img src="/site_media/images/sections/projects/hist-icon.jpg" class="gold5 right" alt="idr-icon" style="margin: 0pt 0pt 15px 15px;" />
+
+	The Holistic, Integrated, Sustainable, Tranformation (HIST) model is intended as a guide for humanitarian aid workers who want real, lasting change in their community. It is a new paradigm developed through HISG leadership's decades of international experience. As you view the HIST model, try to view it in light of a project that you are familiar with.  Are the challenges and obstacles similar to those that your development project has faced?  Would this sort of plan and process have made your project easier to measure and manage? We believe that the HIST Model, more than anything else, provides the strategy for workers who want to move beyond <q>doing things right</q> to <q>doing the right things.</q> 
+	<a href="/projects-and-models/models/hist-model/">Click Here to view the model</a> The presentation will take a moment to load. You will also find the list of the 12 HIST categories. These categories represent the areas of society that we believe need to be addressed in order to create lasting change.  <br /><br /><br />
+
+
+	<h3>International Disaster Response</h3>
+	<img src="/site_media/images/sections/projects/idr-icon.jpg" class="gold5 right" alt="idr-icon" style="margin: 0pt 0pt 15px 15px;" />
+
+	The International Disaster Response (IDR) model provides a roadmap for private sector organizations to know exactly how, when, and where to engage in disaster response.  It is becoming more evident that communities need the combined efforts of the government and a full spectrum of private sector participants in order to effectively respond to and recover from a disaster.  HISG is a leader in connecting resources from across the private sector and organizing them for efficient and effective disaster response operations.<a href="/projects-and-models/models/idr-model/">Click Here to view the model</a> The presentation will take a moment to load. You will also find the list of the 14 IDR service categories. These categories represent all the areas which should be addressed during a disaster in order to truly help people. <br /><br /><br />
+
+{% endblock %}
+
+
+
+
+

@@ -200,6 +200,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .schedtable{border-collapse: collapse;}
 .schedtable th{padding:8px;border:2px solid gray;background-color:#dabc64;}
 .schedtable td{padding:8px;border:2px solid gray;}
+.train_email{font-size:9px;color:#AAA;padding:0 0 0 16px;}
+.train_desc_bt{color:#3f97ba;}
+.train_desc_bt a{display:block;}
 
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}

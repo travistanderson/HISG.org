@@ -9,6 +9,9 @@
 
 {% block body %}
 	<h2>{{ staff }}</h2>
+	<div class="right">
+		<h4><a href="{% url contactperson staff.id "about" %}">Email {{ staff.firstname }}</a></h4>
+	</div>
 	<h3>{{ staff.title }}</h3><hr>
 		{# {% if staff.photo %} #}
 		{# 	<div class="news-detail-photo"> #}

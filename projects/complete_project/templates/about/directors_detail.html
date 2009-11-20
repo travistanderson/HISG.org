@@ -33,10 +33,12 @@
 			</div>
 		</div>
 	{% endif %}
-	
+
 	<p>{{ director.bio|safe }}</p><div class="clearer"></div>
 	<br/><br/>
-	
+	<div class="right">
+		<h4><a href="{% url contactperson director.id "about" %}">Email {{ director.firstname }}</a></h4>
+	</div>
 	{% if director.video %}
 		{% for video in director.video.all %}
 			{% include "projects-models/detail_video.html" %}

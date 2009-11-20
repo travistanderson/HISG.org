@@ -51,8 +51,8 @@
 				{% for train in training_list %}
 					<tr>
 						<td>{{ train.location }}</td>
-						<td><a href="{% url contactperson train.contact.id "training" %}">
-							{{ train.contact.first_name }} {{ train.contact.last_name }}</a><br/><span class="train_email">click to email</span>
+						<td><a href="{% url contactperson train.contact.id train.id %}">
+							{{ train.contact.firstname }} {{ train.contact.lastname }}</a><br/><span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
 						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d, y" }}</td>
@@ -86,8 +86,8 @@
 				{% for train in past_list %}
 					<tr>
 						<td>{{ train.location }}</td>
-						<td><a href="{% url contactperson train.contact.id  "training" %}">
-							{{ train.contact.first_name }} {{ train.contact.last_name }}</a><br/><span class="train_email">click to email</span>
+						<td><a href="{% url contactperson train.contact.id train.id %}">
+							{{ train.contact.firstname }} {{ train.contact.lastname }}</a><br/><span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
 						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d, y" }}</td>

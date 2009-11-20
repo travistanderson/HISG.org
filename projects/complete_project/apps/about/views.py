@@ -13,6 +13,7 @@ from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
 from brick.views import bricker, brickerheight
+from training.models import Session
 from django.conf import settings
 if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
@@ -58,34 +59,40 @@ def contactsuccess(request):
 	)
 
 
-def contactperson(request, contact_id, fromp):
-	contact = User.objects.get(id=contact_id)
+def contactperson(request, staff_id, fromp):
+	staff = Staff.objects.get(id=staff_id)
+	if fromp != "about":
+		t = Session.objects.get(pk = fromp)
+	else:
+		t = ""
 	bg = bricker('about','contact')
 	bgheight = brickerheight(bg)
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
-		toemail = contact.email
-		if fromp = "training":
-			toemail2 = 'cjennings@hisg.org'
-		else:
+		toemail = staff.email
+		form.subject = "hello"
+		if fromp == "about":
 			toemail2 = 'kadams@hisg.org'
+		else:
+			toemail2 = 'cjennings@hisg.org' # this means it is coming from training
 		if form.is_valid():
 			name = form.cleaned_data['name']
 			email = form.cleaned_data['email']
-			subject = "HISG.org Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
+			subject = "HISG.org Direct Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
 			content = "From:" + name + ": " + email + "\n\n" + form.cleaned_data['content']
 			send_mail(subject, content, email,[toemail,toemail2,])
 			return HttpResponseRedirect('/about-hisg/contact/success/')
 		else:
 			form = ContactForm(request.POST)
 			return render_to_response(
-				'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
+				'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'session':t,},
 				context_instance = RequestContext(request),
 			)
 	else:
+		# dictionary = {'name':'','email':'','subject':'hello','content':''}
 		form = ContactForm()
 	return render_to_response(
-		'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'contact':contact,},
+		'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'session':t,},
 		context_instance = RequestContext(request),
 	)
 	

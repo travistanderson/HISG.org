@@ -23,6 +23,9 @@
 					</a>
 				{% endifequal %}
 			{% endfor %}
+			<div class="right">
+				<h4><a href="{% url contactperson staff.id "about" %}">Email {{ staff.firstname }}</a></h4>
+			</div>
 			<a href="{% url staff_detail staff.id %}">
 				<h3 style="padding:0 0 0px 0;">{{ staff }}</h3>
 			</a>

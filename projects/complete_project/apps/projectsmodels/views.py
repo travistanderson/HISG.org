@@ -92,8 +92,8 @@ def training(request):
 	today = datetime.today()
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	tf = Session.objects.all().filter(end_date__gte = today)
-	tp = Session.objects.all().filter(end_date__lt = today)
+	tf = Session.objects.all().filter(end_date__gte = today).order_by('start_date')
+	tp = Session.objects.all().filter(end_date__lt = today).order_by('-start_date')
 	return render_to_response('projects-models/training.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,},
 		context_instance = RequestContext(request),
 	)

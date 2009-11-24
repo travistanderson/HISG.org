@@ -55,7 +55,7 @@
 							{{ train.contact.firstname }} {{ train.contact.lastname }}</a><br/><span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
-						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d, y" }}</td>
+						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}</td>
 						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
 					</tr>
 					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
@@ -67,6 +67,12 @@
 			</tbody>
 		</table>
 	</div><br/><br/><br/>
+
+	<h3>Request a Training Session</h3>
+
+	<p>
+		If you would like information about receiving training from HISG please <a href="/about-hisg/contact/">contact us</a>
+	</p><br/><br/>
 	
 	<h3>Completed Training Sessions</h3>
 	<p>
@@ -90,7 +96,7 @@
 							{{ train.contact.firstname }} {{ train.contact.lastname }}</a><br/><span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
-						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d, y" }}</td>
+						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}</td>
 						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
 					</tr>
 					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
@@ -103,25 +109,55 @@
 		</table>
 	</div><br/><br/><br/>
 	
-	<p>
-		If you would like information about receiving training from HISG please <a href="/about-hisg/contact/">contact us</a>
-	</p><br/><br/>
 	
 	
-	<h3>
-		Holistic, Integrated, Sustainable Transformation
-	</h3>
-	<img src="/site_media/images/sections/projects/hist-icon.jpg" class="gold5 right" alt="idr-icon" style="margin: 0pt 0pt 15px 15px;" />
+	<h3>Partner Training Sites</h3><br/><br/>
+	
+	<div>
+		<img src="/site_media/images/sections/featured/tbm.jpg" class="gold5 right" alt="Texas Baptist Men" style="margin:0 0 0 20px;"></img>
+		<span class="bold">
+			<a href="http://www.texasbaptistmen.org">Texas Baptist Men</a>
+		</span> trains volunteers and coordinates efforts in providing prompt assistance to disaster victims. Texas Baptist Men maintains a fully-equipped mobile disaster relief feeding unit and works to coordinate with the Regional units throughout the state that relate to TBM to provide emergency food services.
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+	
+	<div>
+		<img src="/site_media/images/sections/projects/angel.jpg" class="gold5 right" alt="Angel Alert" style="margin:0 0 0 20px;"></img>
+		<span class="bold">
+			<a href="http://www.angelalertnetwork.com">Angel Alert Network</a>
+		</span> provides security training &amp; risk mitigation for both faith based and humanitarian workers. We equip NGO and FBO personnel, who care for those in great need, to be safe and secure so that they can stay the course in the work that they have set out to accomplish. 
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+	
+	<div>
+		<img src="/site_media/images/sections/projects/pli.jpg" class="gold5 right" alt="Pointman Leadership Institute" style="margin:0 88px 0 20px;"></img>
+		<span class="bold">
+			<a href="http://pliglobal.com/default.html">Pointman Leadership Institute</a>
+		</span> (<span class="italic">PLI</span>) believes real leadership is about character. PLI’s Vision is to transform cultures (organizations, communities, nations) by creating and supporting inspirational, trustworthy leaders. Its Mission is to provide ethics training worldwide in character-based, principled leadership. 
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
 
-	The Holistic, Integrated, Sustainable, Tranformation (HIST) model is intended as a guide for humanitarian aid workers who want real, lasting change in their community. It is a new paradigm developed through HISG leadership's decades of international experience. As you view the HIST model, try to view it in light of a project that you are familiar with.  Are the challenges and obstacles similar to those that your development project has faced?  Would this sort of plan and process have made your project easier to measure and manage? We believe that the HIST Model, more than anything else, provides the strategy for workers who want to move beyond <q>doing things right</q> to <q>doing the right things.</q> 
-	<a href="/projects-and-models/models/hist-model/">Click Here to view the model</a> The presentation will take a moment to load. You will also find the list of the 12 HIST categories. These categories represent the areas of society that we believe need to be addressed in order to create lasting change.  <br /><br /><br />
-
-
-	<h3>International Disaster Response</h3>
-	<img src="/site_media/images/sections/projects/idr-icon.jpg" class="gold5 right" alt="idr-icon" style="margin: 0pt 0pt 15px 15px;" />
-
-	The International Disaster Response (IDR) model provides a roadmap for private sector organizations to know exactly how, when, and where to engage in disaster response.  It is becoming more evident that communities need the combined efforts of the government and a full spectrum of private sector participants in order to effectively respond to and recover from a disaster.  HISG is a leader in connecting resources from across the private sector and organizing them for efficient and effective disaster response operations.<a href="/projects-and-models/models/idr-model/">Click Here to view the model</a> The presentation will take a moment to load. You will also find the list of the 14 IDR service categories. These categories represent all the areas which should be addressed during a disaster in order to truly help people. <br /><br /><br />
-
+	<div>
+		<img src="/site_media/images/sections/projects/dbsp.jpg" class="gold5 right" alt="Dynamic Business Start-Up Project" style="margin:0 0 0 20px;"></img>
+		<span class="bold">
+			<a href="http://www.dbsp.co.za/GeneralInformation.html">The Dynamic Business Start-Up Project</a>
+		</span> (<span class="italic">DBSP</span>) is a project by Chris Black to empower locals to start their own businesses with very low startup capital. The DBSP's vision is to train and assist unemployed people to earn their own money, by self employment, thereby getting themselves out of the trap of poverty and providing jobs for others.
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+	
+	<div>
+		<img src="/site_media/images/sections/projects/mikea.jpg" class="gold5 right" alt="Mike Aleckson" style="margin:0 0 0 20px;"></img>
+		<span class="bold">
+			<a href="http://www.mikealeckson.com/">Mike Aleckson</a>
+		</span>	I spent over 24 years in information technology and business process consulting. Now I'm investing myself in a new Kanakuk spinoff called Ahava Ministries. We're running Camp Kivu, the awesome summer camping experience for teenagers - and we'll be expanding into several new areas soon.
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+	
 {% endblock %}
 
 

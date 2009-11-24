@@ -90,7 +90,7 @@ def idrmodel(request):
 	
 def training(request):
 	today = datetime.today()
-	bg = bricker('projects','index')
+	bg = bricker('projects','Training')
 	bgheight = brickerheight(bg)
 	tf = Session.objects.all().filter(end_date__gte = today).order_by('start_date')
 	tp = Session.objects.all().filter(end_date__lt = today).order_by('-start_date')

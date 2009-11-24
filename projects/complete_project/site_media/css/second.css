@@ -211,6 +211,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #tb_date{width:130px;}
 #tb_info{width:70px;}
 
+.modelrow{border:5px solid #dabc64;margin:0 20px 0 0;padding:10px;width:110px;height:105px;background-color:#f2e3a5;}
+.modelrow img{height:20px;}
+
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}

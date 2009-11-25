@@ -16,7 +16,7 @@
 			{% ifequal sort "country"  %}
 				Sort by Country |
 			{% else %}
-				<a href="{% url project %}">Sort by Country</a> |
+				<a href="{% url project_country %}">Sort by Country</a> |
 			{% endifequal %}
 		</li>
 		<li>
@@ -30,7 +30,7 @@
 			{% ifequal sort "date"  %}
 				Sort by Date |
 			{% else %}
-				<a href="{% url project_date %}">Sort by Date</a>
+				<a href="{% url project %}">Sort by Date</a>
 			{% endifequal %}
 		</li>
 	</ul>

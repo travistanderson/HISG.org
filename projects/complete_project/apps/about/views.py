@@ -63,8 +63,10 @@ def contactperson(request, staff_id, fromp):
 	staff = Staff.objects.get(id=staff_id)
 	if fromp != "about":
 		t = Event.objects.get(pk = fromp)
+		sub = "I have a question about "+str(t)
 	else:
 		t = ""
+		sub = ""
 	bg = bricker('about','contact')
 	bgheight = brickerheight(bg)
 	if request.method == 'POST':
@@ -90,7 +92,8 @@ def contactperson(request, staff_id, fromp):
 			)
 	else:
 		# dictionary = {'name':'','email':'','subject':'hello','content':''}
-		form = ContactForm()
+		form = ContactForm(initial={'subject':sub})
+		# form.fields.subject = "hello"
 	return render_to_response(
 		'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'event':t,},
 		context_instance = RequestContext(request),

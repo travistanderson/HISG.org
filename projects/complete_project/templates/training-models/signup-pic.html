@@ -5,9 +5,11 @@
 
 {% block body %}
 
-	<span>{% if user %}{{ user }} | <a href="{% url logout %}">Logout</a>{% endif %}</span>
+	<span class="right">
+		{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %}
+	</span><br/><br/>
 	<div id="signup2">
-		<h3>Sign Up to attend {{ event }}</h3>
+		<h3>Photo Upload</h3>
 		<h4>Please upload a photo to be used.</h4>
 		<form enctype="multipart/form-data" action='' method="POST">
 			<table>
@@ -32,6 +34,7 @@
 				</tr>
 			</table>
 		</form><br/><br/>
+		<p>We need a forward-facing photo of your head and shoulders, with a plain colored background, to create your IDRN badge. It should be like a passport photo. You will receive the badge after your training is complete.</p>
 	</div>
 {% endblock %}
 

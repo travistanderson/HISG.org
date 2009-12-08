@@ -83,7 +83,8 @@ class Event(models.Model):
 	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.')
 	
 	def __unicode__(self):
-		return self.name
+		newname = str(self.location) + " " + self.start_date.strftime("%b. %d, %Y")
+		return newname
 		
 
 	

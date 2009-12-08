@@ -269,21 +269,15 @@
 			
 		{% if user.is_authenticated %}
 				<li class="inyes" id="adminfirst">
-					<a href="{# {% url profile_detail user %} #}">{{ user }}</a> | 
+					<a href="{% url profile user.id %}">{{ user }}</a> | 
 				</li>
 				<li class="inyes">
 					<a href="{% url logout %}">logout</a>
 				</li>
-				{% if perms.tribes %}
-				<li class="inyes">
-					 | <a href="/admin/">admin</a>
-				</li>
-				{% else %}
-					{% if perms.partners %}
-						<li class="inyes">
-							<a href="{% url partners_starfish %}">starfish</a>
-						</li>
-					{% endif %}
+				{% if user.is_staff %}
+					<li class="inyes">
+						 | <a href="/admin/">admin</a>
+					</li>
 				{% endif %}
 			</ul>
 		{% else %}

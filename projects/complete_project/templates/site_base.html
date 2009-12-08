@@ -40,6 +40,16 @@
 			<ul class="subnav">
 				<li class="sub0" id="testify">Welcome to HISG</li>
 				<li class="sub1" id="sub11"><a href="{% url home %}">Home</a></li>
+				{% if user.is_authenticated %}
+				<li class="sub1" id="sub12"> | <a href="{% url profile user.id %}">{{ user }}</a> | </li>
+				<li class="sub1" id="sub13"><a href="{% url logout %}">Logout</a></li>
+				{% if user.is_staff %}
+				<li class="sub1" id="sub14"> | <a href="/admin/">Admin</a></li>
+				{% endif %}
+				{% else %}
+				<li class="sub1" id="sub12"> | <a href="{% url login %}">Login</a> | </li>
+				<li class="sub1" id="sub13"><a href="{% url signup %}">Signup</a></li>
+				{% endif %}
 				
 				<li class="sub2" id="sub21"><a href="{% url training %}">Training</a> | </li>
 				<li class="sub2" id="sub22"><a href="/training-and-models/models/">Models</a> | </li>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Django settings for complete pinax project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

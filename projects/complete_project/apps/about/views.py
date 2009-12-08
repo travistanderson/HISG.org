@@ -13,7 +13,7 @@ from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
 from brick.views import bricker, brickerheight
-from training.models import Session
+from training.models import Event
 from django.conf import settings
 if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
@@ -62,7 +62,7 @@ def contactsuccess(request):
 def contactperson(request, staff_id, fromp):
 	staff = Staff.objects.get(id=staff_id)
 	if fromp != "about":
-		t = Session.objects.get(pk = fromp)
+		t = Event.objects.get(pk = fromp)
 	else:
 		t = ""
 	bg = bricker('about','contact')
@@ -85,14 +85,14 @@ def contactperson(request, staff_id, fromp):
 		else:
 			form = ContactForm(request.POST)
 			return render_to_response(
-				'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'session':t,},
+				'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'event':t,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		# dictionary = {'name':'','email':'','subject':'hello','content':''}
 		form = ContactForm()
 	return render_to_response(
-		'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'session':t,},
+		'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'event':t,},
 		context_instance = RequestContext(request),
 	)
 	

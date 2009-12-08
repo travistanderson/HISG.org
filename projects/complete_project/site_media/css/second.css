@@ -47,9 +47,9 @@ input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;fon
 ul#navigation {height:36px;padding:10px 0 0 1px;}
 ul#navigation span{display:none;}
 #li1{float:left;width:129px;}
-#li2{float:left;width:164px;}
-#li3{float:left;width:213px;}
-#li4{float:left;width:196px;}
+#li2{float:left;width:194px;}
+#li3{float:left;width:203px;}
+#li4{float:left;width:176px;}
 #li5{float:left;width:134px;}
 #li6{float:left;width:188px;}
 ul#navigation li a {cursor:pointer;display:block;height:35px;}
@@ -126,7 +126,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #buttoner{background-color:#14436f;height:20px;width:180px;padding:5px 0 2px 8px;margin:30px 10px 0 70px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:1px #fffccf solid;}
 #buttoner a{color:#3f97ba;}
 
-.buttoner{background-color:#14436f;height:20px;width:180px;padding:5px 0 2px 8px;font-family:palatino,times;font-size:14px;font-weight:bold;border:5px #dabc64 solid;text-align:center;}
+.buttoner{background-color:#14436f;height:20px;min-width:1px;padding:5px;font-family:palatino,times;font-size:14px;font-weight:bold;border:5px #dabc64 solid;text-align:center;}
 .buttoner a{color:#3f97ba;}
 
 .feabox{border:1px solid #dabc64;padding:15px;margin:0 0 20px 0;}
@@ -205,15 +205,34 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .train_desc_bt{color:#3f97ba;cursor:pointer;}
 .train_desc_bt a{display:block;}
 .train_desc{background-color:#b1d9fe;}
-#tb_location{width:90px;}
-#tb_contact{width:95px;}
-#tb_subject{width:170px;}
-#tb_date{width:130px;}
-#tb_info{width:70px;}
+.tb_location{width:90px;}
+.tb_contact{width:95px;}
+.tb_subject{width:160px;}
+.tb_date{width:110px;}
+.tb_info{width:70px;}
+.tb_attend{width:90px;}
 
 .modelrow{border:5px solid #dabc64;margin:0 20px 0 0;padding:10px;width:110px;height:105px;background-color:#f2e3a5;}
 .modelrow img{height:20px;}
 
+#signup-help{width:370px;height:340px;float:left;border:10px solid #dabc64;padding:30px;margin:0 60px 0 0;}
+#signup-help span{font-size:10px;color:#666666;}
+#signup-help table td{height:22px;}
+#signup-help #suh-left{width:125px;}
+#signup{width:370px;height:340px;float:left;border:10px solid #dabc64;padding:30px;}
+#signup table td{height:50px;}
+#signup ul{font-size:12px;}
+
+#signup2{width:550px;border:10px solid #dabc64;padding:30px;margin:0 60px 0 0;}
+#signup2 table td{height:22px;}
+#signup2 .required_circ{color:#238fb0;font-size:15px;width:10px;float:right;}
+#signup2 .required_circ_h{color:#238fb0;font-size:15px;width:200px;float:right;}
+#signup2 #first_col{width:250px;}
+#signup2 #second_col{width:270px;}
+#signup2 .help_text{color:gray;font-size:11px;padding:3px 0 0 20px;}
+
+.messages{color:#14436f;background-color:#DDD;border:3px solid #fcd918;padding:10px;margin:40px;font-weight:bold;display:none;}
+.messages .close-messages{color:white;background-color:#626262;padding:0 3px 3px 4px;min-width:1px;float:right;cursor:pointer;}
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}
@@ -239,5 +258,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 
 /* #626262 -- gray 		date */
 /* #666666 -- gray 		caption color*/
+
+/* #fcd918 -- orange	light, used in message border */
 
 /*==========================end=========================*/

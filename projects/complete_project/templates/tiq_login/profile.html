@@ -1,0 +1,58 @@
+{# templates/tiq_login/profile.html #}
+{% extends 'tiq_login/base.html' %}
+
+{% block pagetitle %}Profile{% endblock pagetitle %}
+
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		#right-colomn{width:965px;float:none;}
+	</style>
+	{% if messages %}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('.messages').fadeIn(3000);
+			$('.close-messages').click(function(){
+				$('.messages').fadeOut(1000);
+			})
+		});
+	</script>
+	{% endif %}
+{% endblock extra_head %}
+
+{% block body %}
+	<div class="right">{{ user }} | <a href="{% url logout %}">logout</a></div>
+	<h2>Profile Page</h2>
+	<h3>{{ user.first_name }}</h3>
+	
+	{% if messages %}
+		<div class="messages"><div class="close-messages">x</div>
+			{% for message in messages %}
+				{{ message }}{% if forloop.last %}{% else %}<br/>{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+	
+	<p>
+		{{ user }}-Username <br/>
+		{{ user.email }}-Email Address <br/>
+	</p><br/><br/>
+
+
+
+	{% if events %}
+		<h3>You are signed up to attend these Events</h3>
+		{% for event in events %}
+			{{ event }}<br/>
+		{% endfor %}<br/><br/>
+	{% endif %}
+	
+	
+	{% if photos %}
+		<h3>We have this Photo on file of you.</h3>
+		{% for photo in photos %}
+			<img src="{{ photo.get_thumbnail_url }}"></img><br/>
+			{{ photo }}
+		{% endfor %}<br/><br/>
+	{% endif %}
+
+{% endblock body %}

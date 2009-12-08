@@ -27,7 +27,7 @@ def index(request):
 	v = Video.objects.all()[:3]
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/index.html', {'news_list':n,
+	return render_to_response('projects-news/index.html', {'news_list':n,
 														'blog_list':b,
 														'gallery_list':g,
 														'video_list':v,
@@ -48,7 +48,7 @@ def newsindex(request, sort):
 		n = News.objects.all()
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/news.html', {'news_list': n,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
+	return render_to_response('projects-news/news.html', {'news_list': n,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
 		context_instance = RequestContext(request),
 	)
 
@@ -56,7 +56,7 @@ def newsdetail(request, news_id):
 	n = get_object_or_404(News, pk = news_id)
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/news_d.html', {'news': n,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/news_d.html', {'news': n,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -64,7 +64,7 @@ def newslatest(request):
 	n = News.objects.latest('date')	
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/news_d.html', {'news': n,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/news_d.html', {'news': n,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -76,7 +76,7 @@ def newscount(request):
 	today = News.objects.all().filter(date__range=(start, end))
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/count.html', {'news': n, 'today': today,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/count.html', {'news': n, 'today': today,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -91,7 +91,7 @@ def blogindex(request, sort):
 		p = Post.objects.all()
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/blog.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
+	return render_to_response('projects-news/blog.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
 		context_instance = RequestContext(request),
 	)
 
@@ -112,18 +112,18 @@ def pulse(request, sort):
 			content = "This request came from hisg.org on the Pulse Report Page." + "\n\n" + "Please sign me (" + email + ") up for the Pulse Report Kyle."
 			send_mail(subject, content, email,[toemail,toemail2,])
 			m = "You are now signed up for the Pulse Report"
-			return render_to_response('news-photos/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form,'message':m},
+			return render_to_response('projects-news/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form,'message':m},
 				context_instance = RequestContext(request),
 			)
 		else:
 			form = PulseForm(request.POST)
 			return render_to_response(
-				'news-photos/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form,},
+				'projects-news/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		form = PulseForm()
-	return render_to_response('news-photos/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form},
+	return render_to_response('projects-news/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form},
 		context_instance = RequestContext(request),
 	)
 
@@ -132,7 +132,7 @@ def blogdetail(request, blog_id):
 	p = get_object_or_404(Post, pk = blog_id)
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/blog_d.html', {'post': p,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/blog_d.html', {'post': p,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
@@ -146,7 +146,7 @@ def galleryindex(request, sort):
 
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/gallery.html', {'gallery_list': g,'brickgroup': bg,'brickheight':bgheight,'sort':sort},
+	return render_to_response('projects-news/gallery.html', {'gallery_list': g,'brickgroup': bg,'brickheight':bgheight,'sort':sort},
 		context_instance = RequestContext(request),
 	)
 	
@@ -154,7 +154,7 @@ def gallerydetail(request, gallery_id):
 	g = get_object_or_404(Gallery, pk = gallery_id)
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/gallery_d.html', {'gallery': g,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/gallery_d.html', {'gallery': g,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -162,7 +162,7 @@ def galleryrecent(request):
 	g = Gallery.objects.order_by('-date_added')
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/index.html', {'gallery_list': g,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/index.html', {'gallery_list': g,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
@@ -170,7 +170,7 @@ def videos(request):
 	v = Video.objects.all()
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/videos.html', {'video_list': v,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/videos.html', {'video_list': v,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -219,7 +219,7 @@ def videos_detail(request, video_slug):
 	path = "../../" + str(v.path)
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('news-photos/videos_detail.html', 
+	return render_to_response('projects-news/videos_detail.html', 
 		{'video': v,
 		'path':path,
 		'brickgroup': bg,

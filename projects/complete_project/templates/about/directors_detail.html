@@ -4,7 +4,7 @@
 {% block subarrive %}2{% endblock subarrive %}
 
 {% block brick %}
-	{% include "brick.html" %}
+	{% include "brick/brick.html" %}
 {% endblock brick %}
 
 {% block body %}
@@ -41,7 +41,7 @@
 	</div>
 	{% if director.video %}
 		{% for video in director.video.all %}
-			{% include "projects-models/detail_video.html" %}
+			{% include "projects-news/detail_video.html" %}
 		{% endfor %}
 	{% endif %}
 	<br><br>

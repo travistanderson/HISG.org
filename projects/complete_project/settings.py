@@ -118,67 +118,39 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.markup',
-	# 'django.contrib.flatpages',
+	'tiq_login',
 	'pages',
     
     # external
-    #'notification', # must be first
     'emailconfirmation',
     'django_extensions',
     'robots',
-    #'dbtemplates',
-    #'friends',
     'mailer',
-    #'messages',
-    #'announcements',
-    #'django_openidconsumer',
-    #'django_openidauth',
-    #'oembed',
-    # 'crashlog',
     'pagination',
     'gravatar',
     'threadedcomments',
-    #'wiki',
-    #'swaps',
     'timezones',
     'feedutil',
-    #'app_plugins',
-    #'voting',
-    #'tagging',
-    #'bookmarks',
-    #'blog',
     'ajax_validation',
     'photologue',
-    #'avatar',
     'things',
-    #'flag',
 	'newsphotos',
-	# 'donationportal',
 	'chunks',
-	#'gallery',
 	'videos',
 	'countries',
 	'about',
 	'homepage',
 	'featured',
-	# 'partners',
 	'brick',
 	'histidr',
 	'projectsmodels',
-	# 'haystack',
 	'faqs',
 	'training',
 	    
     # internal (for now)
     'analytics',
-    #'profiles',
-    #'zwitschern',
-    #'account',
-    #'tribes',
-    #'projects',
     'misc',
     'photos',
-    #'tag_app',
     
     'django.contrib.admin',
 
@@ -188,7 +160,10 @@ ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/%s/" % o.username,
 }
 
-AUTH_PROFILE_MODULE = 'profiles.Profile'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+AUTHENTICATION_BACKENDS = ('tiq_login.tiq_backend.TiqLoginBackend',)
+AUTH_PROFILE_MODULE = 'tiq_login.TiqUserProfile'
+# AUTH_PROFILE_MODULE = 'profiles.Profile'
 NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
@@ -200,7 +175,7 @@ EMAIL_HOST_PASSWORD = '1qaz2wsx'
 CONTACT_EMAIL = "hisg.contact@gmail.com"
 EMAIL_USE_TLS = True
 SITE_NAME = "HISG"
-LOGIN_URL = "/account/login"
+LOGIN_URL = "/user/login"
 LOGIN_REDIRECT_URLNAME = "what_next"
 
 LOGGING_OUTPUT_ENABLED = True

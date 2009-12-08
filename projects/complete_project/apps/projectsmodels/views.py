@@ -6,20 +6,24 @@ from django.forms import ModelForm
 from django.template import RequestContext
 from datetime import datetime, timedelta
 from projectsmodels.models import Project
+from newsphotos.models import News
 from videos.models import Video
 from photologue.models import Gallery, Photo
 from countries.models import Region, Country
 from photologue.models import Photo
 from brick.views import bricker, brickerheight
-from training.models import Session
 
 def index(request):
 	ph = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
 	pi = Project.objects.filter(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
+	g = Gallery.objects.order_by('-date_added')[:3]
+	n = News.objects.all().order_by('-date')[:3]
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/index.html', {'hist_list': ph,
+	return render_to_response('projects-news/index.html', {'hist_list': ph,
 														'idr_list':pi,
+														'gallery_list':g,
+														'news_list':n,
 														'brickgroup': bg,
 														'brickheight':bgheight,
 														},
@@ -38,7 +42,7 @@ def projectindex(request, sort):
 
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/project.html', {'project_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
+	return render_to_response('projects-news/project.html', {'project_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
 		context_instance = RequestContext(request),
 	)	
 	
@@ -46,7 +50,7 @@ def projectdetail(request, proj_id):
 	p = get_object_or_404(Project, pk = proj_id)
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/project_d.html', {'project': p,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/project_d.html', {'project': p,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -62,7 +66,7 @@ def idrprojectindex(request, sort):
 
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/idrproject.html', {'project_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
+	return render_to_response('projects-news/idrproject.html', {'project_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
 		context_instance = RequestContext(request),
 	)	
 	
@@ -70,21 +74,21 @@ def idrprojectdetail(request, proj_id):
 	p = get_object_or_404(Project, pk = proj_id)
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/idrproject_d.html', {'project': p,'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/idrproject_d.html', {'project': p,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 
 def histmodel(request):
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/histmodel.html', {'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/histmodel.html', {'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
 def idrmodel(request):
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
-	return render_to_response('projects-models/idrmodel.html', {'brickgroup': bg,'brickheight':bgheight,},
+	return render_to_response('projects-news/idrmodel.html', {'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
 	
@@ -94,6 +98,6 @@ def training(request):
 	bgheight = brickerheight(bg)
 	tf = Session.objects.all().filter(end_date__gte = today).order_by('start_date')
 	tp = Session.objects.all().filter(end_date__lt = today).order_by('-start_date')
-	return render_to_response('projects-models/training.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,},
+	return render_to_response('projects-news/training.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,},
 		context_instance = RequestContext(request),
 	)

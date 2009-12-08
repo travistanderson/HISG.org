@@ -1,10 +1,8 @@
 {# templates/misc/sitemap.html #}
 
 {% extends "misc/base.html" %}
-
-{% block brick %}
-	{% include "brick.html" %}
-{% endblock brick %}
+{% block head_title %}Sitemap{% endblock %}
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
 
 {% block body %}
 	<h2 class="center">Site-Map</h2><hr/>
@@ -17,16 +15,16 @@
 		<p style="top:-22px;left:426px;font-size:10px;line-height:9px;"><a href="/initiatives/hrn/">Hope<br/>Resource<br/>Network</a></p>		
 		<p style="top:-10px;left:260px;font-size:16px;"><a href="/initiatives/">Featured<br/>Initiatives</a></p>
 		
-		<p style="top:17px;left:148px;font-size:12px;"><a href="{% url blog %}">Blog</a></p>
+		<p style="top:17px;left:132px;font-size:12px;"><a href="{% url idrmodel %}">IDR Model</a></p>
 		<p style="top:7px;left:415px;font-size:12px;"><a href="{% url project %}">Projects</a></p>
-		<p style="top:5px;left:42px;font-size:12px;"><a href="{% url videos %}">Videos</a></p>
-		<p style="top:-5px;left:505px;font-size:12px;"><a href="{% url histmodel %}">HIST Model</a></p>
-		<p style="top:27px;left:18px;font-size:12px;"><a href="{% url gallery %}">Photos</a></p>
-		<p style="top:17px;left:530px;font-size:12px;"><a href="{% url idrmodel %}">IDR Model</a></p>		
-		<p style="top:2px;left:147px;font-size:16px;width:100px;"><a href="{% url newsphotos %}">News &amp;<br/>Photos</a></p>
-		<p style="top:-37px;left:378px;font-size:16px;width:100px;"><a href="{% url projectsmodels %}">Projects &amp;<br/>Models</a></p>
-		<p style="top:-27px;left:45px;font-size:12px;"><a href="{% url news %}">News</a></p>
-		<p style="top:-38px;left:514px;font-size:12px;"><a href="{% url training %}">Training</a></p>
+		<p style="top:5px;left:30px;font-size:12px;"><a href="{% url histmodel %}">HIST Model</a></p>
+		<p style="top:-5px;left:505px;font-size:12px;"><a href="{% url news %}">News</a></p>
+		<p style="top:27px;left:18px;font-size:12px;"><a href="/training-and-models/models/">Models</a></p>
+		<p style="top:17px;left:530px;font-size:12px;"><a href="{% url gallery %}">Photos</a></p>		
+		<p style="top:2px;left:140px;font-size:16px;width:100px;"><a href="{% url trainingmodels %}">Training &amp;<br/>Models</a></p>
+		<p style="top:-37px;left:378px;font-size:16px;width:100px;"><a href="{% url projectsnews %}">Projects &amp;<br/>News</a></p>
+		<p style="top:-27px;left:39px;font-size:12px;"><a href="{% url training %}">Training</a></p>
+		<p style="top:-38px;left:514px;font-size:12px;"><a href="{% url videos %}">Videos</a></p>
 		
 		<p style="top:-38px;left:255px;font-size:30px;"><a href="{% url home %}">Home</a></p>
 		

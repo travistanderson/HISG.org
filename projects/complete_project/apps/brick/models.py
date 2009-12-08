@@ -6,9 +6,9 @@ from photologue.models import Photo
 
 
 SECTION_CHOICES = (
-    ('news', 'News and Photos'),
+    ('news', 'Training and Models'),
     ('inits', 'Featured Initiatives'),
-	('projects', 'Projects and Models'),
+	('projects', 'Projects and News'),
 	('about', 'About Hisg'),
 	('donate', 'Donation Portal'),
 	('misc', 'Misc and FAQs'),

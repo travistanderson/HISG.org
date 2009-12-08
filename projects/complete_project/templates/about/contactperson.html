@@ -3,7 +3,7 @@
 {% block subarrive %}7{% endblock subarrive %}
 
 {% block brick %}
-	{% include "brick.html" %}
+	{% include "brick/brick.html" %}
 {% endblock brick %}	
 
 {% block body %}
@@ -13,8 +13,8 @@
 	<h2>
 		{{ staff.firstname }} {{ staff.lastname }}
 	</h2><br/>
-	{% if session %}
-		<h3>About the training in {{ session }}</h3>
+	{% if event %}
+		<h3>About {{ event }} starting on {{ event.start_date|date:"d M. Y" }}</h3>
 	{% endif %}
 {% endif %}
 <form action="" method="POST">

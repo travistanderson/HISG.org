@@ -1,6 +1,7 @@
 # bricks/views.py
 from brick.models import BrickGroup
 from photologue.models import Photo, Gallery
+from videos.models import Video
 
 def bricker(section,name):
 	bg = BrickGroup.objects.get(name = name, section = section)
@@ -98,6 +99,26 @@ def brickerheight(bg):
 		bgheight['b4gallery_latest_list'] = g.photos.all()[:4]
 	else:
 		bgheight['b4gallery_latest'] = ""
+		
+		
+		
+	# test for the video brick and provide the objects needed
+	if bg.brick1.name == 'videos_latest':
+		bgheight['b1videos_latest'] = Video.objects.all().order_by('-id')[:4]
+	else:
+		bgheight['b1videos_latest'] = ""
+	if bg.brick2.name == 'videos_latest':
+		bgheight['b2videos_latest'] = Video.objects.all().order_by('-id')[:4]
+	else:
+		bgheight['b2videos_latest'] = ""
+	if bg.brick3.name == 'videos_latest':
+		bgheight['b3videos_latest'] = Video.objects.all().order_by('-id')[:4]
+	else:
+		bgheight['b3videos_latest'] = ""
+	if bg.brick4.name == 'videos_latest':
+		bgheight['b4videos_latest'] = Video.objects.all().order_by('-id')[:4]
+	else:
+		bgheight['b4videos_latest'] = ""
 	
 			
 			

@@ -7,9 +7,9 @@ from chunks.models import Chunk
 
 LP_CHOICES = (
 	('1', 'Home-not used'),
-	('2', 'News and Photos'),
+	('2', 'Training and Models'),
 	('3', 'Featured Initiatives'),
-	('4', 'Projects and Models'),
+	('4', 'Projects and News'),
     ('5', 'About'),
     ('6', 'Donation'),
 	('7', 'Search'),

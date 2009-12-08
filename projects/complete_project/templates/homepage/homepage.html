@@ -209,8 +209,8 @@
 	<div id="nav"><!-- These are the top level navigation links -->
 		<ul id="navigation">
 			<li id="li1">
-				<a id="nav1" href="{% url newsphotos %}">
-					<span>NEWS &amp; photos</span>
+				<a id="nav1" href="{% url trainingmodels %}">
+					<span>Training &amp; models</span>
 				</a>
 			</li>
 			<li id="li2">
@@ -219,7 +219,7 @@
 				</a>
 			</li>
 			<li id="li3">
-				<a id="nav3" href="{% url projectsmodels %}">
+				<a id="nav3" href="{% url projectsnews %}">
 					<span>PROJECTS &amp; models</span>
 				</a>
 			</li>
@@ -237,43 +237,46 @@
 		<div id="subnavigation">
 			<ul class="subnav">
 				<li class="sub0" id="testify">Welcome to HISG</li>
-				<li class="sub1"><a href="{% url news %}">News | </a></li>
-				<li class="sub1"><a href="{% url gallery %}">Photos | </a></li>
-				<li class="sub1"><a href="{% url videos %}">Videos | </a></li>
-				<li class="sub1"><a href="{% url blog %}">Blog</a></li>
+
+				<li class="sub1"><a href="{% url training %}">Training</a> | </li>
+				<li class="sub1"><a href="/training-and-models/models/">Models</a> |</li>
+				<li class="sub1"><a href="{% url histmodel %}">HIST Model</a> | </li>
+				<li class="sub1"><a href="{% url idrmodel %}">IDR Model</a></li>
 				
-				<li class="sub2"><a href="/initiatives/starfish/">Starfish Community | </a></li>
-				<li class="sub2"><a href="/initiatives/lets-save-one/">Let's Save One | </a></li>
-				<li class="sub2"><a href="/initiatives/orphan-care/">Orphan Care | </a></li>
-				<li class="sub2"><a href="/initiatives/darfur-initiative/">Darfur Initiative | </a></li>
-				<li class="sub2"><a href="/initiatives/gic/">Global Information Center | </a></li>
+				<li class="sub2"><a href="/initiatives/starfish/">Starfish Community</a> | </li>
+				<li class="sub2"><a href="/initiatives/lets-save-one/">Let's Save One</a> | </li>
+				<li class="sub2"><a href="/initiatives/orphan-care/">Orphan Care</a> | </li>
+				<li class="sub2"><a href="/initiatives/darfur-initiative/">Darfur Initiative</a> | </li>
+				<li class="sub2"><a href="/initiatives/gic/">Global Information Center</a> | </li>
 				<li class="sub2"><a href="/initiatives/hrn/">Hope Resource Network</a></li>
 				
-				<li class="sub3"><a href="{% url project %}">HIST Projects | </a></li>
-				<li class="sub3"><a href="{% url idrproject %}">IDR Projects |</a></li>
-				<li class="sub3"><a href="/projects-and-models/models/">Models |</a></li>
-				<li class="sub3"><a href="{% url training %}">Training</a></li>
+				<li class="sub3"><a href="{% url project %}">HIST Projects</a> | </li>
+				<li class="sub3"><a href="{% url idrproject %}">IDR Projects</a> | </li>
+				<li class="sub3"><a href="{% url news %}">News</a> | </li>
+				<li class="sub3"><a href="{% url gallery %}">Photos</a> | </li>
+				<li class="sub3"><a href="{% url videos %}">Videos</a> | </li>
+				<li class="sub3"><a href="{% url blog %}">Blog</a></li>
 
-				<li class="sub4"><a href="/about-hisg/history/">History | </a></li>
-				<li class="sub4"><a href="{% url directors %}">Directors | </a></li>
-				<li class="sub4"><a href="{% url staff %}">Staff | </a></li>
-				<li class="sub4"><a href="{% url office %}">Offices | </a></li>
-				<li class="sub4"><a href="/about-hisg/vision/">Purpose and Vision | </a></li>
-				<li class="sub4"><a href="{% url intern %}">Internship | </a></li>				
+				<li class="sub4"><a href="/about-hisg/history/">History</a> | </li>
+				<li class="sub4"><a href="{% url directors %}">Directors</a> | </li>
+				<li class="sub4"><a href="{% url staff %}">Staff</a> | </li>
+				<li class="sub4"><a href="{% url office %}">Offices</a> | </li>
+				<li class="sub4"><a href="/about-hisg/vision/">Purpose and Vision</a> | </li>
+				<li class="sub4"><a href="{% url intern %}">Internship</a> | </li>				
 				<li class="sub4"><a href="{% url contact %}">Contact Us</a></li>
 				
 				<li class="sub5"><a href="{% url donation_login %}">Donor Login</a></li>
 			
 		{% if user.is_authenticated %}
 				<li class="inyes" id="adminfirst">
-					<a href="{% url profile_detail user %}">{{ user }} | </a>
+					<a href="{# {% url profile_detail user %} #}">{{ user }}</a> | 
 				</li>
 				<li class="inyes">
-					<a href="{% url acct_logout %}">logout</a>
+					<a href="{% url logout %}">logout</a>
 				</li>
 				{% if perms.tribes %}
 				<li class="inyes">
-					<a href="/admin/"> | admin</a>
+					 | <a href="/admin/">admin</a>
 				</li>
 				{% else %}
 					{% if perms.partners %}
@@ -285,8 +288,8 @@
 			</ul>
 		{% else %}
 				<li class="inyes" id="adminfirst">
-					<a href="{% url acct_login %}">Login</a>/
-					<a href="{% url acct_signup %}">Signup</a>
+					<a href="{% url login %}">Login</a>/
+					<a href="{% url signup %}">Signup</a>
 				</li>
 			</ul>
 		{% endif %}

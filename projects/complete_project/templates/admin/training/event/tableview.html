@@ -1,0 +1,58 @@
+{# templates/admin/training/event/tableview.html #}
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="../../../jsi18n/"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />{% endblock %}
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% block breadcrumbs %}
+	{% if not is_popup %}
+		<div class="breadcrumbs">
+		     <a href="../../../">{% trans "Home" %}</a> &rsaquo;
+		     <a href="../../">{{ app_label|capfirst|escape }}</a> &rsaquo; 
+		     {% if has_change_permission %}<a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %} &rsaquo; 
+		     {% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+		</div>
+	{% endif %}
+{% endblock %}{# end of breadcrumbs #}
+
+{% block content %}
+	<div id="content-main">
+		<h1>{{ event }}</h1><br/><br/>
+		<div class="object-tools"><ul><li><a href="/admin/training/event/{{ event.id }}/" class="historylink">Back to Event</a></li></ul></div>
+		
+		<table class="attendee_table">
+			<tr>
+				<th>Username</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone #</th>
+				<th>Address</th>
+				<th>Country</th>
+				<th>Picture Upload</th>
+			</tr>
+			{% for dude in dudes %}
+				<tr>
+					<td>{{ dude.username }}</td>
+					<td>{{ dude.first_name }}</td>
+					<td>{{ dude.email }}</td>
+					<td>{{ dude.phone }}</td>
+					<td>{{ dude.address }}</td>
+					<td>{{ dude.country }}</td>
+					<td><img src="{{ dude.pictureurl }}"></img><br/>{{ dude.picture }}</td>
+				</tr>
+			
+			{% endfor %}
+			<tr><td colspan="4">There are {{ event.registrant.all.count }} people signed up to attend this event.</td></tr>
+		</table>
+		
+		
+
+	</div>{# end of content main #}
+{% endblock %}

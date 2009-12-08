@@ -10,6 +10,7 @@ from homepage.models import Impacter, Phrase
 from newsphotos.models import News
 from projectsmodels.models import Project
 from photologue.models import Photo
+from tiq_login.models import TiqUserProfile
 
 def homepage(request):
 	i = Impacter.objects.all().order_by('order').filter(active=True)
@@ -18,13 +19,15 @@ def homepage(request):
 	p = Project.objects.latest('year')
 	ph = Phrase.objects.all().order_by('order').filter(active=True)
 	phf = Phrase.objects.get(order=1)
+	# u = TiqUserProfile.objects.get(user=request.user)
 	
 	return render_to_response('homepage/homepage.html', {
-	'impacter_list': i,
-	'impacter_first': f,
-	'phrase_list':ph,
-	'phrase_first':phf,
-	'news_list': n,
-	},
+			'impacter_list': i,
+			'impacter_first': f,
+			'phrase_list':ph,
+			'phrase_first':phf,
+			'news_list': n,
+			# 'user':u,
+		},
 		context_instance = RequestContext(request),
 	)	

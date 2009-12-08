@@ -36,9 +36,9 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^$', include('homepage.urls')),
     
-    (r'^news-and-photos/', include('newsphotos.urls')),
+    (r'^training-and-models/', include('training.urls')),
     (r'^initiatives/', include('featured.urls')),
-    (r'^projects-and-models/', include('projectsmodels.urls')),
+    (r'^projects-and-news/', include('projectsmodels.urls')),
     (r'^about-hisg/', include('about.urls')),
     (r'^donation-portal/', include('donationportal.urls')),
     (r'^account/', include('account.urls')),
@@ -46,19 +46,16 @@ urlpatterns = patterns('',
     (r'^robots.txt$', include('robots.urls')),
     (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^photologue/', include('photologue.urls')),
-    (r'^profiles/', include('profiles.urls')),
+	(r'^user/', include('tiq_login.urls')),
+    # (r'^profiles/', include('profiles.urls')),
 	(r'^info/', include('faqs.urls')),
 
+	(r'^admin/training/event/tableview/', include('training.admin_urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^photos/', include('photos.urls')),
     (r'^search/', include('lookfor.urls')),
-    
-    # (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
-    # (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
-    # (r'^feeds/bookmarks/(.*)/?$', 'django.contrib.syndication.views.feed', bookmarks_feed_dict),
 )
 
-## @@@ for now, we'll use friends_app to glue this stuff together
 
 from photos.models import Image
 

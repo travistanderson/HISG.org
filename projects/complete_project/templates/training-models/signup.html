@@ -34,6 +34,15 @@
 				<tr>
 					<td></td><td><button type="submit">Submit</button></td>
 				</tr>
+				{% if stats.showsize %}
+					{% if stats.full %}
+					<tr><td></td><td></td></tr>
+					<tr><td colspan="2">The registration for this event is full. If you complete the sign up now, you will be placed on the wait list and contacted should space become available.</td></tr>
+					{% else %}
+					<tr><td></td><td></td></tr>
+					<tr><td colspan="2">{{ stats.cursize }} people have signed up for {{ stats.maxsize }} available spots in this event.</td></tr>	
+					{% endif %}
+				{% endif %}
 			</table>
 		</form><br/><br/>
 	</div>

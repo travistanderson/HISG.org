@@ -1,0 +1,20 @@
+{# templates/training-models/cancel.html #}
+{% extends 'training-models/base.html' %}
+{% block subarrive %}1{% endblock subarrive %}
+
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+
+{% block body %}
+
+	<span class="right">
+		{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %}
+	</span><br/><br/>
+	<div id="signup2">
+		<h4>Are you sure you want to cancel your registration for the {{ event }} training event.</h4><br/><br/>
+		<form action='' method="POST">
+			<button type="submit">Cancel Registration</button>
+		</form><br/><br/>
+	</div>
+{% endblock %}
+
+

@@ -3,8 +3,46 @@
 {% load i18n admin_modify adminmedia %}
 
 {% block extrahead %}{{ block.super }}
-<script type="text/javascript" src="../../../jsi18n/"></script>
-{{ media }}
+	<script type="text/javascript" src="../../../jsi18n/"></script>
+	{{ media }}
+	<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="/admin_media/jquery/jquery.qtip.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('.emailtemplatepicker').css({'display':'none'});
+			var value = $("#function_select :selected").text();
+			if( value == 'Email Registrant'){
+				$('.emailtemplatepicker').css({'display':'inline'});
+			}		
+			$("#function_select").bind("change", function(){
+				var value = $("#function_select :selected").text();
+				$('.emailtemplatepicker').css({'display':'none'});
+				if(value=="Email Registrant"){
+					$('.emailtemplatepicker').css({'display':'inline'});
+				}
+			})
+			$('#select_all').qtip({ 
+				content: 'Select All',
+				position: {corner: {tooltip: 'rightTop',target: 'leftBottom'}},
+				style: {border: {width: 5,radius: 10},padding: 5, textAlign: 'center',tip: true, name: 'cream'} 
+			}); //this pops up a tooltip around the select all box to let people know it is a select all box
+			 
+			var dude_select_all = false;
+			$('input[name=dude_list]').attr('checked', false);
+			$('#select_all').toggle(
+				function(){
+					$('input[name=dude_list]').attr('checked', true);
+					dude_select_all = true;
+				},
+				function(){
+					$('input[name=dude_list]').attr('checked', false);
+					dude_select_all = false;
+				}
+			);
+			
+			
+		});
+	</script>
 {% endblock %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />{% endblock %}
@@ -12,47 +50,68 @@
 {% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
 
 {% block breadcrumbs %}
-	{% if not is_popup %}
-		<div class="breadcrumbs">
-		     <a href="../../../">{% trans "Home" %}</a> &rsaquo;
-		     <a href="../../">{{ app_label|capfirst|escape }}</a> &rsaquo; 
-		     {% if has_change_permission %}<a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %} &rsaquo; 
-		     {% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
-		</div>
-	{% endif %}
+	<div class="breadcrumbs">
+		<a href="/admin/">Home</a> › <a href="/admin/training/">Training</a> › <a href="/admin/training/event/">Events</a> › <a href="/admin/training/event/{{ event.id }}/">{{ event }}</a> › tableview
+	</div>
 {% endblock %}{# end of breadcrumbs #}
 
 {% block content %}
 	<div id="content-main">
 		<h1>{{ event }}</h1><br/><br/>
 		<div class="object-tools"><ul><li><a href="/admin/training/event/{{ event.id }}/" class="historylink">Back to Event</a></li></ul></div>
-		
-		<table class="attendee_table">
-			<tr>
-				<th>Username</th>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Phone #</th>
-				<th>Address</th>
-				<th>Country</th>
-				<th>Picture Upload</th>
-			</tr>
-			{% for dude in dudes %}
+		<form action='' method="POST">
+			<table class="attendee_table">
 				<tr>
-					<td>{{ dude.username }}</td>
-					<td>{{ dude.first_name }}</td>
-					<td>{{ dude.email }}</td>
-					<td>{{ dude.phone }}</td>
-					<td>{{ dude.address }}</td>
-					<td>{{ dude.country }}</td>
-					<td><img src="{{ dude.pictureurl }}"></img><br/>{{ dude.picture }}</td>
+					<th id="select_all">&radic;</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Attend</th>
+					{% for q in questions %}
+						<th>{{ q }}</th>
+					{% endfor %}
+					<th>Picture Upload</th>
 				</tr>
+				{% for dude in dudes %}
+					<tr>
+						<td><input type="checkbox" name="dude_list" value="{{ dude.username }}" /></td>
+						<td>{{ dude.first_name }}</td>
+						<td>{{ dude.email }}</td>
+						<td>{% if dude.attend %}<div class="checker-green">&nbsp;</div>{% endif %}</td>
+						{% for q in dude.custom %}
+							<td>{{ q }}</td>
+						{% endfor %}
+						<td><img src="{{ dude.pictureurl }}"></img>{% if dude.pictureurl %}<br/>{% endif %}{{ dude.picture }}</td>
+					</tr>
 			
-			{% endfor %}
-			<tr><td colspan="4">There are {{ event.registrant.all.count }} people signed up to attend this event.</td></tr>
-		</table>
-		
-		
-
+				{% endfor %}
+				<tr>
+					<td colspan="{{ questions|length|add:5 }}">
+						<select name="function_select" id="function_select">
+							<option value="attadd">Add Attendence</option>
+							<option value="attrem">Remove Attendence</option>
+							<option value="regdel">Delete Registration</option>
+							<option value="regema">Email Registrant</option>
+						</select>
+						<select name="email_select" class="emailtemplatepicker">
+							{% for email in email_list %}
+								<option value="{{ email.id }}">{{ email.name }}</option>
+							{% endfor %}
+						</select>
+						<button type="submit">Go</button>
+						
+					</td>
+				</tr>
+				<tr>
+					<td colspan="{{ questions|length|add:5 }}">
+						There are (<b class="bold">{{ stats.cursize }}</b> out of {{ stats.maxsize }}) people signed up to attend this event. When the event is 75% or more registered it will display the class size and number of registrants on the signup page.
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>{# end of content main #}
 {% endblock %}
+
+
+
+
+<form action="">

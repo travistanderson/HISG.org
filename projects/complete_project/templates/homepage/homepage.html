@@ -8,7 +8,8 @@
         <!--[if IE]><style>
             div {zoom: 1; /* trigger hasLayout */}
         </style><![endif]-->
-        <link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >        
+		<link rel="icon" type="image/png" href="/site_media/images/favicon.png">       
+        <link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >
 		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
 		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
         <script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
@@ -272,18 +273,18 @@
 					<a href="{% url profile user.id %}">{{ user }}</a> | 
 				</li>
 				<li class="inyes">
-					<a href="{% url logout %}">logout</a>
+					<a href="{% url logout %}">Logout</a>
 				</li>
 				{% if user.is_staff %}
 					<li class="inyes">
-						 | <a href="/admin/">admin</a>
+						 | <a href="/admin/">Admin</a>
 					</li>
 				{% endif %}
 			</ul>
 		{% else %}
 				<li class="inyes" id="adminfirst">
 					<a href="{% url login %}">Login</a>/
-					<a href="{% url signup %}">Signup</a>
+					<a href="{% url signup %}">Sign Up</a>
 				</li>
 			</ul>
 		{% endif %}

@@ -140,3 +140,20 @@ a.deletelink:hover { color:#993333; }
 /* OBJECT HISTORY */
 table#change-history { width:100%; }
 table#change-history tbody th { width:16em; }
+
+
+
+
+/*  Added by Travis for custom tables on events */
+
+.attendee_table{margin:0 0 0 100px;border:2px solid gray;width:800px;}
+.attendee_table th{border:2px solid gray;background:url(../img/admin/tableheader.gif) 0px -6px repeat-x;}
+.attendee_table td{border:1px solid gray;}
+.attendee_table b{font-size:14px;}
+.attendee_table .checker-green{background:url(../img/admin/icon_success.gif) top center no-repeat;width:20px;height:20px;}
+.attendee_table .emailtemplatepicker{}
+.attendee_table #select_all{cursor:pointer;}
+.attendee_table .messagerow{height:350px;}
+#attendeesendemail{padding:20px 0 0 200px;}
+
+/*  End*/

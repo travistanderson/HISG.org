@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from brick.views import bricker, brickerheight
 from training.models import Event, QuestionSet, Choice, Question, Answer, BadgePhoto
 from training.forms import EventForm, BadgeForm
-from training.mailcontents import sumail
+from training.mailcontents import sumail, cancelmail
 from django.conf import settings
 if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
@@ -58,6 +58,24 @@ def trainingsu(request, event_id):
 	e = Event.objects.get(id=event_id)
 	u = User.objects.get(id=request.user.id)
 	q = e.questionset.questions.all()
+	stats = {}
+	maxsize='maxsize'
+	stats[maxsize]=e.limit
+	cursize='cursize'
+	stats[cursize]=e.registrant.count()
+	showsize='showsize'
+	if float(stats[cursize])/float(stats[maxsize]) >= .75:
+		shsz = True
+	else:
+		shsz = False
+	stats[showsize]=shsz
+	fullsize='full'
+	if stats[cursize] >= stats[maxsize]:
+		fusz = True
+	else:
+		fusz = False
+	stats[fullsize]=fusz
+	
 	for us in e.registrant.all():
 		if us==u:
 			return HttpResponseRedirect(reverse('profile',args=[u.id]))
@@ -76,7 +94,7 @@ def trainingsu(request, event_id):
 					a.save()
 			e.registrant.add(u)
 			e.save()
-			request.user.message_set.create(message="You have signed up to attend "+str(e.name)+", and you will receive a confirmation email shortly.")
+			request.user.message_set.create(message="You have signed up to attend "+str(e)+", and you will receive a confirmation email shortly.")
 			subject, content, fromemail, toemail = sumail(e,u)
 			send_mail(subject,content,fromemail,toemail)
 			if BadgePhoto.objects.filter(user=u):
@@ -85,12 +103,12 @@ def trainingsu(request, event_id):
 				return HttpResponseRedirect(reverse('training_pic'))
 		else:
 			form = EventForm(q, request.POST)
-		return render_to_response('training-models/signup.html', {'brickgroup':bg,'brickheight':bgheight,'event':e,'user':u,'form':form,},
+		return render_to_response('training-models/signup.html', {'brickgroup':bg,'brickheight':bgheight,'event':e,'user':u,'form':form,'stats':stats,},
 			context_instance = RequestContext(request),
 		)
 	else:
 		form = EventForm(q)
-	return render_to_response('training-models/signup.html', {'brickgroup': bg,'brickheight':bgheight,'event':e,'user':u,'form':form,'q':q,},
+	return render_to_response('training-models/signup.html', {'brickgroup': bg,'brickheight':bgheight,'event':e,'user':u,'form':form,'q':q,'stats':stats,},
 		context_instance = RequestContext(request),
 	)
 
@@ -120,39 +138,25 @@ def trainingpic(request):
 	)	
 
 
-# def trainingsuccess(request,event_id):
-# 	today = datetime.today()
-# 	bg = bricker('projects','Training')
-# 	bgheight = brickerheight(bg)
-# 	tf = Event.objects.all().filter(end_date__gte = today).order_by('start_date')
-# 	tp = Event.objects.all().filter(end_date__lt = today).order_by('-start_date')
-# 	return render_to_response('training-models/profile.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,},
-# 		context_instance = RequestContext(request),
-# 	)	
-	
-# def contact(request):
-# 	bg = bricker('about','contact')
-# 	bgheight = brickerheight(bg)
-# 	if request.method == 'POST':
-# 		form = EventForm(request.POST)
-# 		toemail = 'tanderson@hisg.org'
-# 		toemail2 = 'kadams@hisg.org'
-# 		if form.is_valid():
-# 			name = form.cleaned_data['name']
-# 			email = form.cleaned_data['email']
-# 			subject = "HISG.org Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
-# 			content = "From:" + name + ": " + email + "\n\n" + form.cleaned_data['content']
-# 			send_mail(subject, content, email,[toemail,toemail2,])
-# 			return HttpResponseRedirect('/about-hisg/contact/success/')
-# 		else:
-# 			form = EventForm(request.POST)
-# 			return render_to_response(
-# 				'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-# 				context_instance = RequestContext(request),
-# 			)
-# 	else:
-# 		form = EventForm()
-# 	return render_to_response(
-# 		'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-# 		context_instance = RequestContext(request),
-# 	)
+
+@login_required	
+def trainingcancel(request, event_id):
+	bg = bricker('projects','Training')
+	bgheight = brickerheight(bg)
+	e = Event.objects.get(id=event_id)
+	u = User.objects.get(id=request.user.id)
+	if request.method == 'POST':
+		for us in e.registrant.all():
+			if us==u:
+				e.registrant.remove(u)
+				e.save()
+			request.user.message_set.create(message="You have canceled your registration for the "+str(e)+" training event.")
+			subject, content, fromemail, toemail = cancelmail(e,u)
+			send_mail(subject,content,fromemail,toemail)
+			return HttpResponseRedirect(reverse('profile',args=[u.id]))
+		return HttpResponseRedirect(reverse('home'))
+	else:
+		return render_to_response('training-models/cancel.html', {'brickgroup': bg,'brickheight':bgheight,'event':e,'user':u,},
+			context_instance = RequestContext(request),
+		)
+

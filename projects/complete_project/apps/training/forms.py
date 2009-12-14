@@ -54,25 +54,8 @@ class EventForm(forms.Form):
 
 
 
-
-	# Name
-	# Email Address
-
-	# Organization
-	# Street Address
-	# City
-				# State
-	# Country
-	# Phone Number
-
-	# Picture
-
-
-	# Event Number or Identifier
+    
 
 
 
-# notes on IDRN numbers
-# 1000-1100 hisg internal staff
-# 1100 + external
-# 1169 was the last badge given
+

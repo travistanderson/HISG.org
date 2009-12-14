@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 	url(r'^training/signup/(?P<event_id>\d+)/$', 'training.views.trainingsu', name='training_su'),
 	url(r'^training/signup/picture/$', 'training.views.trainingpic', name='training_pic'),
 	# url(r'^training/signup/(?P<event_id>\d+)/success/$', 'training.views.trainingsuccess', name='training_ss'),
+	url(r'^training/cancel/(?P<event_id>\d+)/$', 'training.views.trainingcancel', name='training_cancel'),
 	
 	url(r'^models/hist-model/$', 'training.views.histmodel', name='histmodel'),
 	url(r'^models/idr-model/$', 'training.views.idrmodel', name='idrmodel'),

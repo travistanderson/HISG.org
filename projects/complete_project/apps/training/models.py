@@ -18,11 +18,23 @@ class EmailTemplate(models.Model):
 class Email(models.Model):
 	date_sent = models.DateField()
 	fromemail = models.ForeignKey(Staff,related_name="fromemail")
-	toemail = models.ManyToManyField(User,blank=True,null=True,related_name="toemail")
+	toemail = models.TextField(blank=True)
 	template = models.ForeignKey(EmailTemplate)
 
 	def __unicode__(self):
 		date = str(self.date_sent)
+		return date
+		
+class EmailPreview(models.Model):
+	date_created = models.DateField()
+	fromemail = models.CharField(blank=True, max_length=100)
+	toemail = models.TextField(blank=True)
+	subject = models.CharField(blank=True, max_length=100)
+	content = models.TextField(blank=True)
+	template = models.ForeignKey(EmailTemplate)
+
+	def __unicode__(self):
+		date = str(self.date_created)
 		return date
 
 class Choice(models.Model):

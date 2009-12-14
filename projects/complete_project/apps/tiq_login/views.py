@@ -16,6 +16,7 @@ from tiqLibraries.tiqErrors import TiqPasswordExpiredError
 from tiq_login import getSessionRpcClient
 from django.core.urlresolvers import reverse
 from settings import *
+from datetime import datetime, timedelta
 from forms import PasswordChangeForm, RememberAuthenticationForm, SignupForm
 from django.contrib.auth.models import User
 from training.models import Event, BadgePhoto
@@ -214,11 +215,13 @@ def signup(request):
 
 @login_required
 def profile(request,user_id):
+	today = datetime.today()
 	u = User.objects.get(pk=user_id)
 	b = BadgePhoto.objects.filter(user=u)
 	e = Event.objects.filter(registrant=u)
+	ep = Event.objects.filter(attendee=u).filter(end_date__lt = today).order_by('-start_date')
 	m = Message.objects.filter(user=u)
-	return render_to_response('tiq_login/profile.html', {'user':u,'photos':b,'events':e,},
+	return render_to_response('tiq_login/profile.html', {'user':u,'photos':b,'events':e,'events-past':ep},
 		context_instance = RequestContext(request),
 	)
 

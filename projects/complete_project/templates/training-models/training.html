@@ -54,7 +54,13 @@
 							{{ train.contact.firstname }} {{ train.contact.lastname }}</a><br/><span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
-						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}</td>
+						<td>
+							{% if train.active %}
+								{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}
+							{% else %}
+								To Be Determined
+							{% endif %}
+						</td>
 						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
 						<td class="">
 							<a href="{% url training_su train.id %}" class="buttoner">Sign Up</a>

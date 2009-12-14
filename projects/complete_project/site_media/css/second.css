@@ -209,9 +209,9 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .train_desc{background-color:#b1d9fe;}
 .tb_location{width:90px;}
 .tb_contact{width:95px;}
-.tb_subject{width:145px;}
-.tb_date{width:120px;}
-.tb_info{width:60px;}
+.tb_subject{width:140px;}
+.tb_date{width:125px;}
+.tb_info{width:40px;}
 .tb_attend{width:85px;}
 
 .modelrow{border:5px solid #dabc64;margin:0 20px 0 0;padding:10px;width:110px;height:105px;background-color:#f2e3a5;}

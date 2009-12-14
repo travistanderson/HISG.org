@@ -88,7 +88,7 @@ class Event(models.Model):
 	latitude = models.FloatField(blank=True,null=True)
 	longitude = models.FloatField(blank=True,null=True)
 	description = models.TextField(blank=True)
-	active = models.BooleanField(default=True)
+	active = models.BooleanField(default=True,help_text="use this to mark dates as 'TBD' when they are unconfirmed",)
 	limit = models.IntegerField(blank=True, null=True,help_text='this is the maximum number of people you will allow to signup for this event.')
 	registrant = models.ManyToManyField(User,blank=True,null=True,related_name='registrant')
 	attendee = models.ManyToManyField(User,blank=True,null=True,related_name='attendee')

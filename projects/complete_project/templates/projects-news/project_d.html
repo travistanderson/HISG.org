@@ -2,38 +2,14 @@
 {% extends 'projects-news/base.html' %}
 {% block subarrive %}1{% endblock subarrive %}
 
-{% block brick %}
-	{% include "brick/brick.html" %}
-{% endblock brick %}
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+{% block extra_head %}{% include "projects-news/includes/photopickerhead.html" %}{% endblock %}
 
 {% block body %}
 	{% if project %}
 		<h2 class="center">{{ project.name }}</h2><hr/>
-
-		{% if project.photo.all %}
-				<div class="news-detail-photo">
-					{% for photo in project.photo.all %}
-						{% ifequal forloop.counter 1 %}
-							<div id="mainpic">
-								<img class="gold5" src="{{ photo.get_display_url }}" />
-							</div>
-							<div class="caption" style="padding:0 0 15px 0;">
-								{{ photo.caption }}
-							</div>
-						{% endifequal %}
-					{% endfor %}
-
-					<div>{# thumbnails #}
-						{% for photo in project.photo.all %}
-							{% ifnotequal forloop.counter 1 %}
-								<span id="thumbpic{{ forloop.counter }}" style="padding:0 2px 3px 0;">
-									<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
-								</span>
-							{% endifnotequal %}
-						{% endfor %}
-					</div>{# end of thumbnails #}
-				</div>{# end of news-detail-photo #}
-		{% endif %}
+		
+		{% include "projects-news/includes/photopicker.html" %}
 		
 		<div class="news-detail-country">
 			{% for country in project.country.all %}
@@ -46,12 +22,12 @@
 		
 		<div class="clearer"></div><br/>
 	
-		{% include "projects-news/histidr_box.html" %}
+		{% include "projects-news/includes/histidr_box.html" %}
 		<br/><br/>
 		{% if project.video.all %}
 			<h3>Project Videos</h3>
 			{% for video in project.video.all %}
-				{% include "projects-news/detail_video.html" %}
+				{% include "projects-news/includes/detail_video.html" %}
 			{% endfor %}
 		{% endif %}
 	

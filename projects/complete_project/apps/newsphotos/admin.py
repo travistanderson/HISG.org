@@ -9,6 +9,10 @@ class NewsAdmin(admin.ModelAdmin):
 	list_filter = ['date', 'region','country']
 	search_fields = ['name',]
 	ordering = ('-date',)
+	fieldsets = (
+		(None, {'fields': ('name', 'story', 'date','country','region','video')}),
+		('Photos', {'fields': ('photo',)}),
+	)
 
 class PartnerAdmin(admin.ModelAdmin):
 	form = PartnerAdminModelForm
@@ -27,3 +31,5 @@ admin.site.register(News, NewsAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(PartnerType, PartnerTypeAdmin)
 admin.site.register(Post, PostAdmin)
+
+

@@ -20,7 +20,6 @@ class Project(models.Model):
 	news = models.ManyToManyField(News, blank=True, null=True)
 	video = models.ManyToManyField(Video, blank=True, null=True)
 	photo = models.ManyToManyField(Photo, blank=True, null=True)
-	# histidr = models.ForeignKey(HistIdr, blank=True, null=True)
 	
 	def __unicode__(self):
 		return self.name

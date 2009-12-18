@@ -14,8 +14,14 @@ class ProjectAdmin(admin.ModelAdmin):
 	inlines = [HistIdrInline,]
 	list_display = ('name', 'description', 'year', 'active_now',)
 	search_fields = ['name','description',]
-	# list_editable = ('year',)
+	# filter_horizontal = ('photo',)
+	fieldsets = (
+		(None, {'fields': ('name', 'description', 'active_now', 'year','country','region','partner','news','video')}),
+		('Photos', {'fields': ('photo',)}),
+	)
+	
 
 
 admin.site.register(Project, ProjectAdmin)
+
 

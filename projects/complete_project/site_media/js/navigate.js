@@ -103,59 +103,34 @@ function tininav(){
 	})
 }
 
-// 
-// function restore(event){
-// 	if(event.relatedTarget.tagName == "LI"){return;}
-// 	if(event.relatedTarget.tagName == "UL"){return;}
-// 	if(event.relatedTarget.tagName == "A"){return;}
-// 	else{
-// 	//alert(event.relatedTarget.tagName);
-// 	showernav = "nav" + pageperm
-// 		//hide the activenav
-// 		blank = document.getElementById(activenav);
-// 		blank.style.background = "#FFF";
-// 		// hide the activesub;
-// 		for(i = 0; i < navarray[page]; i++){
-// 			e = "sub" + page + (i + 1);
-// 			f = document.getElementById(e);
-// 			f.style.display = "none";
-// 		}
-// 		// show the showernav
-// 		color = document.getElementById(showernav);
-// 		color.style.background = "#75ba39";
-// 		// show the showersub;
-// 		for(i = 0; i < navarray[pageperm]; i++){
-// 			g = "sub" + pageperm + (i + 1);
-// 			h = document.getElementById(g);
-// 			h.style.display = "inline";
-// 		}
-// 		activenav = showernav;
-// 		page = pageperm;}
-// }
+// here is the function to rotate around the photos on a photopicker.html include
+$(document).ready(function() {
+	function makeImage(v){
+		imgstring = "<img class='gold5' src='" + v +"' />";
+		return imgstring;
+	}
+	
+	$('.thumbpic').click(function(){
+		var place = String(this.id).split('_').shift();
+		var idstring = positions[place];
+		var mainstring = positions[0];
+		$('.mainpic').html(makeImage(photodisplays[idstring]));
+		$('.news-detail-photo > .caption').html(photocaptions[idstring]);
+		$(this).html(makeImage(photothumbs[mainstring]));
+		positions[place]=mainstring;
+		positions[0]=idstring;
+	})
+});
+
+// place and zero are the places to switch
+// these are the arrays with the photo data
+// var photoids = new Array();
+// var photodisplays = new Array();
+// var photothumbs = new Array();		
+// var photocaptions = new Array();
 
 
 
-
-
-// function show(shower){
-// 	// showernav = "nav" + shower
-// 	//hide all
-// 	for(i = 0; i < navarray.length - 1; i++){
-// 		for(j = 0; j < navarray[i + 1]; j++){
-// 			a = "sub" + (i + 1) + (j + 1);
-// 			b = document.getElementById(a);
-// 			b.style.display = "none";
-// 		}
-// 	}
-// 	// show the showersub;
-// 	for(i = 0; i < navarray[shower]; i++){
-// 		c = "sub" + shower + (i + 1);
-// 		d = document.getElementById(c);
-// 		d.style.display = "inline";
-// 	}	
-// 	// activenav = showernav;
-// 	// page = shower;
-// }
 
 
 // the end

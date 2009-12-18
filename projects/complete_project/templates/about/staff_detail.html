@@ -13,35 +13,12 @@
 		<h4><a href="{% url contactperson staff.id "about" %}">Email {{ staff.firstname }}</a></h4>
 	</div>
 	<h3>{{ staff.title }}</h3><hr>
-		{# {% if staff.photo %} #}
-		{# 	<div class="news-detail-photo"> #}
-		{# 		{% for photo in staff.photo.all %} #}
-		{# 			{% ifequal forloop.counter 1 %} #}
-		{# 				<div id="mainpic"> #}
-		{# 					<img class="gold5" src="{{ photo.get_display_url }}" /> #}
-		{# 				</div> #}
-		{# 				<div class="caption" style="padding:0 0 15px 0;"> #}
-		{# 					{{ photo.caption }} #}
-		{# 				</div> #}
-		{# 			{% endifequal %} #}
-		{# 		{% endfor %} #}
-		{# 		<div> #}
-		{# 			{% for photo in staff.photo.all %} #}
-		{# 				{% ifnotequal forloop.counter 1 %} #}
-		{# 					<span id="thumbpic{{ forloop.counter }}" style="padding:0 2px 3px 0;"> #}
-		{# 						<img class="gold5" src="{{ photo.get_smallish_url }}"></img> #}
-		{# 					</span> #}
-		{# 				{% endifnotequal %} #}
-		{# 			{% endfor %} #}
-		{# 		</div> #}
-		{# 	</div> #}
-		{# {% endif %} #}
 		
 		<p>{{ staff.bio|safe }}</p><div class="clearer"></div>
 		<br/><br/>
 		{% if staff.video %}
 			{% for video in staff.video.all %}
-				{% include "projects-news/detail_video.html" %}
+				{% include "projects-news/includes/detail_video.html" %}
 			{% endfor %}
 		{% endif %}
 		

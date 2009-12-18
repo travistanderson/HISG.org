@@ -3,31 +3,27 @@
 
 {% block subarrive %}4{% endblock subarrive %}
 
-{% block brick %}
-	{% include "brick/brick.html" %}
-{% endblock brick %}
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+{% block extra_head %}{% include "projects-news/includes/photopickerhead.html" %}{% endblock %}
 
 {% block body %}
-		<h2>{{ office }}</h2><hr>
-		{% if office.photo %}
-			{% for photo in office.photo.all %}
-			<div style="display:inline; float:right; margin:5px;"><img src="{{ photo.get_display_url }}" /></div>
-			{% endfor %}
-		{% endif %}
-		<p>{{ office.description|safe }}</p>
-		
-		{% if office.video %}
-			{% for video in office.video.all %}
-			{{ video.name }}-{{ video.caption }}
-			<EMBED SRC="/site_media/{{ video.path }}" WIDTH=320 HEIGHT = 256
-			 AUTOPLAY=false CONTROLLER=true LOOP=false
-			 PLUGINSPAGE=http://www.apple.com/quicktime/ ><br><br>
-			{% endfor %}
-		{% endif %}
-		<br><br>
-		<div style="text-align:center;clear:both;">
-			<a href="{% url office %}">Back to offices Page</a>
-		</div>
+	<h2>{{ office }}</h2><hr>
+
+	{% include "projects-news/includes/photopicker.html" %}
+	
+	<p>{{ office.description|safe }}</p>
+	
+	{% if office.video %}
+		{% for video in office.video.all %}
+			{% include "projects-news/includes/detail_video.html" %}
+		{% endfor %}
+	{% endif %}
+	<br><br>
+	
+	<div style="text-align:center;clear:both;">
+		<a href="{% url office %}">Back to offices Page</a>
+	</div>
+	
 {% endblock %}
 
 

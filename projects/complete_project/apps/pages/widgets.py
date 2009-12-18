@@ -32,7 +32,7 @@ class WYMEditor(forms.Textarea):
 class PhotoWithThumb(forms.Textarea):
 	class Media:
 		css = {'all':('/site_media/css/widgets.css',)}
-		js = ('/site_media/js/widgets.js',)
+		js = ('/site_media/js/widgets.js','/site_media/jquery-1.3.2.min.js')
 		
 	def __init__(self, attrs=None):
 		self.attrs = {'class': 'photowiththumb'}
@@ -42,27 +42,47 @@ class PhotoWithThumb(forms.Textarea):
 		
 	def render(self, name, value, attrs=None):
 		rendered = super(PhotoWithThumb, self).render(name, value, attrs)
-		pho = Photo.objects.get(pk = 5)
-		allpho = Photo.objects.all().order_by('title')
-		allpholist = []
-		i = 0
-		# for allphoto in allpho:
-		# 	allpholist[0] = allphoto.title
-		# 	i += 1
-		allpholist = allpho[10].title
-		title = str(pho.title)
-		image1 = str(pho.image)
-		image2 = image1.split("/")
-		image3 = image2[2]
-		image4 = image3.split(".")
-		image5 = image4[0]
-		image6 = image4[1]
-		image = "/site_media/photologue/photos/cache/" + image5 + "_thumbnail." + image6
-		return rendered + mark_safe(u'''<script type="text/javascript">
-            jQuery('#id_%s').replaceWith("<div class='aps_left'><div class='aps_title'>All</div>%s</div><div class='aps_right'><div class='aps_title'>Selected</div><div class='aps_selected'>%s<img src='%s'></img></div></div>");
-
-            </script>''' % (name,allpholist,title,image))
+		return rendered
 
 
 
-# css({color:"red",background:"url(%s) no-repeat"});
+
+
+
+# this is a work in progress   --  the old one
+# class PhotoWithThumb(forms.Textarea):
+# 	class Media:
+# 		css = {'all':('/site_media/css/widgets.css',)}
+# 		js = ('/site_media/js/widgets.js','/site_media/jquery-1.3.2.min.js')
+# 		
+# 	def __init__(self, attrs=None):
+# 		self.attrs = {'class': 'photowiththumb'}
+# 		if attrs:
+# 			self.attrs.update(attrs)
+# 		super(PhotoWithThumb, self).__init__(attrs)
+# 		
+# 	def render(self, name, value, attrs=None):
+# 		rendered = super(PhotoWithThumb, self).render(name, value, attrs)
+# 		pho = Photo.objects.get(pk = 5)
+# 		allpho = Photo.objects.all().order_by('title')
+# 		plist = []
+# 		text2 = '''<textarea id="id_photo_2" cols="40" rows="10"></textarea>'''
+# 		text3 = '''<textarea id="id_photo_3" cols="40" rows="10"></textarea>'''
+# 		
+# 		mytext = '''
+# 			<script type="text/javascript">
+# 				$(document).ready(function() {
+# 					$('#id_photo').css({'display':'none'}).after(' ''' + text3 + ''' ').after(' ''' + text2 + ''' ');
+# 					pwtUpdate();
+# 				});
+# 			</script>
+# 			'''
+# 			
+# 		# <textarea id="id_photo" name="photo" cols="40" rows="10">[9, 8, 7]</textarea>
+# 		for pic in allpho:
+# 			plist.append(str(pic.get_thumbnail_url()))
+# 		# return rendered + mark_safe(u'''<script type="text/javascript">
+# 		#             jQuery('#id_%s').replaceWith("<div class='aps_left'><div class='aps_title'>All</div>%s</div><div class='aps_right'><div class='aps_title'>Selected</div><div class='aps_selected'>%s<img src='%s'></img></div></div>");
+# 		# 
+# 		#             </script>''' % (name,allpholist,title,image))
+# 		return rendered

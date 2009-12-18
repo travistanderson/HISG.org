@@ -130,42 +130,14 @@
 		alltags[{{ forloop.counter0 }}] = '{{ photo.tags }}';
 		orig = '{{ photo.image }}'
 		allorigs[{{ forloop.counter0 }}] = orig.split('/').pop();
-		allcaptions[{{ forloop.counter0 }}] = '{{ photo.caption }}';
+		allcaptions[{{ forloop.counter0 }}] = '{{ photo.caption|escapejs }}';
 		{% endfor %}
 		
 		pwtUpdate(allids,allnames,allurls,alltags,allorigs,allcaptions);
 	});
 	
+	
 </script>
-{# <div id='photovalues'> #}
-{# 	{% for photo in adminform.form.photo.field.queryset %} #}
-{# 		<span class="photovalueid">{{ photo.id }}:</span> #}
-{# 		<span class="photovaluename">{{ photo }}:</span> #}
-{# 		<span class="photovalueurl">{{ photo.get_fingernail_url }}:</span> #}
-{# 		<span class="photovaluetags">{{ photo.tags }}:</span> #}
-{# 		<span class="photovaluetags">{{ photo.image }}:</span> #}
-{# 		<span class="photovaluetags">CAPTION {{ photo.caption }}:</span><br/><br/> #}
-{# 	{% endfor %}<br/><br/><br/> #}
-{# </div> #}
-
-
-				
-					{# {% for photo in adminform.form.photo.field.queryset.initial %} #}
-					{# 						{{ photo.selected }}<br/> #}
-					{# 					{% endfor %} #}
-				
-					{# {{ adminform.form.photo.field.queryset }} #}
-					{# adminform.form.photo.field.choices    this gives the numbers with the names in a tuple #}
-					{# {{ adminform.form.photo.field.queryset }}					 #}
-					{# {{ adminform.form.photo }} #}
-					{# {{ adminform.form.photo.field.name }} #}
-
-
-
-
-
-
-
 
 
 

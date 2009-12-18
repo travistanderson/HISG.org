@@ -130,7 +130,7 @@
 		alltags[{{ forloop.counter0 }}] = '{{ photo.tags }}';
 		orig = '{{ photo.image }}'
 		allorigs[{{ forloop.counter0 }}] = orig.split('/').pop();
-		allcaptions[{{ forloop.counter0 }}] = '{{ photo.caption }}';
+		allcaptions[{{ forloop.counter0 }}] = '{{ photo.caption|escapejs }}';
 		{% endfor %}
 		
 		pwtUpdate(allids,allnames,allurls,alltags,allorigs,allcaptions);

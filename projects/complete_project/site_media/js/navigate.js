@@ -122,7 +122,7 @@ $(document).ready(function() {
 	})
 });
 
-// place and zero are the places to switch
+
 // these are the arrays with the photo data
 // var photoids = new Array();
 // var photodisplays = new Array();

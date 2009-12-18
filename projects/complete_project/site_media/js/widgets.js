@@ -141,6 +141,8 @@ function pwtUpdate(allids,allnames,allurls,alltags,allorigs,allcaptions){
 		$('#photosearchboxinput1').val('');
 		$("#photo_unselected > .photobox").removeClass("hiddenPhotobox");
 	})
+	
+
 }
 
 

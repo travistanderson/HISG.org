@@ -10,7 +10,7 @@ from countries.models import Region, Country
 from django.contrib.auth.models import User, Message
 from django.contrib.auth.decorators import login_required
 from brick.views import bricker, brickerheight
-from training.models import Event, QuestionSet, Choice, Question, Answer, BadgePhoto
+from training.models import Answer, BadgePhoto, Choice, Event, Question, QuestionOrder, QuestionSet, SignupDate
 from training.forms import EventForm, BadgeForm
 from training.mailcontents import sumail, cancelmail
 from django.conf import settings
@@ -53,11 +53,19 @@ def training(request):
 	
 @login_required	
 def trainingsu(request, event_id):
+	today = datetime.today()
 	bg = bricker('projects','Training')
 	bgheight = brickerheight(bg)
 	e = Event.objects.get(id=event_id)
 	u = User.objects.get(id=request.user.id)
-	q = e.questionset.questions.all()
+	qo = QuestionOrder.objects.filter(questionset=e.questionset)
+	# q = e.questionset.questions.all()
+	q = []
+	for i in range(len(qo)):
+		for question in qo:
+			if i == question.order:
+				q.append(question.question)
+	# q = qs.question_set.all()	
 	stats = {}
 	maxsize='maxsize'
 	stats[maxsize]=e.limit
@@ -94,6 +102,8 @@ def trainingsu(request, event_id):
 					a.save()
 			e.registrant.add(u)
 			e.save()
+			sd = SignupDate(user=u,event=e,date=today)
+			sd.save()
 			request.user.message_set.create(message="You have signed up to attend "+str(e)+", and you will receive a confirmation email shortly.")
 			subject, content, fromemail, toemail = sumail(e,u)
 			send_mail(subject,content,fromemail,toemail)
@@ -150,10 +160,14 @@ def trainingcancel(request, event_id):
 			if us==u:
 				e.registrant.remove(u)
 				e.save()
-			request.user.message_set.create(message="You have canceled your registration for the "+str(e)+" training event.")
-			subject, content, fromemail, toemail = cancelmail(e,u)
-			send_mail(subject,content,fromemail,toemail)
-			return HttpResponseRedirect(reverse('profile',args=[u.id]))
+				a = Answer.objects.filter(user=u,event=e)
+				a.delete()
+				sud = SignupDate.objects.get(user=e,event=e) 
+				sud.delete()
+				request.user.message_set.create(message="You have canceled your registration for the "+str(e)+" training event.")
+				subject, content, fromemail, toemail = cancelmail(e,u)
+				send_mail(subject,content,fromemail,toemail)
+				return HttpResponseRedirect(reverse('profile',args=[u.id]))
 		return HttpResponseRedirect(reverse('home'))
 	else:
 		return render_to_response('training-models/cancel.html', {'brickgroup': bg,'brickheight':bgheight,'event':e,'user':u,},

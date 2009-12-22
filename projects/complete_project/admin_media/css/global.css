@@ -146,14 +146,41 @@ table#change-history tbody th { width:16em; }
 
 /*  Added by Travis for custom tables on events */
 
-.attendee_table{margin:0 0 0 100px;border:2px solid gray;width:800px;}
-.attendee_table th{border:2px solid gray;background:url(../img/admin/tableheader.gif) 0px -6px repeat-x;}
-.attendee_table td{border:1px solid gray;}
+.attendee_table{margin:0 0 0 30px;border:2px solid gray;}
+.attendee_table th{border:2px solid #bbbbbb;color:#eeeeee;background-color:#417690;}
+.attendee_table td{border:1px solid gray;max-width:125px;}
 .attendee_table b{font-size:14px;}
 .attendee_table .checker-green{background:url(../img/admin/icon_success.gif) top center no-repeat;width:20px;height:20px;}
 .attendee_table .emailtemplatepicker{}
 .attendee_table #select_all{cursor:pointer;}
 .attendee_table .messagerow{height:350px;}
+.attendee_table .attendee_date{min-width:80px;}
 #attendeesendemail{padding:20px 0 0 200px;}
 
+/*here is the stuff for question ordering on the questionset change form in the admin*/
+
+.questionorder{margin:30px 0 0 80px;}
+.questionordertitle{width:290px;height:25px;border-top:1px solid gray;border-left:1px solid gray;border-right:1px solid gray;color:white;
+font-size:15px;font-weight:bold;margin:0;padding:4px 0px 0px 10px;background:#7CA0C7 url(/admin_media/img/admin/default-bg.gif) repeat-x scroll left top;}
+.questionorderquestions{width:280px;height:300px;border:1px solid gray;padding:10px;background-color:#cccccc;}
+.questionbox{background:#ffffff;margin:0 0 10px 0;border-bottom:solid 8px #cccccc;}
+.littlequestion{font-size:9px;}
+
+
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+
+
+
+
+
+
+
+
+
+
+
+
+.clearer{clear:both;}
 /*  End*/

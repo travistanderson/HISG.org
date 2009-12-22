@@ -52,6 +52,7 @@ urlpatterns = patterns('',
 	(r'^projects-and-models/', include('training.urls')),# this is a redirect for the email about training
 
 	(r'^admin/training/event/tableview/', include('training.admin_urls')),
+	(r'^admin/training/questionset/ordering/', include('training.admin_urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^photos/', include('photos.urls')),
     (r'^search/', include('lookfor.urls')),

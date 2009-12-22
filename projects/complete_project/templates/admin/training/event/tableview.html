@@ -65,11 +65,12 @@
 					<th id="select_all">&radic;</th>
 					<th>Name</th>
 					<th>Email</th>
-					<th>Attend</th>
+					<th>Attended</th>
 					{% for q in questions %}
 						<th>{{ q }}</th>
 					{% endfor %}
 					<th>Picture Upload</th>
+					<th class='attendee_date'>Sign Up Date</th>
 				</tr>
 				{% for dude in dudes %}
 					<tr>
@@ -80,12 +81,13 @@
 						{% for q in dude.custom %}
 							<td>{{ q }}</td>
 						{% endfor %}
-						<td><img src="{{ dude.pictureurl }}"></img>{% if dude.pictureurl %}<br/>{% endif %}{{ dude.picture }}</td>
+						<td>{% if dude.pictureurl %}<img src="{{ dude.pictureurl }}"></img>{% else %}None uploaded yet{% endif %}</td>
+						<td>{{ dude.date }}</td>
 					</tr>
 			
 				{% endfor %}
 				<tr>
-					<td colspan="{{ questions|length|add:5 }}">
+					<td colspan="{{ questions|length|add:6 }}">
 						<select name="function_select" id="function_select">
 							<option value="attadd">Add Attendence</option>
 							<option value="attrem">Remove Attendence</option>
@@ -102,7 +104,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="{{ questions|length|add:5 }}">
+					<td colspan="{{ questions|length|add:6 }}">
 						There are (<b class="bold">{{ stats.cursize }}</b> out of {{ stats.maxsize }}) people signed up to attend this event. When the event is 75% or more registered it will display the class size and number of registrants on the signup page.
 					</td>
 				</tr>

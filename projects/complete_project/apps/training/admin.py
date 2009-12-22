@@ -1,14 +1,14 @@
 # training/admin.py
 from django.contrib import admin
-from training.models import Answer, BadgePhoto, Choice, Email, EmailTemplate, Event, Question, QuestionSet
+from training.models import Answer, BadgePhoto, Choice, Email, EmailTemplate, Event, Question, QuestionOrder, QuestionSet, SignupDate
 
 class AnswerAdmin(admin.ModelAdmin):
 	list_display = ('user','event','question','answer')
 
 
 class BadgePhotoAdmin(admin.ModelAdmin):
-	list_display = ('name','user',)
-
+	list_display = ('name','user','admin_thumbnail',)
+	ordering = ('user',)
 
 class EventAdmin(admin.ModelAdmin):
 	list_display = ('name','location','start_date','contact')
@@ -28,9 +28,9 @@ class EventAdmin(admin.ModelAdmin):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-	list_display = ('qtype','question',)
+	list_display = ('id','qtype','question',)
 	list_display_links = ('question',)
-	ordering = ('qtype','question',)
+	ordering = ('id',)
 	filter_horizontal = ('multi','radio',)	
 	fieldsets = (
         (None, {'fields': ('question', 'help_text','required','qtype',),}),
@@ -38,7 +38,24 @@ class QuestionAdmin(admin.ModelAdmin):
         ('Radio', {'fields': ('radio',),}),
 		('Text', {'fields': ('rows',),}),
     )
-   
+
+class QuestionSetAdmin(admin.ModelAdmin):
+	list_display = ('name','id','howmany',)
+	filter_horizontal = ('questions',)
+	
+	
+class QuestionOrderAdmin(admin.ModelAdmin):
+	list_display = ('questionset','order','question',)
+	ordering = ('questionset','order',)
+	
+
+	
+	
+class SignupDateAdmin(admin.ModelAdmin):
+	list_display = ('event','user','date',)	
+	ordering = ('event',)
+	
+
 admin.site.register(Answer, AnswerAdmin)
 admin.site.register(BadgePhoto, BadgePhotoAdmin)
 admin.site.register(Choice)
@@ -46,5 +63,7 @@ admin.site.register(Email)
 admin.site.register(EmailTemplate)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(QuestionSet)
+admin.site.register(QuestionOrder, QuestionOrderAdmin)
+admin.site.register(QuestionSet, QuestionSetAdmin)
+admin.site.register(SignupDate, SignupDateAdmin)
 

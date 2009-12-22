@@ -229,8 +229,8 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #signup2 table td{height:22px;}
 #signup2 .required_circ{color:#238fb0;font-size:15px;width:10px;float:right;}
 #signup2 .required_circ_h{color:#238fb0;font-size:15px;width:200px;float:right;}
-#signup2 #first_col{width:250px;}
-#signup2 #second_col{width:270px;}
+#signup2 .first_col{width:250px;padding:0px 30px 0px 0px;}
+#signup2 .second_col{width:270px;}
 #signup2 .help_text{color:gray;font-size:11px;padding:3px 0 0 20px;}
 
 .messages{color:#14436f;background-color:#DDD;border:3px solid #fcd918;padding:10px;margin:40px;font-weight:bold;display:none;}

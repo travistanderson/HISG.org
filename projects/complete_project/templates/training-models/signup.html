@@ -15,24 +15,24 @@
 		<h3>Sign Up to attend the {{ event }} training event.</h3>
 		<form action='' method="POST">
 			<table>
-				<tr><td id="first_col"></td><td id="second_col"><div class="required_circ_h">&#8855; Required Fields</div></td></tr>
+				<tr><td class="first_col"></td><td class="second_col"><div class="required_circ_h">&#8855; Required Fields</div></td></tr>
 				{% for field in form %}
-					<tr><td></td><td>{{ field.errors }}</td></tr>
+					<tr><td class="first_col"></td><td class="second_col">{{ field.errors }}</td></tr>
 					<tr>
-						<td>
+						<td class="first_col">
 							{{ field.label }}
 						</td>
-						<td>
+						<td class="second_col">
 							{% if field.field.required %} <div class="required_circ"> &#8855;</div>{% endif %}{{ field }}
 							<div class="help_text">{{ field.help_text }}</div>
 						</td>
 					</tr>
 				{% endfor %}
 				<tr>
-					<td></td><td></td>
+					<td class="first_col"></td><td class="second_col"></td>
 				</tr>
 				<tr>
-					<td></td><td><button type="submit">Submit</button></td>
+					<td class="first_col"></td><td class="second_col"><button type="submit">Submit</button></td>
 				</tr>
 				{% if stats.showsize %}
 					{% if stats.full %}

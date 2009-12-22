@@ -20,6 +20,10 @@ class Email(models.Model):
 	fromemail = models.ForeignKey(Staff,related_name="fromemail")
 	toemail = models.TextField(blank=True)
 	template = models.ForeignKey(EmailTemplate)
+	
+	class Meta:
+		verbose_name = 'Email Sent'
+		verbose_name_plural = 'Emails Sent'
 
 	def __unicode__(self):
 		date = str(self.date_sent)
@@ -48,8 +52,8 @@ class Choice(models.Model):
 class Question(models.Model):
 	TYPE_CHOICES = (('1','Radio'),('2','Multi'),('3','Text'),)
 	# radio, multi, list, text,
-	question = models.CharField(blank=True, max_length=100,help_text="This is the actual question you want to ask.")
-	help_text = models.CharField(blank=True, max_length=100,help_text="Whatever you enter here will appear below the question to clarify what the user should type.")
+	question = models.CharField(blank=True, max_length=300,help_text="This is the actual question you want to ask.")
+	help_text = models.CharField(blank=True, max_length=300,help_text="Whatever you enter here will appear below the question to clarify what the user should type.")
 	qtype = models.CharField(choices=TYPE_CHOICES,blank=True, max_length=100,help_text="Radio-User can pick one of several choices <br/>Multi- User can pick several choices<br/>Text-  User can enter text")
 	radio = models.ManyToManyField(Choice,blank=True,null=True,related_name="radioq")
 	multi = models.ManyToManyField(Choice,blank=True,null=True,related_name="multiq")
@@ -73,7 +77,56 @@ class QuestionSet(models.Model):
 	questions = models.ManyToManyField(Question)
 		
 	def __unicode__(self):
-		return self.name		
+		return self.name
+		
+	def howmany(self):
+		return str(len(self.questions.all()))
+		
+	def save(self):
+		s =self
+		
+		qo = QuestionOrder.objects.filter(questionset=s)
+		if qo.count() == s.questions.count():			# they are equal and everything is good
+			# request.user.message_set.create(message="Questions and QuestionOrders where the same length and none were added")
+			pass
+		elif qo.count() > s.questions.count():		# there are more question orders than questions in the set - weird
+			for order in qo:
+				order.delete()
+			orderlist=[]
+			for question in s.questions.all():
+				try:
+					a = QuestionOrder.objects.get(questionset=s,question=question)
+					orderlist.append(a.order)
+				except QuestionOrder.DoesNotExist:
+					o=0
+					for number in orderlist:
+						if number == o:
+							o = number + 1
+						if number > o:
+							o = number+1
+					orderlist.append(o)
+					a = QuestionOrder(questionset=s,question=question,order=o)
+					a.save()
+
+		else:										# there are more questions in the set than questionorders - make more question orders
+			# request.user.message_set.create(message="There were fewer qo's and hopefully we made some, so they are equal")
+			orderlist=[]
+			for question in s.questions.all():
+				try:
+					a = QuestionOrder.objects.get(questionset=s,question=question)
+					orderlist.append(a.order)
+				except QuestionOrder.DoesNotExist:
+					o=0
+					for number in orderlist:
+						if number == o:
+							o = number + 1
+						if number > o:
+							o = number+1
+					orderlist.append(o)
+					a = QuestionOrder(questionset=s,question=question,order=o)
+					a.save()
+		super(QuestionSet, self).save()
+
 
 
 
@@ -95,7 +148,10 @@ class Event(models.Model):
 	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.')
 	
 	def __unicode__(self):
-		newname = str(self.location) + " " + self.start_date.strftime("%b. %d, %Y")
+		if self.active:
+			newname = str(self.location) + " " + self.start_date.strftime("%b. %d, %Y")
+		else:
+			newname = str(self.location) + ' (date is TBD)'
 		return newname
 		
 
@@ -111,6 +167,24 @@ class Answer(models.Model):
 		return self.question.question
 
 
+class SignupDate(models.Model):
+	user = models.ForeignKey(User)
+	date = models.DateField()
+	event = models.ForeignKey(Event)
+	
+	def __unicode__(self):
+		return self.date.strftime("%Y-%m-%d")
+		
+		
+class QuestionOrder(models.Model):
+	question = models.ForeignKey(Question)
+	questionset = models.ForeignKey(QuestionSet)
+	order = models.IntegerField()
+	
+	def __unicode__(self):
+		return '%s # %s' %(self.questionset,self.order)		
+
+
 
 class BadgePhoto(ImageModel):
 	name = models.CharField(blank=True, max_length=100)
@@ -119,3 +193,36 @@ class BadgePhoto(ImageModel):
 
 	def __unicode__(self):
 		return self.name
+		
+		
+		
+		
+		
+		
+		
+		
+# class Event(models.Model):
+# 	# TEMPLATE_CHOICES = (('1','HISG'),('2','IDRN'),('3','Starfish'))
+# 	name = models.CharField(blank=True, max_length=100)
+# 	slug = models.SlugField()
+# 	start_date = models.DateField()
+# 	end_date = models.DateField()
+# 	location = models.CharField(blank=True, max_length=100)
+# 	template = models.ForeignKey(Template)
+# 	# template = models.CharField(choices = TEMPLATE_CHOICES,blank=True, max_length=100)
+# 	description = models.TextField(blank=True)
+# 	active = models.BooleanField(default=True)
+# 	limit = models.IntegerField(blank=True, null=True)
+# 	attendee = models.ManyToManyField(User,blank=True,null=True)
+# 	featured = models.BooleanField(default=False)
+# 	
+# 	def __unicode__(self):
+# 		return self.name
+# 		
+# 	def save(self):
+# 		s =self
+# 		if s.featured == True:
+# 			a = Event.objects.all()
+# 			a.update(featured=False)
+# 			s.featured=True
+# 		super(Event, self).save()

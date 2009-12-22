@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from photologue.models import Gallery, Photo
 from django.contrib.auth.models import User, Message
 from django.contrib.auth.decorators import login_required
-from training.models import Answer, BadgePhoto, Choice, Email, EmailPreview, EmailTemplate, Event, QuestionSet, Question
+from training.models import Answer, BadgePhoto, Choice, Email, EmailPreview, EmailTemplate, Event, Question, QuestionOrder, QuestionSet, SignupDate
 from training.mailcontents import sumail, cancelmail, templatemail
 from django.conf import settings
 if "mailer" in settings.INSTALLED_APPS:
@@ -22,6 +22,12 @@ def tableview(request,event_id):
 	co = Question.objects.get(question="Country")
 	l = e.registrant.all()
 	emails = EmailTemplate.objects.all()
+	qo = QuestionOrder.objects.filter(questionset=e.questionset)
+	q = []
+	for i in range(len(qo)):
+		for question in qo:
+			if i == question.order:
+				q.append(question.question)
 	
 	stats = {}									# this part sets up the dictionary of info about attendence size
 	maxsize='maxsize'
@@ -57,6 +63,10 @@ def tableview(request,event_id):
 				d = User.objects.get(username=dude)
 				e.registrant.remove(d)
 				e.save()
+				a = Answer.objects.filter(user=d,event=e)
+				a.delete()
+				sud = SignupDate.objects.get(user=d,event=e)
+				sud.delete()
 		if request.POST['function_select'] == 'regema':
 			today = datetime.today()
 			email_id = request.POST['email_select']
@@ -76,9 +86,10 @@ def tableview(request,event_id):
 
 	dudes = []
 	qlist = []
-	for i,q in enumerate(e.questionset.questions.all()):
+	# for i,q in enumerate(e.questionset.questions.all()):
+	for i,question in enumerate(q):
 		qname = 'qname'+str(i)
-		variable = str(q.question)
+		variable = str(question.question)
 		qlist.append(variable)
 		
 	for dude in l:
@@ -108,22 +119,26 @@ def tableview(request,event_id):
 				custq.append(varia.answer)
 			except Answer.DoesNotExist:
 				varia = "-"
-				custq.append(varia.answer)
+				custq.append(varia)
 		info[custom] = custq
 
-		
-		
 		picture="picture"
 		pictureurl="pictureurl"
 		try:
 			pic = BadgePhoto.objects.get(user=dude)
-			pic_url = pic.get_thumbnail_url()
+			pic_url = pic.get_fingernail_url()
 		except BadgePhoto.DoesNotExist, BadgePhoto.MultipleObjectsReturned:
 			pic = "-"
 			pic_url = ""
 		info[picture] = pic
 		info[pictureurl]=pic_url
 		
+		date="date"
+		try:
+			sud = SignupDate.objects.get(user=dude,event=e) 
+		except SignupDate.DoesNotExist:
+			sud = '-'
+		info[date]=sud
 		
 		dudes.append(info)
 	return render_to_response('admin/training/event/tableview.html', {'event': e,'dudes':dudes,'questions':qlist,'email_list':emails,'stats':stats,},
@@ -158,5 +173,25 @@ def emailpreview(request,event_id,ep_id):
 		request.user.message_set.create(message="Message sent to the people.")
 		return HttpResponseRedirect(reverse('tableview', args=[e.id]))
 	return render_to_response('admin/training/event/emailpreview.html', {'event': e,'email':email,'template':et},
+		context_instance = RequestContext(request),
+	)
+	
+	
+	
+def ordering(request,qs_id):
+	qs = QuestionSet.objects.get(id=qs_id)
+	q = QuestionOrder.objects.filter(questionset=qs).order_by('order')
+	if request.method == 'POST':
+		if request.method == 'POST':
+			order = request.POST['sortedquestions'].split(',')
+			for i, qo in enumerate(q):
+				qo.order = order[i]
+				qo.save()
+			
+			if '_save' in request.POST:
+				return HttpResponseRedirect('/admin/training/questionset/' + str(qs.id) + '/')	
+			else:
+				return HttpResponseRedirect('/admin/training/questionset/ordering/q/' + str(qs.id) + '/')
+	return render_to_response('admin/training/questionset/ordering.html', {'questionset': qs,'questions':q,},
 		context_instance = RequestContext(request),
 	)

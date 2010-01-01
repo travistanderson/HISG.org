@@ -4,6 +4,7 @@ from training.models import Answer, BadgePhoto, Choice, Email, EmailTemplate, Ev
 
 class AnswerAdmin(admin.ModelAdmin):
 	list_display = ('user','event','question','answer')
+	list_filter = ('event', 'user','question',)
 
 
 class BadgePhotoAdmin(admin.ModelAdmin):

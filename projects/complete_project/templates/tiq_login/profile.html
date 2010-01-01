@@ -64,8 +64,7 @@
 		<div class="profile-photo">
 			<h3>We have this Photo on file of you.</h3>
 			{% for photo in photos %}
-				<img src="{{ photo.get_thumbnail_url }}"></img><br/>
-				{{ photo }}
+				<img src="{{ photo.get_thumbvert_url }}"></img> &nbsp;&nbsp;&nbsp;{{ photo }}
 			{% endfor %}
 		</div>
 	{% endif %}

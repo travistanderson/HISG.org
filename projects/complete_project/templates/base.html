@@ -24,7 +24,7 @@
 		</script>
         {% block extra_head %}{% endblock %}
     </head>
-	<body {# onLoad="show({% block arrive %}{% endblock arrive %})" #}><!--start of the wrapper for whole page-->
+	<body {% block body_load %}{% endblock %}><!--start of the wrapper for whole page-->
 		<div id="doc-wrapper">
 			<div id="doc"><!--start of the custom document declaration-->
 				<div id="hd"><!--this is the start of the header-->

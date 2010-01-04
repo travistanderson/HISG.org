@@ -18,6 +18,7 @@ if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
 else:
     from django.core.mail import send_mail
+from settings import GMAPKEY, DEBUG
 
 
 def index(request):
@@ -50,6 +51,17 @@ def training(request):
 	return render_to_response('training-models/training.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,},
 		context_instance = RequestContext(request),
 	)
+
+def trainingd(request,event_slug):
+	today = datetime.today()
+	bg = bricker('projects','Training')
+	bgheight = brickerheight(bg)
+	e = Event.objects.get(slug = event_slug)
+	return render_to_response('training-models/training_d.html', {'brickgroup': bg,'brickheight':bgheight,'event':e,'gmapkey':GMAPKEY,'debug': DEBUG,},
+		context_instance = RequestContext(request),
+	)
+
+
 	
 @login_required	
 def trainingsu(request, event_id):
@@ -128,22 +140,28 @@ def trainingpic(request):
 	bg = bricker('projects','Training')
 	bgheight = brickerheight(bg)
 	u = User.objects.get(id=request.user.id)
+	try:
+		ph = BadgePhoto.objects.get(user=request.user.id)
+	except BadgePhoto.DoesNotExist:
+		ph = ""
 	if request.method == 'POST':
 		form = BadgeForm(request.POST, request.FILES)
 		if form.is_valid():
 			form2 = form.save(commit=False)
 			form2.user = request.user
 			form2.save()
+			if ph:
+				ph.delete()
 			request.user.message_set.create(message="Your photo has been successfully uploaded.")
 			return HttpResponseRedirect(reverse('profile',args=[u.id]))
 		else:
 			form = BadgeForm(request.POST, request.FILES)
-		return render_to_response('training-models/signup-pic.html', {'brickgroup':bg,'brickheight':bgheight,'user':u,'form':form,},
+		return render_to_response('training-models/signup-pic.html', {'brickgroup':bg,'brickheight':bgheight,'user':u,'form':form,'photo':ph,},
 			context_instance = RequestContext(request),
 		)
 	else:
 		form = BadgeForm()
-	return render_to_response('training-models/signup-pic.html', {'brickgroup': bg,'brickheight':bgheight,'user':u,'form':form,},
+	return render_to_response('training-models/signup-pic.html', {'brickgroup': bg,'brickheight':bgheight,'user':u,'form':form,'photo':ph,},
 		context_instance = RequestContext(request),
 	)	
 
@@ -162,7 +180,7 @@ def trainingcancel(request, event_id):
 				e.save()
 				a = Answer.objects.filter(user=u,event=e)
 				a.delete()
-				sud = SignupDate.objects.get(user=e,event=e) 
+				sud = SignupDate.objects.get(user=u,event=e) 
 				sud.delete()
 				request.user.message_set.create(message="You have canceled your registration for the "+str(e)+" training event.")
 				subject, content, fromemail, toemail = cancelmail(e,u)

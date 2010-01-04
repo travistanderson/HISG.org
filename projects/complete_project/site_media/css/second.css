@@ -242,7 +242,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .profile-info td{height:50px;}
 .profile-event{border:8px solid #dabc64;width:300px;height:250px;float:left;padding:20px;}
 .profile-event td{height:20px;}
-.profile-photo{border:8px solid #dabc64;padding:20px;width:755px;}
+.profile-photo{border:8px solid #dabc64;padding:20px;width:300px;min-height:150px;}
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}

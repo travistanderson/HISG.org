@@ -13,6 +13,13 @@ class BadgeForm(forms.ModelForm):
 
 
 
+class EventAdminModelForm(forms.ModelForm):
+	description = forms.CharField(widget=WYMEditor())
+
+	class Meta:
+		model = get_model('training', 'event')
+
+
 class EventForm(forms.Form):
 	def __init__(self, questions, *args, **kwargs):
 		super(EventForm, self).__init__(*args, **kwargs)

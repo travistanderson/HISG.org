@@ -9,8 +9,18 @@
 		{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %}
 	</span><br/><br/>
 	<div id="signup2">
+		
+		{% if photo %}
+			<div class="right" style="width:100px;">
+				This photo is already uploaded.<br/>
+				Upload a new photo to replace it.<br/>
+				<img src="{{ photo.get_thumbvert_url }}"></img>
+			</div>
+		{% endif %}
+		
 		<h3>Photo Upload</h3>
 		<h4>Please upload a photo to be used.</h4>
+
 		<form enctype="multipart/form-data" action='' method="POST">
 			<table>
 				<tr><td id="first_col"></td><td id="second_col"><div class="required_circ_h">&#8855; Required Fields</div></td></tr>

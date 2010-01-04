@@ -49,7 +49,7 @@
 						<td colspan="2">{{ event }}</td>
 					</tr>
 					<tr>
-						<td><a href="{% url training %}" class="buttoner-small">More info</a></td>
+						<td><a href="{% url training_d event.slug %}" class="buttoner-small">More info</a></td>
 						<td><a href="{% url training_cancel event.id %}" class="buttoner-small">Cancel Registration</a></td>
 					</tr>
 					<tr><td></td><td></td></tr>
@@ -62,10 +62,20 @@
 	
 	{% if photos %}
 		<div class="profile-photo">
-			<h3>We have this Photo on file of you.</h3>
+			<h3>We have this Photo on file.</h3>
 			{% for photo in photos %}
 				<img src="{{ photo.get_thumbvert_url }}"></img> &nbsp;&nbsp;&nbsp;{{ photo }}
 			{% endfor %}
+			<div class="right" style="margin:20px 0 0 0;">
+				<a href="{% url training_pic %}" class="buttoner">Change My Photo</a>
+			</div>
+		</div>
+	{% else %}
+		<div class="profile-photo">
+			<h3>You have not yet uploaded a photo.</h3>
+			<div class="right" style="margin:20px 0 0 0;">
+				<a href="{% url training_pic %}" class="buttoner">Upload a Photo</a>
+			</div>
 		</div>
 	{% endif %}
 

@@ -1,6 +1,7 @@
 # training/admin.py
 from django.contrib import admin
 from training.models import Answer, BadgePhoto, Choice, Email, EmailTemplate, Event, Question, QuestionOrder, QuestionSet, SignupDate
+from training.forms import EventAdminModelForm
 
 class AnswerAdmin(admin.ModelAdmin):
 	list_display = ('user','event','question','answer')
@@ -12,6 +13,7 @@ class BadgePhotoAdmin(admin.ModelAdmin):
 	ordering = ('user',)
 
 class EventAdmin(admin.ModelAdmin):
+	form = EventAdminModelForm
 	list_display = ('name','location','start_date','contact')
 	list_display_links = ('location',)
 	ordering = ('-start_date',)

@@ -225,6 +225,8 @@ FORCE_LOWERCASE_TAGS = True
 
 WIKI_REQUIRES_LOGIN = True
 
+GMAPKEY = 'ABQIAAAAKkJhGIDc65pxzIU9FTCsAxTERECPkD_G2wCmHEPQuxrvMkpqRRS1zBq8SdWHxV6_Yp6aTKRlbKk31Q'
+
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
 try:

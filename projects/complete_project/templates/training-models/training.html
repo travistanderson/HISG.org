@@ -49,9 +49,12 @@
 				</tr>
 				{% for train in training_list %}
 					<tr>
-						<td>{{ train.location }}</td>
-						<td><a href="{% url contactperson train.contact.id train.id %}">
-							{{ train.contact.firstname }} {{ train.contact.lastname }}</a><br/><span class="train_email">click to email</span>
+						<td><a href="{% url training_d train.slug %}">{{ train.location }}</a></td>
+						<td>
+							<a href="{% url contactperson train.contact.id train.id %}">
+								{{ train.contact.firstname }} {{ train.contact.lastname }}
+							</a><br/>
+							<span class="train_email">click to email</span>
 						</td>
 						<td>{{ train.subject }}</td>
 						<td>
@@ -68,7 +71,7 @@
 					</tr>
 					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
 						<td colspan="6" >Description:<br/>{% if train.description %}
-							{{ train.description }}{% else %}Description is on the way for this event.{% endif %}
+							{{ train.description|safe }}{% else %}Description is on the way for this event.{% endif %}
 						</td>
 					</tr>
 				{% endfor %}

@@ -26,6 +26,9 @@
 			If you have DFS username and password or a user account at StarfishCommunity.net or IDRN.info please <a href="{% url login %}">login</a> with that information.
 		</p><br/><br/>
 		<div id="signup-help">
+			{% if errormessage %}
+				<div class="errorlist">{{ errormessage }}</div>
+			{% endif %}
 			<h3>Create a new account</h3>
 			<form action='' method="POST">
 				<table>
@@ -94,6 +97,11 @@
 			</ul>
 		</div>{# end of signup #}
 
-		<div class="clear"></div><br/><br/>
+		<div class="clearer"></div><br/><br/>
+		{% if errormessage2 %}
+			<div style="border:4px solid red;color:red;padding:15px;margin:10px 0 0 0;font-size:14px;">
+				{{ errormessage2|safe }}
+			</div>
+		{% endif %}
 	{% endif %}
 {% endblock body %}

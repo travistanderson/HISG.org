@@ -164,13 +164,25 @@ def signup(request):
 
          #  1. Verify availability of username and email address
          #  2. Create user in DFS
-         userId = grantor.execute('user.newUser', {
-            	'username': form.cleaned_data['username'],
-            	'email': form.cleaned_data['email'],
-            	'password': form.cleaned_data['password'],
-            	'screenname': form.cleaned_data['fullname'],
-            	'contact': 0
-            })
+         try:
+	         userId = grantor.execute('user.newUser', {
+	            	'username': form.cleaned_data['username'],
+	            	'email': form.cleaned_data['email'],
+	            	'password': form.cleaned_data['password'],
+	            	'screenname': form.cleaned_data['fullname'],
+	            	'contact': 0
+	            })
+         except Exception, e:
+				errormessage=e.message[-1]
+				if errormessage == '2':
+					errormessage = 'Sorry, that username is already taken.'
+				elif errormessage == '3':
+					errormessage = 'Sorry, that Screen Name is already taken.'
+				else:
+					errormessage = 'Sorry, that username or Screen Name is already taken.'
+				errormessage2 = 'If you have already signed up here or at StarfishCommunity.org using this username or Screen Name, please <a href="/user/login"><span style="font-size:16px;font-weight:bold;">Log In</span> here</a> instead of signing up.'	
+					
+				return render_to_response(TIQ_LOGIN_TEMPLATE_SIGNUP, {'form': form,'errormessage':errormessage,'errormessage2':errormessage2,}, context_instance=RequestContext(request))
 
          #  3. Assign appropriate permissions.
          

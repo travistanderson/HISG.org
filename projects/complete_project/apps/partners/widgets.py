@@ -6,7 +6,7 @@ from django.utils.safestring import mark_safe
 class WYMEditor(forms.Textarea):
     class Media:
         js = (
-            '/site_media/jquery/jquery.js',
+            '/site_media/js/jquery-1.3.2-min.js',
             '/site_media/wymeditor/jquery.wymeditor.pack.js',
         )
 

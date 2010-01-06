@@ -16,8 +16,8 @@ def sumail(event,user):
 def cancelmail(event,user):
 	SU_FROMEMAIL = str(event.contact.email)
 	SU_TOEMAIL = [str(user.email),"cjennings@hisg.org",str(event.contact.email)]
-	SU_SUBJECT = "HISG Event Cancelation email for "+str(event)+"."
-	SU_CONTENT = "You have cancelled you registration for the "+str(event)+" training event. \n \n Sincerly \n HISG Training Staff."
+	SU_SUBJECT = "HISG Event Cancellation email for "+str(event)+"."
+	SU_CONTENT = "Dear " + str(user.first_name) + ", \n \n \n We have received your registration cancellation for the "+str(event)+" training event. We are sorry that you are unable to attend this training workshop, but we look forward to seeing you at future training events. Please check http://hisg.org/training-and-models/training for more information on upcoming events.  \n \n Sincerely, \n \n HISG Training Staff"
 	return SU_SUBJECT, SU_CONTENT, SU_FROMEMAIL, SU_TOEMAIL
 	
 	

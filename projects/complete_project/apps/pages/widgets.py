@@ -7,7 +7,7 @@ from photologue.models import Photo
 class WYMEditor(forms.Textarea):
     class Media:
         js = (
-            '/site_media/jquery/jquery.js',
+            '/site_media/js/jquery-1.3.2.min.js',
             '/site_media/wymeditor/jquery.wymeditor.pack.js',
         )
 
@@ -32,7 +32,7 @@ class WYMEditor(forms.Textarea):
 class PhotoWithThumb(forms.Textarea):
 	class Media:
 		css = {'all':('/site_media/css/widgets.css',)}
-		js = ('/site_media/js/widgets.js','/site_media/jquery-1.3.2.min.js')
+		js = ('/site_media/js/widgets.js','/site_media/js/jquery-1.3.2.min.js')
 		
 	def __init__(self, attrs=None):
 		self.attrs = {'class': 'photowiththumb'}
@@ -53,7 +53,7 @@ class PhotoWithThumb(forms.Textarea):
 # class PhotoWithThumb(forms.Textarea):
 # 	class Media:
 # 		css = {'all':('/site_media/css/widgets.css',)}
-# 		js = ('/site_media/js/widgets.js','/site_media/jquery-1.3.2.min.js')
+# 		js = ('/site_media/js/widgets.js','/site_media/js/jquery-1.3.2.min.js')
 # 		
 # 	def __init__(self, attrs=None):
 # 		self.attrs = {'class': 'photowiththumb'}

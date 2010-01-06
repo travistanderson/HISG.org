@@ -11,7 +11,9 @@
 {% block body %}
 	{% if user.is_authenticated %}
 		<h3>Already Logged In</h3>
-		<p>You are already logged in as <h4>{{ user }}.</h4> If you need to create a new account please <a href="{% url logout %}">logout</a> and create the new account. If you are have questions about your current account, you can <a href="{% url contact %}">contact us</a>.l</p>
+		<p>
+			You are already logged in as <span style="font-weight:bold;font-size:16px;">{{ user }}</span>.<br/><br/> If you need to create a new account, please <a href="{% url logout %}">logout</a> and create the new account. If you have questions about your current account, you can <a href="{% url contact %}">contact us</a>.
+		</p>
 	
 	{% else %}
 		<div id="signup-help">

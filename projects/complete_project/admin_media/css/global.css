@@ -146,7 +146,7 @@ table#change-history tbody th { width:16em; }
 
 /*  Added by Travis for custom tables on events */
 
-.attendee_table{margin:0 0 0 30px;border:2px solid gray;}
+.attendee_table{margin:0 0 0 30px;border:2px solid gray;background:#fff;width:900px;}
 .attendee_table th{border:2px solid #bbbbbb;color:#eeeeee;background-color:#417690;}
 .attendee_table td{border:1px solid gray;max-width:125px;}
 .attendee_table b{font-size:14px;}
@@ -170,11 +170,6 @@ font-size:15px;font-weight:bold;margin:0;padding:4px 0px 0px 10px;background:#7C
 /*-moz-background-clip:border;
 -moz-background-inline-policy:continuous;
 -moz-background-origin:padding;*/
-
-
-
-
-
 
 
 

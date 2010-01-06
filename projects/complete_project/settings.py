@@ -146,6 +146,7 @@ INSTALLED_APPS = (
 	'projectsmodels',
 	'faqs',
 	'training',
+	'newadmin',
 	    
     # internal (for now)
     'analytics',

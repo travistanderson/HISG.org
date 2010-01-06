@@ -86,46 +86,94 @@
 
 		<div id="holder">
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/about1.jpg" class="pic" alt="pic"></img>
-				About
+				<a href="/admin/about/">
+					<img src="/admin_media/img/admin/icons/about.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/about/">About</a></div>
+				<span><a href="/admin/about/office/">Offices</a></span>
+				<span><a href="/admin/about/staff/">Staff</a></span>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/brick.jpg" class="pic" alt="pic"></img>
-				Bricks
+				<a href="/admin/brick/">
+					<img src="/admin_media/img/admin/icons/brick.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/brick/">Bricks</a></div>
+				<span><a href="/admin/brick/brickgroup/">Brick Groups</a></span>
+				<span><a href="/admin/brick/brick/">Bricks</a></span>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/question.jpg" class="pic" alt="pic"></img>
-				FAQ's
+				<a href="/admin/faqs/faqs/">
+					<img src="/admin_media/img/admin/icons/question.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/faqs/faqs/">FAQ's</a></div>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/home.jpg" class="pic" alt="pic"></img>
-				Homepage
+				<a href="/admin/homepage/">
+					<img src="/admin_media/img/admin/icons/home.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/homepage/">Homepage</a></div>
+				<span><a href="/admin/homepage/impacter/">Impacters</a></span>
+				<span><a href="/admin/homepage/phrase/">Phrases</a></span>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/news.jpg" class="pic" alt="pic"></img>
-				News and Blog
+				<a href="/admin/newsphotos/">
+					<img src="/admin_media/img/admin/icons/news.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/newsphotos/">News/Blog</a></div>
+				<span><a href="/admin/newsphotos/news/">News</a></span>
+				<span><a href="/admin/newsphotos/post/">Posts</a></span>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/pages.png" class="pic" alt="pic"></img>
-				Pages
+				<a href="/admin/pages/page/">
+					<img src="/admin_media/img/admin/icons/pages.png" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/pages/page/">Pages</a></div>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/camera.jpg" class="pic" alt="pic"></img>
-				Photos
+				<a href="/admin/photologue/">
+					<img src="/admin_media/img/admin/icons/camera.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/photologue/">Photos</a></div>
+				<span><a href="/admin/photologue/gallery/">Galleries</a></span>
+				<span><a href="/admin/photologue/photosize/">Photo Sizes</a></span>
+				<span><a href="/admin/photologue/photo/">Photos</a></span>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/hammer.png" class="pic" alt="pic"></img>
-				Projects
+				<a href="/admin/projectsmodels/project/">
+					<img src="/admin_media/img/admin/icons/hammer.png" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/projectsmodels/project/">Projects</a></div>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/training2.jpg" class="pic" alt="pic"></img>
-				Training
+				<a href="/admin/training/">
+					<img src="/admin_media/img/admin/icons/training.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/training/">Training</a></div>
+				<span><a href="/admin/training/badgephoto/">Badge Photos</a></span>
+				<span><a href="/admin/training/event/">Events</a></span>
 			</div>
 			<div class="holderthing">
-				<img src="/admin_media/img/admin/icons/video.gif" class="pic" alt="pic"></img>
-				Videos
+				<a href="/admin/videos/video/">
+					<img src="/admin_media/img/admin/icons/video.gif" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/videos/video/">Videos</a></div>
 			</div>
-		
+			<div class="holderthing">
+				<a href="/admin/auth/">
+					<img src="/admin_media/img/admin/icons/users.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/auth/">Users</a></div>
+				<span><a href="/admin/auth/group/">Groups</a></span>
+				<span><a href="/admin/auth/user/">Users</a></span>
+			</div>
+			<div class="holderthing">
+				<a href="">
+					<img src="/admin_media/img/admin/icons/cabin.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/">Old-Admin</a></div>
+				<span><a href="/">Extras</a></span>
+				<span><a href="/">Hidden</a></span>
+			</div>
 		</div>{# end of holder #}
 
 
@@ -148,7 +196,7 @@
 	        <br class="clear" />
 	    </div>
 	    <!-- END Content -->
-
+		{% block body %}{% endblock %}
 	    {% block footer %}<div id="footer"></div>{% endblock %}
 	</div>
 	<!-- END Container -->

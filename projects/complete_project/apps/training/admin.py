@@ -14,6 +14,8 @@ class BadgePhotoAdmin(admin.ModelAdmin):
 
 class EventAdmin(admin.ModelAdmin):
 	form = EventAdminModelForm
+	search_fields = ('name','location','start_date',)
+	list_filter = ('start_date','contact',)
 	list_display = ('name','location','start_date','contact')
 	list_display_links = ('location',)
 	ordering = ('-start_date',)

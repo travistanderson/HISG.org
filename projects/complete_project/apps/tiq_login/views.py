@@ -180,7 +180,7 @@ def signup(request):
 					errormessage = 'Sorry, that Screen Name is already taken.'
 				else:
 					errormessage = 'Sorry, that username or Screen Name is already taken.'
-				errormessage2 = 'If you have already signed up here or at StarfishCommunity.org using this username or Screen Name, please <a href="/user/login"><span style="font-size:16px;font-weight:bold;">Log In</span> here</a> instead of signing up.'	
+				errormessage2 = 'If you have already signed up here or at StarfishCommunity.net using this username or Screen Name, please <a href="/user/login"><span style="font-size:16px;font-weight:bold;">Log In</span> here</a> instead of signing up.'	
 					
 				return render_to_response(TIQ_LOGIN_TEMPLATE_SIGNUP, {'form': form,'errormessage':errormessage,'errormessage2':errormessage2,}, context_instance=RequestContext(request))
 

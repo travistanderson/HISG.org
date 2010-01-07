@@ -31,14 +31,18 @@
 			<li><a href="{% url tableview event.id %}" class="historylink">Back to TableView</a></li>
 			<li><a href="/admin/training/event/{{ event.id }}/" class="historylink">Back to Event</a></li></ul></div>
 		<form action='' method="POST">
-			<table class="attendee_table">
-				<tr><td></td><th>{{ event }}</th><th>{{ template }}</th><th>{{ email.rcount|length|add:-2 }}</th></tr>
-				<tr><td></td><td>Event Name</td><td>Template in use</td><td>Number of student recipients</td></tr>
-				<tr><th>To:</th><td colspan="3">{{ email.toemail }}</td></tr>
-				<tr><th>From:</th><td colspan="3">{{ email.fromemail }}</td></tr>
-				<tr><th>Subject:</th><td colspan="3">{{ email.subject }}</td></tr>
-				<tr class="messagerow"><th>Message:</th><td colspan="3">{{ email.content|linebreaks }}</td></tr>
-			</table>
+		
+		
+			<div class="emailtable">
+				<h2>{{ event }}{{ template }}{{ email.rcount|length|add:-2 }}</h2>
+				Event Name    Template in use   Number of student recipients
+				To:{{ email.toemail }}
+				From:{{ email.fromemail }}
+				Subject:{{ email.subject }}
+				Message:{{ email.content|linebreaks }}
+			</div>
+			
+			
 			<div id="attendeesendemail"><button type="submit">Send Email</button></div>
 		</form>
 	</div>{# end of content main #}

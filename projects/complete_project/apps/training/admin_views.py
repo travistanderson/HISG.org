@@ -46,6 +46,8 @@ def tableview(request,event_id):
 	else:
 		fusz = False
 	stats[fullsize]=fusz
+	attendsize='attendsize'
+	stats[attendsize]=e.attendee.count()
 	
 	if request.method == 'POST': 					# this part handles the functions the admin might execute
 		if request.POST['function_select'] == 'attadd':

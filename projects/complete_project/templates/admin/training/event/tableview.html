@@ -58,36 +58,52 @@
 {% block content %}
 	<div id="content-main">
 		<h1>{{ event }}</h1><br/><br/>
-		<div class="object-tools"><ul><li><a href="/admin/training/event/{{ event.id }}/" class="historylink">Back to Event</a></li></ul></div>
+		<div class="object-tools"><ul>
+			<li><a href="/admin/training/event/" class="historylink">Back to List</a></li>
+			<li><a href="/admin/training/event/{{ event.id }}/" class="historylink">Back to Event</a></li></ul>
+		</div>
+
 		<form action='' method="POST">
-			<table class="attendee_table">
-				<tr>
-					<th id="select_all">&radic;</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Attended</th>
+			<div class="attendee_table">{# table #}
+				<div class="tableheader">{# tableheader #}
+					<div id="select_all" class="checker">&radic;</div>
+					<div class="firstname">Name</div>
+					<div class="emailer">Email</div>
+					<div class="attender">Att.</div>
+					<div class="picturer">Picture Upload</div>
+					<div class="dater">Sign Up Date</div>
 					{% for q in questions %}
-						<th>{{ q }}</th>
+						<div class="generic">{{ q }}</div>
 					{% endfor %}
-					<th>Picture Upload</th>
-					<th class='attendee_date'>Sign Up Date</th>
-				</tr>
-				{% for dude in dudes %}
-					<tr>
-						<td><input type="checkbox" name="dude_list" value="{{ dude.username }}" /></td>
-						<td>{{ dude.first_name }}</td>
-						<td>{{ dude.email }}</td>
-						<td>{% if dude.attend %}<div class="checker-green">&nbsp;</div>{% endif %}</td>
-						{% for q in dude.custom %}
-							<td>{{ q }}</td>
-						{% endfor %}
-						<td>{% if dude.pictureurl %}<img src="{{ dude.pictureurl }}"></img>{% else %}None uploaded yet{% endif %}</td>
-						<td>{{ dude.date }}</td>
-					</tr>
-			
-				{% endfor %}
-				<tr>
-					<td colspan="{{ questions|length|add:6 }}">
+					
+				</div>{# end of tableheader #}
+				
+				<div class="tablebody">{# tablebody #}
+					{% for dude in dudes %}
+						<div class="tablerow">
+							<div class="checker"><input type="checkbox" name="dude_list" value="{{ dude.username }}" /></div>
+							<div class="firstname">{{ dude.first_name }}</div>
+							<div class="emailer">{{ dude.email }}</div>
+							<div class="attender{% if dude.attend %} checker-green{% endif %}">&nbsp;</div>
+							<div class="picturer">{% if dude.pictureurl %}<img src="{{ dude.pictureurl }}"></img>{% else %}None uploaded yet{% endif %}</div>
+							<div class="dater">{{ dude.date }}</div>
+							{% for q in dude.custom %}
+								<div class="generic">{{ q }}</div>
+							{% endfor %}
+							
+						</div>{# end of tablerow #}
+						
+						<div class="clearer"></div>
+					{% endfor %}
+					<div class="tablerow totalrow">
+						<div class="checker">&nbsp;</div>
+						<div class="firstname">{{ stats.cursize }} Registered </div>
+						<div class="emailer">of {{ stats.maxsize }} (class limit)</div>
+						<div class="attender">{{ stats.attendsize }}</div>
+						<div class="picturer"> Attended</div>
+						<div class="dater"><span class="bold">Totals</span></div>
+					</div>
+					<div class="functionrow">
 						<select name="function_select" id="function_select">
 							<option value="attadd">Add Attendence</option>
 							<option value="attrem">Remove Attendence</option>
@@ -100,15 +116,12 @@
 							{% endfor %}
 						</select>
 						<button type="submit">Go</button>
-						
-					</td>
-				</tr>
-				<tr>
-					<td colspan="{{ questions|length|add:6 }}">
-						There are (<b class="bold">{{ stats.cursize }}</b> out of {{ stats.maxsize }}) people signed up to attend this event. When the event is 75% or more registered it will display the class size and number of registrants on the signup page.
-					</td>
-				</tr>
-			</table>
+					</div>
+					<div class="tablerow">
+						When the event is 75% or more registered it will display the class size and number of registrants on the signup page.
+					</div>
+				</div>{# end of tablebody #}
+			</div>{# end of the table #}
 		</form>
 	</div>{# end of content main #}
 {% endblock %}
@@ -116,4 +129,4 @@
 
 
 
-<form action="">
+{# <form action=""> #}

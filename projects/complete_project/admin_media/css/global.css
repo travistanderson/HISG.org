@@ -130,12 +130,12 @@ a.deletelink:hover { color:#993333; }
 .form-row .object-tools { margin-top:5px; margin-bottom:5px; float:none; height:2em; padding-left:3.5em; }
 .object-tools li { display:block; float:left; background:url(../img/admin/tool-left.gif) 0 0 no-repeat; padding:0 0 0 8px; margin-left:2px; height:16px; }
 .object-tools li:hover { background:url(../img/admin/tool-left_over.gif) 0 0 no-repeat; }
-.object-tools a:link, .object-tools a:visited { display:block; float:left; color:white; padding:.1em 14px .1em 8px; height:14px; background:#999 url(../img/admin/tool-right.gif) 100% 0 no-repeat; }
-.object-tools a:hover, .object-tools li:hover a { background:#5b80b2 url(../img/admin/tool-right_over.gif) 100% 0 no-repeat; }
-.object-tools a.viewsitelink, .object-tools a.golink { background:#999 url(../img/admin/tooltag-arrowright.gif) top right no-repeat; padding-right:28px; }
+.object-tools a:link, .object-tools a:visited { display:block; float:left; color:white; padding:.1em 14px .1em 8px; height:14px; background:#27aaee url(../img/admin/tool-right.gif) 100% 0 no-repeat; }
+.object-tools a:hover, .object-tools li:hover a { background:#fff url(../img/admin/tool-right_over.gif) 100% 0 no-repeat; color:#27aaee;}
+.object-tools a.viewsitelink, .object-tools a.golink { background:#27aaee url(../img/admin/tooltag-arrowright.gif) top right no-repeat; padding-right:28px; }
 .object-tools a.viewsitelink:hover, .object-tools a.golink:hover { background:#5b80b2 url(../img/admin/tooltag-arrowright_over.gif) top right no-repeat; }
-.object-tools a.addlink { background:#999 url(../img/admin/tooltag-add.gif) top right no-repeat; padding-right:28px; }
-.object-tools a.addlink:hover { background:#5b80b2 url(../img/admin/tooltag-add_over.gif) top right no-repeat; }
+.object-tools a.addlink { background:#27aaee url(../img/admin/tooltag-add.gif) top right no-repeat; padding-right:28px; }
+.object-tools a.addlink:hover { background:#fff url(../img/admin/tooltag-add_over.gif) top right no-repeat; }
 
 /* OBJECT HISTORY */
 table#change-history { width:100%; }
@@ -146,16 +146,32 @@ table#change-history tbody th { width:16em; }
 
 /*  Added by Travis for custom tables on events */
 
-.attendee_table{margin:0 0 0 30px;border:2px solid gray;background:#fff;width:900px;}
-.attendee_table th{border:2px solid #bbbbbb;color:#eeeeee;background-color:#417690;}
-.attendee_table td{border:1px solid gray;max-width:125px;}
-.attendee_table b{font-size:14px;}
-.attendee_table .checker-green{background:url(../img/admin/icon_success.gif) top center no-repeat;width:20px;height:20px;}
-.attendee_table .emailtemplatepicker{}
+.attendee_table{margin:0 0 0 0px;border:2px solid #27aaee;background:#fff;width:970px;overflow-x:scroll;overflow-y:hidden;}
+.attendee_table .tableheader{height:30px;color:#FFF;background-color:#27aaee;overflow:hidden;width:1800px;}
+.attendee_table .tableheader div{float:left;height:26px;border-right:1px solid #bbbbbb;padding:2px;overflow:hidden;}
+.attendee_table .tablebody{min-height:200px;}
+.attendee_table .tablebody .functionrow{height:30px;border-bottom:1px solid #bbbbbb;}
+
+.attendee_table .tablebody .tablerow{height:50px;border-bottom:1px solid #bbbbbb;width:1800px;overflow:hidden;}
+.attendee_table .tablebody .tablerow div{float:left;height:45px;border-right:1px solid #bbbbbb;padding:2px;overflow:hidden;}
+
+.attendee_table .checker{width:20px;}
+.attendee_table .firstname{width:80px;}
+.attendee_table .emailer{width:140px;}
+.attendee_table .attender{width:20px;}
+.attendee_table .picturer{width:60px;}
+.attendee_table .dater{width:78px;}
+.attendee_table .generic{width:150px;}
+
+.attendee_table .tablebody .totalrow{height:20px;border-top:3px solid #bbbbbb;}
+.attendee_table .tablebody .totalrow span{font-size:15px;}
+
 .attendee_table #select_all{cursor:pointer;}
-.attendee_table .messagerow{height:350px;}
-.attendee_table .attendee_date{min-width:80px;}
-#attendeesendemail{padding:20px 0 0 200px;}
+.attendee_table .checker-green{background:url(../img/admin/icon_success.gif) top center no-repeat;width:20px;height:20px;}
+
+
+.emailtable{margin:0 0 0 0px;border:2px solid #27aaee;background:#fff;width:970px;overflow-x:scroll;overflow-y:hidden;}
+
 
 /*here is the stuff for question ordering on the questionset change form in the admin*/
 
@@ -167,15 +183,19 @@ font-size:15px;font-weight:bold;margin:0;padding:4px 0px 0px 10px;background:#7C
 .littlequestion{font-size:9px;}
 
 
-/*-moz-background-clip:border;
--moz-background-inline-policy:continuous;
--moz-background-origin:padding;*/
-
-
-
-
+/*   generic stuff  */
 
 .left{float:left;}
 .right{float:right;}
 .clearer{clear:both;}
+.bold{font-weight:bold;}
+
+
+
+/*  colors  */
+
+/*  #27aaee   this is the blue at the top  */
+
+
+
 /*  End*/

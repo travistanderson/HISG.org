@@ -1,10 +1,11 @@
 # training/models.py
 from django.db import models
-from datetime import datetime, timedelta
+import datetime
 from photologue.models import Photo
 from about.models import Staff
 from django.contrib.auth.models import User
 from photologue.models import ImageModel
+from django.utils.safestring import mark_safe
 
 
 class EmailTemplate(models.Model):
@@ -154,7 +155,18 @@ class Event(models.Model):
 			newname = str(self.location) + ' (date is TBD)'
 		return newname
 		
-
+	def tableview(self):
+		t = datetime.date.today()
+		e = Event.objects.get(id=self.id)
+		if e.start_date < t:
+			u = e.attendee.all().count()
+			link = '<a href="/admin/training/s/event/tableview/%s/">%s Attended</a>' %(self.id,u)
+		else:
+			u = e.registrant.all().count()
+			link = '<a href="/admin/training/s/event/tableview/%s/">%s Registered</a>' %(self.id,u)
+		return mark_safe(link)
+	tableview.allow_tags = True
+	
 	
 		
 class Answer(models.Model):

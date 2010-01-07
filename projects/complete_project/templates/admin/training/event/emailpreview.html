@@ -34,16 +34,20 @@
 		
 		
 			<div class="emailtable">
-				<h2>{{ event }}{{ template }}{{ email.rcount|length|add:-2 }}</h2>
-				Event Name    Template in use   Number of student recipients
-				To:{{ email.toemail }}
-				From:{{ email.fromemail }}
-				Subject:{{ email.subject }}
-				Message:{{ email.content|linebreaks }}
+				<h2><span>Event Name</span>{{ event }}<span>Template</span>{{ template }}<span>Student Recipients</span>{{ email.rcount|length|add:-2 }}</h2>
+
+				To:<p>{{ email.toemail }}</p>
+				From:<p>{{ email.fromemail }}</p>
+				Subject:<p>{{ email.subject }}</p>
+				Message:<br/><br/>
+				<div class="messagebox">
+					{{ email.content|linebreaks }}
+				</div>
+				<button type="submit" id="attendeesendemail">Send Email</button>
 			</div>
 			
 			
-			<div id="attendeesendemail"><button type="submit">Send Email</button></div>
+			
 		</form>
 	</div>{# end of content main #}
 {% endblock %}

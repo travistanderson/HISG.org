@@ -85,7 +85,13 @@
 							<div class="firstname">{{ dude.first_name }}</div>
 							<div class="emailer">{{ dude.email }}</div>
 							<div class="attender{% if dude.attend %} checker-green{% endif %}">&nbsp;</div>
-							<div class="picturer">{% if dude.pictureurl %}<img src="{{ dude.pictureurl }}"></img>{% else %}None uploaded yet{% endif %}</div>
+							<div class="picturer">
+								{% if dude.pictureurl %}
+									<a href="{{ dude.pictureurllink }}"><img src="{{ dude.pictureurl }}"></img></a>
+								{% else %}
+									None uploaded yet
+								{% endif %}
+							</div>
 							<div class="dater">{{ dude.date }}</div>
 							{% for q in dude.custom %}
 								<div class="generic">{{ q }}</div>

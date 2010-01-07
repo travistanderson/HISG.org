@@ -170,8 +170,12 @@ table#change-history tbody th { width:16em; }
 .attendee_table .checker-green{background:url(../img/admin/icon_success.gif) top center no-repeat;width:20px;height:20px;}
 
 
-.emailtable{margin:0 0 0 0px;border:2px solid #27aaee;background:#fff;width:970px;overflow-x:scroll;overflow-y:hidden;}
-
+.emailtable{margin:0 0 0 0px;padding:0 20px 20px 20px;border:2px solid #27aaee;background:#fff;width:930px;}
+.emailtable h2{border-bottom:2px solid #bbbbbb;}
+.emailtable h2 span{font-size:9px;color:#aaa;padding:0 0 0 30px;}
+.emailtable p{font-size:14px;font-weight:bold;}
+.emailtable .messagebox{border:1px solid #bbbbbb;padding:10px;}
+.emailtable #attendeesendemail{margin:20px 0 0 400px;}
 
 /*here is the stuff for question ordering on the questionset change form in the admin*/
 

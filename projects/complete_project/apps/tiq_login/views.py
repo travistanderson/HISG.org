@@ -20,6 +20,11 @@ from datetime import datetime, timedelta
 from forms import PasswordChangeForm, RememberAuthenticationForm, SignupForm
 from django.contrib.auth.models import User
 from training.models import Event, BadgePhoto
+from django.conf import settings
+if "mailer" in settings.INSTALLED_APPS:
+    from mailer import send_mail
+else:
+    from django.core.mail import send_mail
 
 def login(request, template_name=TIQ_LOGIN_TEMPLATE_LOGIN, redirect_field_name=REDIRECT_FIELD_NAME):
    "Displays the login form and handles the login action."
@@ -213,6 +218,12 @@ def signup(request):
          #  6. Handle Org. Code
          
          request.user.message_set.create(message='Welcome to HISG.org.')
+         
+         subject="Welcome to HISG.org!"
+         content="Dear " + user.first_name + ", \n\nThank you for creating an account at HISG.org. You now have the ability to sign up for training events and upload photos. \n\nPlease keep the following for your records: \n    Username: "+ user.username + "\n    Password: "+form.cleaned_data['password']+" \n\n We look forward to your participation. \n\nSincerely,\nHISG Training Staff"
+         fromemail = 'contact@hisg.org'
+         toemail = [str(user.email),"cjennings@hisg.org","smix@hisg.org"]
+         send_mail(subject,content,fromemail,toemail)
          # return HttpResponseRedirect('/user/profile/'+str(user.id))
          return HttpResponseRedirect(reverse('training'))
       

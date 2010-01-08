@@ -23,7 +23,8 @@
 		
 	{% else %}
 		<p>
-			If you have a DFS username and password or a user account at StarfishCommunity.net or IDRN.info please <a href="{% url login %}">login here</a> with that information.
+			If you have a DFS username and password or a user account at <a href="http://starfishcommunity.net" target="_blank">StarfishCommunity.net</a> or <a href="http://idrn.info" target="_blank">IDRN.info</a> please <a href="{% url login %}">login here</a> with that information.<br/>
+			<span style="font-weight:bold;">Please remember your username and password for future use</span>. You will need these to update your personal info, upload pictures and sign up for future events.
 		</p><br/><br/>
 		<div id="signup-help">
 			{% if errormessage %}

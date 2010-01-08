@@ -41,7 +41,7 @@ def index(request):
 	pho = Phrase.objects.filter(active=False).order_by('order')
 	
 	
-	return render_to_response('admin/index-new.html', {
+	return render_to_response('admin/newadmin/index.html', {
 		'projects':p,
 		'projectshist':phist,
 		'projectsidr':pidr,
@@ -59,3 +59,27 @@ def index(request):
 		'phrases':ph,
 		'phrasesother':pho
 		},context_instance = RequestContext(request),)
+		
+		
+
+def extras(request):
+	today = datetime.today()
+	p = Project.objects.all().count()
+	
+	return render_to_response('admin/newadmin/extras.html', {'projects':p,},context_instance = RequestContext(request),)		
+		
+		
+def hidden(request):
+	today = datetime.today()
+	p = Project.objects.all().count()
+	
+	return render_to_response('admin/newadmin/hidden.html', {'projects':p,},context_instance = RequestContext(request),)	
+	
+
+def oldadmin(request):
+	today = datetime.today()
+	p = Project.objects.all().count()
+	
+	return render_to_response('admin/index.html', {'projects':p,},context_instance = RequestContext(request),)	
+		
+		

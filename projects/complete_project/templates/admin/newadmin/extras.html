@@ -1,0 +1,28 @@
+{# templates/admin/newadmin/extras.html #}
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block extrahead %}
+	<style type="text/css" media="screen">
+		.colM{padding:0;margin:0;height:0;width:0;}
+	</style>
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block body %}
+	<div class="newadmin-home">
+		<div id="newadmin-left">
+			<h2>Extras</h2>
+			<h3><a href="/admin/chunks/chunk/">Chunks</a></h3>
+			<h3><a href="/admin/histidr/histidr/">HISTIDR</a></h3>
+			<h3><a href="/admin/mailer/">Mailer</a></h3>
+		</div>
+		
+		<div id="newadmin-right">
+			<h2>Extras</h2>
+
+		</div>
+	</div>
+{% endblock %}
+
+

@@ -169,11 +169,16 @@ NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
-EMAIL_HOST = "owa017.msoutlookonline.net"
-EMAIL_PORT = 443
-EMAIL_HOST_USER = 'contact@hisg.org'
-EMAIL_HOST_PASSWORD = 'ZapPY32U'
-CONTACT_EMAIL = "contact@hisg.org"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'hisg.contact@gmail.com'
+EMAIL_HOST_PASSWORD = '1qaz2wsx'
+CONTACT_EMAIL = "hisg.contact@gmail.com"
+# EMAIL_HOST = "owa017.msoutlookonline.net"
+# EMAIL_PORT = 443
+# EMAIL_HOST_USER = 'contact@hisg.org'
+# EMAIL_HOST_PASSWORD = 'ZapPY32U'
+# CONTACT_EMAIL = "contact@hisg.org"
 EMAIL_USE_TLS = True
 
 

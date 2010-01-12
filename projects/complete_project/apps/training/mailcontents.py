@@ -7,7 +7,15 @@ def sumail(event,user):
 	SU_FROMEMAIL = str(event.contact.email)
 	SU_TOEMAIL = [str(user.email),"cjennings@hisg.org",str(event.contact.email)]
 	SU_SUBJECT = "HISG signup confirmation email for "+str(event)+"."
-	SU_CONTENT = "Dear "+str(user.first_name)+",\n\nThank you for registering to attend "+str(event)+". It will begin on "+event.start_date.strftime("%b. %d, %Y")+" and end on "+event.end_date.strftime("%b. %d, %Y")+". As the event approaches, you will receive a follow-up email confirming last minute details."+str(event.contact)+" is the contact person for this training event, please contact him/her at "+str(event.contact.email)+" with any questions you may have. Thank you for signing up. We will see you there. \n\Sincerely,\nHISG Training Staff."
+	# SU_CONTENT = "Dear "+str(user.first_name)+",\n\nThank you for registering to attend "+str(event)+". It will begin on "+event.start_date.strftime("%b. %d, %Y")+" and end on "+event.end_date.strftime("%b. %d, %Y")+". As the event approaches, you will receive a follow-up email confirming last minute details."+str(event.contact)+" is the contact person for this training event, please contact him/her at "+str(event.contact.email)+" with any questions you may have. Thank you for signing up. We will see you there. \n\Sincerely,\nHISG Training Staff."
+	SU_CONTENT = '''Dear %s,
+	
+	Thank you for registering to attend %s. It will begin on %s and end on %s. 
+As the event approaches, you will receive a follow-up email confirming last minute details. %s is the contact person for this training event, please email %s with any questions you may have. Thank you for signing up. We will see you there.
+	
+Sincerely,
+HISG Training Staff	''' %(str(user.first_name),str(event),event.start_date.strftime("%b. %d, %Y"),event.end_date.strftime("%b. %d, %Y"),str(event.contact),str(event.contact.email))
+
 	return SU_SUBJECT, SU_CONTENT, SU_FROMEMAIL, SU_TOEMAIL
 	
 
@@ -17,7 +25,14 @@ def cancelmail(event,user):
 	SU_FROMEMAIL = str(event.contact.email)
 	SU_TOEMAIL = [str(user.email),"cjennings@hisg.org",str(event.contact.email)]
 	SU_SUBJECT = "HISG Event Cancellation email for "+str(event)+"."
-	SU_CONTENT = "Dear " + str(user.first_name) + ", \n \n \n We have received your registration cancellation for the "+str(event)+" training event. We are sorry that you are unable to attend this training workshop, but we look forward to seeing you at future training events. Please check http://hisg.org/training-and-models/training for more information on upcoming events.  \n \n Sincerely, \n \n HISG Training Staff"
+	# SU_CONTENT = "Dear " + str(user.first_name) + ", \n \n \n We have received your registration cancellation for the "+str(event)+" training event. We are sorry that you are unable to attend this training workshop, but we look forward to seeing you at future training events. Please check http://hisg.org/training-and-models/training for more information on upcoming events.  \n \n Sincerely, \n \n HISG Training Staff"
+	SU_CONTENT = '''Dear %s, 
+
+	We have received your registration cancellation for the %s training event. We are sorry that you are unable to attend this training workshop, but we look forward to seeing you at future training events. Please check http://hisg.org/training-and-models/training for more information on upcoming events.
+
+Sincerely,
+HISG Training Staff''' %(str(user.first_name),str(event))
+	
 	return SU_SUBJECT, SU_CONTENT, SU_FROMEMAIL, SU_TOEMAIL
 	
 	

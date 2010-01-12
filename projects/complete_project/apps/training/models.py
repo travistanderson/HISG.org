@@ -211,8 +211,6 @@ class BadgePhoto(ImageModel):
 		
 		
 		
-		
-		
 # class Event(models.Model):
 # 	# TEMPLATE_CHOICES = (('1','HISG'),('2','IDRN'),('3','Starfish'))
 # 	name = models.CharField(blank=True, max_length=100)

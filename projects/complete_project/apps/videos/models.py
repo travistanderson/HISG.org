@@ -24,4 +24,17 @@ class Video(models.Model):
 	
 	def __unicode__(self):
 		return self.name
-		
+
+
+
+class EmbedVideo(models.Model):
+	name = models.CharField(max_length=100)
+	slug = models.SlugField(max_length=100)
+	embed = models.TextField(blank=True)
+	description = models.TextField(blank=True)
+	frame = models.ForeignKey(Photo, blank=True, null=True)
+	created = models.DateTimeField()
+	
+	def __unicode__(self):
+		return self.name
+	

@@ -11,6 +11,7 @@ class AnswerAdmin(admin.ModelAdmin):
 class BadgePhotoAdmin(admin.ModelAdmin):
 	list_display = ('name','user','admin_thumbnail',)
 	ordering = ('user',)
+	search_fields = ('name','user',)
 
 class EventAdmin(admin.ModelAdmin):
 	form = EventAdminModelForm

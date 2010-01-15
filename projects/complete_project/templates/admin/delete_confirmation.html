@@ -3,11 +3,11 @@
 
 {% block breadcrumbs %}
 <div class="breadcrumbs">
-     <a href="../../../../">{% trans "Home" %}</a> &rsaquo;
-     <a href="../../../">{{ app_label|capfirst }}</a> &rsaquo; 
-     <a href="../../">{{ opts.verbose_name_plural|capfirst }}</a> &rsaquo;
-     <a href="../">{{ object|truncatewords:"18" }}</a> &rsaquo;
-     {% trans 'Delete' %}
+     <a href="../../../../">{% trans "Home" %}</a> {# &rsaquo; #}
+     <a href="../../../">{{ app_label|capfirst }}</a> {# &rsaquo; #} 
+     <a href="../../">{{ opts.verbose_name_plural|capfirst }}</a> {# &rsaquo; #}
+     <a href="../">{{ object|truncatewords:"18" }}</a> {# &rsaquo; #}
+     <div class="endofbreadcrumbs">{% trans 'Delete' %}</div>
 </div>
 {% endblock %}
 

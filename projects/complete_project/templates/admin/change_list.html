@@ -24,12 +24,12 @@
       <a href="../../">
         {% trans "Home" %}
       </a>
-       &rsaquo; 
+       {# &rsaquo; #} 
        <a href="../">
          {{ app_label|capfirst }}
       </a>
-      &rsaquo; 
-      {{ cl.opts.verbose_name_plural|capfirst }}
+      {# &rsaquo; #} 
+      <div class="endofbreadcrumbs">{{ cl.opts.verbose_name_plural|capfirst }}</div>
     </div>
   {% endblock %}
 {% endif %}

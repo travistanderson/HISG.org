@@ -51,7 +51,7 @@
 
 {% block breadcrumbs %}
 	<div class="breadcrumbs">
-		<a href="/admin/">Home</a> › <a href="/admin/training/">Training</a> › <a href="/admin/training/event/">Events</a> › <a href="/admin/training/event/{{ event.id }}/">{{ event }}</a> › tableview
+		<a href="/admin/">Home</a> {# › #} <a href="/admin/training/">Training</a> {# › #} <a href="/admin/training/event/">Events</a> {# › #} <a href="/admin/training/event/{{ event.id }}/">{{ event }}</a> {# › #} <div class="endofbreadcrumbs">tableview</div>
 	</div>
 {% endblock %}{# end of breadcrumbs #}
 

@@ -102,18 +102,20 @@
 				<span><a href="/admin/brick/brick/">Bricks</a></span>
 			</div>
 			<div class="holderthing">
-				<a href="/admin/faqs/faqs/">
-					<img src="/admin_media/img/admin/icons/question.jpg" class="left" alt="pic"></img>
-				</a>
-				<div><a href="/admin/faqs/faqs/">FAQ's</a></div>
-			</div>
-			<div class="holderthing">
 				<a href="/admin/homepage/">
 					<img src="/admin_media/img/admin/icons/home.jpg" class="left" alt="pic"></img>
 				</a>
 				<div><a href="/admin/homepage/">Homepage</a></div>
 				<span><a href="/admin/homepage/impacter/">Impacters</a></span>
 				<span><a href="/admin/homepage/phrase/">Phrases</a></span>
+			</div>
+			<div class="holderthing">
+				<a href="/admin/mailer/">
+					<img src="/admin_media/img/admin/icons/contact.jpg" class="left" alt="pic"></img>
+				</a>
+				<div><a href="/admin/mailer/">Mailer</a></div>
+				<span><a href="/admin/mailer/messagelog/">Logs</a></span>
+				<span><a href="/admin/mailer/message/">Messages</a></span>
 			</div>
 			<div class="holderthing">
 				<a href="/admin/newsphotos/">
@@ -177,7 +179,7 @@
 		</div>{# end of holder #}
 
 
-	    {% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans 'Home' %}</a>{% if title %} &rsaquo; {{ title }}{% endif %}</div>{% endblock %}
+	    {% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans 'Home' %}</a>{% if title %} {# &rsaquo; #} <div class="endofbreadcrumbs">{{ title }}</div>{% endif %}</div>{% endblock %}
 	    {% endif %}
 
 	        {% if messages %}

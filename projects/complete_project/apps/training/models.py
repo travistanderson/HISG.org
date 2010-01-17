@@ -148,12 +148,12 @@ class Event(models.Model):
 	attendee = models.ManyToManyField(User,blank=True,null=True,related_name='attendee')
 	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.')
 	# here are the new ones
-	start_date_register = models.DateField()
-	end_date_register = models.DateField()
-	detail_description = models.TextField(blank=True)
-	hist_1 = models.BooleanField(default=False)
-	idr_1 = models.BooleanField(default=False)
-	idr_2 = models.BooleanField(default=False)		
+	# start_date_register = models.DateField()
+	# end_date_register = models.DateField()
+	# detail_description = models.TextField(blank=True)
+	# hist_1 = models.BooleanField(default=False)
+	# idr_1 = models.BooleanField(default=False)
+	# idr_2 = models.BooleanField(default=False)		
 	
 	def __unicode__(self):
 		if self.active:

@@ -185,7 +185,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .histidr_bottom_info{color:#FFF;padding:0px 0 10px 0;margin:10px 0 0 0;}
 .histidr_bottom_info a {color:#14436f;}
 
-#donate{width:540px;padding:15px 30px 30px 30px;border:10px solid #dabc64;margin:20px 0 0 0;}
+.donate{width:540px;padding:15px 30px 30px 30px;border:10px solid #dabc64;margin:20px 0 0 0;}
 .donate_box{padding:15px 0 0 0;}
 .donate_form{float:right;}
 #donate_under{padding:20px 0 0 190px;width:300px;}

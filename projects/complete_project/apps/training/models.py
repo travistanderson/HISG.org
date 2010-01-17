@@ -147,6 +147,13 @@ class Event(models.Model):
 	registrant = models.ManyToManyField(User,blank=True,null=True,related_name='registrant')
 	attendee = models.ManyToManyField(User,blank=True,null=True,related_name='attendee')
 	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.')
+	# here are the new ones
+	start_date_register = models.DateField()
+	end_date_register = models.DateField()
+	detail_description = models.TextField(blank=True)
+	hist_1 = models.BooleanField(default=False)
+	idr_1 = models.BooleanField(default=False)
+	idr_2 = models.BooleanField(default=False)		
 	
 	def __unicode__(self):
 		if self.active:
@@ -207,7 +214,17 @@ class BadgePhoto(ImageModel):
 		return self.name
 		
 		
-		
+
+class UserProfile(models.Model):
+	badge_num = models.IntegerField(blank=True, null=True)		
+	badge_printed = models.BooleanField(default=False)
+	has_badge = models.BooleanField(default=False)
+	poc_training = models.BooleanField(default=False)
+	poc_histidr = models.BooleanField(default=False)
+	trainer = models.BooleanField(default=False)
+	job_title = models.CharField(blank=True, max_length=100)
+	user = models.ForeignKey(User, unique=True)
+	
 		
 		
 		

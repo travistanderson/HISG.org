@@ -36,11 +36,14 @@ input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;fon
 #hisg{padding:30px 0 0 225px;}
 #first-time{padding:35px 0 0 820px;}
 
-#quickdiv{width:150px;height:28px;float:left;padding:8px 0 0 550px;color:#14436f;font-family:palatino,new york;}
-.quickpick{display:inline;padding:3px 5px 0px 5px;background-color:white;border:1px gray solid;margin:0 20px 0 0;width:100px;z-index:1;position:absolute;}
+#quickdiv{width:150px;height:18px;float:right;padding:8px 0 0 0px;color:#14436f;font-family:palatino,new york;}
+.quickpick{display:inline;padding:3px 5px 0px 5px;background-color:white;border:2px solid #00a3e6;margin:0 20px 0 0;width:100px;z-index:1;position:absolute;}
 .quickhide{display:none;}
-#searchdiv{width:275px;height:28px;float:left;padding:10px 0px 0 0;color:#14436f;font-family:palatino,new york;}
-#magnifier{float:right;position:relative;top:-19px;left:-2px;}
+
+#searchdiv{width:260px;height:28px;float:right;padding:8px 20px 0 0;color:#14436f;font-family:palatino,new york;}
+#searchdiv #q{background:transparent #fff;border:2px solid #00a3e6;margin:0;padding:0 0 0 5px;height:18px;line-height:18px;float:right;}
+#searchdiv #searchall{display:none;}
+#magnifier{border-top:2px solid #00a3e6;border-bottom:2px solid #00a3e6;border-left:2px solid #00a3e6;margin:0;padding:0;height:18px;float:right;}
 
 #nav{height:66px;}
 ul#navigation {height:36px;padding:10px 0 0 1px;}
@@ -112,18 +115,27 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 #ft a:visited{color:#1a629d;}
 
 
-
 /*==========================colors=========================*/
-/* #dabc64  -- gold cukjati*/
-/* #d9bc65 -- gold background cukjati*/
-/* #fffccf -- light gold cukjati*/
-/* #ae5219 -- brown text cukjati*/
-/* #783a11 -- darker brown text cukjati*/
-/* #3f97ba -- medium blue for links*/
-/* #14436f  -- blue cukjati*/
-/* #ce9e4e -- volunteer gold*/
-/* #238fb0 -- updates blue*/
-/* #ff0000 -- urgent red*/
-/* #626262 -- date gray*/
-/* #00a3e6 -- i can blue*/
+/* #dabc64 -- gold 		cukjati*/
+/* #d9bc65 -- gold 		background cukjati*/
+/* #fffccf -- gold 		light cukjati*/
+/* #f2e3a5 -- gold		left-colomn*/
+/* #ce9e4e -- gold 		volunteer*/
+
+/* #ae5219 -- brown		text cukjati*/
+/* #783a11 -- brown 	darker text cukjati*/
+
+/* #3f97ba -- blue 		medium for links*/
+/* #14436f -- blue 		darker cukjati*/
+/* #238fb0 -- blue 		updates*/
+/* #00a3e6 -- blue 		i can*/
+/* #b1d9fe -- blue		light for table backgrounds */
+
+/* #ff0000 -- red 		urgent*/
+
+/* #626262 -- gray 		date */
+/* #666666 -- gray 		caption color*/
+
+/* #fcd918 -- orange	light, used in message border */
+
 /*==========================end=========================*/

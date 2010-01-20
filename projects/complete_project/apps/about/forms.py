@@ -3,7 +3,7 @@ from django import forms
 from django.forms.models import ModelForm
 from django.contrib.admin import widgets
 from django.db.models import get_model
-from pages.widgets import WYMEditor, PhotoWithThumb
+from pages.widgets import WYMEditor, PhotoWithThumb, WMDEditor
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from about.models import Office, Staff
 from photologue.models import Photo
@@ -11,13 +11,13 @@ from photologue.models import Photo
 
 		
 class OfficeAdminModelForm(forms.ModelForm):
-    description = forms.CharField(widget=WYMEditor())
+    description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':135}))
 
     class Meta:
         model = get_model('about', 'office')
 
 class StaffAdminModelForm(forms.ModelForm):
-	bio = forms.CharField(widget=WYMEditor())
+	bio = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':135}))
 	# photo = forms.CharField(widget=PhotoWithThumb())
 
 	class Meta:

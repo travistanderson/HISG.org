@@ -2,7 +2,7 @@
 from django import forms
 from django.forms.models import ModelForm
 from django.db.models import get_model
-from pages.widgets import WYMEditor
+from pages.widgets import WMDEditor
 from training.models import Event, Choice, Question, Answer, BadgePhoto
 
 
@@ -14,7 +14,7 @@ class BadgeForm(forms.ModelForm):
 
 
 class EventAdminModelForm(forms.ModelForm):
-	description = forms.CharField(widget=WYMEditor())
+	description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':135}))
 
 	class Meta:
 		model = get_model('training', 'event')

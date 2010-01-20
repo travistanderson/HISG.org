@@ -22,8 +22,8 @@ class EditPageForm(ModelForm):
 		model = Page
 		fields = ('slug', 'content',)
 		
-class PageAdminModelForm(forms.ModelForm):
-    content = forms.CharField(widget=WYMEditor())
-
-    class Meta:
-        model = get_model('partners', 'page')
+# class PageAdminModelForm(forms.ModelForm):
+#     content = forms.CharField(widget=WYMEditor())
+# 
+#     class Meta:
+#         model = get_model('partners', 'page')

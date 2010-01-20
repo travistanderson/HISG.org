@@ -7,7 +7,7 @@ from photologue.models import Photo
 class WYMEditor(forms.Textarea):
     class Media:
         js = (
-            '/site_media/js/jquery-1.3.2.min.js',
+            # '/site_media/js/jquery-1.3.2.min.js',
             '/site_media/wymeditor/jquery.wymeditor.pack.js',
         )
 
@@ -27,6 +27,28 @@ class WYMEditor(forms.Textarea):
                 lang: '%s',
             });
             </script>''' % (name, self.language))
+
+
+class WMDEditor(forms.Textarea):
+	class Media:
+		js = ('/admin_media/js/wmd/wmd.js',)
+		# css = {'all':('/site_media/css/second.css',)}
+	
+	def __init__(self, language=None, attrs=None):
+		self.language = language or settings.LANGUAGE_CODE[:2]
+		self.attrs = {'cols':135}
+		if attrs:
+		    self.attrs.update(attrs)
+		super(WMDEditor, self).__init__(attrs)
+
+	def render(self, name, value, attrs=None):
+		rendered = super(WMDEditor, self).render(name, value, attrs)
+		return rendered + mark_safe(u'''
+			<h2>Preview</h2>
+			<div class="wmd-preview"></div>		
+		''')		
+
+
 
 # this is a work in progress
 class PhotoWithThumb(forms.Textarea):

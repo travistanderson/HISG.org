@@ -46,8 +46,14 @@ function hoversecond(shower){
 function quickpick(){
 	$(document).ready(function(){
 		$(".quickpick").hover(
-			function(){$(".quickhide").css({display:"block"});},
-			function(){$(".quickhide").css({display:"none"});}
+			function(){
+				$(".quickhide").css({'display':"block"});
+				$(".quickpick").css({'width':'150px'});
+			},
+			function(){
+				$(".quickhide").css({display:"none"});
+				$(".quickpick").css({'width':''});
+			}
 		)
 		
 	})

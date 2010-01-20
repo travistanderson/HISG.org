@@ -36,9 +36,10 @@ input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;fon
 #hisg{padding:30px 0 0 225px;}
 #first-time{padding:35px 0 0 820px;}
 
-#quickdiv{width:150px;height:18px;float:right;padding:8px 0 0 0px;color:#14436f;font-family:palatino,new york;}
+#quickdiv{width:125px;height:17px;float:right;padding:8px 0 0 0px;color:#14436f;font-family:palatino,new york;}
 .quickpick{display:inline;padding:3px 5px 0px 5px;background-color:white;border:2px solid #00a3e6;margin:0 20px 0 0;width:100px;z-index:1;position:absolute;}
 .quickhide{display:none;}
+.quickpick .quickpickarrow{background:url(/site_media/images/arrow-blue.jpg)no-repeat 100% 0;}
 
 #searchdiv{width:260px;height:28px;float:right;padding:8px 20px 0 0;color:#14436f;font-family:palatino,new york;}
 #searchdiv #q{background:transparent #fff;border:2px solid #00a3e6;margin:0;padding:0 0 0 5px;height:18px;line-height:18px;float:right;}

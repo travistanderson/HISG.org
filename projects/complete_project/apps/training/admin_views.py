@@ -127,14 +127,23 @@ def tableview(request,event_id):
 		picture="picture"
 		pictureurl="pictureurl"
 		pictureurllink="pictureurllink"
-		try:
-			pic = BadgePhoto.objects.get(user=dude)
+		pic = BadgePhoto.objects.filter(user=dude)
+		if pic.count() > 0:
+			pic = pic[0]
 			pic_url = pic.get_fingernail_url()
 			pic_url_link = pic.image.url
-		except BadgePhoto.DoesNotExist, BadgePhoto.MultipleObjectsReturned:
+		else:
 			pic = "-"
 			pic_url = ""
 			pic_url_link = "#"
+		# try:												old way
+		# 	pic = BadgePhoto.objects.get(user=dude)
+		# 	pic_url = pic.get_fingernail_url()
+		# 	pic_url_link = pic.image.url
+		# except BadgePhoto.DoesNotExist, BadgePhoto.MultipleObjectsReturned:
+		# 	pic = "-"
+		# 	pic_url = ""
+		# 	pic_url_link = "#"
 		info[picture] = pic
 		info[pictureurl]=pic_url
 		info[pictureurllink]=pic_url_link

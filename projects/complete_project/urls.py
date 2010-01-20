@@ -49,7 +49,7 @@ urlpatterns = patterns('',
 	(r'^user/', include('tiq_login.urls')),
     # (r'^profiles/', include('profiles.urls')),
 	(r'^info/', include('faqs.urls')),
-	(r'^projects-and-models/', include('training.urls')),# this is a redirect for the email about training
+	# (r'^projects-and-models/', include('training.urls')),# this is a redirect for the email about training
 
 	# (r'^admin/training/event/tableview/', include('training.admin_urls')),
 	# (r'^admin/training/questionset/ordering/', include('training.admin_urls')),

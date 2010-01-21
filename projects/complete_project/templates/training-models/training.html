@@ -4,23 +4,23 @@
 {% block extra_head %}
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function() {
-			$('.train_desc').css({'display':'none'});
 			$('.train_desc_bt').toggle(
-		      function(){
+				function(){
 					var item = $(this).attr('id');
 					item = item.split("_")[1];
-		   		$(this).html("Read <br />Less");
-					$('#trainDescLow_'+item).css({'display':''});
-		      },
-		      function(){
+					$(this).html("Read <br />Less");
+					$(this).css({'background-color':'#b1d9fe','color':'#fff'});
+					$('#trainDescLow_'+item).css({'display':'block'});
+				},
+				function(){
 					var item = $(this).attr('id');
 					item = item.split("_")[1];
 					$(this).html("Read More");
+					$(this).css({'background-color':'','color':''});
 					$('#trainDescLow_'+item).css({'display':'none'});
-		      }
-		    );
+				}
+			);
 		});
-		
 	</script>
 {% endblock %}
 
@@ -37,47 +37,49 @@
 
 
 	<div class="schedtable">
-		<table>
-			<tbody>
-				<tr>
-					<th class="tb_location">Location</th>
-					<th class="tb_contact">Contact</th>
-					<th class="tb_subject">Subject</th>
-					<th class="tb_date">Date</th>
-					<th class="tb_info">Info</th>
-					<th class="tb_attend">Attend</th>
-				</tr>
-				{% for train in training_list %}
-					<tr>
-						<td><a href="{% url training_d train.slug %}">{{ train.location }}</a></td>
-						<td>
-							<a href="{% url contactperson train.contact.id train.id %}">
-								{{ train.contact.firstname }} {{ train.contact.lastname }}
-							</a><br/>
-							<span class="train_email">click to email</span>
-						</td>
-						<td>{{ train.subject }}</td>
-						<td>
-							{% if train.active %}
-								{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}
-							{% else %}
-								To Be Determined
-							{% endif %}
-						</td>
-						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
-						<td class="">
-							<a href="{% url training_su train.id %}" class="buttoner">Sign Up</a>
-						</td>
-					</tr>
-					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
-						<td colspan="6" >Description:<br/>{% if train.description %}
-							{{ train.description|safe }}{% else %}Description is on the way for this event.{% endif %}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div><br/><br/><br/>
+		<div class="headerrow">
+			<div class="tb_location">Location</div>
+			<div class="tb_contact">Contact</div>
+			<div class="tb_subject">Subject</div>
+			<div class="tb_date">Date</div>
+			<div class="tb_info">Info</div>
+			<div class="tb_attend">Attend</div>
+		</div>{# end of headerrow #}<div class="clearer"></div>
+		{% for train in training_list %}
+			<div class="normalrow">
+				<div class="tb_location">
+					<a href="{% url training_d train.slug %}">{{ train.location }}</a>
+				</div>
+				<div class="tb_contact">
+					<a href="{% url contactperson train.contact.id train.id %}">
+						{{ train.contact.firstname }} {{ train.contact.lastname }}
+					</a><br/>
+					<span class="train_email">click to email</span>
+				</div>
+				<div class="tb_subject">{{ train.subject }}</div>
+				<div class="tb_date">
+					{% if train.active %}
+						{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}
+					{% else %}
+						To Be Determined
+					{% endif %}
+				</div>
+				<div class="tb_info train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></div>
+				<div class="tb_attend">
+					{% if train.button %}
+						<br/>
+						<a href="{% url training_su train.id %}" class="buttoner">Register</a>
+					{% else %}
+						<a href="{% url training_d train.slug %}">View Map <br/> and Details</a>
+					{% endif %}
+				</div>
+			</div>{# end of normalrow #}<div class="clearer"></div>
+			<div class="train_desc" id="trainDescLow_{{ train.id }}">
+				Description:<br/>{% if train.description %}
+				{{ train.description|safe }}{% else %}Description is on the way for this event.{% endif %}
+			</div>{# end of train_desc #}<div class="clearer"></div>
+		{% endfor %}
+	</div>{# end of schedtable upcoming #}<br/><br/><br/>
 
 	<h3>Request a Training Session</h3>
 
@@ -91,34 +93,49 @@
 	</p><br /><br />
 	
 	<div class="schedtable">
-		<table>
-			<tbody>
-				<tr>
-					<th class="tb_location">Location</th>
-					<th class="tb_contact">Contact</th>
-					<th class="tb_subject">Subject</th>
-					<th class="tb_date">Date</th>
-					<th class="tb_info">Info</th>
-				</tr>
-				{% for train in past_list %}
-					<tr>
-						<td>{{ train.location }}</td>
-						<td><a href="{% url contactperson train.contact.id train.id %}">
-							{{ train.contact.firstname }} {{ train.contact.lastname }}</a><br/><span class="train_email">click to email</span>
-						</td>
-						<td>{{ train.subject }}</td>
-						<td>{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}</td>
-						<td class="train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></td>
-					</tr>
-					<tr class="train_desc"  id="trainDescLow_{{ train.id }}">
-						<td colspan="5" >Description:<br/>{% if train.description %}
-							{{ train.description }}{% else %}Description is still on the way for this event.{% endif %}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div><br/><br/><br/>
+		<div class="headerrow">
+			<div class="tb_location">Location</div>
+			<div class="tb_contact">Contact</div>
+			<div class="tb_subject">Subject</div>
+			<div class="tb_date">Date</div>
+			<div class="tb_info">Info</div>
+			<div class="tb_attend">Attend</div>
+		</div>{# end of headerrow #}<div class="clearer"></div>
+		{% for train in past_list %}
+			<div class="normalrow">
+				<div class="tb_location">
+					<a href="{% url training_d train.slug %}">{{ train.location }}</a>
+				</div>
+				<div class="tb_contact">
+					<a href="{% url contactperson train.contact.id train.id %}">
+						{{ train.contact.firstname }} {{ train.contact.lastname }}
+					</a><br/>
+					<span class="train_email">click to email</span>
+				</div>
+				<div class="tb_subject">{{ train.subject }}</div>
+				<div class="tb_date">
+					{% if train.active %}
+						{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}
+					{% else %}
+						To Be Determined
+					{% endif %}
+				</div>
+				<div class="tb_info train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></div>
+				<div class="tb_attend">
+					{% if train.button %}
+						<br/>
+						<a href="{% url training_su train.id %}" class="buttoner">Register</a>
+					{% else %}
+						<a href="{% url training_d train.slug %}">View Map <br/> and Details</a>
+					{% endif %}
+				</div>
+			</div>{# end of normalrow #}<div class="clearer"></div>
+			<div class="train_desc" id="trainDescLow_{{ train.id }}">
+				Description:<br/>{% if train.description %}
+				{{ train.description|safe }}{% else %}Description is on the way for this event.{% endif %}
+			</div>{# end of train_desc #}<div class="clearer"></div>
+		{% endfor %}
+	</div>{# end of schedtable past #}<br/><br/><br/>
 	
 	
 	

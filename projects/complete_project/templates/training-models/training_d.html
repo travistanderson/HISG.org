@@ -28,9 +28,11 @@
 
 	<h2>{{ event }}</h2><hr/><br/>
 
-	<div class="right">
-		<a href="{% url training_su event.id %}" class="buttoner">Sign Up</a>
-	</div>
+	{% if event.button %}
+		<div class="right">
+			<a href="{% url training_su event.id %}" class="buttoner">Register</a>
+		</div>
+	{% endif %}
 
 	<h3>
 		<div class="left" style="width:120px;">Subject:</div>

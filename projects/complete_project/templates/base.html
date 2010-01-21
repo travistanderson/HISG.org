@@ -9,7 +9,8 @@
             div {zoom: 1; /* trigger hasLayout */}
         </style><![endif]-->
 		<link rel="icon" type="image/png" href="/site_media/images/favicon.png">
-        <link rel="stylesheet" type="text/css" href="/site_media/css/second.css" >
+		<link rel="stylesheet" type="text/css" href="/site_media/css/second.css">
+		<link rel="stylesheet" type="text/css" href="/site_media/css/logquicksearch.css">
 		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
 		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
 		<script type="text/javascript">
@@ -29,39 +30,7 @@
 			<div id="doc"><!--start of the custom document declaration-->
 				<div id="hd"><!--this is the start of the header-->
 					<div id="one">
-						<div id="searchdiv">
-							<form action="{% url search %}" method="GET" id="sitesearchform">
-								{# <label for="searchinput">SEARCH</label> #}
-								<input type="text" id="q" name="q" value="{{ query|escape }}">
-								<input type="image" src="/site_media/images/magnifier_small.png" alt="search" id="magnifier">
-								<input style="visibility:hidden;" type="checkbox" name="all" value="all" checked="checked" id="searchall">
-							</form>
-						</div>{# end of searchdiv #}
-						<div id="quickdiv">
-							<ul class="quickpick">
-								{% chunk "quickpicks" %}
-							</ul>{# end of quickpick #}
-						</div>{# end of quickdiv #}
-						
-						
-						
-						{# <div id="quickdiv"> #}
-						{# 	<ul class="quickpick"> #}
-						{# 		{% if searchpage %} #}
-						{# 			<li>Quick Pick</li>{# this is a patch to fix search #}
-						{# 		{% else %} #}
-						{# 			{% chunk "quickpicks" %} #}
-						{# 		{% endif %} #}
-						{# 	</ul>{# end of quickpick #}
-						{# </div>{# end of quickdiv #}
-						{# <div id="searchdiv"> #}
-						{# 	<form action="{% url search %}" method="GET" id="sitesearchform"> #}
-						{# 		<label for="searchinput">SEARCH</label> #}
-						{# 		<input type="text" id="q" name="q" value="{{ query|escape }}"> #}
-						{# 		<input type="image" src="/site_media/images/magnifier_small.png" alt="search" id="magnifier"> #}
-						{# 		<input style="visibility:hidden;" type="checkbox" name="all" value="all" checked="checked"> #}
-						{# 	</form> #}
-						{# </div>{# end of searchdiv #}
+						{% include 'includes/logquicksearch.html' %}
 					</div>{# end of one #}
 					<div id="two">
 						<img src="/site_media/images/second/globe.jpg" id="globepic"></img>

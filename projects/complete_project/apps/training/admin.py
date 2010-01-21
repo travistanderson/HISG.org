@@ -25,12 +25,14 @@ class EventAdmin(admin.ModelAdmin):
 	filter_horizontal = ('attendee','registrant',)
 	fieldsets = (
         (None, {'fields': ('name', 'slug',),'classes':('wide',)}),
-		(None, {'fields': ('contact', 'subject','start_date','end_date','description','active','limit','questionset','location',)}),
+		('Date Information', {'fields': ('start_date', 'end_date','start_date_register','end_date_register',)}),
+		(None, {'fields': ('contact', 'subject','hist_1','idr_1','idr_2','description','detail_description','active','limit','questionset','location',)}),
 		('GeoLocation', {'fields': ('latitude', 'longitude',),'classes':('collapse',)}),
         ('Attendees', {'fields': ('registrant', 'attendee',),'classes': ('collapse',),}),
     )
 	change_form_template = 'admin/training/event/change_form.html'
 	save_on_top = True
+
 
 
 class QuestionAdmin(admin.ModelAdmin):

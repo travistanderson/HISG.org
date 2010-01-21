@@ -43,20 +43,45 @@ def idrmodel(request):
 	)
 	
 def training(request):
-	today = datetime.today()
+	t = datetime.today()
+	today = datetime.date(t)
 	bg = bricker('projects','Training')
 	bgheight = brickerheight(bg)
 	tf = Event.objects.all().filter(end_date__gte = today).order_by('start_date')
+	for event in tf:
+		if event.start_date_register and event.end_date_register:
+			if event.start_date_register <= today <= event.end_date_register:
+				event.button = True
+			else:
+				event.button = False
+		else:
+			event.button = False
 	tp = Event.objects.all().filter(end_date__lt = today).order_by('-start_date')
-	return render_to_response('training-models/training.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,},
+	for event in tp:
+		if event.start_date_register and event.end_date_register:
+			if event.start_date_register <= today <= event.end_date_register:
+				event.button = True
+			else:
+				event.button = False
+		else:
+			event.button = False
+	return render_to_response('training-models/training.html', {'brickgroup': bg,'brickheight':bgheight,'training_list':tf,'past_list':tp,'today':today,},
 		context_instance = RequestContext(request),
 	)
 
 def trainingd(request,event_slug):
-	today = datetime.today()
+	t = datetime.today()
+	today = datetime.date(t)
 	bg = bricker('projects','Training')
 	bgheight = brickerheight(bg)
 	e = Event.objects.get(slug = event_slug)
+	if e.start_date_register and e.end_date_register:
+		if e.start_date_register <= today <= e.end_date_register:
+			e.button = True
+		else:
+			e.button = False
+	else:
+		e.button = False
 	return render_to_response('training-models/training_d.html', {'brickgroup': bg,'brickheight':bgheight,'event':e,'gmapkey':GMAPKEY,'debug': DEBUG,},
 		context_instance = RequestContext(request),
 	)

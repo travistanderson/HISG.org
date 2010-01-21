@@ -40,16 +40,6 @@
 			<ul class="subnav">
 				<li class="sub0" id="testify">Welcome to HISG</li>
 				<li class="sub1" id="sub11"><a href="{% url home %}">Home</a></li>
-				{% if user.is_authenticated %}
-				<li class="sub1" id="sub12"> | <a href="{% url profile user.id %}">{{ user }}</a> | </li>
-				<li class="sub1" id="sub13"><a href="{% url logout %}">Logout</a></li>
-				{% if user.is_staff %}
-				<li class="sub1" id="sub14"> | <a href="/admin/">Admin</a></li>
-				{% endif %}
-				{% else %}
-				<li class="sub1" id="sub12"> | <a href="{% url login %}">Login</a> | </li>
-				<li class="sub1" id="sub13"><a href="{% url signup %}">Sign Up</a></li>
-				{% endif %}
 				
 				<li class="sub2" id="sub21"><a href="{% url training %}">Training</a> | </li>
 				<li class="sub2" id="sub22"><a href="/training-and-models/models/">Models</a> | </li>
@@ -81,33 +71,8 @@
 
 				
 				<li class="sub6" id="sub61"><a href="{% url donation_login %}">Donor Login</a></li>
-			
-		{% if user.is_authenticated %}
-				<li class="inyes" id="adminfirst">
-					<a href="{% url home %}">{{ user }}</a> | 
-				</li>
-				<li class="inyes">
-					<a href="{% url acct_logout %}">logout</a>
-				</li>
-				{% if perms.tribes %}
-				<li class="inyes">
-					 | <a href="/admin/">admin</a>
-				</li>
-				{% else %}
-					{% if perms.partners %}
-						<li class="inyes">
-							<a href="{% url partners_starfish %}">starfish</a>
-						</li>
-					{% endif %}
-				{% endif %}
+
 			</ul>
-		{% else %}
-				<li class="inyes" id="adminfirst">
-					<a href="{% url acct_login %}">Login</a>/
-					<a href="{% url acct_signup %}">Signup</a>
-				</li>
-			</ul>
-		{% endif %}
 		</div><!-- end of subnavigation block -->
 	</div><!-- end of nav (top level navigation) -->
 	

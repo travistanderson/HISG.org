@@ -136,8 +136,8 @@ class Event(models.Model):
 	slug = models.SlugField()
 	contact = models.ForeignKey(Staff)
 	subject = models.CharField(blank=True, max_length=300)
-	start_date = models.DateField()
-	end_date = models.DateField()
+	start_date = models.DateField(help_text="This is the first day of the training event.",)
+	end_date = models.DateField(help_text="This is the last day of the training event.",)
 	location = models.CharField(blank=True, max_length=100)
 	latitude = models.FloatField(blank=True,null=True)
 	longitude = models.FloatField(blank=True,null=True)
@@ -148,12 +148,12 @@ class Event(models.Model):
 	attendee = models.ManyToManyField(User,blank=True,null=True,related_name='attendee')
 	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.')
 	# here are the new ones
-	# start_date_register = models.DateField()
-	# end_date_register = models.DateField()
-	# detail_description = models.TextField(blank=True)
-	# hist_1 = models.BooleanField(default=False)
-	# idr_1 = models.BooleanField(default=False)
-	# idr_2 = models.BooleanField(default=False)		
+	start_date_register = models.DateField(help_text="Users will be able to register on and after this day",)
+	end_date_register = models.DateField(help_text="Users will no longer be able to register after this day",)
+	detail_description = models.TextField(blank=True)
+	hist_1 = models.BooleanField(default=False)
+	idr_1 = models.BooleanField(default=False)
+	idr_2 = models.BooleanField(default=False)		
 	
 	def __unicode__(self):
 		if self.active:

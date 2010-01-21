@@ -9,7 +9,8 @@
             div {zoom: 1; /* trigger hasLayout */}
         </style><![endif]-->
 		<link rel="icon" type="image/png" href="/site_media/images/favicon.png">       
-        <link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >
+		<link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >
+		<link rel="stylesheet" type="text/css" href="/site_media/css/logquicksearch.css">
 		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
 		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
         <script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
@@ -144,19 +145,7 @@
 			<div id="doc"><!--start of the custom document declaration-->
 				<div id="hd"><!--this is the start of the header-->
 					<div id="one">
-						<div id="searchdiv">
-							<form action="{% url search %}" method="GET" id="sitesearchform">
-								{# <label for="searchinput">SEARCH</label> #}
-								<input type="text" id="q" name="q" value="{{ query|escape }}">
-								<input type="image" src="/site_media/images/magnifier_small.png" alt="search" id="magnifier">
-								<input style="visibility:hidden;" type="checkbox" name="all" value="all" checked="checked" id="searchall">
-							</form>
-						</div>{# end of searchdiv #}
-						<div id="quickdiv">
-							<ul class="quickpick">
-								{% chunk "quickpicks" %}
-							</ul>{# end of quickpick #}
-						</div>{# end of quickdiv #}
+						{% include 'includes/logquicksearch.html' %}
 					</div>{# end of one #}
 					<div id="two">
 						<div id="hisg">
@@ -276,26 +265,6 @@
 				
 				<li class="sub5"><a href="{% url donation_login %}">Donor Login</a></li>
 			
-		{% if user.is_authenticated %}
-				<li class="inyes" id="adminfirst">
-					<a href="{% url profile user.id %}">{{ user }}</a> | 
-				</li>
-				<li class="inyes">
-					<a href="{% url logout %}">Logout</a>
-				</li>
-				{% if user.is_staff %}
-					<li class="inyes">
-						 | <a href="/admin/">Admin</a>
-					</li>
-				{% endif %}
-			</ul>
-		{% else %}
-				<li class="inyes" id="adminfirst">
-					<a href="{% url login %}">Login</a>/
-					<a href="{% url signup %}">Sign Up</a>
-				</li>
-			</ul>
-		{% endif %}
 		</div><!-- end of subnavigation block -->
 	</div><!-- end of nav (top level navigation) -->
 

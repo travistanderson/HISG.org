@@ -31,26 +31,12 @@ input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;fon
 .numvis li{list-style-type:decimal;list-style-position:inside;padding:0 0 0 8px;}
 /*==========================header=========================*/
 #hd{}
-#one{height:38px;}
+#one{height:30px;padding:8px 0 0 0;color:#14436f;font-family:palatino,new york;}
 #two{height:116px;}
 #globepic{}
 #hisgpic{padding:0 0 25px 10px;}
 #labelpic{padding:0 0px 30px 30px;}
 
-/*#quickdiv{width:150px;height:26px;float:left;padding:8px 0 0 550px;color:#14436f;font-family:palatino,new york;}
-.quickpick{display:inline;padding:3px 5px 2px 5px;background-color:white;border:1px gray solid;margin:0 20px 0 0;width:100px;z-index:1;position:absolute;}
-.quickhide{display:none;}
-#searchdiv{width:275px;height:28px;float:left;padding:10px 0px 0 0;color:#14436f;font-family:palatino,new york;}
-#magnifier{float:right;position:relative;top:-19px;left:-2px;}*/
-#quickdiv{width:125px;height:17px;float:right;padding:8px 0 0 0px;color:#14436f;font-family:palatino,new york;}
-.quickpick{display:inline;padding:3px 5px 0px 5px;background-color:white;border:2px solid #00a3e6;margin:0 20px 0 0;width:100px;z-index:1;position:absolute;}
-.quickhide{display:none;}
-.quickpick .quickpickarrow{background:url(/site_media/images/arrow-blue.jpg)no-repeat 100% 0;}
-
-#searchdiv{width:260px;height:28px;float:right;padding:8px 20px 0 0;color:#14436f;font-family:palatino,new york;}
-#searchdiv #q{background:transparent #fff;border:2px solid #00a3e6;margin:0;padding:0 0 0 5px;height:18px;line-height:18px;float:right;}
-#searchdiv #searchall{display:none;}
-#magnifier{border-top:2px solid #00a3e6;border-bottom:2px solid #00a3e6;border-left:2px solid #00a3e6;margin:0;padding:0;height:18px;float:right;}
 
 #nav{height:66px;}
 ul#navigation {height:36px;padding:10px 0 0 1px;}
@@ -209,19 +195,22 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 
 .about_box{border:solid 2px #dabc64;padding:10px;height:100px;margin:0 0 20px 0;}
 
-.schedtable{border-collapse: collapse;}
-.schedtable th{padding:8px;border:2px solid gray;background-color:#dabc64;font-weight:bold;color:#14436f;font-family:Georgia, Serif;}
-.schedtable td{padding:8px;border:2px solid gray;}
+.schedtable{}
+.schedtable .headerrow{border:2px solid gray;height:24px;}
+.schedtable .headerrow div{padding:4px 6px;background-color:#dabc64;font-weight:bold;color:#14436f;font-family:Georgia, Serif;float:left;height:16px;}
+.schedtable .normalrow{border-right:2px solid gray;border-bottom:2px solid gray;border-left:2px solid gray;height:55px;}
+.schedtable .normalrow div{padding:4px 6px;float:left;height:47px;}
 .train_email{font-size:9px;color:#AAA;padding:0 0 0 16px;}
 .train_desc_bt{color:#3f97ba;cursor:pointer;}
 .train_desc_bt a{display:block;}
-.train_desc{background-color:#b1d9fe;}
-.tb_location{width:90px;}
-.tb_contact{width:95px;}
-.tb_subject{width:140px;}
-.tb_date{width:125px;}
-.tb_info{width:40px;}
-.tb_attend{width:85px;}
+.train_desc{background-color:#b1d9fe;display:none;border-right:2px solid gray;border-bottom:2px solid gray;border-left:2px solid gray;padding:10px;}
+.tb_location{width:92px;border-right:2px solid gray;}
+.tb_contact{width:87px;border-right:2px solid gray;}
+.tb_subject{width:140px;border-right:2px solid gray;}
+.tb_date{width:110px;border-right:2px solid gray;}
+.tb_info{width:40px;border-right:2px solid gray;}
+.tb_attend{width:85px;background:#fffccf;}
+.tb_attend a{margin:2px 0 0 6px;}
 
 .modelrow{border:5px solid #dabc64;margin:0 20px 0 0;padding:10px;width:110px;height:105px;background-color:#f2e3a5;}
 .modelrow img{height:20px;}

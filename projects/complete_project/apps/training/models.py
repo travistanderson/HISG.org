@@ -1,6 +1,6 @@
 # training/models.py
 from django.db import models
-import datetime
+from datetime import datetime
 from photologue.models import Photo
 from about.models import Staff
 from django.contrib.auth.models import User
@@ -163,9 +163,10 @@ class Event(models.Model):
 		return newname
 		
 	def tableview(self):
-		t = datetime.date.today()
+		t = datetime.today()
+		today = datetime.date(t)
 		e = Event.objects.get(id=self.id)
-		if e.start_date < t:
+		if e.start_date < today:
 			u = e.attendee.all().count()
 			link = '<a href="/admin/training/s/event/tableview/%s/">%s Attended</a>' %(self.id,u)
 		else:
@@ -173,6 +174,23 @@ class Event(models.Model):
 			link = '<a href="/admin/training/s/event/tableview/%s/">%s Registered</a>' %(self.id,u)
 		return mark_safe(link)
 	tableview.allow_tags = True
+	
+	def reg_open(self):
+		t = datetime.today()
+		today = datetime.date(t)
+		e = Event.objects.get(id=self.id)
+		reg="hello"
+		if e.start_date_register and e.end_date_register:
+			if e.start_date_register > today:
+				reg = '<span style="color:orange;">Opening Soon</span>'
+			elif e.start_date_register <= today and today <= e.end_date_register:
+				reg = '<span style="color:green;">Open</span>'
+			else:
+				reg = '<span style="color:red;text-decoration:line-through;">Closed</span>'
+		else:
+			reg = 'No Reg_dates set.'
+		return mark_safe(reg)
+	reg_open.allow_tags = True
 	
 	
 		

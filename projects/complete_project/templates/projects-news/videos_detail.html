@@ -7,7 +7,13 @@
 {% endblock brick %}
 
 {% block body %}
-<h2 class="center">{{ video.name }}</h2><hr/>
+	<h2 class="center">{{ video.name }}</h2>
+
+	<div style="padding:0 0 0 100px;float:right;">
+		{% include 'projects-news/includes/sharethiscode.html' %}
+	</div><div class="clearer"></div>
+
+	<hr/>
 	
 	
 	<div style="padding:0 0 0 {{ pad }};">

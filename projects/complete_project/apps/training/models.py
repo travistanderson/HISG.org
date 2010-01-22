@@ -186,7 +186,7 @@ class Event(models.Model):
 			elif e.start_date_register <= today and today <= e.end_date_register:
 				reg = '<span style="color:green;">Open</span>'
 			else:
-				reg = '<span style="color:red;text-decoration:line-through;">Closed</span>'
+				reg = '<span style="color:red;">Closed</span>'
 		else:
 			reg = 'No Reg_dates set.'
 		return mark_safe(reg)

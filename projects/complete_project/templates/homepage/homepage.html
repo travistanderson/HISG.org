@@ -158,53 +158,54 @@
 			
 				<div id="bd"><!--this is the start of the body-->
 
-	<div id="impacter">
-		<div id="left-impacter">
-			<div id="phrase">
-				Learn about urgent disaster relief efforts now
-				{# <a href="{% url donation %}"><div id="buttoner"> #}
-				{# 					Donate #}
-				{# 				</div></a> #}
+					<div id="impacter">
+						<div id="left-impacter">
+							<div id="phrase">
+								Learn about urgent disaster relief efforts now
+								{# <a href="{% url donation %}"><div id="buttoner"> #}
+								{# 					Donate #}
+								{# 				</div></a> #}
 				
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-					<input type="hidden" name="cmd" value="_s-xclick">
-					<input type="hidden" name="hosted_button_id" value="11201221">
-					<input type="image" src="/site_media/images/donate.jpg" border="0" name="submit" alt="PayPal">
-					<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form>
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+									<input type="hidden" name="cmd" value="_s-xclick">
+									<input type="hidden" name="hosted_button_id" value="11201221">
+									<input type="image" src="/site_media/images/donate.jpg" border="0" name="submit" alt="PayPal">
+									<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+								</form>
 				
-				{# <div id="phrase_top"> #}
-				{# 					{{ phrase_first }} #}
-				{# 				</div>{# end of phrase_top #}
-				{# 				<div id="phrase_bottom"> #}
-				{# 					<a href="/info/first-time-here/">First time visitor?</a> #}
-				{# 				</div>{# end of phrase bottom #}
-			</div>{# end of phrase #}
-			<div style="font-size:30px;color:#ae5219;padding:0px 0 0 0;">
-				<a href="{{ impacter_first.link }}" id="iln">{{ impacter_first.name }}</a>
-			</div>
-			<div style="font-style:italic;color:#ae5219;padding:10px 0 0 0;height:75px;">
-				<a href="{{ impacter_first.link }}" id="ilb">
-					{{ impacter_first.body }}
-				</a>
-			</div>
-			<a href="{{ impacter_first.link }}" id="buttoner_link">
-				<div id="buttoner">
-					{{ impacter_first.button }}
-				</div>
-			</a>
-			<div id="thumber">
-				{% for impacter in impacter_list %}
-					<img src="{{ impacter.photo.get_impacterthumb_bw_url }}"  id="ilbut{{ forloop.counter0 }}"  style="cursor:pointer;padding:0 6px 0 0;" onclick="gotoandstop({{ forloop.counter0 }});">
-					</img>
-				{% endfor %}
-			</div>
-		</div>{# end of left-impacter #}
-		<div id="right-impacter">
-			<img src="{{ impacter_first.photo.get_impacter_url }}" id="irp" ></img>
-		</div>{# end of right-impacter #}
-	</div>{# end of impacter #}
-	<div id="nav"><!-- These are the top level navigation links -->
+								{# <div id="phrase_top"> #}
+								{# 					{{ phrase_first }} #}
+								{# 				</div>{# end of phrase_top #}
+								{# 				<div id="phrase_bottom"> #}
+								{# 					<a href="/info/first-time-here/">First time visitor?</a> #}
+								{# 				</div>{# end of phrase bottom #}
+							</div>{# end of phrase #}
+							<div style="font-size:30px;color:#ae5219;padding:0px 0 0 0;">
+								<a href="{{ impacter_first.link }}" id="iln">{{ impacter_first.name }}</a>
+							</div>
+							<div style="font-style:italic;color:#ae5219;padding:10px 0 0 0;height:75px;">
+								<a href="{{ impacter_first.link }}" id="ilb">
+									{{ impacter_first.body }}
+								</a>
+							</div>
+							<a href="{{ impacter_first.link }}" id="buttoner_link">
+								<div id="buttoner">
+									{{ impacter_first.button }}
+								</div>
+							</a>
+							<div id="thumber">
+								{% for impacter in impacter_list %}
+									<img src="{{ impacter.photo.get_impacterthumb_bw_url }}"  id="ilbut{{ forloop.counter0 }}"  style="cursor:pointer;padding:0 6px 0 0;" onclick="gotoandstop({{ forloop.counter0 }});">
+									</img>
+								{% endfor %}
+							</div>
+						</div>{# end of left-impacter #}
+						<div id="right-impacter">
+							<img src="{{ impacter_first.photo.get_impacter_url }}" id="irp" ></img>
+						</div>{# end of right-impacter #}
+					</div>{# end of impacter #}
+
+					<div id="nav"><!-- These are the top level navigation links -->
 		<ul id="navigation">
 			<li id="li1">
 				<a id="nav1" href="{% url trainingmodels %}">
@@ -268,7 +269,6 @@
 		</div><!-- end of subnavigation block -->
 	</div><!-- end of nav (top level navigation) -->
 
-
 					<div class="homer" id="lefthomer">
 						<h3><a href="{% url news %}">NEWS UPDATES</a></h3>
 	
@@ -293,74 +293,12 @@
 
 					<div class="homer" id="middlehomer">
 						{% chunk "homepage_middle_column" %}
-						<!-- <h3>STARFISH COMMUNITY ACTIVITY</h3> 
-												<h4>
-													Please join us at the <span style="color:#14436f;font-size:14px;">Starfish Community Expo</span>
-													October 20-22, Fort Mill, SC
-												</h4>
-												<p>This conference will further the Starfish Community's ability to 
-													connect resource providers with end-users from 10 Community Development and Disaster Response 
-													categories across 6 geographic regions.<br/><br/>
-													<h4><a href="http://starfishcommunity.net" target="_blank">I WANT TO LEARN MORE</a>.</h4>
-												</p>
-												<div style="padding:5px 0 10px 0;">
-													<a href="http://starfishcommunity.net" target="_blank">
-														<img src="/site_media/images/starfish-small.png"></img>
-													</a>	
-												</div>
-												<p>
-													<span class="ican">
-														<a href="http://starfishcommunity.net/registration.html" target="_blank">
-															STARFISH EXPO SIGNUP FORM
-														</a>
-													</span>
-												</p> -->
+
 					</div>{# end of middlehomer #}
 
 					<div class="homer" id="righthomer">
 						{% chunk "homepage_right_column" %}
-						<!-- <h3>CONNECT WITH HISG</h3> 
-												<div class="connect" id="facebook">
-													<div class="right" style="width:125px;height:125px;">
-														<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
-															<img src="/site_media/images/facebook2.png"></img>
-														</a>
-													</div>						
-													<a href="http://apps.facebook.com/causes/277769?m=4a83263b" target="_blank">
-														<h4>Go to the HISG Facebook Group</h4>
-													</a>
-													There are over 450 members in our group and we would love for you to be the next one.
-												</div><div class="clearer"></div>
-												
-												<div class="connect" id="intern">
-													<a href="{% url intern %}">
-														<h4>Become part of the HISG Internship Program</h4>
-													</a>
-													<div class="left" style="width:125px;height:125px;padding:0 10px 0 0;">
-														<a href="{% url intern %}">
-															<img src="/site_media/images/intern2.png"></img>
-														</a>
-													</div>
-													You can <a href="{% url intern %}">volunteer</a> to be an intern or if you are 
-													an organization you can <a href="{% url intern %}">send interns</a> to 
-													volunteer or we can try to <a href="{% url intern %}">get interns</a> to help 
-													with your humanitarian work.						
-												</div><div class="clearer"></div>
-												
-												<div class="connect" id="pulse"> 
-													<div class="right" style="width:125px;height:125px;">
-														<a href="{% url pulse %}">
-															<img src="/site_media/images/pulse-report.png"></img>
-														</a>
-													</div>						
-													<a href="{% url pulse %}">
-														<h4>View the latest HISG Pulse Reports</h4>
-													</a>
-													This Pulse Report is a regular publication of Humanitarian International 
-													Services Group, updating readers on the worldwide disaster relief and 
-													community development operations of HISG.<br/>
-													<a href="{% url pulse %}">Sign up to receive the Pulse Report</a>
-												</div><div class="clearer"></div> -->					
+					
 					</div>{# end of right homer #}
 					<div style="clear:both"></div>
 					
@@ -369,11 +307,11 @@
 						    <a href="{% url search %}">SEARCH</a> | <a href="/info/first-time-here/">FIRST TIME HERE</a> | <a href="{% url faqs %}">FAQS</a>
 						    | <a href="{% url sitemap %}">SITE MAP</a> | &copy; 2001-2009 HISG<br>
 							Humanitarian International Services Group &nbsp;| &nbsp;4700 Castleton Way, Suite 200, Castle Rock, CO 80109 Phone:(303) 662-0845 &nbsp;| &nbsp;HISG is a non-profit 501(c)3 tax exempt organization
-						</div>						
-					</div><!-- this is the end of the footer  -->
-				</div><!--this is the end of the body-->
-			</div><!--this is the end of the custom document declaration-->
+						</div>{# end of legal #}
+					</div>{# this is the end of the ft #}
+				</div>{# this is the end of the bd #}
+			</div>{# this is the end of the custom document declaration #}
 		</div>{# end of doc-wrapper #}
-    </body>
+    </body>{# this is the end of the body #}
 </html>
 

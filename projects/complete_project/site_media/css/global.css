@@ -102,7 +102,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .connect{padding:0 0 35px 0;}
 
 /*==========================footer=========================*/
-#ft{text-align:center;padding:0 20px 20px 20px;font-size:12px;}
+#ft{text-align:center;padding:0 20px 20px 20px;font-size:12px;background:#ffefa4;}
 #ft a {color:#1a629d;}
 #ft a:visited{color:#1a629d;}
 
@@ -113,6 +113,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 /* #fffccf -- gold 		light cukjati*/
 /* #f2e3a5 -- gold		left-colomn*/
 /* #ce9e4e -- gold 		volunteer*/
+/* #ffefa4 -- gold		yellowy light color at bottom center of homepage */
 
 /* #ae5219 -- brown		text cukjati*/
 /* #783a11 -- brown 	darker text cukjati*/

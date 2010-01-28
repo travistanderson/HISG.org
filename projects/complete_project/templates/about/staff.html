@@ -27,13 +27,13 @@
 				<h4><a href="{% url contactperson staff.id "about" %}">Email {{ staff.firstname }}</a></h4>
 			</div>
 			<a href="{% url staff_detail staff.id %}">
-				<h3 style="padding:0 0 0px 0;">{{ staff }}</h3>
+				<h3 style="padding:0 0 0px 0;color:#3f97ba;">{{ staff }}</h3>
 			</a>
 			<h4>
 				{{ staff.title }}
 			</h4>
 			<p>
-				{{ staff.bio|safe|truncatewords:50 }}
+				{{ staff.bio|safe|truncatewords:50 }}...<a href='{% url staff_detail staff.id %}'>more</a>
 			</p><br/>
 			<div class="clearer"></div>
 		</div>{# end of staff #}

@@ -130,6 +130,21 @@ class QuestionSet(models.Model):
 
 
 
+class EventSubject(models.Model):
+	name = models.CharField(blank=True, max_length=100)
+	description = models.TextField(blank=True)
+	
+	def __unicode__(self):
+		return self.name
+		
+		
+# class EventTest(models.Model):
+# 	name = models.CharField(blank=True, max_length=100)
+# 	description = models.TextField(blank=True)
+# 
+# 	def __unicode__(self):
+# 		return self.name		
+
 
 class Event(models.Model):
 	name = models.CharField(blank=True, max_length=100)
@@ -151,9 +166,10 @@ class Event(models.Model):
 	start_date_register = models.DateField(help_text="Users will be able to register on and after this day",)
 	end_date_register = models.DateField(help_text="Users will no longer be able to register after this day",)
 	detail_description = models.TextField(blank=True)
-	hist_1 = models.BooleanField(default=False)
-	idr_1 = models.BooleanField(default=False)
-	idr_2 = models.BooleanField(default=False)		
+	# hist_1 = models.BooleanField(default=False)
+	# idr_1 = models.BooleanField(default=False)
+	# idr_2 = models.BooleanField(default=False)
+	# eventsubject = models.ManyToManyField(EventSubject,blank=True,null=True,related_name="eventsubject")		
 	
 	def __unicode__(self):
 		if self.active:

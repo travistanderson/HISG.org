@@ -1,6 +1,6 @@
 # training/admin.py
 from django.contrib import admin
-from training.models import Answer, BadgePhoto, Choice, Email, EmailTemplate, Event, Question, QuestionOrder, QuestionSet, SignupDate
+from training.models import Answer, BadgePhoto, Choice, Email, EventSubject, EmailTemplate, Event, Question, QuestionOrder, QuestionSet, SignupDate
 from training.forms import EventAdminModelForm
 
 class AnswerAdmin(admin.ModelAdmin):
@@ -26,7 +26,8 @@ class EventAdmin(admin.ModelAdmin):
 	fieldsets = (
         (None, {'fields': ('name', 'slug',),'classes':('wide',)}),
 		('Date Information', {'fields': ('start_date', 'end_date','start_date_register','end_date_register',)}),
-		(None, {'fields': ('contact', 'subject','hist_1','idr_1','idr_2','description','detail_description','active','limit','questionset','location',)}),
+		# (None, {'fields': ('contact', 'subject','eventsubject','description','detail_description','active','limit','questionset','location',)}),
+		(None, {'fields': ('contact', 'subject','description','detail_description','active','limit','questionset','location',)}),
 		('GeoLocation', {'fields': ('latitude', 'longitude',),'classes':('collapse',)}),
         ('Attendees', {'fields': ('registrant', 'attendee',),'classes': ('collapse',),}),
     )
@@ -68,6 +69,7 @@ admin.site.register(Answer, AnswerAdmin)
 admin.site.register(BadgePhoto, BadgePhotoAdmin)
 admin.site.register(Choice)
 admin.site.register(Email)
+admin.site.register(EventSubject)
 admin.site.register(EmailTemplate)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Question, QuestionAdmin)

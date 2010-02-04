@@ -150,12 +150,12 @@ table#change-history tbody th { width:16em; }
 /*  Added by Travis for custom tables on events */
 
 .attendee_table{margin:0 0 0 0px;border:2px solid #27aaee;background:#fff;width:970px;overflow-x:scroll;overflow-y:hidden;}
-.attendee_table .tableheader{height:30px;color:#FFF;background-color:#27aaee;overflow:hidden;width:1800px;}
+.attendee_table .tableheader{height:30px;color:#FFF;background-color:#27aaee;overflow:hidden;width:3800px;}
 .attendee_table .tableheader div{float:left;height:26px;border-right:1px solid #bbbbbb;padding:2px;overflow:hidden;}
 .attendee_table .tablebody{min-height:200px;}
 .attendee_table .tablebody .functionrow{height:30px;border-bottom:1px solid #bbbbbb;}
 
-.attendee_table .tablebody .tablerow{height:50px;border-bottom:1px solid #bbbbbb;width:1800px;overflow:hidden;}
+.attendee_table .tablebody .tablerow{height:50px;border-bottom:1px solid #bbbbbb;width:3800px;overflow:hidden;}
 .attendee_table .tablebody .tablerow div{float:left;height:45px;border-right:1px solid #bbbbbb;padding:2px;overflow:hidden;}
 
 .attendee_table .checker{width:20px;}

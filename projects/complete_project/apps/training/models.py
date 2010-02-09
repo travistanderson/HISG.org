@@ -169,7 +169,7 @@ class Event(models.Model):
 	# hist_1 = models.BooleanField(default=False)
 	# idr_1 = models.BooleanField(default=False)
 	# idr_2 = models.BooleanField(default=False)
-	# eventsubject = models.ManyToManyField(EventSubject,blank=True,null=True,related_name="eventsubject")		
+	eventsubject = models.ManyToManyField(EventSubject,blank=True,null=True,related_name="eventsubject")		
 	
 	def __unicode__(self):
 		if self.active:

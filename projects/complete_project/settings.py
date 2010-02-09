@@ -147,6 +147,11 @@ INSTALLED_APPS = (
 	'faqs',
 	'training',
 	'newadmin',
+
+	# added these to get the site working in mysql
+	'account',
+	'notification',
+	'messages',
 	    
     # internal (for now)
     'analytics',
@@ -165,7 +170,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 AUTHENTICATION_BACKENDS = ('tiq_login.tiq_backend.TiqLoginBackend',)
 AUTH_PROFILE_MODULE = 'tiq_login.TiqUserProfile'
 # AUTH_PROFILE_MODULE = 'profiles.Profile'
-NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
+# NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
@@ -184,7 +189,8 @@ EMAIL_USE_TLS = True
 
 SITE_NAME = "HISG"
 LOGIN_URL = "/user/login"
-LOGIN_REDIRECT_URLNAME = "what_next"
+LOGIN_REDIRECT_URL = "/user/login"
+# LOGIN_REDIRECT_URLNAME = "what_next"
 
 LOGGING_OUTPUT_ENABLED = True
 LOGGING_SHOW_METRICS = True

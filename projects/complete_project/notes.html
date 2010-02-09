@@ -1,3 +1,15 @@
+here is the sql statement I used to add the event_subject stuff
+
+create table training_event_eventsubject (id INT(11) not null auto_increment primary key, event_id INT(11), eventsubject_id INT(11));
+
+
+
+
+
+
+
+
+
 
 from hisg.models import News
 news_dict = {"queryset": News.objects.all().order_by('-date'),}
@@ -7,21 +19,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # url(r'^$', direct_to_template, {"template": "homepage.html","queryset": News.objects.all(),}, name="home"),
 	url(r'^$', 'django.views.generic.list_detail.object_list', dict(news_dict, template_name='homepage.html'), 'home'),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

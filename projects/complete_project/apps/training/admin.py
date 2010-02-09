@@ -22,12 +22,13 @@ class EventAdmin(admin.ModelAdmin):
 	ordering = ('-start_date',)
 	# list_editable = ()
 	prepopulated_fields = {'slug': ('name',)}
-	filter_horizontal = ('attendee','registrant',)
+	# filter_horizontal = ('attendee','registrant',)
+	filter_horizontal = ('attendee','registrant','eventsubject',)
 	fieldsets = (
         (None, {'fields': ('name', 'slug',),'classes':('wide',)}),
 		('Date Information', {'fields': ('start_date', 'end_date','start_date_register','end_date_register',)}),
-		# (None, {'fields': ('contact', 'subject','eventsubject','description','detail_description','active','limit','questionset','location',)}),
-		(None, {'fields': ('contact', 'subject','description','detail_description','active','limit','questionset','location',)}),
+		(None, {'fields': ('contact', 'subject','eventsubject','description','detail_description','active','limit','questionset','location',)}),
+		# (None, {'fields': ('contact', 'subject','description','detail_description','active','limit','questionset','location',)}),
 		('GeoLocation', {'fields': ('latitude', 'longitude',),'classes':('collapse',)}),
         ('Attendees', {'fields': ('registrant', 'attendee',),'classes': ('collapse',),}),
     )

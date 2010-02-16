@@ -19,6 +19,7 @@ if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
 else:
     from django.core.mail import send_mail
+from settings import GMAPKEY, DEBUG
 
 	
 def contact(request):
@@ -139,13 +140,16 @@ def staff_detail(request, staff_id):
 	)
 	
 def office(request):
+	t = datetime.today()
+	today = datetime.date(t)
 	o = Office.objects.all().order_by('sorter')
 	bg = bricker('about','contact')
 	bgheight = brickerheight(bg)
 	
-	return render_to_response('about/office.html', {'office_list': o,'brickgroup':bg,'brickheight':bgheight,},
+	return render_to_response('about/office.html', {'brickgroup':bg,'brickheight':bgheight,'office_list': o,'gmapkey':GMAPKEY,'debug': DEBUG,},
 		context_instance = RequestContext(request),
 	)
+
 	
 def office_detail(request, office_id):
 	o = get_object_or_404(Office, pk = office_id)
@@ -156,6 +160,7 @@ def office_detail(request, office_id):
 		context_instance = RequestContext(request),
 	)
 
+
 def intern(request):
 	bg = bricker('about','contact')
 	bgheight = brickerheight(bg)
@@ -163,6 +168,7 @@ def intern(request):
 	return render_to_response('about/intern.html', {'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
+
 	
 def internbecome(request):
 	bg = bricker('about','contact')

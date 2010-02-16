@@ -13,10 +13,11 @@ class VideoInline(admin.TabularInline):
 
 class OfficeAdmin(admin.ModelAdmin):
 	form = OfficeAdminModelForm
-	list_display = ('name', 'sorter', 'description', 'country',)
+	list_display = ('name', 'sorter', 'contact', 'country',)
+	list_editable = ('sorter','contact',)
 	ordering = ('sorter', 'name')
 	fieldsets = (
-		(None, {'fields': ('name','description','address','city','zipcode','state','country','region','video','sorter')}),
+		(None, {'fields': ('name','description','address','country','region','sorter','latitude','longitude','contact',)}),
 		('Photos', {'fields': ('photo',)}),
 	)
 	

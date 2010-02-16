@@ -9,15 +9,18 @@ from countries.models import Country, Region, UsState
 class Office(models.Model):
 	name = models.CharField(max_length="80")
 	description = models.TextField(max_length="4000")
-	address = models.CharField(max_length="80")
-	city = models.CharField(max_length="30")
-	zipcode = models.CharField(max_length="5", blank=True, null=True)
-	state = models.ForeignKey(UsState, blank=True, null=True)
+	address = models.TextField(max_length="4000")
 	country = models.ForeignKey(Country, blank=True)
 	region = models.ForeignKey(Region, blank=True)
 	photo = models.ManyToManyField(Photo, blank=True, null=True)
-	video = models.ManyToManyField(Video, blank=True, null=True)
+	latitude = models.FloatField(blank=True,null=True)
+	longitude = models.FloatField(blank=True,null=True)	
 	sorter = models.IntegerField(max_length="3", blank=True, null=True)
+	contact = models.EmailField(blank=True,null=True)
+		# video = models.ManyToManyField(Video, blank=True, null=True)
+		# city = models.CharField(max_length="30")
+		# zipcode = models.CharField(max_length="5", blank=True, null=True)
+		# state = models.ForeignKey(UsState, blank=True, null=True)
 		
 	def __unicode__(self):
 		return self.name

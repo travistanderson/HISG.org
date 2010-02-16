@@ -15,6 +15,77 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 
+
+def reports(request):
+	u = User.objects.all().exclude(is_staff=True)
+	slist = []
+	b = BadgePhoto.objects.all()
+	qcountry = Question.objects.get(question='Country')
+	cou = Answer.objects.filter(question=qcountry.id)
+	qorg = Question.objects.get(question='Organization')
+	org = Answer.objects.filter(question=qorg.id)
+	e = Event.objects.all()
+	
+	for user in u:
+		student = {}
+		uid = 'uid'
+		name = 'name'
+		email = 'email'
+		badgephoto = 'badgephoto'
+		country = 'country'
+		organization = 'organization'
+		job = 'job'
+		credentials = 'credentials'
+		
+		student[uid] = user.id
+		student[name] = user.username
+		student[email] = user.email
+		bfid = 0
+		for bf in b:
+			if bf.user == user:
+				bfid = bf.id
+		if bfid == 0:
+			badge = Photo.objects.get(caption='genericuserphoto')
+			student[badgephoto] = badge
+		else:
+			badge = BadgePhoto.objects.get(id=bfid)
+			student[badgephoto] = badge
+
+		# this will come from training db answers for now but will later come from starfish profiler
+		# coid = 0
+		# for country in cou:
+		# 	if country.user == user:
+		# 		coid = country.id
+		# if coid == 0:
+		# 	student[country] = 'country'
+		# else:
+		# 	countr = Answer.objects.get(id=coid)
+		# 	student[country] = 'hello'
+		student[country] = 'hello'
+
+		# this will come from training db answers for now but will later come from starfish profiler
+		orid = 0
+		for organ in org:
+			if organ.user == user:
+				orid = organ.id
+		if orid == 0:
+			student[organization] = 'unknown org'
+		else:
+			organi = Answer.objects.get(id=orid)
+			student[organization] = organi
+			
+		# this will come from training db answers for now but will later come from starfish profiler
+		student[job] = 'bus driver'
+		
+		student[credentials] = 'classes'		
+				
+				
+		slist.append(student)
+	return render_to_response('admin/training/event/reports.html', {'students': slist,},
+		context_instance = RequestContext(request),
+	)
+
+
 def tableview(request,event_id):
 	e = Event.objects.get(pk=event_id)
 	ad = Question.objects.get(question="Address")

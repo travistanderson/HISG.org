@@ -1,8 +1,16 @@
-here is the sql statement I used to add the event_subject stuff
+here are the sql statements I used to add the event_subject stuff
 
-create table training_event_eventsubject (id INT(11) not null auto_increment primary key, event_id INT(11), eventsubject_id INT(11));
+1. create table training_event_eventsubject (id INT(11) not null auto_increment primary key, event_id INT(11), eventsubject_id INT(11));
 
+2. drop table about_office_video;
 
+3. alter table about_office drop column city;
+
+4. alter table about_office drop column zipcode;
+
+5. alter table about_office drop column state_id;
+
+6. alter table about_office add column contact varchar(75); 
 
 
 

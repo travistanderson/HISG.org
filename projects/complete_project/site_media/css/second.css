@@ -241,10 +241,24 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .profile-event{border:8px solid #dabc64;width:300px;height:250px;float:left;padding:20px;}
 .profile-event td{height:20px;}
 .profile-photo{border:8px solid #dabc64;padding:20px;width:300px;min-height:150px;}
+
+.office_map{border:6px solid #dabc64;}
+.offices{border-bottom:2px solid #dabc64;padding:0px;margin:0 0 5px 0;}
+.officebutton{float:right;cursor:pointer;background-color:#14436f;height:20px;width:90px;padding:3px 0px 1px 0px;
+	margin:0px;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:2px #dabc64 solid;text-align:center;}
+.officecountry{float:right;width:200px;color:#666666;font-weight:bold;font-size:11px;padding:5px 0 0 0;}
+.offices h4{padding:0px 0px 4px 0px;margin:0px;}
+.officehidden{display:none;min-height:100px;}
+.officeemail{float:right;cursor:pointer;background-color:#14436f;height:20px;padding:3px 5px 1px 5px;
+	margin:0 200px 10px 0;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:2px #dabc64 solid;text-align:center;}
+.officeemail a{color:#fffccf;}
+
+
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a {color:#1a629d;}
 #ft a:visited{color:#1a629d;}
+
 
 /*==========================colors=========================*/
 /* #dabc64 -- gold 		cukjati*/

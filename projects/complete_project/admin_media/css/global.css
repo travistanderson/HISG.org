@@ -195,6 +195,34 @@ font-size:15px;font-weight:bold;margin:0;padding:4px 0px 0px 10px;background:#7C
 .wmd-preview h3{font-size:24px;font-family:times;color:#14436f;padding-bottom:12px;background:none;}
 .wmd-preview h4{font-size:18px;font-family:times;color:#14436f;padding-bottom:8px;background:none;}
 
+
+.rp-backer{width:970px;}
+#rp-left{float:left;width:795px;height:1000px;background-color:#fff;padding:5px 0 5px 5px;}
+#rp-right{float:left;width:155px;height:1000px;background-color:#fff;border-left:2px solid #666666;padding:5px;}
+#rp-search{height:100px;border-bottom:1px solid #666666;}
+
+.rp-controls{font-size:14px;font-weight:bold;border-bottom:1px solid #ccc;height:25px;}
+.rp-controls div{float:left;height:21px;border-left:1px solid #ccc;padding:2px 3px 2px 10px;}
+.rp-ct-checker{padding:4px 3px 0px 3px !important;height:20px !important;cursor:pointer;}
+.rp-ct-badge{width:60px;}
+.rp-ct-name{width:185px;padding:0 0 0 15px;}
+.rp-ct-country{width:100px;}
+.rp-ct-org{width:100px;}
+.rp-ct-job{width:100px;}
+.rp-ct-cred{width:100px;}
+
+.rp-student-box{overflow:auto;height:800px;}
+.rp-student{background-color:#e4f3fb;border-bottom:1px solid #aaa;height:46px;}
+.rp-student div{float:left;height:45px;border-left:1px solid #ccc;padding:2px 3px 2px 10px;}
+.rp-st-checker{padding:12px 2px 0px 2px !important;height:37px !important;}
+.rp-st-badge{width:60px;padding:6px 6px 0 7px !important;height:43px !important;}
+.rp-st-name{width:185px;padding:0 0 0 15px;}
+.rp-st-country{width:100px;}
+.rp-st-org{width:100px;}
+.rp-st-job{width:100px;}
+.rp-st-cred{width:100px;}
+
+
 /*   generic stuff  */
 
 .left{float:left;}

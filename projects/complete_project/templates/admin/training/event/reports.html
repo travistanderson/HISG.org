@@ -1,0 +1,112 @@
+{# templates/admin/training/event/reports.html #}
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+
+{% block extrahead %}{{ block.super }}
+	<script type="text/javascript" src="../../../jsi18n/"></script>
+	{{ media }}
+	{# // <script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script> #}
+	<script type="text/javascript" src="/admin_media/jquery/jquery.qtip.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			var students = new Array();
+			function student(uid,namer,email,badgephoto,country,organization,job,credentials){
+				this.uid=uid;
+				this.namer=namer;
+				this.email=email;
+				this.badgephoto=badgephoto;
+				this.country=country;
+				this.organization=organization;
+				this.job=job;
+				this.credentials=credentials;
+			}
+
+			{% for student in students %}
+				student{{ forloop.counter }}=new student("{{ student.uid }}","{{ student.name }}","{{ student.email }}","{{ student.badgephoto.get_fingernail_url }}","{{ student.country }}","{{ student.organization }}","{{ student.job }}","{{ student.credentials }}");
+				students.push(student{{ forloop.counter }});
+				console.log(student{{ forloop.counter }});
+			{% endfor %}
+			
+			function createhtml(i){
+				stu = students[i];
+				return "<div class='rp-student'><div class='rp-st-checker'><input type='checkbox' name='dude_list' value='" + String(stu.uid) + "' /></div><div class='rp-st-badge'><img src='" + String(stu.badgephoto) + "' class='pic' alt='pic'></img></div><div class='rp-st-name'>" + stu.namer + "<br/>" + stu.email + "<br/>" + String(stu.uid) + "</div><div class='rp-st-country'>" + stu.country + "</div><div class='rp-st-org'>" + stu.organization + "</div><div class='rp-st-job'>" + stu.job + "</div><div class='rp-st-cred'>" + stu.credentials + "</div></div><div class='clearer'></div>";
+			}
+			function inithtml(){
+				$('.rp-student').css({'display':'none'});
+				// $('.rp-student-box').append('hello');
+				for(i=0;i<students.length;i++){
+					var thehtml = createhtml(i);
+					$('.rp-student-box').append(thehtml);
+				}
+			}
+
+			inithtml();
+		});
+	</script>
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	<div class="breadcrumbs">
+		<a href="/admin/">Home</a><a href="/admin/training/">Training</a><a href="/admin/training/event/">Events</a>
+		<div class="endofbreadcrumbs">reports</div>
+	</div>
+{% endblock %}{# end of breadcrumbs #}
+
+
+{% block content %}
+	<div class="rp-backer">
+		<div id='rp-left'>
+			<div id='rp-search'>
+				<h3>Search</h3>
+			</div>
+			<div id='rp-list'>
+				<div class='rp-controls'>
+					<div class='rp-ct-checker'>&radic;</div>
+					<div class='rp-ct-badge'>photo</div>
+					<div class='rp-ct-name'>name email id</div>
+					<div class='rp-ct-country'>country</div>
+					<div class='rp-ct-org'>organization</div>
+					<div class='rp-ct-job'>job</div>
+					<div class='rp-ct-cred'>creds</div>
+				</div>{# end of controls #}<div class='clearer'></div>
+				
+				<div class='rp-student-box'>
+					{% for student in students %}
+						<div class='rp-student'>
+							<div class="rp-st-checker">
+								<input type="checkbox" name="dude_list" value="{{ student.uid }}" />
+							</div>
+							<div class='rp-st-badge'>
+								<img src="{{ student.badgephoto.get_fingernail_url }}" class="pic" alt="pic"></img>
+							</div>
+							<div class='rp-st-name'>
+								{{ student.name }}<br/>{{ student.email }}<br/>{{ student.uid }}
+							</div>
+							<div class='rp-st-country'>
+								{{ student.country }}
+							</div>
+							<div class='rp-st-org'>
+								{{ student.organization }}
+							</div>
+							<div class='rp-st-job'>
+								{{ student.job }}
+							</div>
+							<div class='rp-st-cred'>
+								{{ student.credentials }}
+							</div>
+						</div>{# end of each student #}<div class='clearer'></div>
+					{% endfor %}
+				</div>{# end of student-box #}
+			</div>
+		</div>
+		<div id='rp-right'>
+			<h3>Filters</h3>
+		</div>
+	</div>
+{% endblock %}
+
+
+
+
+

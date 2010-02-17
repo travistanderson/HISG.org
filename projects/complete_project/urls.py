@@ -5,61 +5,53 @@ from django.contrib import admin
 
 import os.path
 
-#from zwitschern.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
-#tweets_feed_dict = {"feed_dict": {
-#    'all': TweetFeedAll,
-#    'only': TweetFeedUser,
-#    'with_friends': TweetFeedUserWithFriends,
-#}}
-
-# from zwitschern.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
-# tweets_feed_dict = {"feed_dict": {
-#     'all': TweetFeedAll,
-#     'only': TweetFeedUser,
-#     'with_friends': TweetFeedUserWithFriends,
-# }}
-
-# from blog.feeds import BlogFeedAll, BlogFeedUser
-# blogs_feed_dict = {"feed_dict": {
-#     'all': BlogFeedAll,
-#     'only': BlogFeedUser,
-# }}
-
 from bookmarks.feeds import BookmarkFeed
 bookmarks_feed_dict = {"feed_dict": { '': BookmarkFeed }}
 
 from newsphotos.models import News
 news_dict = {"queryset": News.objects.all().order_by('-date'),}
 
-admin.autodiscover()
 
-urlpatterns = patterns('',
-    (r'^$', include('homepage.urls')),
+
+
+if not settings.SITE_UP:
+	urlpatterns = patterns('',
+		(r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+	         {'document_root':  settings.MEDIA_ROOT}),
+		(r'', 'django.views.generic.simple.direct_to_template',
+	         {'template':  'out_of_service.html'})
+	)
+else:
+	
+	# everything's normal. As you were...
+	admin.autodiscover()
+	urlpatterns = patterns('',
+	    (r'^$', include('homepage.urls')),
     
-    (r'^training-and-models/', include('training.urls')),
-    (r'^initiatives/', include('featured.urls')),
-    (r'^projects-and-news/', include('projectsmodels.urls')),
-    (r'^about-hisg/', include('about.urls')),
-    (r'^donation-portal/', include('donationportal.urls')),
-    (r'^account/', include('account.urls')),
-    (r'^comments/', include('threadedcomments.urls')),
-    (r'^robots.txt$', include('robots.urls')),
-    (r'^i18n/', include('django.conf.urls.i18n')),
-    (r'^photologue/', include('photologue.urls')),
-	(r'^user/', include('tiq_login.urls')),
-    # (r'^profiles/', include('profiles.urls')),
-	(r'^info/', include('faqs.urls')),
-	# (r'^projects-and-models/', include('training.urls')),# this is a redirect for the email about training
+	    (r'^training-and-models/', include('training.urls')),
+	    (r'^initiatives/', include('featured.urls')),
+	    (r'^projects-and-news/', include('projectsmodels.urls')),
+	    (r'^about-hisg/', include('about.urls')),
+	    (r'^donation-portal/', include('donationportal.urls')),
+	    (r'^account/', include('account.urls')),
+	    (r'^comments/', include('threadedcomments.urls')),
+	    (r'^robots.txt$', include('robots.urls')),
+	    (r'^i18n/', include('django.conf.urls.i18n')),
+	    (r'^photologue/', include('photologue.urls')),
+		(r'^user/', include('tiq_login.urls')),
+	    # (r'^profiles/', include('profiles.urls')),
+		(r'^info/', include('faqs.urls')),
+		# (r'^projects-and-models/', include('training.urls')),# this is a redirect for the email about training
 
-	# (r'^admin/training/event/tableview/', include('training.admin_urls')),
-	# (r'^admin/training/questionset/ordering/', include('training.admin_urls')),
-	(r'^admin/training/s/', include('training.admin_urls')),
-	(r'^admin/$', include('newadmin.urls')),
-	(r'^admin/', include('newadmin.urls')),
-    (r'^admin/', include(admin.site.urls)),
-    (r'^photos/', include('photos.urls')),
-    (r'^search/', include('lookfor.urls')),
-)
+		# (r'^admin/training/event/tableview/', include('training.admin_urls')),
+		# (r'^admin/training/questionset/ordering/', include('training.admin_urls')),
+		(r'^admin/training/s/', include('training.admin_urls')),
+		(r'^admin/$', include('newadmin.urls')),
+		(r'^admin/', include('newadmin.urls')),
+	    (r'^admin/', include(admin.site.urls)),
+	    (r'^photos/', include('photos.urls')),
+	    (r'^search/', include('lookfor.urls')),
+	)
 
 
 from photos.models import Image

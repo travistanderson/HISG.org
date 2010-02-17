@@ -3,6 +3,7 @@
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+SITE_UP =True # This is for maintainence mode.
 
 ADMINS = (
     # ('tanderson', 'tanderson@hisg.org'),

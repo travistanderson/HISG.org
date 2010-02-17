@@ -91,6 +91,7 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .clearer{clear:both;}
 .bold{font-weight:bold;}
 .italic{font-style:italic;}
+.italicer{font-style:italic;}
 .center{text-align:center;}
 .caption{color:#666666;font-weight:bold;font-size:10px;}
 
@@ -249,10 +250,11 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .officecountry{float:right;width:200px;color:#666666;font-weight:bold;font-size:11px;padding:5px 0 0 0;}
 .offices h4{padding:0px 0px 4px 0px;margin:0px;}
 .officehidden{display:none;min-height:100px;}
-.officeemail{float:right;cursor:pointer;background-color:#14436f;height:20px;padding:3px 5px 1px 5px;
-	margin:0 200px 10px 0;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:2px #dabc64 solid;text-align:center;}
+.officeemail{float:left;cursor:pointer;background-color:#14436f;height:20px;padding:3px 5px 1px 5px;
+	margin:0 0 10px 0;color:#fffccf;font-family:palatino,times;font-size:14px;font-weight:bold;border:2px #dabc64 solid;text-align:center;}
 .officeemail a{color:#fffccf;}
-
+.officeemail1{float:left;padding:5px 2px 0 200px;}
+.officeemail2{float:left;padding:5px 0 0 2px;}
 
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}

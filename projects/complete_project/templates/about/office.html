@@ -49,19 +49,30 @@
 				map.setZoom(5);
 				map.panTo(new GLatLng(officearray[theoffice][1], officearray[theoffice][2]));
 			}
+			function pantofull(){
+				map.setZoom(2);
+				map.panTo(new GLatLng(25.0, 0.0));
+			}
 			
 			initialize();
 			
-			$('.officebutton').click(function(){
-				$('.officehidden').css({'display':''});
-				$('.officebutton').html("More Info");
-				var item = $(this).attr('id');
-				item = item.split("_")[0];
-				$(this).html("Less Info");
-				var onetoshow = '.' + String(item) + '_officehidden';
-				$(onetoshow).css({'display':'block'});
-				pantooffice(item);
-			});
+			$('.officebutton').toggle(
+				function(){
+					$('.officehidden').css({'display':''});
+					$('.officebutton').html("More Info");
+					var item = $(this).attr('id');
+					item = item.split("_")[0];
+					$(this).html("Less Info");
+					var onetoshow = '.' + String(item) + '_officehidden';
+					$(onetoshow).css({'display':'block'});
+					pantooffice(item);
+				},
+				function(){
+					$('.officehidden').css({'display':''});
+					$('.officebutton').html("More Info");
+					pantofull();
+				}
+			);
 		});
 		
 	</script>
@@ -83,7 +94,13 @@
 			<div class='officehidden {{ forloop.counter0 }}_officehidden'>
 				<br/>
 				{{ office.description|safe }}<br/>
-				<div class='officeemail'><a href="mailto:{{ office.contact }}">Email {{ office.name }}</a></div>
+				<div>
+					<span class='officeemail1'>Email </span>
+					<span class='officeemail'>
+						<a href="mailto:{{ office.contact }}">{{ office.contactname }}</a>
+					</span>
+					<span class='officeemail2'> at the {{ office.name }}</span>
+				</div>
 				<div class='clearer'></div>
 			</div>
 		</div>{# end of offices #}<div class='clearer'></div>

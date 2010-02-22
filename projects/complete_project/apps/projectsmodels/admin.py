@@ -17,7 +17,7 @@ class ProjectAdmin(admin.ModelAdmin):
 	# filter_horizontal = ('photo',)
 	fieldsets = (
 		(None, {'fields': ('name', 'description', 'active_now', 'year','country','region','partner','news','video')}),
-		('Photos', {'fields': ('photo',)}),
+		(None, {'fields': ('photo',)}),
 	)
 	
 

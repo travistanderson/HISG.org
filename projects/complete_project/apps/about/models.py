@@ -12,7 +12,7 @@ class Office(models.Model):
 	address = models.TextField(max_length="4000")
 	country = models.ForeignKey(Country, blank=True)
 	region = models.ForeignKey(Region, blank=True)
-	# photo = models.ManyToManyField(Photo, blank=True, null=True)
+		# photo = models.ManyToManyField(Photo, blank=True, null=True)
 	latitude = models.FloatField(blank=True,null=True)
 	longitude = models.FloatField(blank=True,null=True)	
 	sorter = models.IntegerField(max_length="3", blank=True, null=True)

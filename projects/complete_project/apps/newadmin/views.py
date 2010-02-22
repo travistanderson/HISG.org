@@ -20,7 +20,7 @@ from photologue.models import Gallery, Photo
 from training.models import Event
 from videos.models import Video
 
-
+@login_required	
 def index(request):
 	today = datetime.today()
 	p = Project.objects.all().count()

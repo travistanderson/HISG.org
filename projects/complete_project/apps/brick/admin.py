@@ -7,6 +7,10 @@ class BrickAdmin(admin.ModelAdmin):
 	form = BrickAdminModelForm
 	list_display = ('name','size')
 	search_fields = ['name',]
+	fieldsets = (
+		(None, {'fields': ('name','size','body','link','linktarget',)}),
+		(None, {'fields': ('photo',)}),
+	)
 	
 class BrickGroupAdmin(admin.ModelAdmin):
 	list_display = ('section','name',)
@@ -14,3 +18,12 @@ class BrickGroupAdmin(admin.ModelAdmin):
 
 admin.site.register(Brick, BrickAdmin)
 admin.site.register(BrickGroup, BrickGroupAdmin)
+
+
+
+    
+
+
+
+
+

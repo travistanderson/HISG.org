@@ -1,4 +1,5 @@
-// /site_media/js/widgets.js
+
+// this is copied from -> /site_media/js/widgets.js
 
 function pwtUpdate(allids,allnames,allurls,alltags,allorigs,allcaptions){
 	var selectedhtml = '';

@@ -189,13 +189,6 @@ font-size:15px;font-weight:bold;margin:0;padding:4px 0px 0px 10px;background:#7C
 .questionbox{background:#ffffff;margin:0 0 10px 0;border-bottom:solid 8px #cccccc;}
 .littlequestion{font-size:9px;}
 
-.wmd-preview{border:5px solid #27aaee;overflow:scroll;height:500px;background:url(/site_media/images/second/fg5.jpg) no-repeat  -100px center;}
-.wmd-preview h1{font-size:36px;font-family:times;color:#14436f;background:none;}
-.wmd-preview h2{font-size:30px;font-family:times;color:#14436f;padding-bottom:15px;background:none;}
-.wmd-preview h3{font-size:24px;font-family:times;color:#14436f;padding-bottom:12px;background:none;}
-.wmd-preview h4{font-size:18px;font-family:times;color:#14436f;padding-bottom:8px;background:none;}
-
-
 .rp-backer{width:970px;}
 #rp-left{float:left;width:795px;height:1000px;background-color:#fff;padding:5px 0 5px 5px;}
 #rp-right{float:left;width:155px;height:1000px;background-color:#fff;border-left:2px solid #666666;padding:5px;}

@@ -24,10 +24,12 @@ class OfficeAdmin(admin.ModelAdmin):
 class StaffAdmin(admin.ModelAdmin):
 	form = StaffAdminModelForm
 	list_display = ('sorter','firstname','lastname', 'director','pictured',)
+	list_display_links = ('lastname','firstname',)
+	list_editable = ('sorter',)
 	ordering = ('sorter', 'lastname',)
 	fieldsets = (
 		(None, {'fields': ('firstname','lastname','title','email','director','bio','office','video','sorter')}),
-		('Photos', {'fields': ('photo',)}),
+		(None, {'fields': ('photo',)}),
 	)
 
 admin.site.register(Office, OfficeAdmin)

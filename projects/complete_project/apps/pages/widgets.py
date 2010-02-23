@@ -53,8 +53,8 @@ class WMDEditor(forms.Textarea):
 # this is the widget for picking a single photo
 class SinglePhotoPicker(forms.Select):
 	class Media:
-		js = ('/admin_media/js/photopicker-single.js',)
-		css = {'all':('/admin_media/css/photopicker-single.css',)}
+		js = ('/admin_media/js/widgets/photopicker-single.js',)
+		css = {'all':('/admin_media/css/widgets/photopicker-single.css',)}
 		
 	def __init__(self, language=None, attrs=None):
 		self.language = language or settings.LANGUAGE_CODE[:2]
@@ -131,8 +131,8 @@ class SinglePhotoPicker(forms.Select):
 # this is the widget for models with Many to Many Relationships for photos
 class MultiplePhotoPicker(forms.SelectMultiple):
 	class Media:
-		js = ('/admin_media/js/photopicker-multiple.js',)
-		css = {'all':('/admin_media/css/photopicker-multiple.css',)}
+		js = ('/admin_media/js/widgets/photopicker-multiple.js',)
+		css = {'all':('/admin_media/css/widgets/photopicker-multiple.css',)}
 		
 	def __init__(self, language=None, attrs=None):
 		self.language = language or settings.LANGUAGE_CODE[:2]
@@ -199,7 +199,7 @@ class MultiplePhotoPicker(forms.SelectMultiple):
 				var fieldname = '#id_%s';
 				
 				$(document).ready(function(){
-					$(fieldname).css({'display':'none'});
+					// $(fieldname).css({'display':'none'});
 					pwtUpdate(allids,allnames,allurls,alltags,allorigs,allburls);
 				})	
 			</script>

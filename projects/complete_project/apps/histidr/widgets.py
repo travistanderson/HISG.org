@@ -6,9 +6,9 @@ from histidr.models import HistIdr
 
 
 class HistidrSelector(forms.Textarea):
-	# class Media:
-		# js = ('/admin_media/js/wmd/wmd.js',)
-		# css = {'all':('/site_media/css/second.css',)}
+	class Media:
+		js = ('/admin_media/js/widgets/histidr.js',)
+		css = {'all':('/site_media/css/widgets/histidr.css',)}
 	
 	def __init__(self, language=None, attrs=None):
 		self.language = language or settings.LANGUAGE_CODE[:2]
@@ -19,4 +19,7 @@ class HistidrSelector(forms.Textarea):
 
 	def render(self, name, value, attrs=None):
 		rendered = super(HistidrSelector, self).render(name, value, attrs)
-		return mark_safe(u'''<h2>Hello</h2>''') + rendered
+		return rendered + mark_safe(u'''
+			<br/><br/><br/><br/><br/>
+			<h2>Hello</h2>
+		''')

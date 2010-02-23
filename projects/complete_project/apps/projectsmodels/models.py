@@ -8,6 +8,9 @@ from videos.models import Video
 from countries.models import Region, Country, UsState
 # from histidr.models import HistIdr
 from newsphotos.models import Partner, News
+from django.utils.safestring import mark_safe
+
+
 
 class Project(models.Model):
 	name = models.CharField(max_length=200)
@@ -24,7 +27,12 @@ class Project(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	def histidr(self):
+		from histidr.models import HistIdr
+		e = HistIdr.objects.get(id=self.id)
 
+		return mark_safe(e.histidr)
+	histidr.allow_tags = True
 	
 
 

@@ -11,8 +11,8 @@ from photologue.models import Photo
 		
 class ProjectAdminModelForm(forms.ModelForm):
 	description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':135}))
-	histidr = forms.CharField(widget=HistidrSelector())
 	photo = forms.ModelMultipleChoiceField(queryset=Photo.objects.all(),widget=MultiplePhotoPicker)
+	# HistIdrInline = forms.CharField(widget=HistidrSelector)
 
 	class Meta:
 		model = get_model('projectsmodels', 'project')

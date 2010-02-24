@@ -52,16 +52,18 @@ def reports(request):
 			student[badgephoto] = badge
 
 		# this will come from training db answers for now but will later come from starfish profiler
-		# coid = 0
+		coid = 80
 		# for country in cou:
-		# 	if country.user == user:
-		# 		coid = country.id
-		# if coid == 0:
-		# 	student[country] = 'country'
-		# else:
-		# 	countr = Answer.objects.get(id=coid)
-		# 	student[country] = 'hello'
-		student[country] = 'hello'
+			# if country.user == user:
+				# coid = country.id
+				# coid = 80
+		if coid == 0:
+			student[country] = 'na'
+		else:
+			# student[country] = '80'
+			countr = Answer.objects.get(id=coid)
+			student[country] = 'countr.answer'
+		# student[country] = 'na'
 
 		# this will come from training db answers for now but will later come from starfish profiler
 		orid = 0
@@ -69,10 +71,10 @@ def reports(request):
 			if organ.user == user:
 				orid = organ.id
 		if orid == 0:
-			student[organization] = 'unknown org'
+			student[organization] = 'na'
 		else:
 			organi = Answer.objects.get(id=orid)
-			student[organization] = organi
+			student[organization] = organi.answer
 			
 		# this will come from training db answers for now but will later come from starfish profiler
 		student[job] = 'bus driver'

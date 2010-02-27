@@ -85,12 +85,12 @@ class QuestionSet(models.Model):
 		
 	def save(self):
 		s =self
-		
+		super(QuestionSet, self).save()
 		qo = QuestionOrder.objects.filter(questionset=s)
-		if qo.count() == s.questions.count():			# they are equal and everything is good
+		if qo.count() == s.questions.count():			# they are equal and hopefully everything is good (what about if someone adds a question and deletes an old question at the same time?)
 			# request.user.message_set.create(message="Questions and QuestionOrders where the same length and none were added")
 			pass
-		elif qo.count() > s.questions.count():		# there are more question orders than questions in the set - weird
+		elif qo.count() > s.questions.count():		# there are more question orders than questions in the set - weird - delete all the question orders and start over
 			for order in qo:
 				order.delete()
 			orderlist=[]
@@ -126,7 +126,7 @@ class QuestionSet(models.Model):
 					orderlist.append(o)
 					a = QuestionOrder(questionset=s,question=question,order=o)
 					a.save()
-		super(QuestionSet, self).save()
+		
 
 
 

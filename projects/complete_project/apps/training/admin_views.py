@@ -52,17 +52,17 @@ def reports(request):
 			student[badgephoto] = badge
 
 		# this will come from training db answers for now but will later come from starfish profiler
-		coid = 80
-		# for country in cou:
-			# if country.user == user:
-				# coid = country.id
+		coid = 0
+		for countryd in cou:
+			if countryd.user == user:
+				coid = countryd.id
 				# coid = 80
 		if coid == 0:
 			student[country] = 'na'
 		else:
 			# student[country] = '80'
 			countr = Answer.objects.get(id=coid)
-			student[country] = 'countr.answer'
+			student[country] = countr.answer
 		# student[country] = 'na'
 
 		# this will come from training db answers for now but will later come from starfish profiler

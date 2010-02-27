@@ -1,0 +1,36 @@
+.rp-backer{width:970px;}
+#rp-left{float:left;width:795px;height:1000px;background-color:#fff;padding:5px 0 5px 5px;}
+#rp-right{float:left;width:155px;height:1000px;background-color:#fff;border-left:2px solid #666666;padding:5px;}
+#rp-search{height:100px;border-bottom:1px solid #666666;}
+
+.rp-controls{font-size:11px;font-weight:bold;border-bottom:1px solid #ccc;height:18px;color:#666666;}
+.rp-controls div{float:left;height:14px;border-left:1px solid #ccc;padding:2px 3px 2px 10px;}
+
+#rp-ct-checker{padding:2px 2px 2px 4px !important;height:13px !important;cursor:pointer;width:11px;}
+#rp-ct-badge{width:60px;}
+#rp-ct-name{width:57px;}
+#rp-ct-email{width:60px;border-left:1px dotted #ccc !important;}
+#rp-ct-id{width:40px;border-left:1px dotted #ccc !important;}
+#rp-ct-country{width:100px;}
+#rp-ct-org{width:100px;}
+#rp-ct-job{width:100px;}
+#rp-ct-cred{width:100px;}
+
+
+.rp-student-box{overflow:auto;height:800px;}
+.rp-student{background-color:#e4f3fb;border-bottom:1px solid #aaa;height:46px;}
+.rp-student div{float:left;height:45px;border-left:1px solid #ccc;padding:2px 3px 2px 10px;}
+
+.rp-st-checker{padding:12px 2px 0px 2px !important;height:37px !important;width:13px;}
+.rp-st-badge{width:60px;padding:6px 6px 0 7px !important;height:43px !important;}
+.rp-st-name{width:185px;padding:0 0 0 15px;}
+.rp-st-country{width:100px;}
+.rp-st-org{width:100px;}
+.rp-st-job{width:100px;}
+.rp-st-cred{width:100px;}
+
+
+
+.rphl{background:url("/admin_media/img/admin/nav-bg.gif") repeat-x scroll left bottom #E1E1E1;}
+.arrowup span{width:20px;height:15px;background:url("/admin_media/img/admin/arrow-up.gif") no-repeat 5px 5px;float:right;}
+.arrowdown span{width:20px;height:15px;background:url("/admin_media/img/admin/arrow-down.gif") no-repeat 5px 5px;float:right;}

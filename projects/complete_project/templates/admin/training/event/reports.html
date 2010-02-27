@@ -3,41 +3,19 @@
 {% load i18n admin_modify adminmedia %}
 
 {% block extrahead %}{{ block.super }}
+<link rel="stylesheet" href="/admin_media/css/reports/reports.css" type="text/css" media="screen" charset="utf-8">
 	<script type="text/javascript" src="../../../jsi18n/"></script>
 	{{ media }}
 	<script type="text/javascript" src="/admin_media/jquery/jquery.qtip.min.js"></script>
+	<script type="text/javascript" src="/admin_media/js/reports/reports.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function() {
-			var students = new Array();
-			function student(uid,namer,email,badgephoto,country,organization,job,credentials){
-				this.uid=uid;
-				this.namer=namer;
-				this.email=email;
-				this.badgephoto=badgephoto;
-				this.country=country;
-				this.organization=organization;
-				this.job=job;
-				this.credentials=credentials;
-			}
 
 			{% for student in students %}
 				student{{ forloop.counter }}=new student("{{ student.uid }}","{{ student.name }}","{{ student.email }}","{{ student.badgephoto.get_fingernail_url }}","{{ student.country }}","{{ student.organization }}","{{ student.job }}","{{ student.credentials }}");
 				students.push(student{{ forloop.counter }});
 				console.log(student{{ forloop.counter }});
 			{% endfor %}
-			
-			function createhtml(i){
-				stu = students[i];
-				return "<div class='rp-student'><div class='rp-st-checker'><input type='checkbox' name='dude_list' value='" + String(stu.uid) + "' /></div><div class='rp-st-badge'><img src='" + String(stu.badgephoto) + "' class='pic' alt='pic'></img></div><div class='rp-st-name'>" + stu.namer + "<br/>" + stu.email + "<br/>" + String(stu.uid) + "</div><div class='rp-st-country'>" + stu.country + "</div><div class='rp-st-org'>" + stu.organization + "</div><div class='rp-st-job'>" + stu.job + "</div><div class='rp-st-cred'>" + stu.credentials + "</div></div><div class='clearer'></div>";
-			}
-			function inithtml(){
-				$('.rp-student').css({'display':'none'});
-				// $('.rp-student-box').append('hello');
-				for(i=0;i<students.length;i++){
-					var thehtml = createhtml(i);
-					$('.rp-student-box').append(thehtml);
-				}
-			}
 
 			inithtml();
 		});
@@ -57,17 +35,19 @@
 	<div class="rp-backer">
 		<div id='rp-left'>
 			<div id='rp-search'>
-				<h3>Search</h3>
+				<h3>Search</h3><div class='somediv'></div>
 			</div>
 			<div id='rp-list'>
 				<div class='rp-controls'>
-					<div class='rp-ct-checker'>&radic;</div>
-					<div class='rp-ct-badge'>photo</div>
-					<div class='rp-ct-name'>name email id</div>
-					<div class='rp-ct-country'>country</div>
-					<div class='rp-ct-org'>organization</div>
-					<div class='rp-ct-job'>job</div>
-					<div class='rp-ct-cred'>creds</div>
+					<div class='' id='rp-ct-checker'>&radic;</div>
+					<div class='' id='rp-ct-badge'>photo<span></span></div>
+					<div class='' id='rp-ct-name'>name<span></span></div>
+					<div class='' id='rp-ct-email'>email<span></span></div>
+					<div class='rphl arrowdown' id='rp-ct-id'>id<span></span></div>
+					<div class='' id='rp-ct-country'>country<span></span></div>
+					<div class='' id='rp-ct-org'>organization<span></span></div>
+					<div class='' id='rp-ct-job'>job<span></span></div>
+					<div class='' id='rp-ct-cred'>creds<span></span></div>
 				</div>{# end of controls #}<div class='clearer'></div>
 				
 				<div class='rp-student-box'>

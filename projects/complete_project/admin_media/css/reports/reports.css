@@ -4,7 +4,7 @@
 #rp-search{height:100px;border-bottom:1px solid #666666;}
 
 .rp-controls{font-size:11px;font-weight:bold;border-bottom:1px solid #ccc;height:18px;color:#666666;}
-.rp-controls div{float:left;height:14px;border-left:1px solid #ccc;padding:2px 3px 2px 10px;}
+.rp-controls div{float:left;height:14px;border-left:1px solid #ccc;padding:2px 3px 2px 10px;cursor:pointer;}
 
 #rp-ct-checker{padding:2px 2px 2px 4px !important;height:13px !important;cursor:pointer;width:11px;}
 #rp-ct-badge{width:60px;}

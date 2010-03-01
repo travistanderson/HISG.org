@@ -38,3 +38,12 @@ def sitemap(request):
 	},
 		context_instance = RequestContext(request),
 	)
+
+
+def googleverify(request):
+	bg = bricker('donate','index')
+	bgheight = brickerheight(bg)
+
+	return render_to_response('misc/googleverify.html', {'brickgroup':bg,'brickheight':bgheight,},
+		context_instance = RequestContext(request),
+	)

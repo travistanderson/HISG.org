@@ -5,6 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+	url(r'^$', 'faqs.views.googleverify', name='googleverify'),
     url(r'^site-map/$', 'faqs.views.sitemap', name='sitemap'),
 	# url(r'^first-time-here/$', 'faqs.views.firsttime', name='firsttime'),
     url(r'^frequently-asked-questions/$', 'faqs.views.index', name='faqs'),

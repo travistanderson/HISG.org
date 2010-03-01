@@ -27,6 +27,7 @@ else:
 	admin.autodiscover()
 	urlpatterns = patterns('',
 	    (r'^$', include('homepage.urls')),
+		(r'^googlehostedservice.html$', include('faqs.urls')),
     
 	    (r'^training-and-models/', include('training.urls')),
 	    (r'^initiatives/', include('featured.urls')),

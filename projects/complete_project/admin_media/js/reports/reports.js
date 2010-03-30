@@ -33,8 +33,8 @@ $(document).ready(function() {
 	
 	// this is the click handler for the sorting controls
 	$('.rp-controls > div').click(function(){
-		var wwc = String(this.id).split('-').pop();
-		
+		var attr = String(this.id).split('-').pop();
+		var updown = 'down';
 		if($(this).hasClass('rphl')){		// is it highlighted?
 			if($(this).hasClass('arrowup')){	// is it sorted ascending?
 				// resort it to sorted descending
@@ -43,6 +43,7 @@ $(document).ready(function() {
 			}else{								// it is not sorted ascending
 				$(this).removeClass('arrowdown').addClass('arrowup');
 				// resort it to sorted ascending
+				updown = 'up';
 				sortit(attr,updown);
 			}
 		}else{								// it is not highlighted
@@ -53,13 +54,13 @@ $(document).ready(function() {
 		}
 		
 		
-		$('.somediv').append(wwc);
+		$('.somediv').append(attr);
 	})
 	
 	// this is my sorting function  -- it takes two parameters, attr -> attirbute to sort by and updown -> whether it is up or down
 	function sortit(attr,updown){
 		newstudents = students;
-		// uid
+		// uid			this one comes last as the else
 		// namer
 		// email
 		// badgephoto
@@ -67,18 +68,97 @@ $(document).ready(function() {
 		// organization
 		// job
 		// credentials
-		if (attr=='namer'){
+		if (attr=='name'){
 			newstudents.sort(function(a,b){
-				var compA = $(a).namer.toUpperCase();
-				var compB = $(b).namer.toUpperCase();
+				var compA = a.namer.toUpperCase();
+				var compB = b.namer.toUpperCase();
 				if(updown=='up'){
 					return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
 				}else{
+					return (compB < compA) ? -1 : (compB > compA) ? 1 : 0;
+				}
+				
+			})
+		}else if(attr=='email'){
+			newstudents.sort(function(a,b){
+				var compA = a.email.toUpperCase();
+				var compB = b.email.toUpperCase();
+				if(updown=='up'){
 					return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+				}else{
+					return (compB < compA) ? -1 : (compB > compA) ? 1 : 0;
+				}
+				
+			})
+		}else if(attr=='badge'){
+			newstudents.sort(function(a,b){
+				var compA = a.email.toUpperCase();
+				var compB = b.email.toUpperCase();
+				if(updown=='up'){
+					return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+				}else{
+					return (compB < compA) ? -1 : (compB > compA) ? 1 : 0;
+				}
+				
+			})	
+		}else if(attr=='country'){
+			newstudents.sort(function(a,b){
+				var compA = a.email.toUpperCase();
+				var compB = b.email.toUpperCase();
+				if(updown=='up'){
+					return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+				}else{
+					return (compB < compA) ? -1 : (compB > compA) ? 1 : 0;
+				}
+				
+			})
+		}else if(attr=='org'){
+			newstudents.sort(function(a,b){
+				var compA = a.email.toUpperCase();
+				var compB = b.email.toUpperCase();
+				if(updown=='up'){
+					return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+				}else{
+					return (compB < compA) ? -1 : (compB > compA) ? 1 : 0;
+				}
+				
+			})
+		}else if(attr=='job'){
+			newstudents.sort(function(a,b){
+				var compA = a.email.toUpperCase();
+				var compB = b.email.toUpperCase();
+				if(updown=='up'){
+					return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+				}else{
+					return (compB < compA) ? -1 : (compB > compA) ? 1 : 0;
+				}
+				
+			})
+		}else if(attr=='cred'){
+			newstudents.sort(function(a,b){
+				var compA = a.email.toUpperCase();
+				var compB = b.email.toUpperCase();
+				if(updown=='up'){
+					return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+				}else{
+					return (compB < compA) ? -1 : (compB > compA) ? 1 : 0;
+				}
+				
+			})
+		}else{							// this is the fallback, sort by id
+			newstudents.sort(function(a,b){
+				var compA = a.uid;
+				var compB = b.uid;
+				if(updown=='up'){
+					return compA - compB;
+				}else{
+					return compB - compA;
 				}
 				
 			})
 		}
+		
+		inithtml();
 		
 	}
 	
@@ -90,4 +170,15 @@ $(document).ready(function() {
 	
 });
 
-	
+
+
+
+
+// function sortNumber(a, b){
+// if(sorter == 'up'){
+// return a.charCodeAt(0) - b.charCodeAt(0);
+// }
+// else{
+// return b.charCodeAt(0) - a.charCodeAt(0);
+// }
+// }	

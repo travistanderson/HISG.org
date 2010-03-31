@@ -11,14 +11,14 @@ from photologue.models import Photo
 
 		
 class OfficeAdminModelForm(forms.ModelForm):
-    description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':135}))
+    description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':130}))
 
     class Meta:
         model = get_model('about', 'office')
 
 class StaffAdminModelForm(forms.ModelForm):
-	bio = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':135}))
-	photo = forms.ModelMultipleChoiceField(queryset=Photo.objects.all(),widget=MultiplePhotoPicker)
+	bio = forms.CharField(widget=WMDEditor(attrs={'rows':15, 'cols':130}))
+	photo = forms.ModelMultipleChoiceField(queryset=Photo.objects.all(),widget=MultiplePhotoPicker,required=False,)
 	
 	class Meta:
 		model = get_model('about', 'staff')	

@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 from histidr.models import HistIdr
 
 
-class HistidrSelector(forms.Textarea):
+class HistidrSelector(forms.TextField):
 	class Media:
 		js = ('/admin_media/js/widgets/histidr.js',)
 		css = {'all':('/site_media/css/widgets/histidr.css',)}

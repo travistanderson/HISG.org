@@ -28,10 +28,12 @@ class StaffAdmin(admin.ModelAdmin):
 	list_editable = ('sorter',)
 	ordering = ('sorter', 'lastname',)
 	fieldsets = (
-		(None, {'fields': ('firstname','lastname','title','email','director','bio','office','video','sorter')}),
+		(None, {'fields': (('firstname','lastname','director',),('title','email','sorter',),('office','video',),'bio',)}),
 		(None, {'fields': ('photo',)}),
 	)
 
 admin.site.register(Office, OfficeAdmin)
 admin.site.register(Staff, StaffAdmin)
+
+
 

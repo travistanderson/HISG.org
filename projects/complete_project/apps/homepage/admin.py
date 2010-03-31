@@ -7,11 +7,13 @@ from homepage.forms import ImpacterAdminModelForm
 class ImpacterAdmin(admin.ModelAdmin):
 	form = ImpacterAdminModelForm
 	list_display = ('name','active', 'order', 'created')
-	ordering = ('order','-active', 'created')
+	ordering = ('-active', 'order', 'created')
+	list_editable = ('order','active',)
 
 class PhraseAdmin(admin.ModelAdmin):
 	list_display = ('phrase','active','order')
 	ordering = ('order',)
+	list_editable = ('order','active',)
 
 
 admin.site.register(Impacter, ImpacterAdmin)

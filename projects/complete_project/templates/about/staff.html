@@ -16,13 +16,13 @@
 	{% autopaginate staff_list 5 %}
 	{% for staff in staff_list %}
 		<div class="staff">
-			{% for photo in staff.photo.all %}
-				{% ifequal forloop.counter 1 %}
-					<a href="{% url staff_detail staff.id %}">
-						<img class="gold5" style="float:right;margin:0 0 0 15px;" src="{{ photo.get_medium_url }}" />
-					</a>
-				{% endifequal %}
-			{% endfor %}
+			{# {% for photo in staff.photo.all %} #}
+			{# 	{% ifequal forloop.counter 1 %} #}
+			{# 		<a href="{% url staff_detail staff.id %}"> #}
+			{# 			<img class="gold5" style="float:right;margin:0 0 0 15px;" src="{{ photo.get_medium_url }}" /> #}
+			{# 		</a> #}
+			{# 	{% endifequal %} #}
+			{# {% endfor %} #}
 			<div class="right">
 				<h4><a href="{% url contactperson staff.id "about" %}">Email {{ staff.firstname }}</a></h4>
 			</div>
@@ -33,7 +33,7 @@
 				{{ staff.title }}
 			</h4>
 			<p>
-				{{ staff.bio|safe|truncatewords:50 }}...<a href='{% url staff_detail staff.id %}'>more</a>
+				{{ staff.bio|safe|truncatewords:50 }}<a href='{% url staff_detail staff.id %}'> read more</a>
 			</p><br/>
 			<div class="clearer"></div>
 		</div>{# end of staff #}

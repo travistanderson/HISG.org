@@ -35,4 +35,6 @@
 .photosearchboxclear{float:left;width:15px;height:15px;background:url(/admin_media/img/admin/inline-delete.png) 0 0 no-repeat;
 	margin:7px 0 0 5px;cursor:pointer;}
 
+#id_photo{display:none;}
+
 .clear{clear:both;}

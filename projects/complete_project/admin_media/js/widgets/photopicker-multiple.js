@@ -52,10 +52,16 @@ function pwtUpdate(allids,allnames,allurls,alltags,allorigs,allcaptions){
 	}
 	
 	function updateHidden(){
+		var therearesome = 0;
 		for(i=0;i<allids.length;i++){
+			// $("#id_photo option[value='" + allids[i] + "']").attr('selected', 'unselected');
 			if(selected[i]==true){
+				therearesome = 1;
 				$("#id_photo option[value='" + allids[i] + "']").attr('selected', 'selected');
 			}
+		}
+		if(therearesome==0){
+			$("#id_photo option[value='']").attr('selected', 'selected');
 		}
 		return true	
 	}

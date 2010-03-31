@@ -29,7 +29,7 @@
 				{{ director.title }}
 			</h4>
 			<p>
-				{{ director.bio|safe|truncatewords:50 }}
+				{{ director.bio|safe|truncatewords:50 }}<a href='{% url directors_detail director.id %}'> read more</a>
 			</p><br/>
 			<div class="clearer"></div>
 			<div class="left" style="width:200px;">

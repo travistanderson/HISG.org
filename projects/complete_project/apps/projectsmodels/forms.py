@@ -7,11 +7,11 @@ from histidr.widgets import HistidrSelector
 from projectsmodels.models import Project
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from photologue.models import Photo
-
+thequeryset=Photo.objects.all()
 		
 class ProjectAdminModelForm(forms.ModelForm):
-	description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':135}))
-	photo = forms.ModelMultipleChoiceField(queryset=Photo.objects.all(),widget=MultiplePhotoPicker)
+	description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':130}))
+	photo = forms.ModelMultipleChoiceField(queryset=thequeryset,widget=MultiplePhotoPicker,required=False,)
 	# HistIdrInline = forms.CharField(widget=HistidrSelector)
 
 	class Meta:

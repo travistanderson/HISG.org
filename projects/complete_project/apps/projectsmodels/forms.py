@@ -16,3 +16,4 @@ class ProjectAdminModelForm(forms.ModelForm):
 
 	class Meta:
 		model = get_model('projectsmodels', 'project')
+		

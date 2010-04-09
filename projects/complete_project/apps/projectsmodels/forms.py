@@ -10,7 +10,7 @@ from photologue.models import Photo
 thequeryset=Photo.objects.all()
 		
 class ProjectAdminModelForm(forms.ModelForm):
-	description = forms.CharField(widget=WMDEditor(attrs={'rows':10, 'cols':130}))
+	description = forms.CharField(widget=WMDEditor(attrs={'rows':20, 'cols':130}))
 	photo = forms.ModelMultipleChoiceField(queryset=thequeryset,widget=MultiplePhotoPicker,required=False,)
 	# HistIdrInline = forms.CharField(widget=HistidrSelector)
 

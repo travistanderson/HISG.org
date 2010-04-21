@@ -10,7 +10,6 @@ from newsphotos.models import News
 from videos.models import Video
 from photologue.models import Gallery, Photo
 from countries.models import Region, Country
-from photologue.models import Photo
 from brick.views import bricker, brickerheight
 
 def index(request):

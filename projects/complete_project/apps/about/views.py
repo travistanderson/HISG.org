@@ -46,8 +46,9 @@ def contact(request):
 			)
 	else:
 		form = ContactForm()
+		m = '.'
 	return render_to_response(
-		'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
+		'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'m':m,},
 		context_instance = RequestContext(request),
 	)
 

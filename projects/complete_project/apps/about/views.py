@@ -15,10 +15,11 @@ from photologue.models import Photo
 from brick.views import bricker, brickerheight
 from training.models import Event
 from django.conf import settings
-if "mailer" in settings.INSTALLED_APPS:
-    from mailer import send_mail
-else:
-    from django.core.mail import send_mail
+# if "mailer" in settings.INSTALLED_APPS:
+#     from mailer import send_mail
+# else:
+#     from django.core.mail import send_mail
+from mailer import send_mail
 from settings import GMAPKEY, DEBUG
 
 	

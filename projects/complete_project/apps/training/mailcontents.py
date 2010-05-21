@@ -36,7 +36,7 @@ HISG Training Staff	''' %(str(user.first_name),str(event.location),thedate,str(e
 # here are the defaults for a success cancelation email after someone cancels a registration
 def cancelmail(event,user):
 	SU_FROMEMAIL = str(event.contact.email)
-	SU_TOEMAIL = [str(user.email),"cjennings@hisg.org",str(event.contact.email)]
+	SU_TOEMAIL = [str(user.email),"cjennings@hisg.org","smix@hisg.org",str(event.contact.email)]
 	SU_SUBJECT = "HISG Event Cancellation email for "+str(event)+"."
 	# SU_CONTENT = "Dear " + str(user.first_name) + ", \n \n \n We have received your registration cancellation for the "+str(event)+" training event. We are sorry that you are unable to attend this training workshop, but we look forward to seeing you at future training events. Please check http://hisg.org/training-and-models/training for more information on upcoming events.  \n \n Sincerely, \n \n HISG Training Staff"
 	SU_CONTENT = '''Dear %s, 

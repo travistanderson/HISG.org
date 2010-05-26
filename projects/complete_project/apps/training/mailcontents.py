@@ -22,7 +22,7 @@ def sumail(event,user):
 	SU_CONTENT = '''Dear %s,
 	
 	Thank you for registering to attend the training in %s %s. 
-As the event approaches, you will receive a follow-up email confirming final details. %s (%s) or Charlene Jennnings (cjennings@hisg.org) are the contact people for this training event. Please contact them should you have any questions.
+%s (%s) or Charlene Jennnings (cjennings@hisg.org) are the contact people for this training event. Please contact them should you have any questions. If there is any additional information to be communicated about this event, we will email you.
 
 Thank you for signing up. We look forward to seeing you soon!
 

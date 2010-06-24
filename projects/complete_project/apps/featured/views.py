@@ -3,39 +3,65 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.template import RequestContext
+from django.contrib.auth.models import User
 from datetime import datetime, timedelta
-from partners.models import Page, Change
-from featured.forms import EditPageForm
-from videos.models import Video
-from photologue.models import Photo
-from brick.models import BrickGroup
+from featured.models import HomerPager, Opportunity, RandyPage
+from countries.models import Region, Country, UsState
+from brick.views import bricker, brickerheight
+from django.conf import settings
+from mailer import send_mail
+from settings import GMAPKEY, DEBUG
 
-# def index(request):
-# 	pa = Webpage.objects.get(name="index - starfish")	
-# 	
-# 	return render_to_response('featured/index.html',{'page':pa,}, context_instance = RequestContext(request),
-# 	)
+
+
+def index(request):
+	try:
+		h = HomerPager.objects.get(id=1)
+	except HomerPager.DoesNotExist:
+		h = []
+	a = 'index'
+	bg = bricker('about','directors')
+	bgheight = brickerheight(bg)	
 	
-# def country(request):
-# 	p_africa = Page.objects.filter(region__name__exact='Africa')
-# 	p_asia = Page.objects.filter(region__name__exact='Asia')
-# 	p_europe = Page.objects.filter(region__name__exact='Europe')
-# 	p_middleeast = Page.objects.filter(region__name__exact='Middle East')
-# 	p_northamerica = Page.objects.filter(region__name__exact='North America')
-# 	p_other = Page.objects.filter(region__name__exact='Other')
-# 	p_southamerica = Page.objects.filter(region__name__exact='South America')
-# 	p_southpacific = Page.objects.filter(region__name__exact='South Pacific')
-# 	pa = Webpage.objects.get(name="index - starfish")
-# 	
-# 	return render_to_response('featured/starfishcommunity/country.html',{'africa_list':p_africa,
-# 													   'asia_list':p_asia,
-# 													   'europe_list':p_europe,
-# 													   'middleeast_list':p_middleeast,
-# 													   'northamerica_list':p_northamerica,
-# 													   'other_list':p_other,
-# 													   'southamerica_list':p_southamerica,
-# 													   'southpacific_list':p_southpacific,
-# 													   'page':pa,},
-# 		context_instance = RequestContext(request),    
-# 	)
+	return render_to_response('featured/bpa/index.html', {'homer': h,'active':a,'brickgroup':bg,'brickheight':bgheight,},
+		context_instance = RequestContext(request),
+	)
+
+
+def list(request):
+	o = Opportunity.objects.all().order_by('sorter')
+	a = 'list'	
+	bg = bricker('about','directors')
+	bgheight = brickerheight(bg)	
+	
+	return render_to_response('featured/bpa/list.html', {'opp_list':o,'active':a,'brickgroup':bg,'brickheight':bgheight,},
+		context_instance = RequestContext(request),
+	)
+
+
+	
+def detail(request, opp_id):
+	o = get_object_or_404(Opportunity, pk = opp_id)
+	a = 'list'	
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
+
+	return render_to_response('featured/bpa/detail.html', {'opp': o,'active':a,'brickgroup':bg,'brickheight':bgheight,},
+		context_instance = RequestContext(request),
+	)
+	
+	
+def contact(request):
+	try:
+		r = RandyPage.objects.get(id=1)
+	except RandyPage.DoesNotExist:
+		r = []
+	a = 'contact'		
+	bg = bricker('about','directors')
+	bgheight = brickerheight(bg)	
+	
+	return render_to_response('featured/bpa/randy.html', {'randy': r,'active':a,'brickgroup':bg,'brickheight':bgheight,},
+		context_instance = RequestContext(request),
+	)

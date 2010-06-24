@@ -4,9 +4,8 @@ from django.contrib import admin
 from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns('',
-
-	# url(r'^starfish/docs/accelerating-change/$', 'featured.views.stardc', name="star_docs_change"),
-	# url(r'^starfish/docs/starfish-mass-movement/$', 'featured.views.stardm', name="star_docs_move"),
-	# url(r'^starfish/docs/hisg-starfish-organization/$', 'featured.views.stardo', name="star_docs_org"),
-	# url(r'^starfish/docs/hisg-starfish-community/$', 'featured.views.stardcom', name="star_docs_com"),
+url(r'^business-partners-alliance/$', 'featured.views.index', name="bpaindex"),
+url(r'^business-partners-alliance/list/$', 'featured.views.list', name="bpalist"),
+url(r'^business-partners-alliance/(?P<opp_id>\d+)$', 'featured.views.detail', name="bpadetail"),
+url(r'^business-partners-alliance/contact-bpa/$', 'featured.views.contact', name="bpacontact"),
 )

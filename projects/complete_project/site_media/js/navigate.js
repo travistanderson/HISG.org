@@ -6,8 +6,8 @@ var activenav = ""
 var activesub = ""
 var showernav = ""
 var showersub = ""
-var navarrayhome = new Array(0,0,50,343,450,750);
-var navarraysecond = new Array(0,0,80,10,420,500,800);
+var navarrayhome = new Array(0,0,50,343,450,750);			// this array spaces out the subnav on the homepage
+var navarraysecond = new Array(0,0,80,10,420,500,800);		// this array spaces out the subnav on all the other pages
 var switcharray = new Array();
 
 function showsecond(shower,subshower){

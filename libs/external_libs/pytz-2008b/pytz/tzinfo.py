@@ -2,7 +2,11 @@
 
 from datetime import datetime, timedelta, tzinfo
 from bisect import bisect_right
-from sets import Set
+# from sets import Set
+try:
+    set
+except NameError:
+    from sets import Set as set
 
 import pytz
 

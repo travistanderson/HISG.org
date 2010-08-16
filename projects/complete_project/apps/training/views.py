@@ -123,7 +123,7 @@ def trainingsu(request, event_id):
 	
 	for us in e.registrant.all():
 		if us==u:
-			return HttpResponseRedirect(reverse('profile',args=[u.id]))
+			return HttpResponseRedirect(reverse('userprofile',args=[u.id]))
 	if request.method == 'POST':
 		form = EventForm(q, request.POST)
 		if form.is_valid():
@@ -144,10 +144,11 @@ def trainingsu(request, event_id):
 			request.user.message_set.create(message="You have signed up to attend "+str(e)+", and you will receive a confirmation email shortly.")
 			subject, content, fromemail, toemail = sumail(e,u)
 			send_mail(subject,content,fromemail,toemail)
-			if BadgePhoto.objects.filter(user=u):
-				return HttpResponseRedirect(reverse('profile',args=[u.id]))
-			else:	
-				return HttpResponseRedirect(reverse('training_pic'))
+			# if BadgePhoto.objects.filter(user=u):
+			# 	return HttpResponseRedirect(reverse('profile',args=[u.id]))
+			# else:	
+			# 	return HttpResponseRedirect(reverse('training_pic'))
+			return HttpResponseRedirect(reverse('userprofile',args=[u.id]))
 		else:
 			form = EventForm(q, request.POST)
 		return render_to_response('training-models/signup.html', {'brickgroup':bg,'brickheight':bgheight,'event':e,'user':u,'form':form,'stats':stats,},
@@ -210,7 +211,7 @@ def trainingcancel(request, event_id):
 				request.user.message_set.create(message="You have canceled your registration for the "+str(e)+" training event.")
 				subject, content, fromemail, toemail = cancelmail(e,u)
 				send_mail(subject,content,fromemail,toemail)
-				return HttpResponseRedirect(reverse('profile',args=[u.id]))
+				return HttpResponseRedirect(reverse('training_cancel',args=[u.id]))
 		return HttpResponseRedirect(reverse('home'))
 	else:
 		return render_to_response('training-models/cancel.html', {'brickgroup': bg,'brickheight':bgheight,'event':e,'user':u,},

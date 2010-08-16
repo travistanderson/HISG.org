@@ -1,0 +1,24 @@
+{% extends "profile/base.html" %}
+
+{% load pagination_tags %}
+{% load gravatar %}
+{% load humanize %}
+
+{% block head_title %}Profile for {{ other_user }}{% endblock %}
+
+{% block body %}
+    
+	<h2>{{ user.first_name }}</h2>
+	<hr/>
+	
+	{% if eventlist %}
+		You are signed up to attend:
+		<div style='width:500px;padding:20px 0 0 20px;'>
+			{% for event in eventlist %}
+				<div style='float:left;width:300px;'>{{ event }}</div>
+				<a href='{% url training_cancel event.id %}' style='float:right;background:#ddd;padding:1px 3px 0 3px;font-weight:bold;'>X</a>
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}
+

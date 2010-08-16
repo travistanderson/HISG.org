@@ -40,6 +40,9 @@
 			<ul class="subnav">
 				<li class="sub0" id="testify">Welcome to HISG</li>
 				<li class="sub1" id="sub11"><a href="{% url home %}">Home</a></li>
+				{% if user.is_authenticated %}
+					<li class="sub1" id="sub12" style='padding-left:30px;'><a href="{% url userprofile user.id %}">{{ user }}</a></li>
+				{% endif %}
 				
 				<li class="sub2" id="sub21"><a href="{% url training %}">Training</a> | </li>
 				<li class="sub2" id="sub22"><a href="/training-and-models/models/">Models</a> | </li>
@@ -48,7 +51,7 @@
 
 				<li class="sub3" id="sub31"><a href="/initiatives/starfish/">Starfish Community</a> | </li>
 				<li class="sub3" id="sub32"><a href="/initiatives/idrn/">IDRN</a> | </li>
-				<li class="sub3" id="sub33"><a href="{% url bpaindex %}">Business Partners Alliance</a> | </li>
+				<li class="sub3" id="sub33"><a href="{% url bpaindex %}">Business Partners in Action</a> | </li>
 				<li class="sub3" id="sub34"><a href="/initiatives/lets-save-one/">Let's Save One</a> | </li>
 				<li class="sub3" id="sub35"><a href="/initiatives/orphan-care/">Orphan Care</a> | </li>
 				<li class="sub3" id="sub36"><a href="/initiatives/darfur-initiative/">Darfur Initiative</a> | </li>
@@ -80,40 +83,40 @@
 	</div><!-- end of nav (top level navigation) -->
 	
 {% endblock %}
-{% block subnavigation %}
-		{% if user.is_authenticated %}
-		<div id="admin">
-			<ul id="administration">
-				<li>
-					<a href="{% url profile_detail user %}">{{ user }}</a>
-				</li>
-				<li>
-					<a href="{% url acct_logout %}">logout</a>
-				</li>
-				{% if perms.tribes %}
-				<li>
-					<a href="/admin/">admin</a>
-				</li>
-				{% else %}
-					{% if perms.partners %}
-						<li>
-							<a href="{% url partners_starfish %}">starfish</a>
-						</li>
-					{% endif %}
-				{% endif %}
-			</ul>
-		</div>
-		{% else %}
-		<div id="admin">
-			<ul id="administration">
-				<li>
-					<a href="{% url acct_login %}">Login</a>/
-					<a href="{% url acct_signup %}">Signup</a>
-				</li>
-			</ul>
-		</div>
-		{% endif %}
-{% endblock subnavigation %}
+{# {% block subnavigation %} #}
+{# 		{% if user.is_authenticated %} #}
+{# 		<div id="admin"> #}
+{# 			<ul id="administration"> #}
+{# 				<li> #}
+{# 					<a href="{% url profile_detail user %}">{{ user }}</a> #}
+{# 				</li> #}
+{# 				<li> #}
+{# 					<a href="{% url acct_logout %}">logout</a> #}
+{# 				</li> #}
+{# 				{% if perms.tribes %} #}
+{# 				<li> #}
+{# 					<a href="/admin/">admin</a> #}
+{# 				</li> #}
+{# 				{% else %} #}
+{# 					{% if perms.partners %} #}
+{# 						<li> #}
+{# 							<a href="{% url partners_starfish %}">starfish</a> #}
+{# 						</li> #}
+{# 					{% endif %} #}
+{# 				{% endif %} #}
+{# 			</ul> #}
+{# 		</div> #}
+{# 		{% else %} #}
+{# 		<div id="admin"> #}
+{# 			<ul id="administration"> #}
+{# 				<li> #}
+{# 					<a href="{% url acct_login %}">Login</a>/ #}
+{# 					<a href="{% url acct_signup %}">Signup</a> #}
+{# 				</li> #}
+{# 			</ul> #}
+{# 		</div> #}
+{# 		{% endif %} #}
+{# {% endblock subnavigation %} #}
 
 {% block footer %}
 <div class="legal">

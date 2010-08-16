@@ -1,0 +1,39 @@
+{# homepage/login-success.html  #}
+{% extends "base.html" %}
+
+{% block labelpic %}connect.jpg{% endblock labelpic %}
+{% block pagetitle %}Login{% endblock %}
+{% block arrive %}0{% endblock arrive %}
+
+{% block extra_head %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var $_GET = {};
+			document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+			    function decode(s) {
+			        return decodeURIComponent(s.split("+").join(" "));
+			    }
+			    $_GET[decode(arguments[1])] = decode(arguments[2]);
+			});
+			next = $_GET["next"];
+			logincomplete(next);
+		});
+		
+	</script>
+{% endblock %}
+
+{% block body %}
+	<h3>You logged in or out successfully!</h3>
+
+	<a href='/'>Go to the home page</a><br/><br/>
+
+	<hr/>Session Info<hr/><br/>
+	
+	{{ esid }}<br/>
+	{{ d }}<br/>
+	<div id='somediv'>somediv</div>
+{% endblock %}
+
+
+
+

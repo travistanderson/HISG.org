@@ -67,15 +67,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django_openidconsumer.middleware.OpenIDMiddleware',
     'account.middleware.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
-    # 'djangologging.middleware.LoggingMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'misc.middleware.SortOrderMiddleware',
-    # 'crashlog.CrashLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
-	# 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 	'pages.middleware.PageFallbackMiddleware',
 )
 
@@ -93,21 +89,17 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
-
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
-    # "account.context_processors.openid",
     "account.context_processors.account",
     "misc.context_processors.contact_email",
     "misc.context_processors.site_name",
     "messages.context_processors.inbox",
-    # "friends_app.context_processors.invitations",
     "misc.context_processors.combined_inbox_count",
 )
 
 COMBINED_INBOX_COUNT_SOURCES = (
     "messages.context_processors.inbox",
-    # "friends_app.context_processors.invitations",
     "notification.context_processors.notification",
 )
 
@@ -119,7 +111,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.markup',
-	'tiq_login',
+	# 'tiq_login',
+	'clogin',
 	'pages',
     
     # external
@@ -168,8 +161,10 @@ ABSOLUTE_URL_OVERRIDES = {
 }
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-AUTHENTICATION_BACKENDS = ('tiq_login.tiq_backend.TiqLoginBackend',)
-AUTH_PROFILE_MODULE = 'tiq_login.TiqUserProfile'
+AUTHENTICATION_BACKENDS = ('clogin.clogin_backend.CloginBackend',)
+AUTH_PROFILE_MODULE = 'clogin.CloginProfile'
+# AUTHENTICATION_BACKENDS = ('tiq_login.tiq_backend.TiqLoginBackend',)
+# AUTH_PROFILE_MODULE = 'tiq_login.TiqUserProfile'
 # AUTH_PROFILE_MODULE = 'profiles.Profile'
 # NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 

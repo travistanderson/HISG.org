@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load chunks %}
+{% load locvals %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -11,8 +12,21 @@
 		<link rel="icon" type="image/png" href="/site_media/images/favicon.png">
 		<link rel="stylesheet" type="text/css" href="/site_media/css/second.css">
 		<link rel="stylesheet" type="text/css" href="/site_media/css/logquicksearch.css">
-		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
+		<script type="text/javascript">
+			var sfp_config = new Array();
+			sfp_config['pathtosfp'] = '{% pathtosfp %}';   	// custom template tag:gets setting from local_settings and passes it on the js at sfp
+			sfp_config['sitepubkey'] = '{% siteserver %}';
+			sfp_config['next'] = '{% if next %}{{ next }}{% else %}{{ request.path }}{% endif %}';
+			sfp_config['screenname'] = '{{ request.user.username }}';
+			sfp_config['uid'] = '{{ request.user.last_name }}';
+			sfp_config['sid'] = '{{ request.session.thesid }}';
+			function nativelogincomplete(next){
+				window.location.replace(next);
+			}
+		</script>
+		<script type="text/javascript" src="{% sfpjs %}"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
 			<!--
@@ -23,6 +37,9 @@
 			//-->// Stuff to do as soon as the DOM is ready;
 		});
 		</script>
+		<style type="text/css">
+			div#sfp_StarfishLoginWidget{float:right;margin:10px 100px 0px 0px;}
+		</style>
         {% block extra_head %}{% endblock %}
     </head>
 	<body {% block body_load %}{% endblock %}><!--start of the wrapper for whole page-->

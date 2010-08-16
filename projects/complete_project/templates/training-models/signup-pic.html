@@ -5,10 +5,10 @@
 
 {% block body %}
 
-	<span class="right">
-		{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %}
-	</span><br/><br/>
-	<div id="signup2">
+	{# <span class="right"> #}
+	{# 	{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %} #}
+	{# </span><br/><br/> #}
+	{# <div id="signup2"> #}
 		
 		{% if photo %}
 			<div class="right" style="width:100px;">

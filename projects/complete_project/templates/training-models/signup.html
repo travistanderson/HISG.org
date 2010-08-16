@@ -8,9 +8,9 @@
 
 {% block body %}
 
-	<span class="right">
-		{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %}
-	</span><br/><br/>
+	{# <span class="right"> #}
+	{# 	{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %} #}
+	{# </span><br/><br/> #}
 	<div id="signup2">
 		<h3>Sign Up to attend the {{ event }} training event.</h3>
 		<form action='' method="POST">

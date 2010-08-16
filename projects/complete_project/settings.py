@@ -184,8 +184,8 @@ EMAIL_USE_TLS = True
 
 
 SITE_NAME = "HISG"
-LOGIN_URL = "/user/login"
-LOGIN_REDIRECT_URL = "/user/login"
+LOGIN_URL = "/login/popup"
+LOGIN_REDIRECT_URL = "/"
 # LOGIN_REDIRECT_URLNAME = "what_next"
 
 LOGGING_OUTPUT_ENABLED = True

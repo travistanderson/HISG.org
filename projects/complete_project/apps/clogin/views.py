@@ -71,8 +71,17 @@ def popup(request):
 		next = request.GET.get('next','')
 	return render_to_response('clogin/login-popup.html',{'next':next,}, context_instance = RequestContext(request),
 	)	
-	
-	
+
+
+def popupurl(request):					#this sends the profiler to an internal url
+	if request.method == "POST":
+		next = request.POST['next']
+		profileurl = request.POST['profileurl']
+	else:
+		next = request.GET.get('next','')
+		profileurl = request.GET.get('profileurl','')
+	return render_to_response('clogin/login-popupurl.html',{'next':next,'profileurl':profileurl}, context_instance = RequestContext(request),
+	)	
 	
 	
 	

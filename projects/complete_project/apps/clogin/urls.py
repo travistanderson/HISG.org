@@ -6,5 +6,5 @@ urlpatterns = patterns('',
 	url(r'^logout/$', 'clogin.views.clogout', name='logout'),
 	url(r'^success/$', 'clogin.views.loginsuccess', name='loginsuccess'),
 	url(r'^popup$', 'clogin.views.popup', name='popup'),
-	# (r'^newaccount/?', 'newaccount'),
+	url(r'^popupurl$', 'clogin.views.popupurl', name='popupurl'),
 )

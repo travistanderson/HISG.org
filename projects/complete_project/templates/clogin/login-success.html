@@ -1,11 +1,7 @@
-{# homepage/login-success.html  #}
+{# clogin/login-success.html  #}
 {% extends "base.html" %}
 
-{% block labelpic %}connect.jpg{% endblock labelpic %}
-{% block pagetitle %}Login{% endblock %}
-{% block arrive %}0{% endblock arrive %}
-
-{% block extra_head %}
+{% block page_scripts %}
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var $_GET = {};
@@ -18,19 +14,14 @@
 			next = $_GET["next"];
 			logincomplete(next);
 		});
-		
 	</script>
 {% endblock %}
 
-{% block body %}
+{% block page_content %}
 	<h3>You logged in or out successfully!</h3>
 
 	<a href='/'>Go to the home page</a><br/><br/>
 
-	<hr/>Session Info<hr/><br/>
-	
-	{{ esid }}<br/>
-	{{ d }}<br/>
 	<div id='somediv'>somediv</div>
 {% endblock %}
 

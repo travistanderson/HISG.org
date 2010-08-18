@@ -22,6 +22,7 @@
 			sfp_config['screenname'] = '{{ request.user.username }}';
 			sfp_config['uid'] = '{{ request.user.last_name }}';
 			sfp_config['sid'] = '{{ request.session.thesid }}';
+			sfp_config['profileurl'] = '{{ profileurl }}';
 			function nativelogincomplete(next){
 				window.location.replace(next);
 			}

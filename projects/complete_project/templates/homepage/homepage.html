@@ -24,8 +24,12 @@
 			sfp_config['uid'] = '{{ request.user.last_name }}';
 			sfp_config['sid'] = '{{ request.session.thesid }}';
 			sfp_config['profileurl'] = '{{ profileurl }}';
-			function nativelogincomplete(next){
-				window.location.replace(next);
+			function nativelogincomplete(next,profileurl){
+				if(profileurl != ''){
+					window.location.replace(String(next) + '?profileurl=' + String(profileurl));
+				}else{
+					window.location.replace(next);
+				}
 			}
 		</script>
 		<script type="text/javascript" src="{% sfpjs %}"></script>

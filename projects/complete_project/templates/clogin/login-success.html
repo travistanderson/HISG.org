@@ -4,15 +4,9 @@
 {% block extra_head %}
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var $_GET = {};
-			document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
-			    function decode(s) {
-			        return decodeURIComponent(s.split("+").join(" "));
-			    }
-			    $_GET[decode(arguments[1])] = decode(arguments[2]);
-			});
-			next = $_GET["next"];
-			logincomplete(next);
+			next = '{% if next %}{{ next }}{% else %}/{% endif %}';
+			profileurl = '{{ profileurl }}';
+			logincomplete(next,profileurl);
 		});
 	</script>
 {% endblock %}
@@ -22,7 +16,7 @@
 
 	<a href='/'>Go to the home page</a><br/><br/>
 
-	<div id='somediv'>somediv</div>
+	<div id='somediv'></div>
 {% endblock %}
 
 

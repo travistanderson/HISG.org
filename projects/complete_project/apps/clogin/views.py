@@ -12,7 +12,9 @@ import settings
 	
 def clogin(request):
 	esid = request.GET.get('esid','')
-	next = request.GET.get('next','')	
+	next = request.GET.get('next','')
+	profileurl = request.GET.get('profileurl','')
+		
 	if esid != '':
 		sessionesid = str(esid)
 		esid = base64.urlsafe_b64decode(str(esid))
@@ -28,6 +30,8 @@ def clogin(request):
 				request.session['thesid'] = d
 				# Redirect to a success page.
 				redirect = '%s?next=%s' %('/login/success/',next)
+				if profileurl != '':
+					redirect = '%s?next=%s&profileurl=%s' %('/login/success/',next,profileurl)
 				return HttpResponseRedirect(redirect)
 			else:
 				# Return a 'disabled account' error message
@@ -58,8 +62,9 @@ def clogout(request):
 	
 		
 def loginsuccess(request):
-	
-	return render_to_response('clogin/login-success.html', context_instance = RequestContext(request),
+	next = request.GET.get('next','')
+	profileurl = request.GET.get('profileurl','')
+	return render_to_response('clogin/login-success.html', {'next':next,'profileurl':profileurl,},context_instance = RequestContext(request),
 	)
 
 

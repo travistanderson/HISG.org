@@ -150,7 +150,7 @@ def tableview(request,event_id):
 			for dude in request.POST.getlist('dude_list'):
 				d = User.objects.get(username=dude)
 				toemail.append(str(d.email))
-			toemail.append("cjennings@hisg.org")
+			toemail.append("smix@hisg.org")
 			toemail.append(str(e.contact.email))
 			subject, content, fromemail = templatemail(e,email_id)
 			ep = EmailPreview(date_created=today,fromemail=str(fromemail),toemail=str(toemail),subject=subject,content=content,template=et)

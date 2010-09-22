@@ -222,7 +222,7 @@ def signup(request):
          subject="Welcome to HISG.org!"
          content="Dear " + user.first_name + ", \n\nThank you for creating an account at HISG.org. You now have the ability to sign up for training events and upload photos. \n\nPlease keep the following for your records: \n    Username: "+ user.username + "\n    Password: "+form.cleaned_data['password']+" \n\n We look forward to your participation. \n\nSincerely,\nHISG Training Staff"
          fromemail = 'contact@hisg.org'
-         toemail = [str(user.email),"cjennings@hisg.org","smix@hisg.org"]
+         toemail = [str(user.email),"smix@hisg.org"]
          send_mail(subject,content,fromemail,toemail)
          # return HttpResponseRedirect('/user/profile/'+str(user.id))
          return HttpResponseRedirect(reverse('training'))

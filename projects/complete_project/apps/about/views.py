@@ -79,7 +79,7 @@ def contactperson(request, staff_id, fromp):
 		if fromp == "about":
 			toemail2 = 'kadams@hisg.org'
 		else:
-			toemail2 = 'cjennings@hisg.org' # this means it is coming from training
+			toemail2 = 'msprenger@hisg.org' # this means it is coming from training
 		if form.is_valid():
 			name = form.cleaned_data['name']
 			email = form.cleaned_data['email']

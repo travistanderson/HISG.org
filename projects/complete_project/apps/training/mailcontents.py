@@ -5,7 +5,7 @@ from training.models import EmailTemplate, Event
 # here are the defaults for a success confirmation email after someone signs up
 def sumail(event,user):
 	SU_FROMEMAIL = str(event.contact.email)
-	SU_TOEMAIL = [str(user.email),"cjennings@hisg.org","smix@hisg.org",str(event.contact.email)]
+	SU_TOEMAIL = [str(user.email),"smix@hisg.org",str(event.contact.email)]
 	SU_SUBJECT = "HISG signup confirmation email for "+str(event)+"."
 	# SU_CONTENT = "Dear "+str(user.first_name)+",\n\nThank you for registering to attend "+str(event)+". It will begin on "+event.start_date.strftime("%b. %d, %Y")+" and end on "+event.end_date.strftime("%b. %d, %Y")+". As the event approaches, you will receive a follow-up email confirming last minute details."+str(event.contact)+" is the contact person for this training event, please contact him/her at "+str(event.contact.email)+" with any questions you may have. Thank you for signing up. We will see you there. \n\Sincerely,\nHISG Training Staff."
 	# event.start_date.strftime("%b. %d"),event.end_date.strftime("%d, %Y")
@@ -22,7 +22,7 @@ def sumail(event,user):
 	SU_CONTENT = '''Dear %s,
 	
 Thank you for registering to attend the training in %s %s. 
-%s (%s) or Charlene Jennnings (cjennings@hisg.org) are the contact people for this training event. Please contact them should you have any questions. If there is any additional information to be communicated about this event, we will email you.
+%s (%s) or Steve Mix (smix@hisg.org) are the contact people for this training event. Please contact them should you have any questions. If there is any additional information to be communicated about this event, we will email you.
 
 Thank you for signing up. We look forward to seeing you soon!
 
@@ -36,7 +36,7 @@ HISG Training Staff	''' %(str(user.first_name),str(event.location),thedate,str(e
 # here are the defaults for a success cancelation email after someone cancels a registration
 def cancelmail(event,user):
 	SU_FROMEMAIL = str(event.contact.email)
-	SU_TOEMAIL = [str(user.email),"cjennings@hisg.org","smix@hisg.org",str(event.contact.email)]
+	SU_TOEMAIL = [str(user.email),"smix@hisg.org",str(event.contact.email)]
 	SU_SUBJECT = "HISG Event Cancellation email for "+str(event)+"."
 	# SU_CONTENT = "Dear " + str(user.first_name) + ", \n \n \n We have received your registration cancellation for the "+str(event)+" training event. We are sorry that you are unable to attend this training workshop, but we look forward to seeing you at future training events. Please check http://hisg.org/training-and-models/training for more information on upcoming events.  \n \n Sincerely, \n \n HISG Training Staff"
 	SU_CONTENT = '''Dear %s, 

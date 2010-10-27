@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 from featured.models import HomerPager, Opportunity, RandyPage
+from featured.forms import ContactDbspForm
 from countries.models import Region, Country, UsState
 from brick.views import bricker, brickerheight
 from django.conf import settings
@@ -63,5 +64,43 @@ def contact(request):
 	bgheight = brickerheight(bg)	
 	
 	return render_to_response('featured/bpa/randy.html', {'randy': r,'active':a,'brickgroup':bg,'brickheight':bgheight,},
+		context_instance = RequestContext(request),
+	)
+
+	
+def contactdbsp(request):
+	# bg = BrickGroup.objects.get(name = 'index', section = "about")
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)
+	if request.method == 'POST':
+		form = ContactDbspForm(request.POST)
+		toemail = 'tanderson@hisg.org'
+		toemail2 = 'kadams@hisg.org'
+		if form.is_valid():
+			name = form.cleaned_data['name']
+			email = form.cleaned_data['email']
+			subject = "HISG.org Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
+			content = "From:" + name + ": " + email + "\n\n" + form.cleaned_data['content']
+			send_mail(subject, content, email,[toemail,toemail2,])
+			return HttpResponseRedirect('/initiatives/dynamic-business-startups/contact-dbsp/success/')
+		else:
+			form = ContactDbspForm(request.POST)
+			return render_to_response(
+				'featured/dbsp/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
+				context_instance = RequestContext(request),
+			)
+	else:
+		form = ContactDbspForm()
+		m = '.'
+	return render_to_response(
+		'featured/dbsp/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'m':m,},
+		context_instance = RequestContext(request),
+	)
+
+def contactsuccessdbsp(request):
+	bg = bricker('about','contact')
+	bgheight = brickerheight(bg)	
+	
+	return render_to_response('featured/dbsp/contact-success.html', {'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)

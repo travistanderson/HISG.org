@@ -24,7 +24,13 @@ class EditPageForm(ModelForm):
 	class Meta:
 		model = Page
 		fields = ('slug', 'content',)
-		
+
+
+class ContactDbspForm(forms.Form):
+	email = forms.EmailField(label='Your Email')
+	name = forms.CharField(max_length=100,label='Your Name')
+	subject = forms.CharField(max_length=100,label='Subject')
+	content = forms.CharField(widget=forms.Textarea,label='Message')		
 
 
 class HomerPagerAdminModelForm(forms.ModelForm):

@@ -8,4 +8,6 @@ url(r'^business-partners-in-action/$', 'featured.views.index', name="bpaindex"),
 url(r'^business-partners-in-action/list/$', 'featured.views.list', name="bpalist"),
 url(r'^business-partners-in-action/(?P<opp_id>\d+)$', 'featured.views.detail', name="bpadetail"),
 url(r'^business-partners-in-action/contact-bpa/$', 'featured.views.contact', name="bpacontact"),
+url(r'^dynamic-business-startups/contact-dbsp/$', 'featured.views.contactdbsp', name="contactdbsp"),
+url(r'^dynamic-business-startups/contact-dbsp/success/$', 'featured.views.contactsuccessdbsp', name="successdbsp"),
 )

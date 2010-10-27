@@ -79,7 +79,7 @@ def contactdbsp(request):
 		if form.is_valid():
 			name = form.cleaned_data['name']
 			email = form.cleaned_data['email']
-			subject = "HISG.org Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
+			subject = "HISG.org DBSP Contact Form -- From:" + name + ": " + email + ", Subject:" + form.cleaned_data['subject']
 			content = "From:" + name + ": " + email + "\n\n" + form.cleaned_data['content']
 			send_mail(subject, content, email,[toemail,toemail2,])
 			return HttpResponseRedirect('/initiatives/dynamic-business-startups/contact-dbsp/success/')

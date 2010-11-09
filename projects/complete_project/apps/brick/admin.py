@@ -13,8 +13,9 @@ class BrickAdmin(admin.ModelAdmin):
 	)
 	
 class BrickGroupAdmin(admin.ModelAdmin):
-	list_display = ('section','name',)
+	list_display = ('section','name','brick1','brick2','brick3','brick4',)
 	ordering = ('section','name')
+	list_editable = ('brick1','brick2','brick3','brick4',)
 
 admin.site.register(Brick, BrickAdmin)
 admin.site.register(BrickGroup, BrickGroupAdmin)

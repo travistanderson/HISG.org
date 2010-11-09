@@ -77,24 +77,36 @@ def brickerheight(bg):
 	# test for the photo brick and provide the objects needed
 	if bg.brick1.name == 'gallery_latest':
 		g = Gallery.objects.latest('date_added')
+		if not g.is_public:
+			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
+			g=gal[0]
 		bgheight['b1gallery_latest'] = g
 		bgheight['b1gallery_latest_list'] = g.photos.all()[:4]
 	else:
 		bgheight['b1gallery_latest'] = ""
 	if bg.brick2.name == 'gallery_latest':
 		g = Gallery.objects.latest('date_added')
+		if not g.is_public:
+			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
+			g=gal[0]
 		bgheight['b2gallery_latest'] = g
 		bgheight['b2gallery_latest_list'] = g.photos.all()[:4]
 	else:
 		bgheight['b2gallery_latest'] = ""
 	if bg.brick3.name == 'gallery_latest':
 		g = Gallery.objects.latest('date_added')
+		if not g.is_public:
+			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
+			g=gal[0]
 		bgheight['b3gallery_latest'] = g
 		bgheight['b3gallery_latest_list'] = g.photos.all()[:4]
 	else:
 		bgheight['b3gallery_latest'] = ""
 	if bg.brick4.name == 'gallery_latest':
 		g = Gallery.objects.latest('date_added')
+		if not g.is_public:
+			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
+			g=gal[0]
 		bgheight['b4gallery_latest'] = g
 		bgheight['b4gallery_latest_list'] = g.photos.all()[:4]
 	else:

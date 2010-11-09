@@ -15,7 +15,7 @@ from brick.views import bricker, brickerheight
 def index(request):
 	ph = Project.objects.exclude(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
 	pi = Project.objects.filter(histidr__histidr__iexact = "IDR").order_by('-year')[:3]
-	g = Gallery.objects.order_by('-date_added')[:3]
+	g = Gallery.objects.filter(is_public=True).order_by('-date_added')[:3]
 	n = News.objects.all().order_by('-date')[:3]
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)

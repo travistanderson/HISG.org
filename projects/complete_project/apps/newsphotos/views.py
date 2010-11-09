@@ -20,10 +20,12 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 
+
+
 def index(request):
 	n = News.objects.all().order_by('-date')[:3]
 	b = Post.objects.all()[:3]
-	g = Gallery.objects.order_by('-date_added')[:3]
+	g = Gallery.objects.filter(is_public=True).order_by('-date_added')[:3]
 	v = Video.objects.all()[:3]
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
@@ -138,11 +140,11 @@ def blogdetail(request, blog_id):
 
 def galleryindex(request, sort):
 	if sort == 'date':
-		g = Gallery.objects.all().order_by('-date_added')
+		g = Gallery.objects.filter(is_public=True).order_by('-date_added')
 	elif sort == 'title':
-		g = Gallery.objects.all().order_by('title')
+		g = Gallery.objects.filter(is_public=True).order_by('title')
 	else:
-		g = Gallery.objects.all()
+		g = Gallery.objects.filter(is_public=True)
 
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
@@ -152,6 +154,8 @@ def galleryindex(request, sort):
 	
 def gallerydetail(request, gallery_id):
 	g = get_object_or_404(Gallery, pk = gallery_id)
+	if not g.is_public:
+		g = None
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
 	return render_to_response('projects-news/gallery_d.html', {'gallery': g,'brickgroup': bg,'brickheight':bgheight,},
@@ -159,7 +163,7 @@ def gallerydetail(request, gallery_id):
 	)
 	
 def galleryrecent(request):
-	g = Gallery.objects.order_by('-date_added')
+	g = Gallery.objects.filter(is_public=True).order_by('-date_added')
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
 	return render_to_response('projects-news/index.html', {'gallery_list': g,'brickgroup': bg,'brickheight':bgheight,},

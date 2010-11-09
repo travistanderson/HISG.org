@@ -10,6 +10,8 @@ class GalleryAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_added'
     prepopulated_fields = {'title_slug': ('title',)}
     filter_horizontal = ('photos',)
+    list_editable = ('is_public',)
+
 
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ('title', 'date_taken', 'date_added', 'is_public', 'tags', 'view_count', 'admin_thumbnail')

@@ -29,6 +29,8 @@ def pager(request, url):
     if not url.startswith('/'):
         url = "/" + url
     f = get_object_or_404(Page, url__exact=url)
+    if f.active == False:
+		raise Http404
     # bg = get_object_or_404(BrickGroup, name=f.bricks.name section=f.bricks.section)
     # try:
     #     bg = BrickGroup.objects.get(name=f.bricks.name, section=f.bricks.section)

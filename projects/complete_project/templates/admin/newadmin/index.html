@@ -30,6 +30,15 @@
 				<br/><br/>
 			</div>
 			<div class="inleft">
+				<h3><a href='/admin/hub/hub/'>Hubs</a></h3>
+				{{ hubcount }} Total Hubs <br/><br/>
+				recent hubs <br/>
+				<ul>
+					{% for hub in hubs %}
+						<li><a href='/admin/hub/hub/{{ hub.id }}/'>{{ hub.name }}</a></li>
+					{% endfor %}
+				</ul><br/>
+				
 				<h3>Users</h3>
 				admins -{{ admins }}<br/>
 				users -{{ users }}<br/>

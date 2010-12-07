@@ -1,0 +1,34 @@
+{# templates/brick/hub.html #}
+<div id="left-colomn">{# start of left-column #}
+	<div id="left-backer" style="height:{{ brickheight.height }}px;">{# start of left-backer #}
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick1.size }}px;">
+			<a href="{{ brickgroup.brick1.link }}" target="{% if brickgroup.brick1.linktarget %}_blank{% else %}_self{% endif %}">
+				
+				twitter stuff <br/>
+				ap news stuff
+
+			</a>
+		</div>
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick2.size }}px;">
+			<a href="{{ brickgroup.brick2.link }}" target="{% if brickgroup.brick2.linktarget %}_blank{% else %}_self{% endif %}">
+				IDRN stuff
+			</a>
+		</div>
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick3.size }}px;">
+			<a href="{{ brickgroup.brick3.link }}" target="{% if brickgroup.brick3.linktarget %}_blank{% else %}_self{% endif %}">
+				Donation stuff
+			</a>
+		</div>
+		
+		<div class="left-block" style="width:280px;height:{{ brickgroup.brick4.size }}px;">
+			<a href="{{ brickgroup.brick4.link }}" target="{% if brickgroup.brick4.linktarget %}_blank{% else %}_self{% endif %}">
+				sharing stuff
+			</a>
+		</div>
+
+		
+	</div>{# end of left-backer #}
+</div>{# end of left-column #}

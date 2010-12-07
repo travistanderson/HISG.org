@@ -18,6 +18,7 @@ from histidr.models import HistIdr
 from newsphotos.models import News
 from photologue.models import Gallery, Photo
 from training.models import Event
+from hub.models import Hub
 from videos.models import Video
 
 @login_required	
@@ -29,6 +30,8 @@ def index(request):
 	n = News.objects.all().count()
 	g = Gallery.objects.all().count()
 	v = Video.objects.all().count()
+	hc = Hub.objects.all().count()
+	h = Hub.objects.all().order_by('-created_on')[:3]
 	photos = Photo.objects.all().count()
 	admins = User.objects.filter(is_staff=True).count()
 	users = User.objects.all().count()
@@ -46,6 +49,8 @@ def index(request):
 		'projectshist':phist,
 		'projectsidr':pidr,
 		'news':n,
+		'hubs':h,
+		'hubcount':hc,
 		'galleries':g,
 		'photos':photos,
 		'videos':v,

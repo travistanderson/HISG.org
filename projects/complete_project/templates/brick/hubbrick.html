@@ -1,4 +1,31 @@
 {# templates/brick/hub.html #}
+{% block extra_head %}
+	<script type="text/javascript" src="http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function() {
+			// $.get('http://twitter.com/statuses/user_timeline/travistanderson.json?count=5',function(results){
+			// // results = JSON.parse(data);
+			// alert(results);
+			// })
+			// Stuff to do as soon as the DOM is ready;
+		// 	Twitter.GetUserProfile("justin_");
+		// 	Twitter.UserTimeline({user:"justin_",update:"twitter"});
+		// 	Twitter.UserTimeline({user:"justin_",update:"twitter_limit",limit:true});
+		// 	document.getElementById("profile_image").src = Twitter.UserProfile.ImageUrl;
+		// 	document.getElementById("screen_name").innerHTML = Twitter.UserProfile.Name + " says";
+		getTwitters('toots', { 
+		  id: 'rem', 
+		  count: 2, 
+		  enableLinks: true, 
+		  ignoreReplies: true, 
+		  clearContents: true,
+		  template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a>'
+		});
+		});
+	</script>
+{% endblock %}
+
 <div id="left-colomn">{# start of left-column #}
 	<div id="left-backer" style="height:{{ brickheight.height }}px;">{# start of left-backer #}
 		
@@ -6,6 +33,7 @@
 			<a href="{{ brickgroup.brick1.link }}" target="{% if brickgroup.brick1.linktarget %}_blank{% else %}_self{% endif %}">
 				
 				twitter stuff <br/>
+				<div id='toots'></div>
 				ap news stuff
 
 			</a>
@@ -32,3 +60,41 @@
 		
 	</div>{# end of left-backer #}
 </div>{# end of left-column #}
+
+
+
+
+
+
+	{# <div><strong>Latest Twitter</strong></div> #}
+	{#  #}
+	{# <table> #}
+	{# 	<tr> #}
+	{# 		<td> #}
+	{#  #}
+	{# 			<div id="twitter"> #}
+	{# 				<h3>My Twitters</h3> #}
+	{# 			</div> #}
+	{#  #}
+	{# 			<div id="speech"> #}
+	{# 				<img src="images/arr.gif" alt=""/> #}
+	{# 			</div> #}
+	{#  #}
+	{# 		</td> #}
+	{# 		<td> #}
+	{#  #}
+	{# 			<div id="profile"> #}
+	{# 				<img id="profile_image" alt=""/> #}
+	{# 				<span id="screen_name"></span> #}
+	{# 			</div> #}
+	{#  #}
+	{# 			<div id="speech"> #}
+	{# 				<img src="images/arr2.gif" alt=""/> #}
+	{# 			</div> #}
+	{#  #}
+	{# 			<div id="twitter_limit"></div> #}
+	{#  #}
+	{# 		</td> #}
+	{# 	</tr> #}
+	{# </table> #}
+

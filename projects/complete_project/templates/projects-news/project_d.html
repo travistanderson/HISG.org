@@ -1,5 +1,6 @@
 {# templates/projects-news/project_d.html #}
 {% extends 'projects-news/base.html' %}
+{% load markup %}
 {% block subarrive %}2{% endblock subarrive %}
 
 {% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
@@ -27,30 +28,61 @@
 		{{ project.description|safe }}
 		
 		<div class="clearer"></div><br/>
-	
-		{% include "projects-news/includes/histidr_box.html" %}
-		<br/><br/>
-		{% if project.video.all %}
-			<h3>Project Videos</h3>
-			{% for video in project.video.all %}
-				{% include "projects-news/includes/detail_video.html" %}
-			{% endfor %}
-		{% endif %}
-	
-		{% if project.news.all %}
+		
+		{# Here are the updates etal #}
+		{% if project.updates %}
 			<h3 style="padding:30px 0 0 0;">
-				Related News 
+				Project Updates 
 				<span style="font-size:12px;font-weight:bold;">
-					These news stories are updates to this project
+					These items are related to this project
 				</span>
 			</h3><br/>
 			
-			{% for news in project.news.all %}
-				<a href="{% url news_detail news.pk %}">
-					{{ news.name }}, {{ news.date|date:"M d, Y" }}
-				</a>
-			{% endfor %}
+			{% for update in project.updates %}
+				<div class='hubupdate'>
+					<div class='hubtitle'>{{ update }}</div>
+					<div class='hubdate'>
+						{{ update.date|date:'P M d, Y' }} 				{# news #}
+						{{ update.created|date:'P M d, Y' }} 			{# videos #}
+						{{ update.year|date:'P M d, Y' }} 				{# project #}
+						{{ update.date_added|date:'P M d, Y' }} 		{# gallery #}
+					</div>
+					<div class='clearer'></div>
+
+					{{ update.story|markdown|truncatewords:30 }}				{# news #}
+					{{ update.description|markdown|truncatewords:30 }}			{# gallery, project, videos #}
+				</div>
+			{% endfor %}<br/><br/><br/>
+			
 		{% endif %}
+
+		{# {% if project.news.all %} #}
+		{# 	<h3 style="padding:30px 0 0 0;"> #}
+		{# 		Related News  #}
+		{# 		<span style="font-size:12px;font-weight:bold;"> #}
+		{# 			These news stories are updates to this project #}
+		{# 		</span> #}
+		{# 	</h3><br/> #}
+		{# 	 #}
+		{# 	{% for news in project.news.all %} #}
+		{# 		<a href="{% url news_detail news.pk %}"> #}
+		{# 			{{ news.name }}, {{ news.date|date:"M d, Y" }} #}
+		{# 		</a> #}
+		{# 	{% endfor %}<br/><br/><br/> #}
+		{# {% endif %}	 #}
+		
+		{# {% if project.video.all %} #}
+		{# 	<h3>Project Videos</h3> #}
+		{# 	{% for video in project.video.all %} #}
+		{# 		{% include "projects-news/includes/detail_video.html" %} #}
+		{# 	{% endfor %} #}
+		{# {% endif %} #}
+
+		{% include "projects-news/includes/histidr_box.html" %}
+		<br/><br/>
+
+	
+
 	
 		<div class="clearer"></div>
 		{{ world.name }}{{ maps_num }}

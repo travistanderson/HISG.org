@@ -47,11 +47,31 @@ def projectindex(request, sort):
 	
 def projectdetail(request, proj_id):
 	p = get_object_or_404(Project, pk = proj_id)
+	updates = []
+	for news in p.news.all():
+		updates.append(news)
+	for video in p.video.all():
+		updates.append(video)
+	p.updates = updates
 	bg = bricker('projects','index')
 	bgheight = brickerheight(bg)
 	return render_to_response('projects-news/project_d.html', {'project': p,'brickgroup': bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
+	
+	# h = get_object_or_404(Hub, slug=slug)
+	# updates = []
+	# for project in h.projects.all():
+	# 	updates.append(project)
+	# for gallery in h.gallery.all():
+	# 	updates.append(gallery)
+	# for news in h.news.all():
+	# 	updates.append(news)
+	# for video in h.videos.all():
+	# 	updates.append(video)	
+	
+	
+	
 	
 def idrprojectindex(request, sort):
 	if sort == 'country':

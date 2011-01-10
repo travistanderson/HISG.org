@@ -9,34 +9,54 @@
 			// alert(results);
 			// })
 			// Stuff to do as soon as the DOM is ready;
-		// 	Twitter.GetUserProfile("justin_");
-		// 	Twitter.UserTimeline({user:"justin_",update:"twitter"});
-		// 	Twitter.UserTimeline({user:"justin_",update:"twitter_limit",limit:true});
-		// 	document.getElementById("profile_image").src = Twitter.UserProfile.ImageUrl;
-		// 	document.getElementById("screen_name").innerHTML = Twitter.UserProfile.Name + " says";
-		getTwitters('toots', { 
-		  id: 'rem', 
-		  count: 2, 
-		  enableLinks: true, 
-		  ignoreReplies: true, 
-		  clearContents: true,
-		  template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a>'
-		});
+			// 	Twitter.GetUserProfile("justin_");
+			// 	Twitter.UserTimeline({user:"justin_",update:"twitter"});
+			// 	Twitter.UserTimeline({user:"justin_",update:"twitter_limit",limit:true});
+			// 	document.getElementById("profile_image").src = Twitter.UserProfile.ImageUrl;
+			// 	document.getElementById("screen_name").innerHTML = Twitter.UserProfile.Name + " says";
+			
+			// getTwitters('toots', { 
+			//   id: 'travistanderson',	 // this is the user id
+			//   count: 2, 				// this is how many toots to show
+			//   enableLinks: true, 		
+			//   ignoreReplies: true, 
+			//   clearContents: true,
+			//   template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%/">%time%</a><br/><br/>'
+			// });
+			
+			// $('#toots').load('/hub/toots/',function(){
+			// 				alert('it ran');
+			// 			})
+			
+			$('#labelpic').click(function(){
+				$.get('/hub/toots/' + {{ hub.id }} + '/',function(data){
+					results = JSON.parse(data);
+					// $('#toots').html(data);
+					$('#toots').html('');
+					for (i in results){
+						$('#toots').append('<div>' +results[i] + '</div>');
+					}
+					alert('load was performed');
+				})
+			})
+			
+			
 		});
 	</script>
+	<style type="text/css" media="screen">
+		#toots{height:350px;overflow:auto;}
+		#toots div{background:rgba(255,252,207,0.4);border:1px solid #b1d9fe;margin:3px;padding:2px 6px;}
+	</style>
 {% endblock %}
 
 <div id="left-colomn">{# start of left-column #}
 	<div id="left-backer" style="height:{{ brickheight.height }}px;">{# start of left-backer #}
 		
-		<div class="left-block" style="width:280px;height:{{ brickgroup.brick1.size }}px;">
-			<a href="{{ brickgroup.brick1.link }}" target="{% if brickgroup.brick1.linktarget %}_blank{% else %}_self{% endif %}">
-				
-				twitter stuff <br/>
-				<div id='toots'></div>
-				ap news stuff
-
-			</a>
+		<div class="left-block" style="width:280px;height:400px;padding:5px 0px 0px;overflow:hidden;">
+			<img src="/site_media/images/sections/projects/twitter.png" class="pic" alt="twitter" style='padding:0 0 0 50px;'></img>
+			<div class='clearer'></div>
+			<div id='toots'>results</div><br/><br/>
+			
 		</div>
 		
 		<div class="left-block" style="width:280px;height:{{ brickgroup.brick2.size }}px;">

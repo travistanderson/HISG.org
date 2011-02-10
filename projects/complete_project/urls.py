@@ -39,6 +39,7 @@ else:
 		(r'^robots.txt$', include('robots.urls')),
 		(r'^i18n/', include('django.conf.urls.i18n')),
 		(r'^photologue/', include('photologue.urls')),
+		(r'^RPC2$', 'rpc4django.views.serve_rpc_request'),
 		(r'^login/', include('clogin.urls')),
 		# (r'^user/', include('tiq_login.urls')),
 		(r'^profile/', include('profile.urls')),

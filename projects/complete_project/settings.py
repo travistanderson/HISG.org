@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'analytics',
     'misc',
     'photos',
+    'rpc4django',
     
     'django.contrib.admin',
 

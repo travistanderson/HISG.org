@@ -16,7 +16,7 @@ def events():
 	for event in e:
 		theevent = {}
 		theevent['name'] = event.name
-		theevent['contact'] = event.contact
+		theevent['contact'] = event.contact.email
 		theevent['subject'] = event.subject
 		theevent['start_date'] = event.start_date
 		theevent['end_date'] = event.end_date

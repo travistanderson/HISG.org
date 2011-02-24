@@ -260,3 +260,15 @@ def internsuccess(request):
 	return render_to_response('about/intern-success.html', {'brickgroup':bg,'brickheight':bgheight,},
 		context_instance = RequestContext(request),
 	)
+	
+	
+	
+def anniversary(request):
+	# bg = bricker('about','contact')
+	# bgheight = brickerheight(bg)	
+	
+	return render_to_response('about/anniversary.html', context_instance = RequestContext(request),)
+	
+	
+	
+	

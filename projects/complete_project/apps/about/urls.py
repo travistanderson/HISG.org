@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 	url(r'^contact/$', 'about.views.contact', name="contact"),
 	url(r'^contact/success/$', 'about.views.contactsuccess', name="success"),
 	url(r'^contact/(?P<staff_id>\d+)/(?P<fromp>\w+)/$', 'about.views.contactperson', name="contactperson"),
+	url(r'^10-year-anniversary/$', 'about.views.anniversary', name="anniversary"),
     
     url(r'^terms/$', direct_to_template, {"template": "about/terms.html"}, name="terms"),
     url(r'^privacy/$', direct_to_template, {"template": "about/privacy.html"}, name="privacy"),

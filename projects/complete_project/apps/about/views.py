@@ -264,8 +264,6 @@ def internsuccess(request):
 	
 	
 def anniversary(request):
-	# bg = bricker('about','contact')
-	# bgheight = brickerheight(bg)	
 	
 	return render_to_response('about/anniversary.html', context_instance = RequestContext(request),)
 	

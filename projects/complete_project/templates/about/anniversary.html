@@ -58,57 +58,35 @@
 
 {% block body %}
 	<style type="text/css" media="screen">
-		#uppersection{height:240px;width:970px;}
+		#uppersection{height:280px;width:970px;background:url('/site_media/images/sections/about/timeline/timelinebg5.png') repeat-x 0 120px;}
 		#uppersection li{float:left;}
-		#uppersection #upperdescs{height:38px;padding:20px 0 0 0px;width:970px;}
+		#uppersection #upperdescs{height:38px;padding:20px 0 0 0px;}
 		#uppersection #upperdescs li{width:150px;text-align:center;}
 		#uppersection #upperdescs .desc{margin:0 14px 0 0;}
 		#uppersection #upperdescs .lastdesc{margin:0}
-		#uppersection #uppercircles{height:100px;padding:0 0 0 32px;width:970px;}
-		#uppersection #uppercircles .firstcircle{margin:0 64px 0 0;}
-		#uppersection #uppercircles .lastcircle{margin:0 0px 0 0;}
-		#uppersection #uppercircles #circle_2001{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#uppersection #uppercircles #circle_2003{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#uppersection #uppercircles #circle_2005{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#uppersection #uppercircles #circle_2007{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#uppersection #uppercircles #circle_2009{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#uppersection #uppercircles #circle_2011{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#uppersection #upperyears{height:20px;padding:0 0 0 40px;width:970px;}
-		#uppersection #upperyears li{height:20px;width:32px;font-weight:bold;}
-		#uppersection #upperyears .year{margin:0 101px 0 30px;}
-		#uppersection #upperyears .lastyear{margin:0 0px 0 30px;}
-		#uppersection #upperlines{height:60px;padding:0 0 0 40px;width:970px;}
-		#uppersection #upperlines li{height:60px;width:4px;background:url('/site_media/images/sections/about/timeline/timelineline.png') no-repeat;}
-		#uppersection #upperlines .line{margin: 0 121px 0 39px;}
-		#uppersection #upperlines .lastline{margin: 0 0 0 39px;}
-		
-		#middlesection{background:url('/site_media/images/sections/about/timeline/timelinebg2.png') no-repeat;height:20px;width:970px;}
-		#middlesection ul{height:20px;padding:0 0 0 40px;}
-		#middlesection li{background:url('/site_media/images/sections/about/timeline/timelinedot.png') no-repeat 0 0px;height:20px;width:20px;float:left;margin:0 31px;
-			cursor:pointer;}
-			
-		#lowersection{height:240px;}
+		#uppersection #uppercircles{height:80px;padding:0 0 0 119px;}
+		#uppersection #uppercircles #circle_2001{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 52px 0 0;}
+		#uppersection #uppercircles #circle_2003{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
+		#uppersection #uppercircles #circle_2005{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
+		#uppersection #uppercircles #circle_2007{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
+		#uppersection #uppercircles #circle_2009{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 49px 0 0;}
+		#uppersection #uppercircles #circle_2011{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 0px 0 0;}
+
+
+
+		#lowersection{height:150px;}
 		#lowersection li{float:left;}
 		#lowersection #lowerdescs{height:40px;padding:20px 0 0 0px;}
 		#lowersection #lowerdescs li{width:150px;text-align:center;}
 		#lowersection #lowerdescs .firstdesc{margin:0 0 0 84px;}
 		#lowersection #lowerdescs .desc{margin:0 0 0 16px;}
-		#lowersection #lowercircles{height:100px;padding:0 0 0 32px;}
-		#lowersection #lowercircles .firstcircle{margin:0 4px 0 80px;}
-		#lowersection #lowercircles .lastcircle{margin:0 0px 0 64px;}
-		#lowersection #lowercircles #circle_2002{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#lowersection #lowercircles #circle_2004{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#lowersection #lowercircles #circle_2006{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#lowersection #lowercircles #circle_2008{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#lowersection #lowercircles #circle_2010{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat;}
-		#lowersection #loweryears{height:16px;padding:0 0 0 40px;margin:4px 0 0 0;}
-		#lowersection #loweryears li{height:20px;width:32px;font-weight:bold;}
-		#lowersection #loweryears .firstyear{margin:0 0px 0 109px;}
-		#lowersection #loweryears .year{margin:0 0px 0 132px;}
-		#lowersection #lowerlines{height:60px;padding:0 0 0 40px;}
-		#lowersection #lowerlines li{height:60px;width:4px;background:url('/site_media/images/sections/about/timeline/timelineline.png') no-repeat;}
-		#lowersection #lowerlines .firstline{margin: 0 0px 0 121px;}
-		#lowersection #lowerlines .line{margin: 0 0px 0 160px;}
+		#lowersection #lowercircles{height:80px;padding:0 0 0 32px;}
+		#lowersection #lowercircles #circle_2002{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 165px;}
+		#lowersection #lowercircles #circle_2004{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 47px;}
+		#lowersection #lowercircles #circle_2006{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 45px;}
+		#lowersection #lowercircles #circle_2008{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 46px;}
+		#lowersection #lowercircles #circle_2010{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 47px;}
+
 	</style>
 	<div style='width:970px;'>{# this lets the child div run out of right column to a full width #}
 		<h2 class="center">HISG's 10 Year Anniversary</h2>
@@ -123,59 +101,21 @@
 					<li id='desc_2011' class='lastdesc'>Exponential Expansion</li>
 				</ul>
 				<ul id='uppercircles'>
-					<li id='circle_2001' class='circle firstcircle'>
-						<img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img>
-					</li>
-					<li id='circle_2003' class='circle firstcircle'>
-						<img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img>
-					</li>
-					<li id='circle_2005' class='circle firstcircle'>
-						<img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img>
-					</li>
-					<li id='circle_2007' class='circle firstcircle'>
-						<img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img>
-					</li>
-					<li id='circle_2009' class='circle firstcircle'>
-						<img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img>
-					</li>
-					<li id='circle_2011' class='circle lastcircle'>
-						<img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img>
-					</li>
-				</ul><div class='clearer'></div>
-				<ul id='upperyears'>
-					<li class='year'>2001</li>
-					<li class='year'>2003</li>
-					<li class='year'>2005</li>
-					<li class='year'>2007</li>
-					<li class='year'>2009</li>
-					<li class='lastyear'>2011</li>
-				</ul>
-				<ul id='upperlines'>
-					<li class='line'></li><li class='line'></li><li class='line'></li><li class='line'></li><li class='line'></li><li class='lastline'></li>
+					<li id='circle_2001' class='circle firstcircle'><img src='/site_media/images/sections/about/timeline/timelinecircle3.png'></img></li>
+					<li id='circle_2003' class='circle firstcircle'><img src='/site_media/images/sections/about/timeline/timelinecircle3.png'></img></li>
+					<li id='circle_2005' class='circle firstcircle'><img src='/site_media/images/sections/about/timeline/timelinecircle3.png'></img></li>
+					<li id='circle_2007' class='circle firstcircle'><img src='/site_media/images/sections/about/timeline/timelinecircle3.png'></img></li>
+					<li id='circle_2009' class='circle firstcircle'><img src='/site_media/images/sections/about/timeline/timelinecircle3.png'></img></li>
+					<li id='circle_2011' class='circle lastcircle'><img src='/site_media/images/sections/about/timeline/timelinecircle3.png'></img></li>
 				</ul>
 			</div>{# end of upper section #}
-			<div id='middlesection'>
-				<ul>
-					<li id='dot_2001' class='dot'></li><li id='dot_2002' class='dot'></li><li id='dot_2003' class='dot'></li><li id='dot_2004' class='dot'></li>
-					<li id='dot_2005' class='dot'></li><li id='dot_2006' class='dot'></li><li id='dot_2007' class='dot'></li><li id='dot_2008' class='dot'></li>
-					<li id='dot_2009' class='dot'></li><li id='dot_2010' class='dot'></li><li id='dot_2011' class='dot'></li>
-				</ul>
-			</div>{# end of middle section #}
 			<div id='lowersection'>
-				<ul id='lowerlines'><li class='firstline'></li><li class='line'></li><li class='line'></li><li class='line'></li><li class='line'></li></ul>
-				<ul id='loweryears'>
-					<li class='firstyear'>2002</li>
-					<li class='year'>2004</li>
-					<li class='year'>2006</li>
-					<li class='year'>2008</li>
-					<li class='year'>2010</li>
-				</ul><div class='clearer'></div>
 				<ul id='lowercircles'>
-					<li id='circle_2002' class='firstcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img></li>
-					<li id='circle_2004' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img></li>
-					<li id='circle_2006' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img></li>
-					<li id='circle_2008' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img></li>
-					<li id='circle_2010' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle.png'></img></li>
+					<li id='circle_2002' class='firstcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle3d.png'></img></li>
+					<li id='circle_2004' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle3d.png'></img></li>
+					<li id='circle_2006' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle3d.png'></img></li>
+					<li id='circle_2008' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle3d.png'></img></li>
+					<li id='circle_2010' class='lastcircle circle'><img src='/site_media/images/sections/about/timeline/timelinecircle3d.png'></img></li>
 				</ul><div class='clearer'></div>
 				<ul id='lowerdescs'>
 					<li id='desc_2002' class='firstdesc'>work was done</li>

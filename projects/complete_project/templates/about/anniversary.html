@@ -12,45 +12,45 @@
 	<script type="text/javascript" src="/admin_media/jquery/jquery.qtip.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function() {
-			$('.dot').hover(function(){
-				$(this).css({'background-position':"0px -21px"});
-			},function(){
-				$(this).css({'background-position':''});
-			})
+			overanelement = 0;
 			$('.circle').hover(function(){
 				which = $(this).attr('id').split('_')[1];
 				$('#dot_' + which).css({'background-position':"0px -21px"});
 			},function(){
 				$('.dot').css({'background-position':''});
 			})
-			content2001 = "<h3>Afghanistan GIK</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/> first humanitarian project";
-			content2002 = "<h3>Work was done</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>And it was good";
-			content2003 = "<h3>Work was done</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>And it was good";
-			content2004 = "<h3>Asian Tsunami</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>move more that $200,000 of supplies to Banda Aceh";
-			content2005 = "<h3>Hurricane Katrina</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>major player in private sector response to disaster that completely overwhelmed Federal, State, and local resources";
-			content2006 = "<h3>War in Israel</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>Mike and Kay visit active war zone to bring aid to victims";
-			content2007 = "<h3>Coffee Trader</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>A solid business in the poorest Arab nation";
-			content2008 = "<h3>Nyala Guesthouse</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>HISG becomes a permanent fixture on the Darfur landscape";
-			content2009 = "<h3>Starfish Community</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>HISG leads the way in bringing organizations together for the greater good";
-			content2010 = "<h3>DBSP</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>HISG and DBSP partnership brings unprecedented success in some of the poorest neighborhoods in all of Africa";
-			content2011 = "<h3>Exponential Expansion</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/>Chili pepper project recycles grant money for the 20th time, DBSP train the trainers, regional Expo";
+			content2001 = "<h3>2001 - Afghanistan GIK</h3><img src='/site_media/images/sections/about/timeline/fulls/2001.png'/><br/><br/> First humanitarian <a href='/projects-and-news/projects/3/'>project</a>.";
+			content2002 = "<h3>2002 - Work was done</h3><img src='/site_media/images/sections/about/timeline/fulls/2002.png'/><br/><br/>And it was <a href='/'>good</a>.";
+			content2003 = "<h3>2003 - Work was done</h3><img src='/site_media/images/sections/about/timeline/fulls/2003.png'/><br/><br/>And it was <a href='/'>good</a>.";
+			content2004 = "<h3>2004 - Asian Tsunami</h3><img src='/site_media/images/sections/about/timeline/fulls/2004.png'/><br/><br/>HISG moved more that $200,000 of supplies to <a href='/projects-and-news/projects/43/'>Banda Aceh</a>.";
+			content2005 = "<h3>2005 - Hurricane Katrina</h3><img src='/site_media/images/sections/about/timeline/fulls/2005.png'/><br/><br/>HISG was a major player in private sector response to <a href='/projects-and-news/projects/106/'>the disaster</a> that completely overwhelmed Federal, State, and local resources.";
+			content2006 = "<h3>2006 - War in Israel</h3><img src='/site_media/images/sections/about/timeline/fulls/2006.png'/><br/><br/>Mike and Kay visit active war zone to <a href='/projects-and-news/projects/83/'>bring aid</a> to victims.";
+			content2007 = "<h3>2007 - Coffee Trader</h3><img src='/site_media/images/sections/about/timeline/fulls/2007.png'/><br/><br/>A <a href='/projects-and-news/projects/87/'>solid business</a> in the poorest Arab nation.";
+			content2008 = "<h3>2008 - Nyala Guesthouse</h3><img src='/site_media/images/sections/about/timeline/fulls/2008.png'/><br/><br/>HISG becomes a permanent fixture on the <a href='/link'>Darfur landscape</a>.";
+			content2009 = "<h3>2009 - Starfish Community</h3><img src='/site_media/images/sections/about/timeline/fulls/2009.png'/><br/><br/>HISG leads the way in bringing <a href='/initiatives/starfish/'>organizations together</a> for the greater good.";
+			content2010 = "<h3>2010 - DBSP</h3><img src='/site_media/images/sections/about/timeline/fulls/2010.png'/><br/><br/>HISG and <a href='/dynamic-business-startups/'>DBSP</a> partnership brings unprecedented success in some of the poorest neighborhoods in all of Africa.";
+			content2011 = "<h3>2011 - Exponential Expansion</h3><img src='/site_media/images/sections/about/timeline/fulls/2011.png'/><br/><br/><a href='/projects-and-news/projects/56/'>Chili pepper project</a> recycles grant money for the 20th time, DBSP train the trainers, regional Expo.";
 			qtipposition1 = {corner: {tooltip: 'rightBottom',target: 'topLeft'}};
 			qtipposition2 = {corner: {tooltip: 'leftBottom',target: 'topRight'}};
 			qtipposition3 = {corner: {tooltip: 'rightTop',target: 'bottomLeft'}};
 			qtipposition4 = {corner: {tooltip: 'leftTop',target: 'bottomRight'}};
-			qtipstyle = {width:450,border:{width:10,radius:0,color:'#14436f'},padding:15, textAlign: 'center',tip:true};
+			qtipstyle1 = {width:450,border:{width:10,radius:0,color:'#dabc64'},padding:15, textAlign: 'center',tip:{corner:'rightBottom',color:false,size:{x:50,y:20}}};
+			qtipstyle2 = {width:450,border:{width:10,radius:0,color:'#dabc64'},padding:15, textAlign: 'center',tip:{corner:'leftBottom',color:false,size:{x:50,y:20}}};
+			qtipstyle3 = {width:450,border:{width:10,radius:0,color:'#dabc64'},padding:15, textAlign: 'center',tip:{corner:'rightTop',color:false,size:{x:50,y:20}}};
+			qtipstyle4 = {width:450,border:{width:10,radius:0,color:'#dabc64'},padding:15, textAlign: 'center',tip:{corner:'leftTop',color:false,size:{x:50,y:20}}};
 			qtipshow = {delay:0};
-			$('#circle_2001').qtip({content:content2001,position:qtipposition4,style:qtipstyle,show:qtipshow});
-			$('#circle_2002').qtip({content:content2002,position:qtipposition2,style:qtipstyle,show:qtipshow});
-			$('#circle_2003').qtip({content:content2003,position:qtipposition4,style:qtipstyle,show:qtipshow});
-			$('#circle_2004').qtip({content:content2004,position:qtipposition2,style:qtipstyle,show:qtipshow});
-			$('#circle_2005').qtip({content:content2005,position:qtipposition4,style:qtipstyle,show:qtipshow});
-			$('#circle_2006').qtip({content:content2006,position:qtipposition2,style:qtipstyle,show:qtipshow});
-			$('#circle_2007').qtip({content:content2007,position:qtipposition3,style:qtipstyle,show:qtipshow});
-			$('#circle_2008').qtip({content:content2008,position:qtipposition1,style:qtipstyle,show:qtipshow});
-			$('#circle_2009').qtip({content:content2009,position:qtipposition3,style:qtipstyle,show:qtipshow});
-			$('#circle_2010').qtip({content:content2010,position:qtipposition1,style:qtipstyle,show:qtipshow});
-			$('#circle_2011').qtip({content:content2011,position:qtipposition3,style:qtipstyle,show:qtipshow});
+			qtiphide = {fixed:true,delay:400};
+			$('#circle_2001').qtip({content:content2001,position:qtipposition4,style:qtipstyle4,show:qtipshow,hide:qtiphide});
+			$('#circle_2002').qtip({content:content2002,position:qtipposition2,style:qtipstyle2,show:qtipshow,hide:qtiphide});
+			$('#circle_2003').qtip({content:content2003,position:qtipposition4,style:qtipstyle4,show:qtipshow,hide:qtiphide});
+			$('#circle_2004').qtip({content:content2004,position:qtipposition2,style:qtipstyle2,show:qtipshow,hide:qtiphide});
+			$('#circle_2005').qtip({content:content2005,position:qtipposition4,style:qtipstyle4,show:qtipshow,hide:qtiphide});
+			$('#circle_2006').qtip({content:content2006,position:qtipposition2,style:qtipstyle2,show:qtipshow,hide:qtiphide});
+			$('#circle_2007').qtip({content:content2007,position:qtipposition3,style:qtipstyle3,show:qtipshow,hide:qtiphide});
+			$('#circle_2008').qtip({content:content2008,position:qtipposition1,style:qtipstyle1,show:qtipshow,hide:qtiphide});
+			$('#circle_2009').qtip({content:content2009,position:qtipposition3,style:qtipstyle3,show:qtipshow,hide:qtiphide});
+			$('#circle_2010').qtip({content:content2010,position:qtipposition1,style:qtipstyle1,show:qtipshow,hide:qtiphide});
+			$('#circle_2011').qtip({content:content2011,position:qtipposition3,style:qtipstyle3,show:qtipshow,hide:qtiphide});
 		});
 	</script>
 {% endblock %}
@@ -58,39 +58,38 @@
 
 {% block body %}
 	<style type="text/css" media="screen">
-		#uppersection{height:280px;width:970px;background:url('/site_media/images/sections/about/timeline/timelinebg5.png') repeat-x 0 120px;}
+		#wholething{width:995px;margin-left:-13px;}
+		#uppersection{height:280px;width:995px;background:url('/site_media/images/sections/about/timeline/timelinebg5.png') no-repeat 0 120px;}
 		#uppersection li{float:left;}
-		#uppersection #upperdescs{height:38px;padding:20px 0 0 0px;}
-		#uppersection #upperdescs li{width:150px;text-align:center;}
-		#uppersection #upperdescs .desc{margin:0 14px 0 0;}
+		#uppersection #upperdescs{height:38px;padding:20px 0 0 112px;}
+		#uppersection #upperdescs li{width:130px;text-align:center;font-size:12px;}
+		#uppersection #upperdescs .desc{margin:0 20px 0 0;}
 		#uppersection #upperdescs .lastdesc{margin:0}
 		#uppersection #uppercircles{height:80px;padding:0 0 0 119px;}
 		#uppersection #uppercircles #circle_2001{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 52px 0 0;}
-		#uppersection #uppercircles #circle_2003{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
-		#uppersection #uppercircles #circle_2005{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
-		#uppersection #uppercircles #circle_2007{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
-		#uppersection #uppercircles #circle_2009{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 49px 0 0;}
-		#uppersection #uppercircles #circle_2011{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 0px 0 0;}
-
-
+		#uppersection #uppercircles #circle_2003{background:url('/site_media/images/sections/about/timeline/thumbs/2003thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
+		#uppersection #uppercircles #circle_2005{background:url('/site_media/images/sections/about/timeline/thumbs/2005thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
+		#uppersection #uppercircles #circle_2007{background:url('/site_media/images/sections/about/timeline/thumbs/2007thumb.png') no-repeat 20px 0;margin:0 50px 0 0;}
+		#uppersection #uppercircles #circle_2009{background:url('/site_media/images/sections/about/timeline/thumbs/2009thumb.png') no-repeat 20px 0;margin:0 49px 0 0;}
+		#uppersection #uppercircles #circle_2011{background:url('/site_media/images/sections/about/timeline/thumbs/2011thumb.png') no-repeat 20px 0;margin:0 0px 0 0;}
 
 		#lowersection{height:150px;}
 		#lowersection li{float:left;}
-		#lowersection #lowerdescs{height:40px;padding:20px 0 0 0px;}
-		#lowersection #lowerdescs li{width:150px;text-align:center;}
-		#lowersection #lowerdescs .firstdesc{margin:0 0 0 84px;}
-		#lowersection #lowerdescs .desc{margin:0 0 0 16px;}
+		#lowersection #lowerdescs{height:40px;padding:20px 0 0 0px;font-size:12px;}
+		#lowersection #lowerdescs li{width:130px;text-align:center;}
+		#lowersection #lowerdescs .firstdesc{margin:0 0 0 191px;}
+		#lowersection #lowerdescs .desc{margin:0 0 0 21px;}
 		#lowersection #lowercircles{height:80px;padding:0 0 0 32px;}
-		#lowersection #lowercircles #circle_2002{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 165px;}
-		#lowersection #lowercircles #circle_2004{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 47px;}
-		#lowersection #lowercircles #circle_2006{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 45px;}
-		#lowersection #lowercircles #circle_2008{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 46px;}
-		#lowersection #lowercircles #circle_2010{background:url('/site_media/images/sections/about/timeline/thumbs/2001thumb.png') no-repeat 20px 0;margin:0 4px 0 47px;}
+		#lowersection #lowercircles #circle_2002{background:url('/site_media/images/sections/about/timeline/thumbs/2002thumb.png') no-repeat 20px 0;margin:0 4px 0 165px;}
+		#lowersection #lowercircles #circle_2004{background:url('/site_media/images/sections/about/timeline/thumbs/2004thumb.png') no-repeat 20px 0;margin:0 4px 0 47px;}
+		#lowersection #lowercircles #circle_2006{background:url('/site_media/images/sections/about/timeline/thumbs/2006thumb.png') no-repeat 20px 0;margin:0 4px 0 45px;}
+		#lowersection #lowercircles #circle_2008{background:url('/site_media/images/sections/about/timeline/thumbs/2008thumb.png') no-repeat 20px 0;margin:0 4px 0 46px;}
+		#lowersection #lowercircles #circle_2010{background:url('/site_media/images/sections/about/timeline/thumbs/2010thumb.png') no-repeat 20px 0;margin:0 4px 0 47px;}
 
 	</style>
-	<div style='width:970px;'>{# this lets the child div run out of right column to a full width #}
+	<div id='wholething'>{# this lets the child div run out of right column to a full width #}
 		<h2 class="center">HISG's 10 Year Anniversary</h2>
-		<div style='height:500px;background:#fff;'>{# this is the holder box #}
+		<div style='height:430px;background:#fff;'>{# this is the holder box #}
 			<div id='uppersection'>
 				<ul id='upperdescs'>
 					<li id='desc_2001' class='desc'>Afghanistan GIK</li>
@@ -125,9 +124,9 @@
 					<li id='desc_2010' class='desc'>DBSP</li>
 				</ul>
 			</div>{# end of lower section #}
-		</div>
+		</div>{# end of holder box #}<br/><br/><br/>
 		
-	</div>
+	</div>{# end of whole thing #}
 
 
 {% endblock %}

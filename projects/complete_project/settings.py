@@ -42,7 +42,7 @@ USE_I18N = True
 import os.path
 
 #MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "site_media")
-MEDIA_ROOT = "/home/tanderson/public/site_media/"
+MEDIA_ROOT = "/home/django/domains/hisg.org/media/site_media/"
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"

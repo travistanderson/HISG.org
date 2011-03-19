@@ -10,7 +10,6 @@ from homepage.models import Impacter, Phrase
 from newsphotos.models import News
 from projectsmodels.models import Project
 from photologue.models import Photo
-from tiq_login.models import TiqUserProfile
 
 def homepage(request):
 	i = Impacter.objects.all().order_by('order').filter(active=True)

@@ -9,7 +9,8 @@ from photologue.models import Photo
 
 		
 class BrickAdminModelForm(forms.ModelForm):
-	body = forms.CharField(widget=WMDBrickEditor(attrs={'rows':10, 'cols':55}))
+	# body = forms.CharField(widget=WMDBrickEditor(attrs={'rows':10, 'cols':55}))
+	body = forms.CharField(widget=forms.Textarea(attrs={'cols':'40','rows':'30'}))
 	photo = forms.ModelChoiceField(queryset=Photo.objects.all(),widget=SinglePhotoPicker(attrs={'fieldname':'photo',}))
 	# the attrs dictionary key fieldname should be set to the name of the db field for the photo model
 

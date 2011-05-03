@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 	url(r'^extras/$', 'newadmin.views.extras', name='newadminextras'),
 	url(r'^hidden/$', 'newadmin.views.hidden', name='newadminhidden'),
 	url(r'^old-admin/$', 'newadmin.views.oldadmin', name='newadminoldadmin'),
+	url(r'^homepage/navlist/$', 'newadmin.views.navlist', name='newadminnavlist'),
 )

@@ -1,6 +1,6 @@
 # homepage/admin.py
 from django.contrib import admin
-from homepage.models import Impacter, Phrase
+from homepage.models import Impacter, Phrase, Nav
 from photologue.models import Photo
 from homepage.forms import ImpacterAdminModelForm
 
@@ -16,5 +16,12 @@ class PhraseAdmin(admin.ModelAdmin):
 	list_editable = ('order','active',)
 
 
+class NavAdmin(admin.ModelAdmin):
+	list_display = ('displayname','orderer','parent')
+	# ordering = ('order',)
+	list_editable = ('orderer','parent',)
+
+
 admin.site.register(Impacter, ImpacterAdmin)
 admin.site.register(Phrase, PhraseAdmin)
+admin.site.register(Nav, NavAdmin)

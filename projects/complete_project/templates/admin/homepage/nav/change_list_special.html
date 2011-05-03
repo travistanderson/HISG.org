@@ -1,0 +1,50 @@
+{# templates/admin/homepage/nav/change_list_special.html #}
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+
+	<script src="/site_media/js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('#changelist').hide();
+			showhide = 0;
+			$('#showhidelist').click(function(e){
+				e.preventDefault();
+				if(showhide==0){
+					$('#changelist').show();
+					showhide = 1;
+				}else{
+					$('#changelist').hide();
+					showhide = 0;
+				}
+			})
+		});
+	</script>
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}
+
+{% block breadcrumbs %}
+	<div class="breadcrumbs">
+		<a href="../../">Home</a>
+		 {# &rsaquo; #} 
+		 <a href="../">Homepage</a>
+		{# &rsaquo; #} 
+		<div class="endofbreadcrumbs">Nav List Fancy</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div id="content-main">
+		<div style='clear:both;'></div>
+		<ul class="object-tools">
+			<li>
+				<a href='/admin/homepage/nav/'>Normal ChangeList</a>
+			</li>
+		</ul>
+		
+		<div style='background:white;'>
+			Fancy Page
+		</div>
+	</div>{# end of content-main #}
+{% endblock %}

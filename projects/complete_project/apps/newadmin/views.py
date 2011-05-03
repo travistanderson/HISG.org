@@ -13,7 +13,7 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 from projectsmodels.models import Project
-from homepage.models import Impacter, Phrase
+from homepage.models import Impacter, Phrase, Nav
 from histidr.models import HistIdr
 from newsphotos.models import News
 from photologue.models import Gallery, Photo
@@ -88,3 +88,8 @@ def oldadmin(request):
 	return render_to_response('admin/index.html', {'projects':p,},context_instance = RequestContext(request),)	
 		
 		
+def navlist(request):
+	today = datetime.today()
+	p = Project.objects.all().count()
+	
+	return render_to_response('admin/homepage/nav/change_list_special.html', {'projects':p,},context_instance = RequestContext(request),)

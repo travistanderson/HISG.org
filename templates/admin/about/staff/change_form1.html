@@ -1,0 +1,159 @@
+{# templates/admin/about/staff/change_form.html #}
+{% extends "admin/base_site.html" %}
+{% load i18n admin_modify adminmedia %}
+
+{% block extrahead %}{{ block.super }}
+	<link rel="stylesheet" href="/site_media/css/widgets.css" type="text/css" media="screen" charset="utf-8">
+	<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../../../jsi18n/"></script>
+	<script type="text/javascript" src="/admin_media/jquery/jquery.qtip.min.js"></script>
+	<script type="text/javascript" src="/site_media/js/widgets.js"></script>
+	{{ media }}
+
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css" />{% endblock %}
+
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
+
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% block breadcrumbs %}{% if not is_popup %}
+<div class="breadcrumbs">
+     <a href="../../../">{% trans "Home" %}</a> {# &rsaquo; #}
+     <a href="../../">{{ app_label|capfirst|escape }}</a> {# &rsaquo; #} 
+     {% if has_change_permission %}<a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %} {# &rsaquo; #} 
+     <div  class="endofbreadcrumbs">{% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}</div>
+</div>
+{% endif %}{% endblock %}
+
+{% block content %}<div id="content-main">
+{% block object-tools %}
+{% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+	<li><a href="history/" class="historylink">Staff Page</a></li>
+	<li><a href="history/" class="historylink">{% trans "History" %}</a></li>
+	{% if has_absolute_url %}
+		<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a></li>
+	{% endif%}
+  </ul>
+{% endif %}{% endif %}
+{% endblock %}
+<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% block form_top %}{% endblock %}
+<div>
+{% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
+{% if save_on_top %}{% submit_row %}{% endif %}
+{% if errors %}
+    <p class="errornote">
+    {% blocktrans count errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+    </p>
+    <ul class="errorlist">{% for error in adminform.form.non_field_errors %}<li>{{ error }}</li>{% endfor %}</ul>
+{% endif %}
+
+{% for fieldset in adminform %}
+	{% ifequal forloop.counter 1 %}
+		<fieldset class="module aligned {{ fieldset.classes }}">
+		  {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+		  {% for line in fieldset %}
+		      <div class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} ">
+		      {{ line.errors }}
+		      {% for field in line %}
+		      <div{% if not line.fields|length_is:"1" %} class="field-box"{% endif %}>
+		          {% if field.is_checkbox %}
+		              {{ field.field }}{{ field.label_tag }}
+		          {% else %}
+		              {{ field.label_tag }}{{ field.field }}
+		          {% endif %}
+		          {% if field.field.field.help_text %}<p class="help">{{ field.field.field.help_text|safe }}</p>{% endif %}
+		      </div>
+		      {% endfor %}
+		      </div>
+		  {% endfor %}
+		</fieldset>
+	{% endifequal %}
+	
+		
+	{% ifequal forloop.counter 2 %}
+		<fieldset class="module aligned {{ fieldset.classes }}">
+			{% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+			{% for line in fieldset %}
+				<div class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} ">
+				{{ line.errors }}
+				{% for field in line %}
+					<div{% if not line.fields|length_is:"1" %} class="field-box"{% endif %}>
+						{{ field.field }}
+					</div>
+					
+					<div id="photo_selected_title">
+						<div class="pttitle">All Photos</div><div class="pttitle">Selected</div><div class="clear"></div>
+						<div class="pt1">ID</div><div class="pt2">NAME</div><div class="pt3">IMAGE</div><div class="pt4">TAGS</div>
+						<div class="pt1">ID</div><div class="pt2">NAME</div><div class="pt3">IMAGE</div><div class="pt5">TAGS</div>
+					</div>
+					<div class="clear"></div>
+					
+					<div id="photo_unselected">
+						
+					</div>
+					<div id="photo_select_buttons">
+						<div id="photo_select_add"></div>
+						<div id="photo_select_remove"></div>
+					</div>
+					<div id="photo_selected">
+					</div>
+					<div class="clear"></div>
+
+					<div class="photosearchbox">
+						<div class="photosearchboxinput"><input id="photosearchboxinput1"></input></div>
+						<div class="photosearchboxclear"></div>
+						<div class='clear'></div>
+					</div>
+				{% endfor %}
+				</div>
+			{% endfor %}
+		</fieldset>
+	{% endifequal %}
+{% endfor %}
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('#id_photo').css({'display':'none'});
+		var allids = new Array();
+		var allnames = new Array();
+		var allurls = new Array();
+		var alltags = new Array();
+		var allorigs = new Array();
+		var allcaptions = new Array();
+		
+		{% for photo in adminform.form.photo.field.queryset %}
+		allids[{{ forloop.counter0 }}] = '{{ photo.id }}';
+		allnames[{{ forloop.counter0 }}] = '{{ photo }}';
+		allurls[{{ forloop.counter0 }}] = '{{ photo.get_fingernail_url }}';
+		alltags[{{ forloop.counter0 }}] = '{{ photo.tags }}';
+		orig = '{{ photo.image }}'
+		allorigs[{{ forloop.counter0 }}] = orig.split('/').pop();
+		allcaptions[{{ forloop.counter0 }}] = '{{ photo.caption|escapejs }}';
+		{% endfor %}
+		
+		pwtUpdate(allids,allnames,allurls,alltags,allorigs,allcaptions);
+	});
+	
+</script>
+
+
+{% for inline_admin_formset in inline_admin_formsets %}
+    {% include inline_admin_formset.opts.template %}
+{% endfor %}
+
+{% block after_related_objects %}{% endblock %}
+
+{% submit_row %}
+
+{% if adminform and add %}
+   <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script>
+{% endif %}
+
+{# JavaScript for prepopulated fields #}
+{% prepopulated_fields_js %}
+
+</div>
+</form></div>
+{% endblock %}

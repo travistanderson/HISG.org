@@ -1,0 +1,95 @@
+{# templates/base.html #}
+{% load i18n %}
+{% load chunks %}
+{% load locvals %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>HISG : {% block pagetitle %}{% endblock %}</title>
+        <!--[if IE]><style>
+            div {zoom: 1; /* trigger hasLayout */}
+        </style><![endif]-->
+		<link rel="icon" type="image/png" href="/site_media/images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="/site_media/css/global.css">
+		<link rel="stylesheet" type="text/css" href="/site_media/css/logquicksearch.css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
+		<script type="text/javascript">
+			var sfp_config = new Array();
+			sfp_config['pathtosfp'] = '{% pathtosfp %}';   	// custom template tag:gets setting from local_settings and passes it on the js at sfp
+			sfp_config['sitepubkey'] = '{% siteserver %}';
+			sfp_config['next'] = '{% if next %}{{ next }}{% else %}{{ request.path }}{% endif %}';
+			sfp_config['screenname'] = '{{ request.user.username }}';
+			sfp_config['uid'] = '{{ request.user.last_name }}';
+			sfp_config['sid'] = '{{ request.session.thesid }}';
+			sfp_config['profileurl'] = '{{ profileurl }}';
+			function nativelogincomplete(next,profileurl){
+				if(profileurl != ''){
+					window.location.replace(String(next) + '?profileurl=' + String(profileurl));
+				}else{
+					window.location.replace(next);
+				}
+			}
+		</script>
+		<script type="text/javascript" src="{% sfpjs %}"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			<!--
+			showsecond({% block arrive %}0{% endblock arrive %},{% block subarrive %}0{% endblock subarrive %});
+			hoversecond();
+			quickpick();
+			tininav();
+			//-->// Stuff to do as soon as the DOM is ready;
+		});
+		</script>
+		<style type="text/css">
+			div#sfp_StarfishLoginWidget{float:right;margin:10px 100px 0px 0px;}
+		</style>
+        {% block extra_head %}{% endblock %}
+
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-20976218-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+    </head>
+	<body id="{% block bodyholder %}{% endblock %}" {% block body_load %}{% endblock %}>
+		<div id="doc-wrapper">{# start of doc-wrapper #}
+			<div id="doc">{# start of doc #}
+				<div id="hd">{# start of hd #}
+					{% block hd %}{% endblock %}
+				</div>{# end of the hd #}
+				<div id="bd">{# start of body #}
+					
+					{% block impacter %}{% endblock %}{# for homepage only #}
+					
+					{% include "nav.html" %}
+					
+					{# {% block brick %}{% endblock brick %}{# start and end of left-column #}
+					
+					{% block basebody %}
+						
+					{% endblock %}
+					
+					
+					<div id="ft">{# start of footer #}
+						<div class="legal">
+							<a href="{% url search %}">SEARCH</a> | <a href="/info/first-time-here/">FIRST TIME HERE</a> | <a href="{% url faqs %}">FAQS</a>
+							| <a href="{% url sitemap %}">SITE MAP</a> | &copy; 2001-2011 HISG<br>
+							Humanitarian International Services Group &nbsp;| &nbsp;870 Commercial Lane, Palmer Lake, CO 80133 Phone:(303) 662-0845 &nbsp;| &nbsp;HISG is a non-profit 501(c)3 tax exempt organization
+						</div>{# end of legal #}
+					</div>{# end of the ft #}
+				</div>{# end of body #}				
+			</div>{# end of doc #}
+		</div>{# end of doc-wrapper #}
+	</body>
+	
+</html>

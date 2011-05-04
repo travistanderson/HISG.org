@@ -1,0 +1,23 @@
+{# template/misc/faqs.html #}
+{% extends "misc/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}FAQ's{% endblock %}
+
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+
+{% block body %}
+	<h2 style="text-align:center;">
+		Frequently Asked Questions
+	</h2><hr/>
+	{% for question in faqs_list %}
+		<a href="{% url faqs_detail question.id %}">
+			<div style="border:1px solid #d9bc65;padding:10px;margin:0 0 30px 0;">
+				<h3>{{ question.question|safe }}</h3>
+				 {{ question.answer|safe|truncatewords:30 }}
+			</div>
+		</a>
+	{% endfor %}
+
+{% endblock %}

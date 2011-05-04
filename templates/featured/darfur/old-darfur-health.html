@@ -1,0 +1,51 @@
+{# templates/featured/darfur-health.html #}
+{# darfur Health Education #}
+
+{% extends 'featured/darfur/base.html' %}
+{% block subarrive %}4{% endblock subarrive %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+	<h2>Public Health Education</h2>
+
+	<p>
+		This project is to establish and train teams of volunteers from a local university that can 
+		conduct HIV/AIDS Awareness workshops in the city of Nyala. The volunteers will receive 
+		training, curriculum support, and teaching aids from HIV/AIDS experts and then train local 
+		communities in HIV/AIDS prevention and awareness.
+	</p><br/>
+
+	<p class="bold">Some alarming statistics:</p><br/>
+        
+	    <ul style="padding:0 0 0 30px;">
+			<li>68% of AIDS cases worldwide are in sub-Saharan Africa</li>
+		    <li>76% of all AIDS deaths in 2007 occurred in sub-Saharan Africa</li>
+		    <li>30,000 Sudanese children and 320,000 adults are already infected with AIDS</li>
+		</ul> 
+	<div>
+		<img src="/site_media/images/sections/featured/darfur/health1.jpg" style="padding:20px 0 10px 150px;">
+		</img>
+ 		<p style="padding:0px 0 10px 150px;">A family in Nyala</p>
+	</div>
+	<p>
+		Research from 2006 indicates that there is virtually no precautionary education among the 
+		most at-risk populations of Sudan. Scientifically acurate, culturally appropriate, proactive 
+		education is widely recognized as the most effective way to stop the spread of the AIDS virus. 
+		It is critical that we take steps to ensure that refugees and IDPs -particularly children and 
+		young adults- have access to the knowledge and precautions essential for the prevention of HIV. 
+		This is especially critical to slow the spread of AIDS in local communities impacted by the 
+		influx of IDPs.
+	</p><br/>
+
+	<p>
+		HISG will be partnering with several other organizations in the area, along with UN agencies 
+		that specialize in HIV/AIDS to provide instructional materials, AIDS prevention expertise, and 
+		project effectiveness oversight. Please consider partnering with HISG on this project that 
+		provides hope for a suffering population. To donate, please 
+		<a href="{% url donation %}">click here</a>.
+	</p><br/>
+
+{% endblock body %}

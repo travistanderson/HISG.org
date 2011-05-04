@@ -1,0 +1,44 @@
+{% load chunks %}
+
+<div id="searchdiv">
+	<form action="{% url search %}" method="GET" id="sitesearchform">
+		{# <label for="searchinput">SEARCH</label> #}
+		<input type="text" id="q" name="q" value="{{ query|escape }}">
+		<input type="image" src="/site_media/images/magnifier_small.png" alt="search" id="magnifier">
+		<input style="visibility:hidden;" type="checkbox" name="all" value="all" checked="checked" id="searchall">
+	</form>
+</div>{# end of searchdiv #}
+
+
+<div id="quickdiv">
+	<ul class="quickpick">
+		{% chunk "quickpicks" %}
+	</ul>{# end of quickpick #}
+</div>{# end of quickdiv #}
+
+<div class='inner_userdiv' id="sfp_StarfishLoginWidget" style="margin:-1px 30px 0 0;">Login Button</div>
+{# <div id="loginblock"> #}
+{# 	{% if user.is_authenticated %} #}
+{# 		<a href="{% url logout %}">Logout</a> #}
+{# 	{% else %} #}
+{# 		<a href="{% url login %}">Login</a>/ #}
+{# 		<a href="{% url signup %}">Sign Up</a> #}
+{# 	{% endif %} #}
+{# </div> #}
+{# end of loginblock #}
+
+
+{# {% if user.is_authenticated %} #}
+{# 	<div id="usernameblock"> #}
+{# 		<a href="{% url profile user.id %}">{{ user }}</a> #}
+	{# </div> #}
+	{# end of loginblock #}
+{# {% endif %} #}
+{#  #}
+{#  #}
+{# {% if user.is_staff %} #}
+{# 	<div id="loginadmin"> #}
+{# 		<a href="/admin/">Admin</a> #}
+	{# </div> #}
+	{# end of loginadmin #}
+{# {% endif %} #}

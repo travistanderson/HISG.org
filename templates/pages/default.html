@@ -1,0 +1,30 @@
+<!-- template/pages/default.html -->
+{% extends "basesecond.html" %}
+
+{% load i18n %}
+{% block labelpic %}{{ labelpic }}{% endblock labelpic %}
+{% block pagetitle %}{{ pager.title }}{% endblock %}
+{% block arrive %}{{ pager.section }}{% endblock arrive %}
+{% block subarrive %}{{ pager.subarrive }}{% endblock subarrive %}
+
+{% block head_title %}{% trans "About" %}{% endblock %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block tininav %}
+	{% if pager.hasnav %}
+		<div class="tininav">
+			<ul>
+				{{ pager.tininav.content|safe }}
+			</ul>
+		</div>
+		<div class="clearer"></div>
+	{% endif %}
+{% endblock tininav %}
+
+
+{% block body %}
+	{{ pager.content }} {# this is already escaped safe #}
+{% endblock %}

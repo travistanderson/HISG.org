@@ -1,0 +1,51 @@
+<!-- templates/about/intern-become.html -->
+{% extends "about/base.html" %}
+{% block subarrive %}6{% endblock subarrive %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+<h2 class="center">Becoming an HISG Intern</h2><hr/>
+
+<img src="/site_media/images/sections/about/become_interns.jpg" class="gold5">
+</img>
+
+{# <form action="" method="POST"> #}
+{# 	{{ form }} #}
+{# 	<!-- {{ form.name }}{{ form.name.errors }}<br/> #}
+{# 	{{ form.email.label }}<br/> #}
+{# 	{{ form.email }}{{ form.email.errors }}<br/> #}
+{# 	{{ form.subject.label }}<br/> #}
+{# 	{{ form.subject }}{{ form.subject.errors }}<br/> #}
+{# 	{{ form.content.label }}<br/> #}
+{# 	{{ form.content }}{{ form.content.errors }}<br/><br/> --> #}
+{# 	<p><input type="submit" value="Send &rarr;"></p> #}
+{# </form> #}
+<form action="." method="POST">
+	<table>
+		{% for f in form %}
+			<tr>
+				<td>
+				</td>
+				<td>
+					<span class="formerror">{{ f.errors }}</span>
+				</td> 
+			</tr>
+			<tr>
+				<td>
+					{{ f.label }}
+				</td>
+				<td>
+					{{ f }}
+				</td> 
+			</tr>
+		{% endfor %}
+	</table>
+	<input type="submit" name="submit" value="Accept &amp; Send">
+</form>
+
+
+
+{% endblock body %}

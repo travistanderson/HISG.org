@@ -1,0 +1,75 @@
+{# templates/training-models/training_d.html #}
+{% extends 'training-models/base.html' %}
+{% block subarrive %}1{% endblock subarrive %}
+{% block extra_head %}
+	<script src="http://maps.google.com/maps?file=api&v=2&key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		var map;
+		var geoXml;
+
+		function initialize() {
+			if (GBrowserIsCompatible()) {
+				map = new GMap2(document.getElementById("map_canvas"));
+				map.setMapType(G_HYBRID_MAP);
+				// map.setUIToDefault();
+				map.setCenter(new GLatLng({% if event.latitude %}{{ event.latitude }}{% else %}0{% endif %}, {% if event.longitude %}{{ event.longitude }}{% else %}0{% endif %}), 6);
+				map.addControl(new GLargeMapControl());
+				map.openInfoWindow(map.getCenter(),document.createTextNode("{{ event.location }}"));
+		   }
+		}
+	</script>
+{% endblock %}
+
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+{% block body_load %} onload="initialize()" onunload="GUnload()"{% endblock %}
+
+{% block body %}
+
+	<h2>{{ event }}</h2>
+	
+	<div style="padding:0 0 0 100px;float:right;">
+		{% include 'projects-news/includes/sharethiscode.html' %}
+	</div><div class="clearer"></div>
+	
+	<hr/><br/>
+
+	{% if event.button %}
+		<div class="right">
+			<a href="{% url training_su event.id %}" class="buttoner">Register</a>
+		</div>
+	{% endif %}
+
+	<h3>
+		<div class="left" style="width:120px;">Subject:</div>
+		<div class="left">{{ event.subject }}</div>
+	</h3><div class="clearer"></div><br/>
+	
+	<h3>
+		<div class="left" style="width:120px;">Contact:</div>
+		<div class="left"><a href="{% url contactperson event.contact.id event.id %}">{{ event.contact }}</a></div>
+	</h3><div class="clearer"></div><br/>
+
+	<h3>
+		<div class="left" style="width:120px;">Dates:</div>
+		<div class="left">{{ event.start_date|date:"M. d" }} - {{ event.end_date|date:"M. d, Y" }}</div>
+	</h3><div class="clearer"></div><br/>
+
+	<h3>Description:</h3>
+	<p>
+		{{ event.description|safe }}
+	</p><br /><br />
+	
+	<h3>Map:</h3>
+	<div id="map_canvas" style="width: 640px; height: 450px"></div><br/><br/>
+	
+	<div>
+		<a href="{% url training %}">Back to Events</a>
+	</div>
+	
+{% endblock %}
+
+
+
+
+

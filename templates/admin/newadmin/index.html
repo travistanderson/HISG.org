@@ -1,0 +1,88 @@
+{# templates/admin/newadmin/index.html #}
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block extrahead %}
+	<style type="text/css" media="screen">
+		.colM{padding:0;margin:0;height:0;width:0;}
+	</style>
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block body %}
+	<div class="newadmin-home">
+		<div id="newadmin-left">
+			<h2>Site Info</h2>
+			<div class="inleft">
+				<h3><a href='/admin/projectsmodels/project/'>Projects</a></h3>
+				total -{{ projects }}<br/>
+				hist -{{ projectshist }}<br/>
+				idr -{{ projectsidr }}<br/>
+				<br/><br/>
+				<h3>News</h3>
+				{{ news }}<br/><br/>
+				<h3>Photos</h3>
+				galleries -{{ galleries }}<br/>
+				photos -{{ photos }}<br/>
+				<br/><br/>
+				<h3>Videos</h3>
+				{{ videos }}<br/>
+				<br/><br/>
+			</div>
+			<div class="inleft">
+				<h3><a href='/admin/hub/hub/'>Hubs</a></h3>
+				{{ hubcount }} Total Hubs <br/><br/>
+				recent hubs <br/>
+				<ul>
+					{% for hub in hubs %}
+						<li><a href='/admin/hub/hub/{{ hub.id }}/'>{{ hub.name }}</a></li>
+					{% endfor %}
+				</ul><br/>
+				
+				<h3>Users</h3>
+				admins -{{ admins }}<br/>
+				users -{{ users }}<br/>
+				<br/><br/>
+				<h3>Training Events</h3>
+				events -{{ trainings }}<br/>
+				events future -{{ trainingsf }}<br/>
+				events past -{{ trainingsp }}
+				<br/><br/>
+			</div>
+		</div>
+		
+		<div id="newadmin-right">
+			<h2>Homepage Info</h2>
+			
+			<h3>Current Impacters</h3>
+			{% for im in impacters %}
+				<div>
+				<img src="{{ im.photo.get_thumbnail_url }}" class="left" alt="impacter photo {{ forloop.counter }}" style="padding:0 20px 0 0;"></img>
+				<h4>{{ im.order }}: {{ im }}</h4>
+				{{ im.body|truncatewords:10 }}
+				</div><div class="clearer"></div>
+			{% endfor %}<br/><br/>
+			
+			<h3>Inactive Impacters</h3>
+			{% for im in impactersother %}
+				{{ im.order }}: {{ im }}<br/>
+			{% endfor %}<br/><br/>
+			
+			<h3>Current Phrases</h3>
+			{% for ph in phrases %}
+				<div>
+				<h4>{{ ph.order }}: {{ ph }}</h4>
+				</div><div class="clearer"></div>
+			{% endfor %}<br/><br/>
+			
+			<h3>Inactive Phrases</h3>
+			{% for ph in phrasesother %}
+				<div>
+				<h4>{{ ph.order }}: {{ ph }}</h4>
+				</div><div class="clearer"></div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+

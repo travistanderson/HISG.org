@@ -1,0 +1,108 @@
+{# templates/tiq_login/signup.html #}
+{% extends 'tiq_login/base.html' %}
+
+
+{% block page_scripts %}
+	<script type="text/javascript">
+	    $(document).ready(function() {$('#id_fullname').focus()});
+	</script>
+{% endblock page_scripts%}
+
+{% block page_title %}Login{% endblock page_title %}
+
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		#right-colomn{width:965px;float:none;}
+	</style>
+{% endblock extra_head %}
+
+{% block body %}
+	{% if user.is_authenticated %}
+		<h3>Already Logged In</h3>
+		<p>You are already logged in as <span><h4>{{ user }}</h4></span>. If you need to create a new account please <a href="{% url logout %}">logout</a> and create the new account. If you are have questions about your current account, you can <a href="{% url contact %}">contact us</a>.</p>
+		
+	{% else %}
+		<p>
+			If you have a DFS username and password or a user account at <a href="http://starfishcommunity.net" target="_blank">StarfishCommunity.net</a> or <a href="http://idrn.info" target="_blank">IDRN.info</a> please <a href="{% url login %}">login here</a> with that information.<br/>
+			<span style="font-weight:bold;">Please remember your username and password for future use</span>. You will need these to update your personal info, upload pictures and sign up for future events.
+		</p><br/><br/>
+		<div id="signup-help">
+			{% if errormessage %}
+				<div class="errorlist">{{ errormessage }}</div>
+			{% endif %}
+			<h3>Create a new account</h3>
+			<form action='' method="POST">
+				<table>
+					<tr>
+						<td id="suh-left"><label for="username">Username:</label></td>
+						<td id="suh-right">
+							{% if form.username.errors %}{{ form.username.errors }}<br/>{% endif %}
+							<input type="text" name="username" id="id_username"/><br/>
+						</td>
+					</tr>
+					<tr><td></td><td><span class="small">Use to log in &nbsp;&nbsp;&nbsp;ex: jsmith77</span><br/><br/></td></tr>
+				
+					<tr>
+						<td><label for="fullname">First and Last Name:</label></td>
+						<td>
+							{% if form.fullname.errors %}{{ form.fullname.errors }}<br/>{% endif %}
+							<input type="text" name="fullname" id="id_fullname"/>
+						</td>
+					</tr>
+					<tr><td></td><td><span class="small">Screen Name &nbsp;&nbsp;ex: John Smith</span><br/><br/></td></tr>
+				
+					<tr>
+						<td><label for="email">Email:</label></td>
+						<td>
+							{% if form.email.errors %}{{ form.email.errors }}<br/>{% endif %}
+							<input type="text" name="email" id="id_email" />
+						</td>
+					</tr>
+					<tr><td></td><td><span class="small">We won't spam you!</span><br/><br/></td></tr>
+				
+					<tr>
+						<td><label for="password">Password:</label></td>
+						<td>
+							{% if form.password.errors %}{{ form.password.errors }}<br/>{% endif %}
+							<input type="password" name="password" id="id_password"/>
+						</td>
+					</tr>
+					<tr><td></td><td><span class="small">Create a password.</span><br/><br/></td></tr>
+					<tr>
+						<td></td><td><button type="submit">Sign Up*</button></td>
+					</tr>
+				</table>
+			</form><br/><br/>
+
+			<span>
+				*By submitting this form, you acknowledge that you have read and will abide by the Terms of Service and Privacy Policy of this site.
+			</span>
+		</div>{# end of #signup-help #}
+
+		<div id="signup">
+			<h3>What do I need to get started?</h3>
+		
+			<ul>
+				<li>
+					<span class="bold">Username</span> - You'll use this to log in. Letters and numbers only, please.
+				</li><br/>
+				<li>
+					<span class="bold">First and Last Name</span> - Please enter your first and last name for use in making your training badge.{# Because this is a community site rooted in real-world relationships, we encourage you to use your real first and last name. The name you enter here will be used to produce your training badge. #}
+				</li><br/>
+				<li>
+					<span class="bold">Email</span> - Your email address is required to validate your account. We'll also use it to send any updates you subscribe to. We won't display your email address on the site unless you tell us to make it available to particular users and groups that you trust.
+				</li><br/>
+				<li>
+					<span class="bold">Password</span> - Create a password for your account. Please create a strong password that uses letters and numbers and is not easily guessed. Avoid names and dates and words found in the dictionary.
+				</li>
+			</ul>
+		</div>{# end of signup #}
+
+		<div class="clearer"></div><br/><br/>
+		{% if errormessage2 %}
+			<div style="border:4px solid red;color:red;padding:15px;margin:10px 0 0 0;font-size:14px;">
+				{{ errormessage2|safe }}
+			</div>
+		{% endif %}
+	{% endif %}
+{% endblock body %}

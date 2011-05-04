@@ -1,0 +1,31 @@
+{# templates/featured/darfur-sna.html #}
+{# darfur Academic Special Needs Assistance #}
+
+{% extends 'featured/darfur/base.html' %}
+{% block subarrive %}4{% endblock subarrive %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+	<h2>Academic Special Needs Assistance</h2>
+	<div class="right">
+		<img src="/site_media/images/sections/featured/darfur/sna.jpg" style="padding:0 0 10px 20px;">
+		</img>
+ 		<p style="padding:0 0 0 20px;">HISG Sudan Director Susan Copenhaver
+		with the girl <br/> who needs the hearing aid</p>
+	</div>
+	<p>
+		HISG's mission is to help communities become more self-sufficient and less reliant on 
+		outside aid, but HISG also recognizes individual needs and we try to meet those needs 
+		when it is possible to do so. A family in Nyala has approached HISG staff requesting a 
+		hearing aid for their daughter. This girl is 17 years old, has graduated high school and 
+		has earned an academic scholarship to a university, but suffers from deteriorating hearing 
+		loss. The university will not let her enroll until she gets a hearing aid. This family is 
+		very poor, and with three other children, cannot afford this device. HISG is trying to raise 
+		$2,000 to buy a hearing aid for the girl so that she can pursue her dream of higher education. 
+		If you would like to help this family, please <a href="{% url donation %}">click here</a> 
+		to donate.
+	</p>
+{% endblock body %}

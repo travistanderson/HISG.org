@@ -1,0 +1,47 @@
+<!-- templates/about/directors.html -->
+{% extends "about/base.html" %}
+
+{% block subarrive %}2{% endblock subarrive %}
+{% block head_title %}Directors{% endblock %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+
+{% block body %}
+	<h2 class="center">Directors</h2><hr/>
+	
+	{% for director in director_list %}
+		<div class="director">
+			{% for photo in director.photo.all %}
+				{% ifequal forloop.counter 1 %}
+					<a href="{% url directors_detail director.id %}">
+						<img class="gold5" style="float:right;" src="{{ photo.get_medium_unbound_url }}" />
+					</a>
+				{% endifequal %}
+			{% endfor %}
+
+			<a href="{% url directors_detail director.id %}">
+				<h3 style="padding:0 0 0px 0;">{{ director }}</h3>
+			</a>
+			<h4>
+				{{ director.title }}
+			</h4>
+			<p>
+				{{ director.bio|safe|truncatewords:50 }}<a href='{% url directors_detail director.id %}'> read more</a>
+			</p><br/>
+			<div class="clearer"></div>
+			<div class="left" style="width:200px;">
+				<h4><a href="{% url contactperson director.id "about" %}">Email {{ director.firstname }}</a></h4>
+			</div>
+			<div class="left" style="width:200px;">
+				
+			</div>
+			<div class="clearer"></div>
+		</div>
+	{% endfor %}
+
+
+{% endblock %}
+

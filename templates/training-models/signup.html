@@ -1,0 +1,51 @@
+{# templates/training-models/signup.html #}
+{% extends 'training-models/base.html' %}
+{% block subarrive %}1{% endblock subarrive %}
+
+
+
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+
+{% block body %}
+
+	{# <span class="right"> #}
+	{# 	{% if user %}<a href="{% url profile user.id %}">{{ user }}</a> | <a href="{% url logout %}">Logout</a>{% endif %} #}
+	{# </span><br/><br/> #}
+	<div id="signup2">
+		<h3>Sign Up to attend the {{ event }} training event.</h3>
+		<form action='' method="POST">
+			<table>
+				<tr><td class="first_col"></td><td class="second_col"><div class="required_circ_h">&#8855; Required Fields</div></td></tr>
+				{% for field in form %}
+					<tr><td class="first_col"></td><td class="second_col">{{ field.errors }}</td></tr>
+					<tr>
+						<td class="first_col">
+							{{ field.label }}
+						</td>
+						<td class="second_col">
+							{% if field.field.required %} <div class="required_circ"> &#8855;</div>{% endif %}{{ field }}
+							<div class="help_text">{{ field.help_text }}</div>
+						</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td class="first_col"></td><td class="second_col"></td>
+				</tr>
+				<tr>
+					<td class="first_col"></td><td class="second_col"><button type="submit">Submit</button></td>
+				</tr>
+				{% if stats.showsize %}
+					{% if stats.full %}
+					<tr><td></td><td></td></tr>
+					<tr><td colspan="2">The registration for this event is full. If you complete the sign up now, you will be placed on the wait list and contacted should space become available.</td></tr>
+					{% else %}
+					<tr><td></td><td></td></tr>
+					<tr><td colspan="2">{{ stats.cursize }} people have signed up for {{ stats.maxsize }} available spots in this event.</td></tr>	
+					{% endif %}
+				{% endif %}
+			</table>
+		</form><br/><br/>
+	</div>
+{% endblock %}
+
+

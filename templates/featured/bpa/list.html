@@ -1,0 +1,37 @@
+<!-- templates/featured/list.html -->
+{% extends "featured/bpa/base.html" %}
+{% block head_title %}Business Partners in Action{% endblock %}
+{% load pagination_tags %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+
+{% block body %}
+
+	{{ block.super }}
+
+	{% if opp_list %}
+		{% autopaginate opp_list 7 %}
+		{% for opp in opp_list %}
+			<div>
+				<img src="{{ opp.photo.get_thumbnail_url }}" class="left gold5" alt="{{ opp.photo.caption }}" style='margin:0 15px 15px 0;'></img>
+				<div class='right' style='width:150px;color:#ae5219;'>Created {{ opp.created|date:"F Y" }}</div>
+				<h4><a href="{% url bpadetail opp.id %}">{{ opp.name }}</a></h4>
+				<div>{{ opp.description|safe|truncatewords:30 }}</div>
+				{% if opp.funding %}
+					<div class='right' style='width:150px;color:#ae5219;font-size:10px;font-weight:bold;'>$ {{ opp.funding }}</div>
+				{% endif %}
+			</div>
+			<div class='clearer'></div>
+			<br/>
+		{% endfor %}
+		{% paginate %}
+	{% else %}
+		No Opportunities Listed.
+	{% endif %}
+
+
+{% endblock %}
+

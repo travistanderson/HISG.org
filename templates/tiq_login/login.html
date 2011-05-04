@@ -1,0 +1,68 @@
+{# templates/tiq_login/login.html #}
+{% extends 'tiq_login/base.html' %}
+
+{% block page_title %}Login{% endblock page_title %}
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		#right-colomn{width:965px;float:none;}
+	</style>
+{% endblock extra_head %}
+
+{% block body %}
+	{% if user.is_authenticated %}
+		<h3>Already Logged In</h3>
+		<p>
+			You are already logged in as <span style="font-weight:bold;font-size:16px;">{{ user }}</span>.<br/><br/> If you need to create a new account, please <a href="{% url logout %}">logout</a> and create the new account. If you have questions about your current account, you can <a href="{% url contact %}">contact us</a>.
+		</p>
+	
+	{% else %}
+		<div id="signup-help">
+			<h3>Sign Up</h3>
+			<span>
+				You must log in to access that content.
+			</span><br/><br/><br/>
+			<p>
+				If you do not have an account, please join HISG.org. With an account you will be able to register for training events, 
+				post comments and receive our newsletter "The Pulse Report".
+				<br/><br/><br/><a href="/user/signup" class="buttoner">sign up here.</a>
+			</p>
+		</div>{# end of signup-help #}
+
+		<div id="signup">
+			<h3>Log In</h3>
+			<form action="{{ app_path }}" method="post" id="login-form">
+				<table>
+					<tr>
+						<td></td>
+						<td>{% if form.errors %}<p>Your username and password didn't match. Please try again.</p>{% endif %}</td>
+					</tr>
+					<tr>
+						<td><label for="id_username">Username:</label></td>
+						<td><input type="text" name="username" id="id_username" /></td>
+					</tr>
+					<tr>
+						<td><label for="id_password">Password:</label></td>
+						<td><input type="password" name="password" id="id_password"/><input type="hidden" name="this_is_the_login_form" value="1" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="hidden" name="next" value="{{ next }}" />
+							<label>&nbsp;</label>
+							<input type="submit" value="Log in" />
+						</td>
+					</tr>
+				</table>
+			</form><br/><br/>
+			<p>
+				If you have an account at StarfishCommunity.net or IDRN.info, please use that info to login here.
+			</p>
+		</div>{# end of signup #}
+
+
+
+		<script type="text/javascript">
+			document.getElementById('id_username').focus()
+		</script>
+	{% endif %}
+{% endblock body %}

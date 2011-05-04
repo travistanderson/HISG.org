@@ -1,0 +1,59 @@
+<!-- templates/featured/detail.html -->
+{% extends "featured/bpa/base.html" %}
+{% block head_title %}Business Partners in Action{% endblock %}
+
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+
+{% block body %}
+
+	{{ block.super }}
+
+	
+	<div style='float:left;width:200px;background:#def;padding:10px;margin:0 20px 0 0;min-height:750px;'>
+		<h4>Map</h4>
+		{% if opp.zoom %}
+			
+		{% endif %}
+		<br/>
+		
+		<h4>Location</h4>
+			{{ opp.region }} <br/>
+			{{ opp.country }}
+		
+		<br/>
+		<h4>Sector</h4>
+		Sector <br/>
+		
+		<h4>Sub-Sector</h4>
+		Sub-Sector <br/>
+		
+		<h4>Funding</h4>
+		{% if opp.funding %}
+			$ {{ opp.funding }}
+		{% else %}
+			Not Listed
+		{% endif %}
+		
+		
+	</div>{# end of left coloumn #}
+	
+	<div style='float:left;width:400px;margin'>
+		<h2>{{ opp.name }}</h2><br/>
+	
+		<p>
+			<div class='right' style='margin:0 0 20px 20px;width:330px;'>
+				<img src="{{ opp.photo.get_ppsingle_url }}" class="gold5" alt="{{ opp.photo.caption }}" style='margin:0 0 5px 0px;'></img>
+				<span class='caption'>{{ opp.photo.caption }}</span>
+			</div>
+			{{ opp.description|safe }}
+		</p>
+	</div>{# end of right coloumn #}
+	
+
+
+{% endblock %}
+

@@ -1,0 +1,150 @@
+{# templates/projects-news/index.html #}
+{% extends 'projects-news/base.html' %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+<div class="twoway">
+	<div class="fourway">{# start of fourway for HIST Projects #}
+		<h2>
+			<a href="{% url project %}">HIST Projects</a>
+		</h2>
+		{% for project in hist_list %}
+			<div class="rower">
+				{% for photo in project.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div class="right">
+							<a href="{% url project_detail project.id %}">
+								<img class="gold5x" style="margin:0 0 0 4px;" src="{{ photo.get_news_size_url }}"></img>
+							</a>
+						</div>
+					{% endifequal %}
+				{% endfor %}
+				<a href="{% url project_detail project.id %}">
+					<h4>{{ project.name }}</h4>
+				</a>
+
+				{{ project.description|safe|truncatewords:16 }}
+				<div class="clearer"></div>
+				<span class="left">
+					{% for country in project.country.all %}
+						{{ country }},
+					{% endfor %}
+				</span>
+				<span class="right">
+					{{ project.year|date:"Y" }}
+				</span>
+			</div>
+		{% endfor %}
+	</div>{# end of fourway for HIST Projects #}
+	<div class="fourway">
+		<h2>
+			<a href="{% url news %}">News</a>
+		</h2>{# <hr /> #}
+		{% for news in news_list %}
+			<div class="rower">
+				{% for photo in news.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div class="right">
+							<a href="{% url news_detail news.id %}">
+								<img class="gold5x" style="margin:0 0 0 3px;" src="{{ photo.get_news_size_url }}"></img>
+							</a>
+						</div>
+					{% endifequal %}
+				{% endfor %}
+				<a href="{% url news_detail news.id %}">
+					<h4>{{ news.name }}</h4>
+				</a>
+				{{ news.story|safe|truncatewords:16 }}
+				<div class="clearer"></div>
+				<span class="left"> 
+					{{ news.date|date:"M d, Y" }}
+				</span>
+				<span class="right">
+					{% for country in news.country.all %}
+						{{ country }},
+					{% endfor %}
+				</span>
+			</div>{# end of rower #}
+			<div class="clearer"></div>
+		{% endfor %}
+	</div>{# end of fourway NEWS #}
+</div>
+<div class="clearer"></div>
+
+<div class="twoway">
+	<div class="fourway">{# start of fourway for IDR Projects #}
+		<h2>
+			<a href="{% url idrproject %}">IDR Projects</a>
+		</h2>
+		{% for project in idr_list %}
+			<div class="rower">
+				{% for photo in project.photo.all %}
+					{% ifequal forloop.counter 1 %}
+						<div class="right">
+							<a href="{% url idrproject_detail project.id %}">
+								<img class="gold5x" style="margin:0 0 0 4px;" src="{{ photo.get_news_size_url }}"></img>
+							</a>
+						</div>
+					{% endifequal %}
+				{% endfor %}
+				<a href="{% url idrproject_detail project.id %}">
+					<h4>{{ project.name }}</h4>
+				</a>
+
+				{{ project.description|safe|truncatewords:16 }}
+				<div class="clearer"></div>
+				<span class="left">
+					{% for country in project.country.all %}
+						{{ country }},
+					{% endfor %}
+				</span>
+				<span class="right">
+					{{ project.year|date:"Y" }}
+				</span>
+			</div>
+		{% endfor %}
+	</div>{# end of fourway for HIST Projects #}
+	
+	<div class="fourway">
+		<h2>
+			<a href="{% url gallery %}">Photos</a>
+		</h2>
+		{% for gallery in gallery_list %}
+			<div class="rower">
+				<span class="right">
+					{{ gallery.date_added|date:"M d, Y" }}
+				</span>
+				<a href="{% url gallery_detail gallery.id %}">
+					<h4>{{ gallery.title }}</h4>
+				</a>
+				<div>
+					{% for photo in gallery.photos.all %}
+						{% ifequal forloop.counter 1 %}
+							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
+						{% endifequal %}
+					{% endfor %}
+					{% for photo in gallery.photos.all %}
+						{% ifequal forloop.counter 2 %}
+							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
+						{% endifequal %}
+					{% endfor %}
+					{% for photo in gallery.photos.all %}
+						{% ifequal forloop.counter 3 %}
+							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
+						{% endifequal %}
+					{% endfor %}
+				</div>
+
+				{{ gallery.description|safe|truncatewords:13 }}
+				<div class="clearer"></div>
+			</div>{# end of rower #}
+		{% endfor %}
+	</div>{# end of fourway Photos #}
+</div>
+
+
+
+{% endblock %}

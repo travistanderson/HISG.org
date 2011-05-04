@@ -1,0 +1,194 @@
+{# templates/training-models/training.html #}
+{% extends 'training-models/base.html' %}
+{% block subarrive %}1{% endblock subarrive %}
+{% block extra_head %}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('.train_desc_bt').toggle(
+				function(){
+					var item = $(this).attr('id');
+					item = item.split("_")[1];
+					$(this).html("Read <br />Less");
+					$(this).css({'background-color':'#b1d9fe','color':'#fff'});
+					$('#trainDescLow_'+item).css({'display':'block'});
+				},
+				function(){
+					var item = $(this).attr('id');
+					item = item.split("_")[1];
+					$(this).html("Read More");
+					$(this).css({'background-color':'','color':''});
+					$('#trainDescLow_'+item).css({'display':'none'});
+				}
+			);
+		});
+	</script>
+{% endblock %}
+
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+
+{% block body %}
+
+
+
+	<h3>Upcoming Community Development and Disaster Response Training Sessions</h3>
+	<p>		
+		HISG staff has been training the Community Development (HIST) and Disaster Response (IDR) models worldwide to organizations whose goal is to see lasting, sustainable community development and be prepared for international disaster response. We continue to add new training dates and locations as they are scheduled.
+	</p><br /><br />
+
+
+	<div class="schedtable">
+		<div class="headerrow">
+			<div class="tb_location">Location</div>
+			<div class="tb_contact">Contact</div>
+			<div class="tb_subject">Subject</div>
+			<div class="tb_date">Date</div>
+			<div class="tb_info">Info</div>
+			<div class="tb_attend">Attend</div>
+		</div>{# end of headerrow #}<div class="clearer"></div>
+		{% for train in training_list %}
+			<div class="normalrow">
+				<div class="tb_location">
+					<a href="{% url training_d train.slug %}">{{ train.location }}</a>
+				</div>
+				<div class="tb_contact">
+					<a href="{% url contactperson train.contact.id train.id %}">
+						{{ train.contact.firstname }} {{ train.contact.lastname }}
+					</a><br/>
+					<span class="train_email">click to email</span>
+				</div>
+				<div class="tb_subject">{{ train.subject }}</div>
+				<div class="tb_date">
+					{% if train.active %}
+						{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}
+					{% else %}
+						To Be Determined
+					{% endif %}
+				</div>
+				<div class="tb_info train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></div>
+				<div class="tb_attend">
+					{% if train.button %}
+						<br/>
+						<a href="{% url training_su train.id %}" class="buttoner">Register</a>
+					{% else %}
+						<a href="{% url training_d train.slug %}">View Map <br/> and Details</a>
+					{% endif %}
+				</div>
+			</div>{# end of normalrow #}<div class="clearer"></div>
+			<div class="train_desc" id="trainDescLow_{{ train.id }}">
+				Description:<br/>{% if train.description %}
+				{{ train.description|safe }}{% else %}Description is on the way for this event.{% endif %}
+			</div>{# end of train_desc #}<div class="clearer"></div>
+		{% endfor %}
+	</div>{# end of schedtable upcoming #}<br/><br/><br/>
+
+	<h3>Request a Training Session</h3>
+
+	<p>
+		If you would like information about receiving training from HISG please <a href="/about-hisg/contact/">contact us</a>
+	</p><br/><br/>
+	
+	<h3>Completed Training Sessions</h3>
+	<p>
+		We are so excited about how many people have received training all around the world. Together we can create lasting change!
+	</p><br /><br />
+	
+	<div class="schedtable">
+		<div class="headerrow">
+			<div class="tb_location">Location</div>
+			<div class="tb_contact">Contact</div>
+			<div class="tb_subject">Subject</div>
+			<div class="tb_date">Date</div>
+			<div class="tb_info">Info</div>
+			<div class="tb_attend">Attend</div>
+		</div>{# end of headerrow #}<div class="clearer"></div>
+		{% for train in past_list %}
+			<div class="normalrow">
+				<div class="tb_location">
+					<a href="{% url training_d train.slug %}">{{ train.location }}</a>
+				</div>
+				<div class="tb_contact">
+					<a href="{% url contactperson train.contact.id train.id %}">
+						{{ train.contact.firstname }} {{ train.contact.lastname }}
+					</a><br/>
+					<span class="train_email">click to email</span>
+				</div>
+				<div class="tb_subject">{{ train.subject }}</div>
+				<div class="tb_date">
+					{% if train.active %}
+						{{ train.start_date|date:"M. d" }} - {{ train.end_date|date:"M. d" }}<br/>{{ train.end_date|date:"Y" }}
+					{% else %}
+						To Be Determined
+					{% endif %}
+				</div>
+				<div class="tb_info train_desc_bt" id="trainDesc_{{ train.id }}"><a href=".">Read More</a></div>
+				<div class="tb_attend">
+					{% if train.button %}
+						<br/>
+						<a href="{% url training_su train.id %}" class="buttoner">Register</a>
+					{% else %}
+						<a href="{% url training_d train.slug %}">View Map <br/> and Details</a>
+					{% endif %}
+				</div>
+			</div>{# end of normalrow #}<div class="clearer"></div>
+			<div class="train_desc" id="trainDescLow_{{ train.id }}">
+				Description:<br/>{% if train.description %}
+				{{ train.description|safe }}{% else %}Description is on the way for this event.{% endif %}
+			</div>{# end of train_desc #}<div class="clearer"></div>
+		{% endfor %}
+	</div>{# end of schedtable past #}<br/><br/><br/>
+	
+	
+	
+	<h3>Partner Training Sites</h3><br/><br/>
+	
+	<div>
+		<img src="/site_media/images/sections/featured/tbm.jpg" class="gold5 right" alt="Texas Baptist Men" style="margin:0 0 0 20px;"></img>
+		<span class="bold">
+			<a href="http://www.texasbaptistmen.org">Texas Baptist Men</a>
+		</span> trains volunteers and coordinates efforts in providing prompt assistance to disaster victims. Texas Baptist Men maintains a fully-equipped mobile disaster relief feeding unit and works to coordinate with the Regional units throughout the state that relate to TBM to provide emergency food services.
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+	
+	<div>
+		<img src="/site_media/images/sections/projects/angel.jpg" class="gold5 right" alt="Angel Alert" style="margin:0 0 0 20px;"></img>
+		<span class="bold">
+			<a href="http://www.angelalertnetwork.com">Angel Alert Network</a>
+		</span> provides security training &amp; risk mitigation for both faith based and humanitarian workers. We equip NGO and FBO personnel, who care for those in great need, to be safe and secure so that they can stay the course in the work that they have set out to accomplish. 
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+	
+	<div>
+		<img src="/site_media/images/sections/projects/pli.jpg" class="gold5 right" alt="Pointman Leadership Institute" style="margin:0 88px 0 20px;"></img>
+		<span class="bold">
+			<a href="http://pliglobal.com/default.html">Pointman Leadership Institute</a>
+		</span> (<span class="italic">PLI</span>) believes real leadership is about character. PLI’s Vision is to transform cultures (organizations, communities, nations) by creating and supporting inspirational, trustworthy leaders. Its Mission is to provide ethics training worldwide in character-based, principled leadership. 
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+
+	<div>
+		<img src="/site_media/images/sections/projects/dbsp.jpg" class="gold5 right" alt="Dynamic Business Start-Up Project" style="margin:0 0 0 20px;"></img>
+		<span class="bold">
+			<a href="http://www.dbsp.co.za/GeneralInformation.html">The Dynamic Business Start-Up Project</a>
+		</span> (<span class="italic">DBSP</span>) is a project by Chris Black to empower locals to start their own businesses with very low startup capital. The DBSP's vision is to train and assist unemployed people to earn their own money, by self employment, thereby getting themselves out of the trap of poverty and providing jobs for others.
+	</div>
+	<div class="clearer"></div>
+	<br/><br/>
+	
+	{# <div> #}
+	{# 		<img src="/site_media/images/sections/projects/mikea.jpg" class="gold5 right" alt="Mike Aleckson" style="margin:0 0 0 20px;"></img> #}
+	{# 		<span class="bold"> #}
+	{# 			<a href="http://www.mikealeckson.com/">Mike Aleckson</a> #}
+	{# 		</span>	I spent over 24 years in information technology and business process consulting. Now I'm investing myself in a new Kanakuk spinoff called Ahava Ministries. We're running Camp Kivu, the awesome summer camping experience for teenagers - and we'll be expanding into several new areas soon. #}
+	{# 	</div> #}
+	<div class="clearer"></div>
+	<br/><br/>
+	
+{% endblock %}
+
+
+
+
+

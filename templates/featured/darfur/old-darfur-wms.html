@@ -1,0 +1,48 @@
+{# templates/featured/darfur-wms.html #}
+{# darfur Water Management and Sanitation #}
+
+{% extends 'featured/darfur/base.html' %}
+{% block subarrive %}4{% endblock subarrive %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+	<h2>Water Management and Sanitation</h2>
+	<div class="right">
+		<img src="/site_media/images/sections/featured/darfur/wms1.jpg" style="padding:0 0 10px 20px;">
+		</img>
+	</div>
+	<p>
+		As a result of the conflict in the region, Darfur has unprecedented population numbers, 
+		imposing impossibly high demands on water resources. Unfortunately, Darfur is an area where the 
+		rain falls in only four months of the year and the prevailing geology is unfavorable for storing 
+		groundwater. While there are some areas rich in groundwater such as the wadis or a few sandstone 
+		areas, these are quite rare, and of little benefit for populations that are unable to travel to 
+		these sources without fear of attack.
+	</p><br/>
+
+	<p>
+		As a result, people in Darfur, as in much of the world, are struggling to find adequate, safe 
+		drinking water. Poor public sanitation and water-borne diseases limit life expectancy and 
+		productivity. It has been estimated that unsafe drinking water is responsible for 80% of sickness 
+		around the world.
+	</p><br/>
+	<div class="left">
+		<img src="/site_media/images/sections/featured/darfur/wms2.jpg" style="padding:0 20px 10px 0px;">
+		</img>
+	</div>
+	<p>
+		HISG is working on placing eight Mobile Max Pure® in IDP camps in Darfur. These high-tech, 
+		low- maintenance solar powered units can provide 30,000 gallons of purified water per day, are 
+		easy to install and simple to maintain. The Mobile Max Pure® units provide an effective and 
+		essential solution to the water need in the area. Access to clean water for health and hygiene 
+		will benefit everyone in the community, especially the elderly and children who cannot travel 
+		long distances to find water. HISG has arranged for eight of these systems to be donated to the 
+		people of Darfur, but we need help shipping them from the United States. If you would like to 
+		contribute to the cost of shipping and installing the systems, please 
+		<a href="{% url donation %}">click here</a>.
+	</p><br/>
+	
+{% endblock body %}

@@ -1,0 +1,89 @@
+{# templates/projects-news/news.html #}
+{% extends 'projects-news/base.html' %}
+{% block subarrive %}4{% endblock subarrive %}
+{% load pagination_tags %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+	<h1 Style="Text-Align:Center;">News</h1><hr />
+	<ul class="sorter">
+		<li>
+			{% ifequal sort "date"  %}
+				Sort by Date |
+			{% else %}
+				<a href="{% url news %}">Sort by Date</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "country"  %}
+				Sort by Country |
+			{% else %}
+				<a href="{% url news_country %}">Sort by Country</a> |
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal sort "region"  %}
+				Sort by Region
+			{% else %}
+				<a href="{% url news_region %}">Sort by Region</a>
+			{% endifequal %}
+		</li>
+	</ul>
+	<hr />
+	{% if news_list %}
+	{% autopaginate news_list 5 %}	
+		{% for news in news_list %}
+		<div class="rower2">
+			{% for photo in news.photo.all %}
+				{% ifequal forloop.counter 1 %}
+					<div class="right" style="margin:0 0 0 5px;">
+						<img class="gold5x" src="{{ photo.get_medium_url }}"></img>
+					</div>
+				{% endifequal %}
+			{% endfor %}
+			<a href="{% url news_detail news.id %}">
+				<h3 style="padding:8px 0 4px 0;">{{ news.name }}</h3>
+			</a>
+			<span style="padding:0 0 5px 0;">
+				{{ news.date|date:"M d, Y" }}
+			</span>
+			<div style="padding:8px 0 8px 0;">
+				{{ news.story|safe|truncatewords:30 }}
+			</div>
+			<div class="clearer"></div>
+			{% if news.country.all %}
+				<div style="width:250px;float:left;" class="caption">
+					{% for country in news.country.all %}
+						{% ifequal forloop.counter 1 %}
+							{{ country }}
+						{% endifequal %}
+					{% endfor %}
+					{% ifnotequal news.country.count 1 %}
+						and {{ news.country.count|add:"-1" }} other{{ news.country.count|pluralize }}
+					{% endifnotequal %}
+				</div>
+			{% endif %}
+			{% if news.region.all %}
+				<div style="padding:0 0 0 100px;float:left;" class="caption">
+					{% for region in news.region.all %}
+						{% ifequal forloop.counter 1 %}
+							{{ region }}
+						{% endifequal %}
+					{% endfor %}
+					{% ifnotequal news.region.count 1 %}
+						and {{ news.region.count|add:"-1" }} other{{ news.region.count|pluralize }}
+					{% endifnotequal %}
+				</div>
+			{% endif %}
+		</div>
+		<div class="clearer"></div>
+		{% endfor %}
+		{% paginate %}
+	{% else %}
+		<p>No news.</p>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{# templates/basesecond.html #}
+{% extends "base.html" %}
+{# {% block secondcol %}right-colomn{% endblock %} #}
+{% block bodyholder %}bodysecond{% endblock %}
+
+{% block hd %}
+	<div id="one">
+		{% include 'includes/logquicksearch.html' %}
+	</div>{# end of one #}
+	<div id="two">
+		<img src="/site_media/images/second/globe.jpg" id="globepic"></img>
+		<a href="{% url home %}">
+			<img src="/site_media/images/hisg2.jpg" id="hisgpic"></img>
+		</a>
+		<img src="/site_media/images/second/{% block labelpic %}{% endblock labelpic %}" id="labelpic"></img>
+	</div>{# end of two #}
+{% endblock %}
+
+	
+{% block basebody %}
+	{% block brick %}{% endblock brick %}{# start and end of left-column #}
+	{# <div id="{% block secondcol %}{% endblock %}"> #}
+	<div id="right-colomn">
+		{% block tininav %}{% endblock %}
+		{% block body %}{% endblock body %}
+	</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!-- templates/featured/index.html -->
+{% extends "featured/bpa/base.html" %}
+{% block head_title %}Business Partners in Action{% endblock %}
+
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+
+{% block body %}
+
+	{{ block.super }}
+	
+	
+	{{ homer.description|safe }}
+	
+
+
+{% endblock %}
+

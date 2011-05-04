@@ -1,0 +1,15 @@
+<!-- template/about/history.html -->
+{% extends "about/base.html" %}
+
+{% load i18n %}
+{% block subarrive %}1{% endblock subarrive %}
+{% block head_title %}{% trans "About" %}{% endblock %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+<h2 class="center">{{ pager.title }}</h2><hr/>
+	{{ pager.content }}
+{% endblock %}

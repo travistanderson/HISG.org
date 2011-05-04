@@ -1,0 +1,34 @@
+{# templates/featured/base.html #}
+{% extends 'featured/base.html' %}
+{% block subarrive %}3{% endblock subarrive %}
+
+{% block body %}
+	<h2 class="center">Business Partners in Action</h2><hr/>
+	
+	
+	<ul class="sorter">
+		<li>
+			{% ifequal active "index"  %}
+				BPA&nbsp;&nbsp;|&nbsp;&nbsp;
+			{% else %}
+				<a href="{% url bpaindex %}">BPA</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal active "list"  %}
+				List of Opportunities&nbsp;&nbsp;|&nbsp;&nbsp;
+			{% else %}
+				<a href="{% url bpalist %}">List of Opportunities</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			{% endifequal %}
+		</li>
+		<li>
+			{% ifequal active "contact"  %}
+				Contact BPA
+			{% else %}
+				<a href="{% url bpacontact %}">Contact BPA</a>
+			{% endifequal %}
+		</li>
+	</ul>
+	<hr /><br/>
+
+{% endblock %}

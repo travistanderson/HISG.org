@@ -1,0 +1,82 @@
+{# templates/tiq_login/profile.html #}
+{% extends 'tiq_login/base.html' %}
+
+{% block pagetitle %}Profile{% endblock pagetitle %}
+
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		#right-colomn{width:865px;float:none;margin:0 0 0 100px;}
+	</style>
+	{% if messages %}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('.messages').fadeIn(3000);
+			$('.close-messages').click(function(){
+				$('.messages').fadeOut(1000);
+			})
+		});
+	</script>
+	{% endif %}
+{% endblock extra_head %}
+
+{% block body %}
+	<div class="right">{{ user }} | <a href="{% url logout %}">logout</a></div>
+	<h2>Profile Page</h2>
+	
+	{% if messages %}
+		<div class="messages"><div class="close-messages">x</div>
+			{% for message in messages %}
+				{{ message }}{% if forloop.last %}{% else %}<br/>{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+	
+	<div class="profile-info">
+		<table>
+			<tr><td><span>Name:</span></td><td><h4>{{ user.first_name }}</h4></td></tr>
+			<tr><td><span>Username:</span></td><td><h4>{{ user }}</h4></td></tr>
+			<tr><td><span>Email:</span></td><td><h4>{{ user.email }}</h4></td></tr>
+			<tr><td><span>Password:</span></td><td><h4>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</h4></td></tr>
+		</table>
+	</div>
+
+	{% if events %}
+		<div class="profile-event">
+			<h3>You are attending these Events</h3>
+			<table>
+				{% for event in events %}
+					<tr>
+						<td colspan="2">{{ event }}</td>
+					</tr>
+					<tr>
+						<td><a href="{% url training_d event.slug %}" class="buttoner-small">More info</a></td>
+						<td><a href="{% url training_cancel event.id %}" class="buttoner-small">Cancel Registration</a></td>
+					</tr>
+					<tr><td></td><td></td></tr>
+				{% endfor %}
+			</table>
+			
+		</div>
+	{% endif %}
+	<div class="clearer"></div>
+	
+	{% if photos %}
+		<div class="profile-photo">
+			<h3>We have this Photo on file.</h3>
+			{% for photo in photos %}
+				<img src="{{ photo.get_thumbvert_url }}"></img> &nbsp;&nbsp;&nbsp;{{ photo }}
+			{% endfor %}
+			<div class="right" style="margin:20px 0 0 0;">
+				<a href="{% url training_pic %}" class="buttoner">Change My Photo</a>
+			</div>
+		</div>
+	{% else %}
+		<div class="profile-photo">
+			<h3>You have not yet uploaded a photo.</h3>
+			<div class="right" style="margin:20px 0 0 0;">
+				<a href="{% url training_pic %}" class="buttoner">Upload a Photo</a>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock body %}

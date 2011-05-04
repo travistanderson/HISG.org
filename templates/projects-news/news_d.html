@@ -1,0 +1,61 @@
+{# templates/projects-news/news_d.html #}
+{% extends 'projects-news/base.html' %}
+{% block subarrive %}4{% endblock subarrive %}
+
+{% block brick %}{% include "brick/brick.html" %}{% endblock brick %}
+{% block extra_head %}{% include "projects-news/includes/photopickerhead.html" %}{% endblock %}
+
+{% block body %}
+	{% if news %}
+		<h2 class="center">{{ news.name }}</h2>
+		
+		<div style="padding:0 0 0 100px;float:right;">
+			{% include 'projects-news/includes/sharethiscode.html' %}
+		</div><div class="clearer"></div>
+		
+		<hr/>
+
+		{% include "projects-news/includes/photopicker.html" %}
+		
+		<div class="news-detail-country">
+			{% for country in news.country.all %}
+				{{ country }}, 
+			{% endfor %}
+			{{ news.date|date:"M d, Y" }}
+		</div><br/>
+		
+		{{ news.story|safe }}
+		
+		<div class="clearer"></div><br/>
+		
+		{% if news.video.all %}
+			<h3>News Videos</h3>
+			{% for video in news.video.all %}
+				{% include "projects-news/includes/detail_video.html" %}
+			{% endfor %}
+		{% endif %}
+		
+		{% if news.project_set.all %}
+			<h3 style="padding:20px 0 0 0;">
+				Related Projects 
+				<span style="font-size:12px;font-weight:bold;">
+					Here is the project associated with this news story.
+				</span>
+			</h3><br/>
+			
+			{% for project in news.project_set.all %}
+				<a href="{% url project_detail project.pk %}">
+					{{ project.name }}, {{ project.year|date:"Y" }}
+				</a>
+			{% endfor %}
+		{% endif %}
+	
+		<br/><br/><br/>
+		<div class="center">
+			<a href="{% url news %}">Back to News</a>
+		</div>
+
+	{% else %}
+		Sorry, There was a problem getting your story.
+	{% endif %}{# endif news #}
+{% endblock %}

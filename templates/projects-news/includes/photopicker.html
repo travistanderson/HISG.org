@@ -1,0 +1,114 @@
+{% if project.photo.all %}
+	<div class="news-detail-photo">
+		{% for photo in project.photo.all %}
+			{% ifequal forloop.counter0 0 %}
+				<div class="mainpic" id="{{ forloop.counter0 }}_thumbpic" >
+					<img class="gold5" src="{{ photo.get_display_url }}" />
+				</div>
+				<div class="caption" style="padding:0 0 15px 0;">
+					{{ photo.caption }}
+				</div>
+			{% endifequal %}
+		{% endfor %}
+
+		<div>{# thumbnails #}
+			{% for photo in project.photo.all %}
+				{% ifnotequal forloop.counter0 0 %}
+					<span class='thumbpic' id="{{ forloop.counter0 }}_thumbpic" style="padding:0 2px 3px 0;">
+						<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
+					</span>
+				{% endifnotequal %}
+			{% endfor %}
+		</div>{# end of thumbnails #}
+	</div>{# end of news-detail-photo #}
+{% endif %}
+
+
+
+
+
+{% if news.photo.all %}
+	<div class="news-detail-photo">
+		{% for photo in news.photo.all %}
+			{% ifequal forloop.counter0 0 %}
+				<div class="mainpic" id="{{ forloop.counter0 }}_thumbpic" >
+					<img class="gold5" src="{{ photo.get_display_url }}" />
+				</div>
+				<div class="caption" style="padding:0 0 15px 0;">
+					{{ photo.caption }}
+				</div>
+			{% endifequal %}
+		{% endfor %}
+
+		<div>{# thumbnails #}
+			{% for photo in news.photo.all %}
+				{% ifnotequal forloop.counter0 0 %}
+					<span class='thumbpic' id="{{ forloop.counter0 }}_thumbpic" style="padding:0 2px 3px 0;">
+						<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
+					</span>
+				{% endifnotequal %}
+			{% endfor %}
+		</div>{# end of thumbnails #}
+	</div>{# end of news-detail-photo #}
+{% endif %}
+
+
+
+
+
+
+{% if director.photo.all %}
+	<div class="news-detail-photo">
+		{% for photo in director.photo.all %}
+			{% ifequal forloop.counter0 0 %}
+				<div class="mainpic" id="{{ forloop.counter0 }}_thumbpic" >
+					<img class="gold5" src="{{ photo.get_display_url }}" />
+				</div>
+				<div class="caption" style="padding:0 0 15px 0;">
+					{{ photo.caption }}
+				</div>
+			{% endifequal %}
+		{% endfor %}
+
+		<div>{# thumbnails #}
+			{% for photo in director.photo.all %}
+				{% ifnotequal forloop.counter0 0 %}
+					<span class='thumbpic' id="{{ forloop.counter0 }}_thumbpic" style="padding:0 2px 3px 0;">
+						<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
+					</span>
+				{% endifnotequal %}
+			{% endfor %}
+		</div>{# end of thumbnails #}
+	</div>{# end of news-detail-photo #}
+{% endif %}
+
+
+
+
+
+
+{% if office.photo.all %}
+	<div class="news-detail-photo">
+		{% for photo in office.photo.all %}
+			{% ifequal forloop.counter0 0 %}
+				<div class="mainpic" id="{{ forloop.counter0 }}_thumbpic" >
+					<img class="gold5" src="{{ photo.get_display_url }}" />
+				</div>
+				<div class="caption" style="padding:0 0 15px 0;">
+					{{ photo.caption }}
+				</div>
+			{% endifequal %}
+		{% endfor %}
+
+		<div>{# thumbnails #}
+			{% for photo in office.photo.all %}
+				{% ifnotequal forloop.counter0 0 %}
+					<span class='thumbpic' id="{{ forloop.counter0 }}_thumbpic" style="padding:0 2px 3px 0;">
+						<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
+					</span>
+				{% endifnotequal %}
+			{% endfor %}
+		</div>{# end of thumbnails #}
+	</div>{# end of news-detail-photo #}
+{% endif %}
+

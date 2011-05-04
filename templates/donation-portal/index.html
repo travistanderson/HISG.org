@@ -1,0 +1,180 @@
+<!-- templates/donation-portal/index.html -->
+{% extends 'donation-portal/base.html' %}
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+
+{% block body %}
+	<h3 class="center">Donation Portal</h3><hr/>
+	
+	
+	<h4>Reach out to your Worldwide Neighbors: Contribute Resources To Meet the Needs</h4>
+	<p>
+		The lives of our neighbors all over the world are impacted daily by natural disasters.  
+		Whether it is a Tsunami (Indonesia), Earthquake (Pakistan) or Hurricane (U.S. Gulf Coast), 
+		lives are often changed in an instant.  Can you help us make a difference?  Your tax deductible 
+		donation will reach out and touch those in need.  Your gift can provide for general disaster 
+		response, humanitarian aid &amp; relief effort or a development project of your choice.  We have 
+		trusted friends, associates and counterparts throughout the world that will commit your gift to 
+		its most beneficial use.
+	</p><br>
+	
+	
+
+	
+	
+	<div class="donate">
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410309">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>GENERAL FUND</h4>
+		
+			A donation to the general fund will be used for <a href="{% url project %}">HISG projects</a>
+			such as community development, care for orphans and other vulnerable children, or HISG infrastructure.
+		</div>{# end of donate_box #}	
+	</div>{# end of donate #}<br/>
+	
+	
+
+	<h4>Contributions can be made by sending checks or money orders to:</h4>
+	<p style="margin:0 0 0 50px;">
+		HISG Resources<br>
+		Attn: Steve Lencke<br>
+		870 Commercial Ln.<br>
+		Palmer Lake, CO 80133		
+	</p><br>
+
+	<p>Or click below to contribute by credit card securely on-line through our PayPal account.</p>
+
+	<div class="donate">
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410331">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>DISASTER RESPONSE/EMERGENCY PREPAREDNESS FUND</h4>
+
+			All donations to the disaster response fund will be designated 
+			for use during urgent disaster relief initiatives, such as the response to 
+			<a href="/news-and-photos/news/48/">Flooding in Manila, Philappines</a>, and relief efforts for the 
+			<a href="/news-and-photos/news/49/">Earthquakes in Sumatra, Indonesia</a>. When there are no current disaster, donations to this account will saved and made ready for any disaster that might occur.<br/><br/><hr/>
+		</div>{# end of donate_box #}
+
+		
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="BGLRT3SZBPDFA">
+					<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal">
+					<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>PAKISTAN FLOODING RELIEF FUND</h4>
+
+			Hundreds of thousands of Pakistanis are sick, homeless, and helpless after a week of massive floods. Give now to help HISG provide immediate aid to these victims.<br/><br/><hr/>
+		</div>{# end of donate_box #}
+
+
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="11201221">
+					<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal">
+					<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>HAITI EARTHQUAKE RESPONSE</h4>
+
+			If you would like to give through HISG to help the people of Haiti, please click the button to the right.<br/><br/><hr/>
+		</div>{# end of donate_box #}
+
+
+
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="&#95;s-xclick">
+					<input type="hidden" name="hosted&#95;button&#95;id" value="JRXA7C8F92DTA">
+					<input type="hidden" name="page&#95;style" value="HISG&#95;default">
+					<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal">
+					<img alt="" border="0" src="https://www.paypal.com/en&#95;US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>ERW PROJECT</h4>
+
+			ERW Project- HISG Explosive Remnants of War project is making communities safer by teaching local teams how to identify and remove unexploded ordinances so that they can reclaim their land, restore their confidence, and rebuild their communities.<br/><br/><hr/>
+		</div>{# end of donate_box #}
+
+
+
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410235">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>LET'S SAVE ONE</h4>
+		
+			Let's Save One is a campaign to help people connect on a personal 
+			level with individuals who need urgent medical attention.  You can read more about the specific 
+			cases <a href="http://test.hisg.org/initiatives/lets-save-one/">here</a>.  All donations will go directly 
+			to the need described in the "Cases" section.<br/><br/><hr/>
+		</div>{# end of donate_box #}
+
+
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410279">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>INFRASTRUCTURE FUND</h4>
+		
+			All donations to the Infrastructure Fund are marked for use in the <a href="/initiatives/gic/">Global Information Center</a>, the Colorado Operations Center, the HISG secure email system (for use in connecting resources around the world) and development of the <a href="http://starfishcommunity.net" target="_blank">Starfish Collaboration Platform</a>.<br/><br/><hr/>
+		</div>{# end of donate_box #}
+			
+
+		<div class="donate_box">
+			<div class="donate_form">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="410031">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="">
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>{# end of donate form #}
+			<h4>ECONOMIC DEVELOPMENT FUND</h4>
+
+			All donations to the Economic Development Fund will be used for long-term sustainability to help train entrepreneurs in business ventures and to provide small, medium and large-scale loans to develop medium and macro-enterprises that will generate long-term economic benefits within Third-World countries. You can read about an example of this initiative <a href="/projects-and-news/projects/56/">here</a>.
+		</div>{# end of donate_box #}	
+	</div>{# end of donate #}
+
+	<div id="donate_under">
+		<span class="bold">Questions?</span><br/>
+		Contact us  via email at <a href="mailto:donations@hisg.org">donations@hisg.org</a><br/>
+		or <br/>
+		call us at 303-662-0845.<br/>
+		Thank you in advance for your generosity!
+	</div>{# end of donate_under #}
+	
+{% endblock %}

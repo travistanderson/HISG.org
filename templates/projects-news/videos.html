@@ -1,0 +1,30 @@
+{# templates/projects-news/videos.html #}
+{% extends 'projects-news/base.html' %}
+{% block subarrive %}6{% endblock subarrive %}
+
+
+{% block brick %}
+	{% include "brick/brick.html" %}
+{% endblock brick %}
+
+{% block body %}
+	<h2 class="center">Videos</h2> <hr/>
+	<div>{# videos all #}
+		{% if video_list %}
+			{% for video in video_list %}
+				<div class="video_list">
+					<a href="{% url videos_detail video.slug %}">
+						<img src="{{ video.frame.get_video_on_list_url }}" class="gold5" >
+					</a><br>
+					<h4>
+						<a href='{% url videos_detail video.slug %}'>
+							{{ video.name }}
+						</a>
+					</h4>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>No videos.</p>
+		{% endif %}
+	</div>{# end of videos all #}
+{% endblock %}

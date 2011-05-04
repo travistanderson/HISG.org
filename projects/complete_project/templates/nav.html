@@ -1,0 +1,84 @@
+<div id="nav"><!-- These are the top level navigation links -->
+	<ul id="navigation">
+		<li id="li1">
+			<a id="nav1" href="{% url home %}">
+				<span>HOME</span>
+			</a>
+		</li>
+		<li id="li2">
+			<a id="nav2" href="{% url trainingmodels %}">
+				<span>NEWS &amp; photos</span>
+			</a>
+		</li>
+		<li id="li3">
+			<a id="nav3" href="/initiatives/">
+				<span>featured INITIATIVES</span>
+			</a>
+		</li>
+		<li id="li4">
+			<a id="nav4" href="{% url projectsnews %}">
+				<span>PROJECTS &amp; models</span>
+			</a>
+		</li>
+		<li id="li5">
+			<a id="nav5" href="/about-hisg/">
+				<span>about HISG</span>
+			</a>
+		</li>
+		<li id="li6">
+			<a id="nav6" href="{% url donation %}">
+				<span>DONATION portal</span>
+			</a>
+		</li>
+	</ul><!-- end of navigation -->
+	<div id="subnavigation">
+		<ul class="subnav">
+			<li class="sub0" id="testify">Welcome to HISG</li>
+			<li class="sub1" id="sub11"><a href="{% url home %}">Home</a></li>
+			{% if user.is_authenticated %}
+				<li class="sub1" id="sub12" style='padding-left:30px;'><a href="{% url userprofile user.id %}">{{ user }}</a></li>
+			{% endif %}
+			
+			<li class="sub2" id="sub21"><a href="{% url training %}">Training</a> | </li>
+			<li class="sub2" id="sub22"><a href="/training-and-models/models/">Models</a> | </li>
+			<li class="sub2" id="sub23"><a href="{% url histmodel %}">HIST Model</a> | </li>
+			<li class="sub2" id="sub24"><a href="{% url idrmodel %}">IDR Model</a></li>
+
+			<li class="sub3" id="sub31"><a href="/initiatives/starfish/">Starfish Community</a> | </li>
+			<li class="sub3" id="sub32"><a href="/initiatives/idrn/">IDRN</a> | </li>
+			<li class="sub3" id="sub33"><a href="{% url bpaindex %}">Business Partners in Action</a> | </li>
+			<li class="sub3" id="sub34"><a href="/initiatives/dynamic-business-startups/">DBSP</a> | </li>
+			<li class="sub3" id="sub35"><a href="/initiatives/lets-save-one/">Let's Save One</a> | </li>
+			<li class="sub3" id="sub36"><a href="/initiatives/orphan-care/">Orphan Care</a> | </li>
+			{# <li class="sub3" id="sub37"><a href="/initiatives/darfur-initiative/">Darfur Initiative</a> | </li> #}
+			{# <li class="sub3" id="sub38"><a href="/initiatives/gic/">GIC</a> | </li> #}
+			<li class="sub3" id="sub38"><a href="/initiatives/hrn/">HRN</a> | </li>
+			<li class="sub3" id="sub39"><a href="/initiatives/explosive-remnants-of-war/">Explosive Remnants of War</a></li>
+
+			{# <li class="sub4" id="sub41"><a href="{% url all_hubs %}">Hubs</a> | </li> #}
+			<li class="sub4" id="sub42"><a href="{% url project %}">HIST Projects</a> | </li>
+			<li class="sub4" id="sub43"><a href="{% url idrproject %}">IDR Projects</a> | </li>
+			<li class="sub4" id="sub44"><a href="{% url news %}">News</a> | </li>
+			<li class="sub4" id="sub45"><a href="{% url gallery %}">Photos</a> | </li>
+			<li class="sub4" id="sub46"><a href="{% url videos %}">Videos</a> | </li>
+			<li class="sub4" id="sub47"><a href="{% url blog %}">Blog</a></li>
+			
+		
+			<li class="sub5" id="sub51"><a href="/about-hisg/history/">History</a> | </li>
+			<li class="sub5" id="sub52"><a href="{% url directors %}">Directors</a> | </li>
+			<li class="sub5" id="sub53"><a href="{% url staff %}">Staff</a> | </li>
+			<li class="sub5" id="sub54"><a href="{% url office %}">Offices</a> | </li>
+			<li class="sub5" id="sub55"><a href="/about-hisg/vision/">Purpose and Vision</a> | </li>
+			<li class="sub5" id="sub56"><a href="{% url intern %}">Internship</a> | </li>				
+			<li class="sub5" id="sub57"><a href="{% url contact %}">Contact Us</a></li>    
+
+			
+			<li class="sub6" id="sub61"><a href="{% url donation_login %}">Donor Login</a></li>
+
+		</ul>
+	</div><!-- end of subnavigation block -->
+</div><!-- end of nav (top level navigation) -->
+	
+
+
+

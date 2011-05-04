@@ -20,7 +20,7 @@ def homepage(request):
 	phf = Phrase.objects.get(order=1)
 	# u = TiqUserProfile.objects.get(user=request.user)
 	
-	return render_to_response('homepage/homepage.html', {
+	return render_to_response('basehome.html', {
 			'impacter_list': i,
 			'impacter_first': f,
 			'phrase_list':ph,

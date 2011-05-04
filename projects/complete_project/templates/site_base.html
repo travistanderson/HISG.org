@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basesecond.html" %}
 
 {% load i18n %}
 
@@ -85,46 +85,5 @@
 	</div><!-- end of nav (top level navigation) -->
 	
 {% endblock %}
-{# {% block subnavigation %} #}
-{# 		{% if user.is_authenticated %} #}
-{# 		<div id="admin"> #}
-{# 			<ul id="administration"> #}
-{# 				<li> #}
-{# 					<a href="{% url profile_detail user %}">{{ user }}</a> #}
-{# 				</li> #}
-{# 				<li> #}
-{# 					<a href="{% url acct_logout %}">logout</a> #}
-{# 				</li> #}
-{# 				{% if perms.tribes %} #}
-{# 				<li> #}
-{# 					<a href="/admin/">admin</a> #}
-{# 				</li> #}
-{# 				{% else %} #}
-{# 					{% if perms.partners %} #}
-{# 						<li> #}
-{# 							<a href="{% url partners_starfish %}">starfish</a> #}
-{# 						</li> #}
-{# 					{% endif %} #}
-{# 				{% endif %} #}
-{# 			</ul> #}
-{# 		</div> #}
-{# 		{% else %} #}
-{# 		<div id="admin"> #}
-{# 			<ul id="administration"> #}
-{# 				<li> #}
-{# 					<a href="{% url acct_login %}">Login</a>/ #}
-{# 					<a href="{% url acct_signup %}">Signup</a> #}
-{# 				</li> #}
-{# 			</ul> #}
-{# 		</div> #}
-{# 		{% endif %} #}
-{# {% endblock subnavigation %} #}
 
-{% block footer %}
-<div class="legal">
 
-    <a href="{% url search %}">SEARCH</a> | <a href="/info/first-time-here/">FIRST TIME HERE</a> | <a href="{% url faqs %}">FAQS</a>
-    | <a href="{% url sitemap %}">SITE MAP</a> | &copy; 2001-2009 HISG<br>
-	Humanitarian International Services Group &nbsp;| &nbsp;870 Commercial Lane, Palmer Lake, CO 80133 Phone:(303) 662-0845 &nbsp;| &nbsp;HISG is a non-profit 501(c)3 tax exempt organization
-</div>
-{% endblock %}

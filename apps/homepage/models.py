@@ -1,5 +1,7 @@
 # homepage/models.py
 from django.db import models
+from django.conf import settings
+from django.core.urlresolvers import reverse
 from datetime import datetime, timedelta
 from photologue.models import ImageModel, Photo
 
@@ -41,4 +43,37 @@ class Nav(models.Model):
 	def __unicode__(self):
 		return self.displayname
 	
-	
+
+
+def context_navigation(request):
+	navs = Nav.objects.all()
+	navigation = {}
+	forloop = 0;
+	try:
+		rootn = Nav.objects.get(displayname='Root')
+		rootnavs = Nav.objects.filter(parent=rootn)
+		rootnavhtml = "<div id='nav'><ul id='navigation'>"
+		subnavhtml = "<div id='subnavigation'><ul class='subnav'>"
+		for nav in rootnavs:
+			if nav.raw:
+				theurl = nav.url
+			else:
+				theurl = reverse(nav.name)
+			rootnavhtml += "<li id='li_%s' class='rootnav'><a href='%s'>%s</a></li>" %(nav.orderer,theurl,nav.displayname)
+			subnavs = Nav.objects.filter(parent=nav)
+			for subnav in subnavs:
+				if subnav.raw:
+					thesuburl = nav.url + subnav.url
+				else:
+					thesuburl = reverse(subnav.name)
+				subnavhtml += "<li class='sub_%s' id='sub_%s_%s'><a href='%s'>%s</a> | </li>" %(nav.orderer,nav.orderer,subnav.orderer,thesuburl,subnav.displayname)
+		subnavhtml += "</ul></div></ul></div>"
+		rootnavhtml += subnavhtml
+		navigation['rootnav'] = rootnavhtml
+		return navigation
+	except Exception, e:
+		return {'rootnavs':'/','exception':e}
+	# 	raise e
+	# for nav in navs:
+	# 	navigation[str(forloop) + '_navitem'] = nav.url
+	# 	forloop +=1

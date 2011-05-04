@@ -6,17 +6,17 @@ TEMPLATE_DEBUG = DEBUG
 SITE_UP =True # This is for maintainence mode.
 
 ADMINS = (
-    # ('tanderson', 'tanderson@hisg.org'),
+	# ('tanderson', 'tanderson@hisg.org'),
 )
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'mysql'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = 'hisg_org'       # Or path to database file if using sqlite3.
-DATABASE_USER = 'hisg_org_admin'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'Qrt63Lm0Zp'         # Not used with sqlite3.
-DATABASE_HOST = '10.3.20.12'             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASE_ENGINE = 'mysql'	# 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
+DATABASE_NAME = 'hisg_org'	   # Or path to database file if using sqlite3.
+DATABASE_USER = 'hisg_org_admin'			 # Not used with sqlite3.
+DATABASE_PASSWORD = 'Qrt63Lm0Zp'		 # Not used with sqlite3.
+DATABASE_HOST = '10.3.20.12'			 # Set to empty string for localhost. Not used with sqlite3.
+DATABASE_PORT = ''			 # Set to empty string for default. Not used with sqlite3.
 
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
@@ -58,20 +58,20 @@ SECRET_KEY = 'bk-e2zv3humar79nm=j*bwc=-ymeit(8a20whp3goq4dh71t)s'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-    # 'dbtemplates.loader.load_template_source',
+	'django.template.loaders.filesystem.load_template_source',
+	'django.template.loaders.app_directories.load_template_source',
+	# 'dbtemplates.loader.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'account.middleware.LocaleMiddleware',
-    'django.middleware.doc.XViewMiddleware',
-    'pagination.middleware.PaginationMiddleware',
-    # 'misc.middleware.SortOrderMiddleware',
-    'django.middleware.transaction.TransactionMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	# 'account.middleware.LocaleMiddleware',
+	'django.middleware.doc.XViewMiddleware',
+	'pagination.middleware.PaginationMiddleware',
+	# 'misc.middleware.SortOrderMiddleware',
+	'django.middleware.transaction.TransactionMiddleware',
 	'pages.middleware.PageFallbackMiddleware',
 )
 
@@ -80,55 +80,56 @@ ROOT_URLCONF = 'hisg.urls'
 import os.path
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), "templates"),
+	os.path.join(os.path.dirname(__file__), "templates"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-    # "notification.context_processors.notification",
-    # "announcements.context_processors.site_wide_announcements",
-    # "account.context_processors.account",
-    # "misc.context_processors.contact_email",
-    # "misc.context_processors.site_name",
-    # "messages.context_processors.inbox",
-    # "misc.context_processors.combined_inbox_count",
+	"django.core.context_processors.auth",
+	"django.core.context_processors.debug",
+	"django.core.context_processors.i18n",
+	"django.core.context_processors.media",
+	"django.core.context_processors.request",
+	"homepage.models.context_navigation",
+	# "notification.context_processors.notification",
+	# "announcements.context_processors.site_wide_announcements",
+	# "account.context_processors.account",
+	# "misc.context_processors.contact_email",
+	# "misc.context_processors.site_name",
+	# "messages.context_processors.inbox",
+	# "misc.context_processors.combined_inbox_count",
 )
 
 COMBINED_INBOX_COUNT_SOURCES = (
-    "messages.context_processors.inbox",
-    "notification.context_processors.notification",
+	"messages.context_processors.inbox",
+	"notification.context_processors.notification",
 )
 
 INSTALLED_APPS = (
-    # included
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.humanize',
-    'django.contrib.markup',
+	# included
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.sites',
+	'django.contrib.humanize',
+	'django.contrib.markup',
 	# 'tiq_login',
 	'clogin',
 	'pages',
-    
-    # external
-    # 'emailconfirmation',
-    # 'django_extensions',
-    'robots',
-    'mailer',
-    'pagination',
-    'gravatar',
-    # 'threadedcomments',
-    # 'timezones',
-    # 'feedutil',
-    # 'ajax_validation',
-    'photologue',
+	
+	# external
+	# 'emailconfirmation',
+	# 'django_extensions',
+	'robots',
+	'mailer',
+	'pagination',
+	'gravatar',
+	# 'threadedcomments',
+	# 'timezones',
+	# 'feedutil',
+	# 'ajax_validation',
+	'photologue',
 	'tagging',
-    # 'things',
+	# 'things',
 	'newsphotos',
 	'chunks',
 	'videos',
@@ -148,19 +149,19 @@ INSTALLED_APPS = (
 	# 'account',
 	# 'notification',
 	# 'messages',
-	    
-    # internal (for now)
-    # 'analytics',
-    # 'misc',
-    'photos',
-    'rpc4django',
-    
-    'django.contrib.admin',
+		
+	# internal (for now)
+	# 'analytics',
+	# 'misc',
+	'photos',
+	'rpc4django',
+	
+	'django.contrib.admin',
 
 )
 
 ABSOLUTE_URL_OVERRIDES = {
-    "auth.user": lambda o: "/profiles/%s/" % o.username,
+	"auth.user": lambda o: "/profiles/%s/" % o.username,
 }
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -196,7 +197,7 @@ LOGGING_SHOW_METRICS = True
 LOGGING_LOG_SQL = True
 
 INTERNAL_IPS = (
-    '127.0.0.1',
+	'127.0.0.1',
 )
 
 ugettext = lambda s: s
@@ -218,16 +219,16 @@ CACHE_BACKEND = "locmem:///?max_entries=3000"
 FEEDUTIL_SUMMARY_LEN = 60*7 # 7 hours
 
 class NullStream(object):
-    def write(*args, **kw):
-        pass
-    writeline = write
-    writelines = write
+	def write(*args, **kw):
+		pass
+	writeline = write
+	writelines = write
 
 RESTRUCTUREDTEXT_FILTER_SETTINGS = { 'cloak_email_addresses': True,
-                                     'file_insertion_enabled': False,
-                                     'raw_enabled': False,
-                                     'warning_stream': NullStream(),
-                                     'strip_comments': True,}
+									 'file_insertion_enabled': False,
+									 'raw_enabled': False,
+									 'warning_stream': NullStream(),
+									 'strip_comments': True,}
 
 # if Django is running behind a proxy, we need to do things like use
 # HTTP_X_FORWARDED_FOR instead of REMOTE_ADDR. This setting is used
@@ -243,9 +244,9 @@ GMAPKEY = 'ABQIAAAAKkJhGIDc65pxzIU9FTCsAxTERECPkD_G2wCmHEPQuxrvMkpqRRS1zBq8SdWHx
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
 try:
-    from local_settings import *
+	from local_settings import *
 except ImportError:
-    pass
+	pass
 
 GEOS_LIBRARY_PATH = "/Library/Frameworks/GEOS.framework/unix/lib/libgeos_c.dylib"
 

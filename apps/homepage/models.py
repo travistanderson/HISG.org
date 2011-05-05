@@ -49,30 +49,65 @@ def context_navigation(request):
 	navs = Nav.objects.all()
 	navigation = {}
 	forloop = 0;
+	path = request.path
+	spath = path.split('/')
 	try:
 		rootn = Nav.objects.get(displayname='Root')
 		rootnavs = Nav.objects.filter(parent=rootn)
 		rootnavhtml = "<div id='nav'><ul id='navigation'>"
 		subnavhtml = "<div id='subnavigation'><ul class='subnav'>"
 		for nav in rootnavs:
+			active = 0
 			if nav.raw:
 				theurl = nav.url
 			else:
 				theurl = reverse(nav.name)
-			rootnavhtml += "<li id='li_%s' class='rootnav'><a href='%s'>%s</a></li>" %(nav.orderer,theurl,nav.displayname)
+			if len(spath) == 2:
+				if theurl == '/':
+					rootnavhtml += "<li id='li_%s' class='rootnav 1'><a href='%s' class='active'>%s</a></li>" %(nav.orderer,theurl,nav.displayname)
+					active = 1
+				else:
+					rootnavhtml += "<li id='li_%s' class='rootnav 2'><a href='%s'>%s</a></li>" %(nav.orderer,theurl,nav.displayname)	
+			if len(spath) > 2:
+				stheurl = theurl.split('/')
+				if spath[1] == stheurl[1]:
+					rootnavhtml += "<li id='li_%s' class='rootnav 3'><a href='%s' class='active'>%s</a></li>" %(nav.orderer,theurl,nav.displayname)
+					active = 1
+				else:
+					rootnavhtml += "<li id='li_%s' class='rootnav 4'><a href='%s'>%s</a></li>" %(nav.orderer,theurl,nav.displayname)
 			subnavs = Nav.objects.filter(parent=nav)
 			for subnav in subnavs:
 				if subnav.raw:
-					thesuburl = nav.url + subnav.url
+					if nav.raw:
+						thesuburl = nav.url + subnav.url
+					else:
+						thesuburl = reverse(nav.name) + subnav.url
 				else:
 					thesuburl = reverse(subnav.name)
-				subnavhtml += "<li class='sub_%s' id='sub_%s_%s'><a href='%s'>%s</a> | </li>" %(nav.orderer,nav.orderer,subnav.orderer,thesuburl,subnav.displayname)
+				if active ==1:
+					sthesuburl = thesuburl.split('/')
+					thesame = 0
+					for i in range(len(sthesuburl)):
+						if sthesuburl[i] == spath[i]:
+							thesame = 1
+						else:
+							thesame = 0
+							break
+					# sthesuburl = sthesuburl[2]
+					# if thesuburl == spath[2]:
+					if thesame == 1:
+						subnavhtml += "<li class='sub_%s' id='sub_%s_%s'><a href='%s' class='active'>%s</a> | </li>" %(nav.orderer,nav.orderer,subnav.orderer,thesuburl,subnav.displayname)
+					else:
+						subnavhtml += "<li class='sub_%s' id='sub_%s_%s'><a href='%s'>%s</a> | </li>" %(nav.orderer,nav.orderer,subnav.orderer,thesuburl,subnav.displayname)	
+				else:
+					subnavhtml += "<li class='sub_%s' id='sub_%s_%s'><a href='%s'>%s</a> | </li>" %(nav.orderer,nav.orderer,subnav.orderer,thesuburl,subnav.displayname)
 		subnavhtml += "</ul></div></ul></div>"
 		rootnavhtml += subnavhtml
 		navigation['rootnav'] = rootnavhtml
+		navigation['thepath'] = [path,spath,len(spath),spath[2],sthesuburl]
 		return navigation
 	except Exception, e:
-		return {'rootnavs':'/','exception':e}
+		return {'rootnavs':'home','exception':e}
 	# 	raise e
 	# for nav in navs:
 	# 	navigation[str(forloop) + '_navitem'] = nav.url

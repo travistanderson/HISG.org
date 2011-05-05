@@ -59,8 +59,8 @@ ul#navigation .rootnav{text-indent:-9999px;}
 #bodyhome ul#navigation #li_4 a{background:transparent url(/site_media/images/nav1/nav4.jpg) no-repeat scroll 0 0;}
 #bodyhome ul#navigation #li_5 a{background:transparent url(/site_media/images/nav1/nav5.jpg) no-repeat scroll 0 0;}
 #bodyhome ul#navigation #li_6 a{background:transparent url(/site_media/images/nav1/nav6.jpg) no-repeat scroll 0 0;}
-#bodyhome ul#navigation #li_1 a:hover, ul#navigation #li_2 a:hover, ul#navigation #li_3 a:hover, ul#navigation #li_4 a:hover, ul#navigation #li_5 a:hover, ul#navigation #li_6 a:hover{background-position:0 -36px;}
-#bobysecond ul#navigation #li_1 a:hover, ul#navigation #li_2 a:hover, ul#navigation #li_3 a:hover, ul#navigation #li_4 a:hover, ul#navigation #li_5 a:hover, ul#navigation #li_6 a:hover{background-position:0 -36px;}
+#bodyhome #bodyhome ul#navigation #li_1 a:hover, #bodyhome ul#navigation #li_2 a:hover, #bodyhome ul#navigation #li_3 a:hover, #bodyhome ul#navigation #li_4 a:hover, #bodyhome ul#navigation #li_5 a:hover, #bodyhome ul#navigation #li_6 a:hover{background-position:0 -36px;}
+#bodysecond ul#navigation #li_1 a:hover, #bodysecond ul#navigation #li_2 a:hover, #bodysecond ul#navigation #li_3 a:hover, #bodysecond ul#navigation #li_4 a:hover, #bodysecond ul#navigation #li_5 a:hover, #bodysecond ul#navigation #li_6 a:hover{background-position:0 -36px;}
 
 #bodysecond ul#navigation #li_1{float:left;width:129px;}
 #bodysecond ul#navigation #li_2{float:left;width:194px;}
@@ -75,10 +75,11 @@ ul#navigation .rootnav{text-indent:-9999px;}
 #bodysecond ul#navigation #li_5 a{background:transparent url(/site_media/images/nav2/nav5.jpg) no-repeat scroll 0 0;}
 #bodysecond ul#navigation #li_6 a{background:transparent url(/site_media/images/nav2/nav6.jpg) no-repeat scroll 0 0;}
 
-#subnavigation{background:url(/site_media/images/subback.bmp) repeat-y;color:#000;margin:35px 0 0 0px;height:20px;}
-#subnavigation ul{height:20px;}
-#subnavigation li{padding:0 0 0 25px;float:left;}
-#subnavigation li a{float:left;color:#000;height:20px;display:block;margin:0 25px 0 0;}
+ul#navigation #subnavigation{background:url(/site_media/images/subback.bmp) repeat-y;color:#000;margin:35px 0 0 0px;height:20px;}
+ul#navigation #subnavigation ul{height:20px;}
+ul#navigation #subnavigation li{padding:0 0 0 25px;float:left;}
+ul#navigation #subnavigation li a{float:left;color:#000;height:20px;display:block;margin:0 25px 0 0;}
+ul#navigation #subnavigation li .active{color:#238FB0;}
 .sub1,.sub2,.sub3,.sub4,.sub5{display:none;}
 /*second stuff
 .sub1,.sub2,.sub3,.sub4,.sub5,.sub6{display:none;}*/

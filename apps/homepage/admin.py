@@ -17,7 +17,7 @@ class PhraseAdmin(admin.ModelAdmin):
 
 
 class NavAdmin(admin.ModelAdmin):
-	list_display = ('displayname','orderer','parent')
+	list_display = ('displayname','orderer','parent','raw')
 	ordering = ('parent','orderer')
 	list_editable = ('orderer','parent',)
 

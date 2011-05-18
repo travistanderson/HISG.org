@@ -71,25 +71,64 @@ def extras(request):
 	today = datetime.today()
 	p = Project.objects.all().count()
 	
-	return render_to_response('admin/newadmin/extras.html', {'projects':p,},context_instance = RequestContext(request),)		
+	return render_to_response('admin/newadmin/extras.html',{'projects':p,},context_instance = RequestContext(request),)		
 		
 		
 def hidden(request):
 	today = datetime.today()
 	p = Project.objects.all().count()
 	
-	return render_to_response('admin/newadmin/hidden.html', {'projects':p,},context_instance = RequestContext(request),)	
+	return render_to_response('admin/newadmin/hidden.html',{'projects':p,},context_instance = RequestContext(request),)	
 	
 
 def oldadmin(request):
 	today = datetime.today()
 	p = Project.objects.all().count()
 	
-	return render_to_response('admin/index.html', {'projects':p,},context_instance = RequestContext(request),)	
+	return render_to_response('admin/index.html',{'projects':p,},context_instance = RequestContext(request),)	
+
+
+def _build_dict(dictionary,theitem,children):
+	dictionary['url'] = theitem.absurl()
+	dictionary['id'] = theitem.id
+	dictionary['name'] = theitem.displayname
+	dictionary['children'] = children
+
 		
-		
+# def navlist(request):
+# 	navs = {}
+# 	level1nav = get_object_or_404(Nav,displayname='Root')
+# 	lv2 = Nav.objects.filter(parent=level1nav).order_by('orderer')
+# 	lev2 = []
+# 	for level2nav in lv2:
+# 		thisone = {}
+# 		lv3 = Nav.objects.filter(parent=level2nav).order_by('orderer')
+# 		lev3 = []
+# 		for level3nav in lv3:
+# 			lv4 = Nav.objects.filter(parent=level3nav).order_by('orderer')
+# 			lev4 = []
+# 			for level4nav in lv4:
+# 				thisone = {}
+# 				lv5 = Nav.objects.filter(parent=level4nav).order_by('orderer')
+# 				lev5 = []
+# 				for level5nav in lv5:
+# 					thisone = {}
+# 					_build_dict(thisone,level5nav,None)
+# 					lev5.append(thisone)
+# 				_build_dict(thisone,level4nav,lev5)
+# 				lev4.append(thisone)
+# 			_build_dict(thisone,level3nav,lev4)
+# 			lev3.append(thisone)
+# 		_build_dict(thisone,level2nav,lev3)
+# 		lev2.append(thisone)
+# 	_build_dict(navs,level1nav,lev2)	
+# 
+# 	return render_to_response('admin/homepage/nav/change_list_special.html', {'navs':navs,},context_instance = RequestContext(request),)
+
 def navlist(request):
-	today = datetime.today()
-	p = Project.objects.all().count()
+	navs = Nav.objects.exclude(displayname='Root').order_by('level')
+	return render_to_response('admin/homepage/nav/change_list_special.html', {'navs':navs,},context_instance = RequestContext(request),)
+
+
+
 	
-	return render_to_response('admin/homepage/nav/change_list_special.html', {'projects':p,},context_instance = RequestContext(request),)

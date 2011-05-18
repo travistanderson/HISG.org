@@ -5,7 +5,6 @@
 
 {% block extra_head %}
 	<script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
-
 	<script type="text/javascript">
 		var photo = new Array();
 		var impacterthumb_color = new Array();
@@ -116,13 +115,8 @@
 				})
 			})
 		}
-
 		impactersetup();
 		impacter();
-		initial();
-		shower();
-		quickpick();
-		phraser();
 	</script>
 {% endblock %}
 
@@ -140,10 +134,6 @@
 		</div>{# end of hisg #}
 	</div>{# end of two #}
 {% endblock %}
-
-
-
-
 
 
 {% block impacter %}
@@ -185,77 +175,6 @@
 {% endblock %}
 
 
-<div id="nav"><!-- These are the top level navigation links -->
-	<ul id="navigation">
-		<li id="li1">
-			<a id="nav1" href="{% url trainingmodels %}">
-				<span>Training &amp; models</span>
-			</a>
-		</li>
-		<li id="li2">
-			<a id="nav2" href="/initiatives/">
-				<span>featured INITIATIVES</span>
-			</a>
-		</li>
-		<li id="li3">
-			<a id="nav3" href="{% url projectsnews %}">
-				<span>PROJECTS &amp; models</span>
-			</a>
-		</li>
-		<li id="li4">
-			<a id="nav4" href="/about-hisg/">
-				<span>about HISG</span>
-			</a>
-		</li>
-		<li id="li5">
-			<a id="nav5" href="{% url donation %}">
-				<span>DONATION portal</span>
-			</a>
-		</li>
-	</ul><!-- end of navigation -->
-	<div id="subnavigation">
-		<ul class="subnav">
-			<li class="sub0" id="testify">Welcome to HISG</li>
-			{% if user.is_authenticated %}
-			<li class="sub0"><a href="{% url userprofile user.id %}">{{ user }}</a></li>
-			{% endif %}
-
-			<li class="sub1"><a href="{% url training %}">Training</a> | </li>
-			<li class="sub1"><a href="/training-and-models/models/">Models</a> |</li>
-			<li class="sub1"><a href="{% url histmodel %}">HIST Model</a> | </li>
-			<li class="sub1"><a href="{% url idrmodel %}">IDR Model</a></li>
-
-			<li class="sub2"><a href="/initiatives/starfish/">Starfish Community</a> | </li>
-			<li class="sub2"><a href="/initiatives/idrn/">IDRN</a> | </li>
-			<li class="sub2"><a href="{% url bpaindex %}">Business Partners in Action</a> | </li>
-			<li class="sub2"><a href="/initiatives/dynamic-business-startups/">DBSP</a> | </li>
-			<li class="sub2"><a href="/initiatives/lets-save-one/">Let's Save One</a> | </li>
-			<li class="sub2"><a href="/initiatives/orphan-care/">Orphan Care</a> | </li>
-			<li class="sub2"><a href="/initiatives/darfur-initiative/">Darfur Initiative</a> | </li>
-			{# <li class="sub2"><a href="/initiatives/gic/">GIC</a> | </li> #}
-			<li class="sub2"><a href="/initiatives/hrn/">HRN</a> | </li>
-			<li class="sub2"><a href="/initiatives/explosive-remnants-of-war/">Explosive Remnants of War</a></li>
-
-			<li class="sub3"><a href="{% url all_hubs %}">Hubs</a> | </li>
-			<li class="sub3"><a href="{% url project %}">HIST Projects</a> | </li>
-			<li class="sub3"><a href="{% url idrproject %}">IDR Projects</a> | </li>
-			<li class="sub3"><a href="{% url news %}">News</a> | </li>
-			<li class="sub3"><a href="{% url gallery %}">Photos</a> | </li>
-			<li class="sub3"><a href="{% url videos %}">Videos</a> | </li>
-			<li class="sub3"><a href="{% url blog %}">Blog</a></li>
-
-			<li class="sub4"><a href="/about-hisg/history/">History</a> | </li>
-			<li class="sub4"><a href="{% url directors %}">Directors</a> | </li>
-			<li class="sub4"><a href="{% url staff %}">Staff</a> | </li>
-			<li class="sub4"><a href="{% url office %}">Offices</a> | </li>
-			<li class="sub4"><a href="/about-hisg/vision/">Purpose and Vision</a> | </li>
-			<li class="sub4"><a href="{% url intern %}">Internship</a> | </li>				
-			<li class="sub4"><a href="{% url contact %}">Contact Us</a></li>
-
-			<li class="sub5"><a href="{% url donation_login %}">Donor Login</a></li>
-		</ul>
-	</div><!-- end of subnavigation block -->
-</div><!-- end of nav (top level navigation) -->
 
 {% block basebody %}
 	<div class="homer" id="lefthomer">

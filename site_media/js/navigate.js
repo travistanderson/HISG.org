@@ -1,121 +1,81 @@
-//site_media/js/navigate.js
+//site_media/js/navigate2.js
 
-var page = ""
-var pageperm = ""
 var activenav = ""
-var activesub = ""
-var showernav = ""
-var showersub = ""
 var navarrayhome = new Array(0,0,50,343,450,750);			// this array spaces out the subnav on the homepage
 var navarraysecond = new Array(0,0,80,50,420,500,800);		// this array spaces out the subnav on all the other pages
-var switcharray = new Array();
 
-function showsecond(shower,subshower){
-	$(document).ready(function(){
-		clas = ".sub" + shower;
-		$(clas).css({display: "inline"});
-		padder = "0 0 0 " + navarraysecond[shower] + "px";
-		namfirst = clas + ":first"; 
-		$(namfirst).css({padding:padder});
-		if (subshower != 0){	
-			sub = "#sub" + shower + subshower + " > a";
-			$(sub).css({color: "#238fb0"});
-		}	
-	})
-}
 
-function hoversecond(shower){
-	$(document).ready(function(){
-		$("#navigation > li").mouseover(function(){
-			for(i = 1; i < navarraysecond.length; ++i){
-				clas = ".sub" + i;
-				$(clas).css({display: "none"});
-			}
-			$(".sub0,.inyes").css({display:"none"});
-			clas = $(this).attr("id");
-			num = clas.slice(2,3);  //this chops the "id" off the front and leaves only the number
-			nam = ".sub" + num;  //this contructs the name off the appropriate submenu
-			namfirst = nam + ":first";
-			padder = "0 0 0 " + navarraysecond[num] + "px";
-			$(nam).css({display:"inline"});
-			$(namfirst).css({padding:padder});
-		})
-	})
-}
-
-function quickpick(){
-	$(document).ready(function(){
-		$(".quickpick").hover(
-			function(){
-				$(".quickhide").css({'display':"block"});
-				$(".quickpick").css({'width':'150px'});
-			},
-			function(){
-				$(".quickhide").css({display:"none"});
-				$(".quickpick").css({'width':''});
-			}
-		)
-		
-	})
-}
-
-function shower(){
-	$(document).ready(function(){
-		$("#navigation > li").mouseover(function(){
-			for(i = 1; i < navarrayhome.length; ++i){
-				clas = ".sub" + i;
-				$(clas).css({display: "none"});
-			}
-			$(".sub0,.inyes").css({display:"none"});
-			clas = $(this).attr("id");
-			num = clas.slice(2,3);  //this chops the "id" off the front and leaves only the number
-			nam = ".sub" + num;  //this contructs the name off the appropriate submenu
-			namfirst = nam + ":first";
-			padder = "0 0 0 " + navarrayhome[num] + "px";
-			$(nam).css({display:"inline"});
-			$(namfirst).css({padding:padder});
-		})
-	})
-}
-
-function hider(){
-	$(document).ready(function(){
-		$(".subnav").mouseout(function(){
-			for(i = 1; i < navarrayhome.length; ++i){
-				clas = ".sub" + i;
-				$(clas).css({display: "none"});
-				$(".sub0,.inyes").css({display:"inline"});
-			}
-		})
-	})
-}
-
-function initial(){
-	$(document).ready(function(){
-		$(".sub0").css({display: "inline",padding:"0 0 0 200px"});		
-		$(".inyes").css({display: "inline",});	
-	})
-}
-
-function tininav(){
-	$(document).ready(function(){
-		var text = $(".tini_highlight").text();
-		var tiniArray = new Array();
-		tiniArray = text.split(",");
-		for (i=0;i<tiniArray.length;i++){
-			var whichone = "#tini" + tiniArray[i];
-	 		$(whichone).css({color: "#3f97ba",});
+$(document).ready(function(){
+	$('.subnav > li').hide();
+	$('#navigation > li').each(function(i){
+		if($(this).children().hasClass('active')){
+			activenav = $(this).attr('id').split('_')[1];
 		}
 	})
-}
+	function leftadjust(an){
+		totwid = 0;
+		$('.sub_' + an).each(function(i){
+			totwid = totwid + parseInt($(this).outerWidth());
+		});
+		// alert(totwid);
+		if(totwid<1025){						// we have 1025 pixels of total width to work with
+			extra = 1025 - totwid;
+			if(activenav == 1){
+				center = (an * 205)-307;				
+			}else{
+				center = (an * 170)-85;				
+			}
+			leftedge = center - (totwid/2);
+			rightedge = center +(totwid/2);
+			if(leftedge > 50){
+				if(rightedge > 975){
+					lpad = 975-totwid;
+				}else{
+					lpad = leftedge;				
+				}
+			}else{
+				lpad = 50;
+			}
+		}else{lpad = 50;}
+		lpad = String(lpad) + 'px';
+		$('.subnav').css({'padding-left':lpad});
+	}
+	leftadjust(activenav);
+	$('.sub_' + activenav).show();
+	
+	$('#nav').hover(function(){
+		$('.rootnav').hover(function(){
+			hovernav = $(this).attr('id').split('_')[1];
+			// alert(hovernav)		
+			$('.subnav > li').hide();
+			leftadjust(hovernav);
+			$('.sub_' + hovernav).show();
+		},function(){})	
+	},function(){
+		$('.subnav > li').hide();
+		leftadjust(activenav);
+		$('.sub_' + activenav).show();
+	})
+	
+	$(".quickpick").hover(
+		function(){
+			$(".quickhide").css({'display':"block"});
+			$(".quickpick").css({'width':'150px'});
+		},
+		function(){
+			$(".quickhide").css({display:"none"});
+			$(".quickpick").css({'width':''});
+		}
+	)
 
-// here is the function to rotate around the photos on a photopicker.html include
-$(document).ready(function() {
+
+	// here is the function to rotate around the photos on a photopicker.html include
+
 	function makeImage(v){
 		imgstring = "<img class='gold5' src='" + v +"' />";
 		return imgstring;
 	}
-	
+
 	$('.thumbpic').click(function(){
 		var place = String(this.id).split('_').shift();
 		var idstring = positions[place];
@@ -129,14 +89,15 @@ $(document).ready(function() {
 });
 
 
-// these are the arrays with the photo data
-// var photoids = new Array();
-// var photodisplays = new Array();
-// var photothumbs = new Array();		
-// var photocaptions = new Array();
-
-
-
+// function tininav(){
+// 	var text = $(".tini_highlight").text();
+// 	var tiniArray = new Array();
+// 	tiniArray = text.split(",");
+// 	for (i=0;i<tiniArray.length;i++){
+// 		var whichone = "#tini" + tiniArray[i];
+//  		$(whichone).css({color: "#3f97ba",});
+// 	}
+// }
 
 
 // the end

@@ -75,17 +75,17 @@ ul#navigation .rootnav{text-indent:-9999px;}
 #bodysecond ul#navigation #li_5 a{background:transparent url(/site_media/images/nav2/nav5.jpg) no-repeat scroll 0 0;}
 #bodysecond ul#navigation #li_6 a{background:transparent url(/site_media/images/nav2/nav6.jpg) no-repeat scroll 0 0;}
 
-ul#navigation #subnavigation{background:url(/site_media/images/subback.bmp) repeat-y;color:#000;margin:35px 0 0 0px;height:20px;}
-ul#navigation #subnavigation ul{height:20px;}
-ul#navigation #subnavigation li{padding:0 0 0 25px;float:left;}
-ul#navigation #subnavigation li a{float:left;color:#000;height:20px;display:block;margin:0 25px 0 0;}
+ul#navigation #subnavigation{background:url(/site_media/images/subback.bmp) repeat-y;color:#000;margin:35px 0 0 0px;height:20px;overflow:hidden;}
+ul#navigation #subnavigation ul{height:20px;padding-left:50px;}
+ul#navigation #subnavigation li{padding:0 0 0 4px;float:left;}
+ul#navigation #subnavigation li a{float:left;color:#000;height:20px;display:block;margin:0 4px 0 0;}
 ul#navigation #subnavigation li .active{color:#238FB0;}
-.sub1,.sub2,.sub3,.sub4,.sub5{display:none;}
+/*.sub1,.sub2,.sub3,.sub4,.sub5{display:none;}*/
 /*second stuff
 .sub1,.sub2,.sub3,.sub4,.sub5,.sub6{display:none;}*/
-.sub0{display:none;}
+/*.sub0{display:none;}
 .inyes{display:none;}
-#adminfirst{padding:0 0 0 400px;}
+#adminfirst{padding:0 0 0 400px;}*/
 /*#administration{float:right;padding:0 100px 0 0;}
 #administration li{display:inline;}*/
 
@@ -303,7 +303,7 @@ ul#navigation #subnavigation li .active{color:#238FB0;}
 
 
 /*==========================footer=========================*/
-#ft{text-align:center;padding:0 20px 20px 20px;font-size:12px;background:#ffefa4;}
+#ft{text-align:center;padding:5px 20px 20px 20px;font-size:12px;background:#ffefa4;margin-left:2px;}
 /*second#ft{text-align:center;padding:20px;font-size:12px;}*/
 #ft a{color:#1a629d;}
 #ft a:visited{color:#1a629d;}

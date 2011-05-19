@@ -39,7 +39,7 @@ if WHICH_ENVIRONMENT == 'development':
 	
 elif WHICH_ENVIRONMENT == 'production':
 	# Django settings on the server for globalgrazer project.
-	DEBUG = False
+	DEBUG = True
 	TEMPLATE_DEBUG = DEBUG
 
 	TEMPLATE_DIRS = ('/home/django/domains/hisg.org/hisg/templates')

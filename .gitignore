@@ -1,7 +1,6 @@
 .DS_Store
 *.pyc
 /site_media/videos
-/site_media/images
 /site_media/photologue
 /site_media/flash
 /dev.db3

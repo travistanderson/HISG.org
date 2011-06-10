@@ -6,13 +6,13 @@ var navarraysecond = new Array(0,0,80,50,420,500,800);		// this array spaces out
 
 
 $(document).ready(function(){
-	$('.subnav > li').hide();
-	$('#navigation > li').each(function(i){
+	$('.subnav > li').hide();						// hide all the subnav groups at page load
+	$('#navigation > li').each(function(i){			// find which nav is active by id 
 		if($(this).children().hasClass('active')){
 			activenav = $(this).attr('id').split('_')[1];
 		}
 	})
-	function leftadjust(an){
+	function leftadjust(an){						// put left padding on active subnav group
 		totwid = 0;
 		$('.sub_' + an).each(function(i){
 			totwid = totwid + parseInt($(this).outerWidth());
@@ -41,7 +41,7 @@ $(document).ready(function(){
 		$('.subnav').css({'padding-left':lpad});
 	}
 	leftadjust(activenav);
-	$('.sub_' + activenav).show();
+	$('.sub_' + activenav).show();			//show the active subnav grouping at page load
 	
 	$('#nav').hover(function(){
 		$('.rootnav').hover(function(){

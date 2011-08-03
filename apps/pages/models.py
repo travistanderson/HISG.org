@@ -40,9 +40,9 @@ class Page(models.Model):
 		else:
 			num = old.count() -1
 			rev = old[num]
-			if rev.content != s.content:
+			if rev.content != s.content or rev.extrahead != s.extrahead:
 				t = num + 2
-				r = Revpage(page=s,content=s.content,number=t,updated=datetime.datetime.now())
+				r = Revpage(page=s,content=s.content,extrahead=s.extrahead,number=t,updated=datetime.datetime.now())
 				r.save()
 
 

@@ -12,6 +12,7 @@ class Page(models.Model):
 	url = models.CharField(max_length=100, db_index=True)
 	title = models.CharField(max_length=200)
 	content = models.TextField(blank=True)
+	extrahead = models.TextField(blank=True)
 	templatr = models.CharField(max_length=70, blank=True,help_text="optional",)
 	active = models.BooleanField(default=True)
 	bricks = models.ForeignKey(BrickGroup, blank=True, null=True)
@@ -34,7 +35,7 @@ class Page(models.Model):
 		s = self
 		old = Revpage.objects.filter(page=s)
 		if old.count() < 1:
-			r = Revpage(page=s,content=s.content,number=1,updated=datetime.datetime.now())
+			r = Revpage(page=s,content=s.content,extrahead=s.extrahead,number=1,updated=datetime.datetime.now())
 			r.save()
 		else:
 			num = old.count() -1
@@ -48,6 +49,7 @@ class Page(models.Model):
 class Revpage(models.Model):
 	page = models.ForeignKey(Page)
 	content = models.TextField(blank=True)
+	extrahead = models.TextField(blank=True)
 	number = models.IntegerField()
 	updated = models.DateField(default=datetime.datetime.now)
 

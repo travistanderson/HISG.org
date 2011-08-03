@@ -15,7 +15,7 @@ class PageAdmin(admin.ModelAdmin):
 	fieldsets = (
 		(None, {'fields': (('title','url'),('active','sidebar','bricks','templatr',))}),
 		(None, {'fields': ('content',)}),
-		(None, {'fields': (('section','subarrive','hasnav','tininav',),)}),
+		(None, {'fields': (('section','subarrive','hasnav','tininav',),('extrahead',))}),
 	)
 
 class RevpageAdmin(admin.ModelAdmin):

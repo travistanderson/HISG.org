@@ -24,17 +24,17 @@ if WHICH_ENVIRONMENT == 'development':
 	DATABASE_NAME = 'hisg3'
 	DATABASE_USER = 'hisguser'
 	DATABASE_PASSWORD = 'ujCY1qIq8Eto'
-	DATABASE_HOST = '192.168.1.153'
+	DATABASE_HOST = '192.168.254.153'
 	DATABASE_PORT = ''
 
 	GMAPKEY = 'ABQIAAAAKkJhGIDc65pxzIU9FTCsAxTpH3CbXHjuCVmaTc5MkkU4wO1RRhSJDl-ZXe3YDJR5e8jYO-NomOGXqg'
 	
 	PATHTOKEYS = '/Users/travis/Dropbox/hisg-dir/hisgWebsite/hisg/keys/'
-	PATHTOSFPJS = 'http://192.168.1.153:8000/site_media/sfp/sfp_widget.js'
-	PATHTOSFP = 'http://192.168.1.153:8000/'
+	PATHTOSFPJS = 'http://192.168.254.153:8000/site_media/sfp/sfp_widget.js'
+	PATHTOSFP = 'http://192.168.254.153:8000/'
 	SITESERVER = 'HISG'
 	
-	XMLRPCIP = 'http://192.168.1.153:8000/RPC2'
+	XMLRPCIP = 'http://192.168.254.153:8000/RPC2'
 	# GEOS_LIBRARY_PATH = "/Library/Frameworks/GEOS.framework/unix/lib/libgeos_c.dylib"
 	
 elif WHICH_ENVIRONMENT == 'production':
@@ -360,7 +360,7 @@ FORCE_LOWERCASE_TAGS = True
 # DATABASE_NAME = 'hisg3'             # Or path to database file if using sqlite3.
 # DATABASE_USER = 'hisguser'			# Not used with sqlite3.
 # DATABASE_PASSWORD = 'ujCY1qIq8Eto'		# Not used with sqlite3.
-# DATABASE_HOST = '192.168.1.153'		# Set to empty string for localhost. Not used with sqlite3.
+# DATABASE_HOST = '192.168.254.153'		# Set to empty string for localhost. Not used with sqlite3.
 # DATABASE_PORT = ''					# Set to empty string for default. Not used with sqlite3.
 
 

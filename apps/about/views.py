@@ -261,11 +261,11 @@ def internsuccess(request):
 		context_instance = RequestContext(request),
 	)
 	
-	
-	
-def anniversary(request):
-	
-	return render_to_response('about/anniversary.html', context_instance = RequestContext(request),)
+# 	
+# 	
+# def anniversary(request):
+# 	
+# 	return render_to_response('about/anniversary.html', context_instance = RequestContext(request),)
 	
 	
 	

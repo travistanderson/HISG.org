@@ -1,6 +1,6 @@
 {# templates/basesecond.html #}
 {% extends "base.html" %}
-{# {% block secondcol %}right-colomn{% endblock %} #}
+{# {% block secondcol %}right-column{% endblock %} #}
 {% block bodyholder %}bodysecond{% endblock %}
 
 {% block hd %}
@@ -19,8 +19,7 @@
 	
 {% block basebody %}
 	{% block brick %}{% endblock brick %}{# start and end of left-column #}
-	{# <div id="{% block secondcol %}{% endblock %}"> #}
-	<div id="right-colomn">
+	<div id="right-column">
 		{% block tininav %}{% endblock %}
 		{% block body %}{% endblock body %}
 	</div>

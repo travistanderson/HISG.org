@@ -118,7 +118,7 @@ ul#navigation #subnavigation li .active{color:#238FB0;}
 .homer .ican{color:#00a3e6;}
 .connect{padding:0 0 35px 0;}
 
-#left-colomn{float:left;width:338;min-height:500px;padding:20px 0 10px 0;}
+#left-column{float:left;width:338px;min-height:500px;padding:20px 0 10px 0;}
 #left-backer{background-color:#d9bc65;width:300px;margin:0 0 0 38px;padding:1px 0 0 0;}
 .left-block{background-color:#f2e3a5;margin:10px;width:280px;}
 /*.brick{font-family:times;font-weight:bold;text-transform:uppercase;background-color:#14436f;padding:3px 0 3px 0;width:200px;text-align:center;margin:40px 0 0 40px;}*/
@@ -129,7 +129,7 @@ ul#navigation #subnavigation li .active{color:#238FB0;}
 .br_ph_photo{float:left;width:100px;padding:20px 0 0 22px;}
 .br_ph_body{width:238px;padding:10px 0 0 22px;color:#14436f;}
 
-#right-colomn{float:left;min-height:500px;width:640px;margin:0 0 0 30px;padding:20px 0 0 0;}
+#right-column{float:left;min-height:500px;width:640px;margin:0 0 0 30px;padding:20px 0 0 0;}
 #toppic{background-color:#f2e3a5;padding:10px;}
 #toppicin{background:url(/site_media/images/toppicin.jpg);height:257px;}
 #toppicin div{float:left;}
@@ -325,7 +325,7 @@ ul#navigation #subnavigation li .active{color:#238FB0;}
 /* #dabc64 -- gold 		cukjati*/
 /* #d9bc65 -- gold 		background cukjati*/
 /* #fffccf -- gold 		light cukjati*/
-/* #f2e3a5 -- gold		left-colomn*/
+/* #f2e3a5 -- gold		left-column*/
 /* #ce9e4e -- gold 		volunteer*/
 /* #ffefa4 -- gold		yellowy light color at bottom center of homepage */
 

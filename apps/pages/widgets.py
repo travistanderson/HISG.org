@@ -32,7 +32,7 @@ class WYMEditor(forms.Textarea):
 # this is the second one I tried
 class WMDEditor(forms.Textarea):
 	class Media:
-		js = ('/admin_media/js/wmd/wmd.js',)
+		js = ('/admin_media/js/wmd/wmd.js','/admin_media/js/wmd/travis.js',)
 		css = {'all':('/admin_media/css/wmd.css',)}
 	
 	def __init__(self, language=None, attrs=None):
@@ -45,7 +45,6 @@ class WMDEditor(forms.Textarea):
 	def render(self, name, value, attrs=None):
 		rendered = super(WMDEditor, self).render(name, value, attrs)
 		return rendered + mark_safe(u'''
-			<h2>Preview</h2>
 			<div class="wmd-preview"></div>		
 		''')		
 

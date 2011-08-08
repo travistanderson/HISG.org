@@ -26,7 +26,7 @@ class EventAdmin(admin.ModelAdmin):
 		(None, {'fields': ('description',),'classes':('wide',)}),
 		# ('Date Information', {'fields': }),
 		(None, {'fields': (('contact', 'subject',),('start_date', 'end_date',))}),
-		('Extras', {'fields': ('registrant', 'attendee','questionset','limit','eventsubject','start_date_register','end_date_register',),'classes': ('collapse',),}),
+		('Extras', {'fields': ('registrant', 'attendee','questionset','limit','eventsubject',),'classes': ('collapse',),}),
 	)
 	change_form_template = 'admin/training/event/change_form.html'
 	save_on_top = True

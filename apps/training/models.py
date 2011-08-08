@@ -157,8 +157,8 @@ class Event(models.Model):
 	attendee = models.ManyToManyField(User,blank=True,null=True,related_name='attendee')
 	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.',default=1,)
 	# here are the new ones
-	start_date_register = models.DateField(help_text="Users will be able to register on and after this day",blank=True,null=True,)
-	end_date_register = models.DateField(help_text="Users will no longer be able to register after this day",blank=True,null=True,)
+	# start_date_register = models.DateField(help_text="Users will be able to register on and after this day",blank=True,null=True,)
+	# end_date_register = models.DateField(help_text="Users will no longer be able to register after this day",blank=True,null=True,)
 	# detail_description = models.TextField(blank=True)
 	eventsubject = models.ManyToManyField(EventSubject,blank=True,null=True,related_name="eventsubject")		
 	
@@ -181,23 +181,23 @@ class Event(models.Model):
 			link = '<a href="/admin/training/s/event/tableview/%s/">%s Registered</a>' %(self.id,u)
 		return mark_safe(link)
 	tableview.allow_tags = True
-	
-	def reg_open(self):
-		t = datetime.today()
-		today = datetime.date(t)
-		e = Event.objects.get(id=self.id)
-		reg="hello"
-		if e.start_date_register and e.end_date_register:
-			if e.start_date_register > today:
-				reg = '<span style="color:orange;">Opening Soon</span>'
-			elif e.start_date_register <= today and today <= e.end_date_register:
-				reg = '<span style="color:green;">Open</span>'
-			else:
-				reg = '<span style="color:red;">Closed</span>'
-		else:
-			reg = 'No Reg_dates set.'
-		return mark_safe(reg)
-	reg_open.allow_tags = True
+	# 
+	# def reg_open(self):
+	# 	t = datetime.today()
+	# 	today = datetime.date(t)
+	# 	e = Event.objects.get(id=self.id)
+	# 	reg="hello"
+	# 	if e.start_date_register and e.end_date_register:
+	# 		if e.start_date_register > today:
+	# 			reg = '<span style="color:orange;">Opening Soon</span>'
+	# 		elif e.start_date_register <= today and today <= e.end_date_register:
+	# 			reg = '<span style="color:green;">Open</span>'
+	# 		else:
+	# 			reg = '<span style="color:red;">Closed</span>'
+	# 	else:
+	# 		reg = 'No Reg_dates set.'
+	# 	return mark_safe(reg)
+	# reg_open.allow_tags = True
 	
 	
 		

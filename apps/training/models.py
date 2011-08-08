@@ -138,22 +138,16 @@ class EventSubject(models.Model):
 		return self.name
 		
 		
-# class EventTest(models.Model):
-# 	name = models.CharField(blank=True, max_length=100)
-# 	description = models.TextField(blank=True)
-# 
-# 	def __unicode__(self):
-# 		return self.name		
 
 
 class Event(models.Model):
-	name = models.CharField(blank=True, max_length=100)
-	slug = models.SlugField()
+	# name = models.CharField(blank=True, max_length=100)
+	# slug = models.SlugField()
 	contact = models.ForeignKey(Staff)
-	subject = models.CharField(blank=True, max_length=300)
+	subject = models.CharField(blank=False, max_length=300)
 	start_date = models.DateField(help_text="This is the first day of the training event.",)
 	end_date = models.DateField(help_text="This is the last day of the training event.",)
-	location = models.CharField(blank=True, max_length=100)
+	location = models.CharField(blank=False, max_length=100,help_text="E.G.: Dalls, Texas.",)
 	latitude = models.FloatField(blank=True,null=True)
 	longitude = models.FloatField(blank=True,null=True)
 	description = models.TextField(blank=True)
@@ -161,11 +155,11 @@ class Event(models.Model):
 	limit = models.IntegerField(blank=True, null=True,help_text='this is the maximum number of people you will allow to signup for this event.')
 	registrant = models.ManyToManyField(User,blank=True,null=True,related_name='registrant')
 	attendee = models.ManyToManyField(User,blank=True,null=True,related_name='attendee')
-	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.')
+	questionset = models.ForeignKey(QuestionSet,help_text='this is a pre-built set of questions the user will be required to fill out.',default=1,)
 	# here are the new ones
-	start_date_register = models.DateField(help_text="Users will be able to register on and after this day",)
-	end_date_register = models.DateField(help_text="Users will no longer be able to register after this day",)
-	detail_description = models.TextField(blank=True)
+	start_date_register = models.DateField(help_text="Users will be able to register on and after this day",blank=True,null=True,)
+	end_date_register = models.DateField(help_text="Users will no longer be able to register after this day",blank=True,null=True,)
+	# detail_description = models.TextField(blank=True)
 	eventsubject = models.ManyToManyField(EventSubject,blank=True,null=True,related_name="eventsubject")		
 	
 	def __unicode__(self):

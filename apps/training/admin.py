@@ -15,23 +15,19 @@ class BadgePhotoAdmin(admin.ModelAdmin):
 
 class EventAdmin(admin.ModelAdmin):
 	form = EventAdminModelForm
-	search_fields = ('name','location','start_date',)
+	search_fields = ('location','start_date',)
 	list_filter = ('start_date','contact',)
-	list_display = ('name','location','start_date','contact','tableview','reg_open')
+	list_display = ('id','location','start_date','contact','tableview','active')
 	list_display_links = ('location',)
 	ordering = ('-start_date',)
-	# list_editable = ()
-	prepopulated_fields = {'slug': ('name',)}
-	# filter_horizontal = ('attendee','registrant',)
 	filter_horizontal = ('attendee','registrant','eventsubject',)
 	fieldsets = (
-        (None, {'fields': ('name', 'slug',),'classes':('wide',)}),
-		('Date Information', {'fields': ('start_date', 'end_date','start_date_register','end_date_register',)}),
-		(None, {'fields': ('contact', 'subject','eventsubject','description','detail_description','active','limit','questionset','location',)}),
-		# (None, {'fields': ('contact', 'subject','description','detail_description','active','limit','questionset','location',)}),
-		('GeoLocation', {'fields': ('latitude', 'longitude',),'classes':('collapse',)}),
-        ('Attendees', {'fields': ('registrant', 'attendee',),'classes': ('collapse',),}),
-    )
+		(None, {'fields': (('location', 'active','latitude','longitude',),),'classes':('wide',)}),
+		(None, {'fields': ('description',),'classes':('wide',)}),
+		# ('Date Information', {'fields': }),
+		(None, {'fields': (('contact', 'subject',),('start_date', 'end_date',))}),
+		('Extras', {'fields': ('registrant', 'attendee','questionset','limit','eventsubject','start_date_register','end_date_register',),'classes': ('collapse',),}),
+	)
 	change_form_template = 'admin/training/event/change_form.html'
 	save_on_top = True
 
@@ -43,11 +39,11 @@ class QuestionAdmin(admin.ModelAdmin):
 	ordering = ('id',)
 	filter_horizontal = ('multi','radio',)	
 	fieldsets = (
-        (None, {'fields': ('question', 'help_text','required','qtype',),}),
+		(None, {'fields': ('question', 'help_text','required','qtype',),}),
 		('Multi', {'fields': ('multi',),}),
-        ('Radio', {'fields': ('radio',),}),
+		('Radio', {'fields': ('radio',),}),
 		('Text', {'fields': ('rows',),}),
-    )
+	)
 
 class QuestionSetAdmin(admin.ModelAdmin):
 	list_display = ('name','id','howmany',)

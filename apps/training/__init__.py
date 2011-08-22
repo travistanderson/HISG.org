@@ -50,3 +50,24 @@ def events():
 	
 	
 	
+@rpcmethod(name='training.bdinevents',)
+def bdinevents():
+	now = datetime.now().date()
+	events = Event.objects.filter(
+		Q(subject__icontains = 'community') | Q(subject__icontains = 'ssc') | Q(subject__icontains = 'ttt')).order_by('-start_date')
+	eventlist = []
+	for event in events:
+		theevent = {}
+		theevent['contact'] = event.contact.email
+		theevent['subject'] = event.subject
+		theevent['start_date'] = event.start_date.strftime('%m/%d/%y')
+		theevent['end_date'] = event.end_date.strftime('%m/%d/%y')
+		theevent['location'] = event.location
+		theevent['lat'] = event.latitude
+		theevent['lng'] = event.longitude
+		if event.start_date > now:
+			theevent['future'] = True
+		else:
+			theevent['future'] = False
+		eventlist.append(theevent)
+	return eventlist	

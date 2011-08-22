@@ -22,7 +22,7 @@ class EventAdmin(admin.ModelAdmin):
 	ordering = ('-start_date',)
 	filter_horizontal = ('attendee','registrant','eventsubject',)
 	fieldsets = (
-		(None, {'fields': (('location', 'active','latitude','longitude',),),'classes':('wide',)}),
+		(None, {'fields': (('location', 'active',),('latitude','longitude',)),'classes':('wide',)}),
 		(None, {'fields': ('description',),'classes':('wide',)}),
 		# ('Date Information', {'fields': }),
 		(None, {'fields': (('contact', 'subject',),('start_date', 'end_date',))}),

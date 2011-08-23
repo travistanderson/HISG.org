@@ -19,7 +19,6 @@ def events():
 	pevents = []
 	for event in ue:
 		theevent = {}
-		# theevent['name'] = event.name
 		theevent['contact'] = event.contact.email
 		theevent['subject'] = event.subject
 		theevent['start_date'] = event.start_date.strftime('%b. %d, %Y')
@@ -27,12 +26,10 @@ def events():
 		theevent['location'] = event.location
 		theevent['latitude'] = event.latitude
 		theevent['longitude'] = event.longitude
-		# theevent['description'] = event.description
 		theevent['active'] = event.active
 		uevents.append(theevent)
 	for event in pe:
 		theevent = {}
-		# theevent['name'] = event.name
 		theevent['contact'] = event.contact.email
 		theevent['subject'] = event.subject
 		theevent['start_date'] = event.start_date.strftime('%b. %d, %Y')
@@ -40,7 +37,6 @@ def events():
 		theevent['location'] = event.location
 		theevent['latitude'] = event.latitude
 		theevent['longitude'] = event.longitude
-		# theevent['description'] = event.description
 		theevent['active'] = event.active
 		pevents.append(theevent)
 	events.append(uevents)

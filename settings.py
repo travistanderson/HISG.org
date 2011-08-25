@@ -236,7 +236,6 @@ INSTALLED_APPS = (
 	'projectsmodels',
 	'faqs',
 	'training',
-	'hub',
 	'newadmin',
 
 	# added these to get the site working in mysql

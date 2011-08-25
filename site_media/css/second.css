@@ -256,10 +256,6 @@ ul#navigation li a#nav1:hover, ul#navigation li a#nav2:hover, ul#navigation li a
 .officeemail1{float:left;padding:5px 2px 0 200px;}
 .officeemail2{float:left;padding:5px 0 0 2px;}
 
-.hubupdate{background:#fffccf;border:1px solid #dabc64;margin:10px 0 0 0;padding:10px;}
-.hubupdate .hubtitle{float:left;width:459px;font-size:14px;font-weight:bold;margin:0 0 10px 0;color:#3f97ba;cursor:pointer;}
-.hubupdate .hubdate{float:right;width:144px;height:12px;background:#dabc64;padding:6px;}
-
 /*==========================footer=========================*/
 #ft{text-align:center;padding:20px;font-size:12px;}
 #ft a{color:#1a629d;}

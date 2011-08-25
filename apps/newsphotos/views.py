@@ -171,7 +171,7 @@ def galleryrecent(request):
 	)
 
 def videos(request):
-	v = Video.objects.all()
+	v = Video.objects.all().order_by('-date_created')
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
 	return render_to_response('projects-news/videos.html', {'video_list': v,'brickgroup': bg,'brickheight':bgheight,},
@@ -180,46 +180,14 @@ def videos(request):
 	
 def videos_detail(request, video_slug):
 	v = Video.objects.get(slug=video_slug)
-	pnum = int(v.id) - 1
-	nnum = int(v.id) + 1
 	try:
-		p = Video.objects.get(id = pnum)
+		p = Video.objects.get(id = int(v.id) - 1)
 	except Video.DoesNotExist:
-		p = False
+		p = None
 	try:
-		n = Video.objects.get(id = nnum)
+		n = Video.objects.get(id = int(v.id) + 1)
 	except Video.DoesNotExist:
-		n = False
-	if v.size == "Small":
-		if v.aspect == "Standard":
-			width = "260px"
-			flash = "smallstan.swf"
-			pad = "180px"
-		else:
-			width = "322px"
-			flash = "smallwide.swf"
-			pad = "149px"
-		height = "230px"
-	elif v.size == "Medium":
-		if v.aspect == "Standard":
-			width = "320px"
-			flash = "mediumstan.swf"
-			pad = "150px"
-		else:
-			width = "420px"
-			flash = "mediumwide.swf"
-			pad = "100px"
-		height = "285px"
-	else:
-		if v.aspect == "Standard":
-			width = "428px"
-			flash = "largestan.swf"
-			pad = "96px"
-		else:
-			width = "564px"
-			flash = "largewide.swf"
-			pad = "28px"
-		height = "366px"
+		n = None
 	path = "../../" + str(v.path)
 	bg = bricker('news','index')
 	bgheight = brickerheight(bg)
@@ -228,10 +196,6 @@ def videos_detail(request, video_slug):
 		'path':path,
 		'brickgroup': bg,
 		'brickheight':bgheight,
-		'width': width,
-		'height': height,
-		'flash': flash,
-		'pad':pad,
 		'next':n,
 		'prev':p,
 		},

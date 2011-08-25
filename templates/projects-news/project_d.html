@@ -39,9 +39,9 @@
 			</h3><br/>
 			
 			{% for update in project.updates %}
-				<div class='hubupdate'>
-					<div class='hubtitle'>{{ update }}</div>
-					<div class='hubdate'>
+				<div class='update'>
+					<div class='title'>{{ update }}</div>
+					<div class='date'>
 						{{ update.date|date:'P M d, Y' }} 				{# news #}
 						{{ update.created|date:'P M d, Y' }} 			{# videos #}
 						{{ update.year|date:'P M d, Y' }} 				{# project #}

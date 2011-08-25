@@ -17,13 +17,16 @@
 	
 	
 	<div style="padding:0 0 0 {{ pad }};">
-	
-		<object width="{{ width }}" height="{{ height }}">
-		<param name="movie" value="/site_media/flash/hisgvideos/{{ flash }}">
-		<PARAM NAME=FlashVars VALUE="videoPath={{ path }}">
-		<embed src="/site_media/flash/hisgvideos/{{ flash }}" width="{{ width }}" height="{{ height }}" FlashVars="videoPath={{ path }}">
-		</embed>
-		</object>
+		{% if video.embed %}
+			{{ video.embed|safe }}
+		{% else %}
+			<object width="{{ width }}" height="{{ height }}">
+			<param name="movie" value="/site_media/flash/hisgvideos/{{ flash }}">
+			<PARAM NAME=FlashVars VALUE="videoPath={{ path }}">
+			<embed src="/site_media/flash/hisgvideos/{{ flash }}" width="{{ width }}" height="{{ height }}" FlashVars="videoPath={{ path }}">
+			</embed>
+			</object>
+		{% endif %}
 	</div>
 	<div class="clearer"></div><br/><br/>
 	<div class="caption">

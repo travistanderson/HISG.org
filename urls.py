@@ -27,7 +27,6 @@ else:
 		(r'^projects-and-news/', include('projectsmodels.urls')),
 		(r'^about-hisg/', include('about.urls')),
 		(r'^donation-portal/', include('donationportal.urls')),
-		(r'^hub/', include('hub.urls')),
 		# (r'^account/', include('account.urls')),
 		# (r'^comments/', include('threadedcomments.urls')),
 		(r'^robots.txt$', include('robots.urls')),

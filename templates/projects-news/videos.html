@@ -2,6 +2,16 @@
 {% extends 'projects-news/base.html' %}
 {% block subarrive %}6{% endblock subarrive %}
 
+{% block extra_head %}
+	<script type="text/javascript" charset="utf-8">
+		function getthumb(iid,vcode){
+			var regyt = /embed\/\w+/
+			code = vcode.match(regyt);
+			iid = '#' + iid;
+			$(iid).attr('src','http://img.youtube.com/vi/' + String(code).split('embed/')[1] + '/1.jpg');
+		}
+	</script>
+{% endblock %}
 
 {% block brick %}
 	{% include "brick/brick.html" %}
@@ -14,7 +24,16 @@
 			{% for video in video_list %}
 				<div class="video_list">
 					<a href="{% url videos_detail video.slug %}">
-						<img src="{{ video.frame.get_video_on_list_url }}" class="gold5" >
+						{% if video.embed %}
+							<img src="/site_media/images/3.jpg" id='{{ forloop.counter }}_youtube' class="gold5 youtube">
+							<script type="text/javascript" charset="utf-8">
+								$(document).ready(function(){
+									getthumb('{{ forloop.counter }}_youtube','{{ video.embed }}');
+								});
+							</script>
+						{% else %}
+							<img src="{{ video.frame.get_video_on_list_url }}" class="gold5" >
+						{% endif %}
 					</a><br>
 					<h4>
 						<a href='{% url videos_detail video.slug %}'>

@@ -59,18 +59,6 @@ def projectdetail(request, proj_id):
 		context_instance = RequestContext(request),
 	)
 	
-	# h = get_object_or_404(Hub, slug=slug)
-	# updates = []
-	# for project in h.projects.all():
-	# 	updates.append(project)
-	# for gallery in h.gallery.all():
-	# 	updates.append(gallery)
-	# for news in h.news.all():
-	# 	updates.append(news)
-	# for video in h.videos.all():
-	# 	updates.append(video)	
-	
-	
 	
 	
 def idrprojectindex(request, sort):

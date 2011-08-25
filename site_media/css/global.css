@@ -25,7 +25,8 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 table{font-size:inherit;font:100%;}
 p ul{margin-left:40px;padding-left:0px;}
 pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height: 100%;}
-#bodyhome #doc-wrapper{margin:auto;width:1105px;min-width:900px;background:url(/site_media/images/fg2.jpg) no-repeat  top center;}
+/*#bodyhome #doc-wrapper{margin:auto;width:1105px;min-width:900px;background:url(/site_media/images/fg2.jpg) no-repeat  top center;}*/
+#bodyhome #doc-wrapper{margin:auto;width:1105px;min-width:900px;background:url(/site_media/images/fg2-10an.jpg) no-repeat  top center;}
 #bodysecond #doc-wrapper{margin:auto;width:1026px;min-width:900px;background:url(/site_media/images/second/fg5.jpg) no-repeat  top center;}
 #doc{margin:auto;text-align:left;width:1026px;}
 input, textarea, select{background-color:#FFF;color:#63bde0;margin:0 0 0px 0;font-size:18px;}

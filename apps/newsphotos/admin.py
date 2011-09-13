@@ -5,10 +5,11 @@ from newsphotos.forms import PostAdminModelForm, PartnerAdminModelForm, NewsAdmi
 
 class NewsAdmin(admin.ModelAdmin):
 	form = NewsAdminModelForm
-	list_display = ('date', 'name')
+	list_display = ('name', 'id', 'date',)
 	list_filter = ['date', 'region','country']
 	search_fields = ['name',]
 	ordering = ('-date',)
+	save_on_top = True
 	fieldsets = (
 		(None, {'fields': ('name', 'story', 'date','country','region','video')}),
 		('Photos', {'fields': ('photo',)}),

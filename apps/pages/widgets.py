@@ -49,6 +49,28 @@ class WMDEditor(forms.Textarea):
 		''')		
 
 
+
+# here is my custom one to fix the underscore problem
+class travEditor(forms.Textarea):
+	class Media:
+		js = ('/admin_media/js/traveditor/traveditor.js',)
+		css = {'all':('/admin_media/css/traveditor.css',)}
+	
+	def __init__(self, language=None, attrs=None):
+		# self.language = language or settings.LANGUAGE_CODE[:2]
+		self.attrs = {'cols':'70'}
+		if attrs:
+		    self.attrs.update(attrs)
+		super(travEditor, self).__init__(attrs)
+
+	def render(self, name, value, attrs=None):
+		rendered = super(travEditor, self).render(name, value, attrs)
+		return rendered + mark_safe(u'''
+			<div class="wmd-preview"></div>		
+		''')	
+		
+		
+		
 # this is the widget for picking a single photo
 class SinglePhotoPicker(forms.Select):
 	class Media:

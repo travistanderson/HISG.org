@@ -1,0 +1,10 @@
+.wmd-preview{border:5px solid #27aaee;overflow:scroll;height:350px;background:url(/site_media/images/second/fg5.jpg) no-repeat  -100px center;height:632px;width:435px;float:right;}
+.wmd-preview h1{font-size:36px;font-family:times;color:#14436f;background:none;}
+.wmd-preview h2{font-size:30px;font-family:times;color:#14436f;padding-bottom:15px;background:none;}
+.wmd-preview h3{font-size:24px;font-family:times;color:#14436f;padding-bottom:12px;background:none;}
+.wmd-preview h4{font-size:18px;font-family:times;color:#14436f;padding-bottom:8px;background:none;}
+#id_content{width:500px;margin:0 0 0 -13px;height:600px;}
+#id_description{width:500px;margin:0 0 0 -13px;height:600px;}
+#id_story{width:500px;margin:0 0 0 -13px;height:600px;}
+.form-row div label[for='id_story']{display:none;}
+/*#id_url{width:400px;}*/

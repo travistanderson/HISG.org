@@ -46,6 +46,7 @@ def videos_latest():
 	special['videolist'] = Video.objects.all().order_by('-id')[:4]
 	return special
 
+
 def galdemap(gallery):
 	special = {}
 	special['template'] = 'brick/brickincludes/galdemap.html'

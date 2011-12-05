@@ -102,8 +102,8 @@ class Galleryh(Gallery):
 	albumid = models.IntegerField(blank=True, null=True,help_text='If "smugmug" is checked, this is required',)
 	albumkey = models.CharField(blank=True, max_length=100,help_text='If "smugmug" is checked, this is required',)
 	photoh = models.ManyToManyField(Photoh,blank=True, null=True)
-	lat = models.FloatField(blank=True)
-	lng = models.FloatField(blank=True)
+	lat = models.FloatField(blank=True, null=True)
+	lng = models.FloatField(blank=True, null=True)
 
 	def photolist(self):
 		photolist = []
@@ -167,22 +167,22 @@ class Galleryh(Gallery):
 		
 # migration of galleries
 
-# from photologue.models import Gallery
-# from newsphotos.models import Galleryh
-# g = Gallery.objects.all()
-# for gal in g:
-# 	gh = Galleryh(date_added = gal.date_added,title=gal.title + '1',title_slug=gal.title_slug+'1',description=gal.description,is_public=gal.is_public,tags=gal.tags)
-# 	gh.save()
-# 	for photo in gal.photos.all():
-# 		gh.photos.add(photo)
-# 	gh.save()
-# 
-# then delete all the originals
-# 
-# gha = Galleryh.objects.all()
-# for gallery in gha:
-# 	gallery.title = gallery.title[0:-1]
-# 	gallery.title_slug = gallery.title_slug[0:-1]
-# 	gallery.save()
+from photologue.models import Gallery
+from newsphotos.models import Galleryh
+g = Gallery.objects.all()
+for gal in g:
+	gh = Galleryh(date_added = gal.date_added,title=gal.title + '1',title_slug=gal.title_slug+'1',description=gal.description,is_public=gal.is_public,tags=gal.tags)
+	gh.save()
+	for photo in gal.photos.all():
+		gh.photos.add(photo)
+	gh.save()
+
+then delete all the originals
+
+gha = Galleryh.objects.all()
+for gallery in gha:
+	gallery.title = gallery.title[0:-1]
+	gallery.title_slug = gallery.title_slug[0:-1]
+	gallery.save()
 
 

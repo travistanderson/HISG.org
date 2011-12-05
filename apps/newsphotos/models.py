@@ -87,8 +87,8 @@ class Photoh(models.Model):
 	largeurl = models.URLField(blank=True, verify_exists=False)
 	mediumurl = models.URLField(blank=True, verify_exists=False)
 	thumburl = models.URLField(blank=True, verify_exists=False)
-	lat = models.FloatField(blank=True)
-	lng = models.FloatField(blank=True)
+	lat = models.FloatField(blank=True, null=True)
+	lng = models.FloatField(blank=True, null=True)
 	
 	def __unicode__(self):
 		if len(self.caption) > 0:
@@ -167,22 +167,22 @@ class Galleryh(Gallery):
 		
 # migration of galleries
 
-from photologue.models import Gallery
-from newsphotos.models import Galleryh
-g = Gallery.objects.all()
-for gal in g:
-	gh = Galleryh(date_added = gal.date_added,title=gal.title + '1',title_slug=gal.title_slug+'1',description=gal.description,is_public=gal.is_public,tags=gal.tags)
-	gh.save()
-	for photo in gal.photos.all():
-		gh.photos.add(photo)
-	gh.save()
-
-then delete all the originals
-
-gha = Galleryh.objects.all()
-for gallery in gha:
-	gallery.title = gallery.title[0:-1]
-	gallery.title_slug = gallery.title_slug[0:-1]
-	gallery.save()
+# from photologue.models import Gallery
+# from newsphotos.models import Galleryh
+# g = Gallery.objects.all()
+# for gal in g:
+# 	gh = Galleryh(date_added = gal.date_added,title=gal.title + '1',title_slug=gal.title_slug+'1',description=gal.description,is_public=gal.is_public,tags=gal.tags)
+# 	gh.save()
+# 	for photo in gal.photos.all():
+# 		gh.photos.add(photo)
+# 	gh.save()
+# 
+# then delete all the originals
+# 
+# gha = Galleryh.objects.all()
+# for gallery in gha:
+# 	gallery.title = gallery.title[0:-1]
+# 	gallery.title_slug = gallery.title_slug[0:-1]
+# 	gallery.save()
 
 

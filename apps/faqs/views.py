@@ -23,9 +23,9 @@ def faqsdetail(request, faqs_id):
 	
 def sitemap(request):
 	brick = getbrick('sitemap')
-	return render_to_response('misc/sitemap.html',{'brickgroup': bg,'brickheight':bgheight,},context_instance = RequestContext(request),)
+	return render_to_response('misc/sitemap.html',{'brick':brick,},context_instance = RequestContext(request),)
 
 
 def googleverify(request):
 	brick = getbrick('googleverify')
-	return render_to_response('misc/googleverify.html', {'brick':brick,},context_instance = RequestContext(request),)
+	return render_to_response('misc/googleverify.html',{'brick':brick,},context_instance = RequestContext(request),)

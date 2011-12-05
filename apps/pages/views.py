@@ -25,8 +25,7 @@ def pager(request, url):
 	if f.sidebar:
 		brick = getbrick('pager')
 	else:
-		bg = None
-		bgheight = None
+		brick = None
 
 	if f.templatr:
 		t = loader.select_template((f.templatr, DEFAULT_TEMPLATE))

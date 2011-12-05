@@ -37,9 +37,9 @@ if WHICH_ENVIRONMENT == 'development':
 	XMLRPCIP = 'http://192.168.254.155:8000/RPC2'
 	# GEOS_LIBRARY_PATH = "/Library/Frameworks/GEOS.framework/unix/lib/libgeos_c.dylib"
 	
-elif WHICH_ENVIRONMENT == 'production':
+else:					 # WHICH_ENVIRONMENT == 'production':
 	# Django settings on the server for globalgrazer project.
-	DEBUG = True
+	DEBUG = False
 	TEMPLATE_DEBUG = DEBUG
 
 	TEMPLATE_DIRS = ('/home/django/domains/hisg.org/hisg/templates')
@@ -65,31 +65,31 @@ elif WHICH_ENVIRONMENT == 'production':
 	
 	XMLRPCIP = 'http://profile.hisg.org/RPC2'
 
-else:
-	DEBUG = True
-	TEMPLATE_DEBUG = DEBUG
-	DATABASE_ENGINE = ''		   # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-	DATABASE_NAME = ''			 # Or path to database file if using sqlite3.
-	DATABASE_USER = ''			 # Not used with sqlite3.
-	DATABASE_PASSWORD = ''		 # Not used with sqlite3.
-	DATABASE_HOST = ''			 # Set to empty string for localhost. Not used with sqlite3.
-	DATABASE_PORT = ''			 # Set to empty string for default. Not used with sqlite3.
-	# Absolute path to the directory that holds media.
-	# Example: "/home/media/media.lawrence.com/"
-	MEDIA_ROOT = ''
-	# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-	# trailing slash if there is a path component (optional in other cases).
-	# Examples: "http://media.lawrence.com", "http://example.com/media/"
-	MEDIA_URL = ''
-	# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-	# trailing slash.
-	# Examples: "http://foo.com/media/", "/media/".
-	ADMIN_MEDIA_PREFIX = '/admin_media/'
-	TEMPLATE_DIRS = (
-		# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-		# Always use forward slashes, even on Windows.
-		# Don't forget to use absolute paths, not relative paths.
-	)
+# else:
+# 	DEBUG = True
+# 	TEMPLATE_DEBUG = DEBUG
+# 	DATABASE_ENGINE = ''		   # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+# 	DATABASE_NAME = ''			 # Or path to database file if using sqlite3.
+# 	DATABASE_USER = ''			 # Not used with sqlite3.
+# 	DATABASE_PASSWORD = ''		 # Not used with sqlite3.
+# 	DATABASE_HOST = ''			 # Set to empty string for localhost. Not used with sqlite3.
+# 	DATABASE_PORT = ''			 # Set to empty string for default. Not used with sqlite3.
+# 	# Absolute path to the directory that holds media.
+# 	# Example: "/home/media/media.lawrence.com/"
+# 	MEDIA_ROOT = ''
+# 	# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# 	# trailing slash if there is a path component (optional in other cases).
+# 	# Examples: "http://media.lawrence.com", "http://example.com/media/"
+# 	MEDIA_URL = ''
+# 	# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
+# 	# trailing slash.
+# 	# Examples: "http://foo.com/media/", "/media/".
+# 	ADMIN_MEDIA_PREFIX = '/admin_media/'
+# 	TEMPLATE_DIRS = (
+# 		# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+# 		# Always use forward slashes, even on Windows.
+# 		# Don't forget to use absolute paths, not relative paths.
+# 	)
 
 
 
@@ -294,19 +294,8 @@ INTERNAL_IPS = (
 )
 
 ugettext = lambda s: s
-LANGUAGES = (
-  ('en', u'English'),
-  ('de', u'Deutsch'),
-  ('es', u'Español'),
-  ('fr', u'Français'),
-  ('sv', u'Svenska'),
-  ('pt-br', u'Português brasileiro'),
-  ('he', u'עברית'),
-  ('ar', u'العربية'),
-  ('it', u'Italiano'),
-)
-
-# URCHIN_ID = "ua-..."
+LANGUAGES = (('en', u'English'),('de', u'Deutsch'),('es', u'Español'),('fr', u'Français'),('sv', u'Svenska'),('pt-br', u'Português brasileiro'),
+  ('he', u'עברית'),('ar', u'العربية'),('it', u'Italiano'),)
 
 CACHE_BACKEND = "locmem:///?max_entries=3000"
 FEEDUTIL_SUMMARY_LEN = 60*7 # 7 hours

@@ -118,7 +118,33 @@
 		impactersetup();
 		impacter();
 	</script>
-
+	<script src="http://maps.googleapis.com/maps/api/js?key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var map;
+			function initialize() {
+				var mapcenter = new google.maps.LatLng(25.0,0.0);
+				var myOptions = {
+					zoom:2,
+					center:mapcenter,
+					mapTypeId:google.maps.MapTypeId.HYBRID,
+					mapTypeControl: true,
+					mapTypeControlOptions:{
+						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+					},}
+				map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+				var gallerypoint = new google.maps.LatLng(27,57);
+				var marker = new google.maps.Marker({position:gallerypoint,map:map,title:"helloworld"});
+				google.maps.event.addListener(marker, 'click', function(){
+					gotogallery('11');
+				});
+			}
+			initialize();
+			function gotogallery(url){
+				window.location.href = '/projects-and-news/gallery/' + url;
+			}
+		});
+	</script>
 {% endblock %}
 
 {% block bodyholder %}bodyhome{% endblock %}

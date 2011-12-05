@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 from featured.models import HomerPager, Opportunity, RandyPage
 from featured.forms import ContactDbspForm
 from countries.models import Region, Country, UsState
-from brick.views import bricker, brickerheight
+from brick.views import getbrick
 from django.conf import settings
 from mailer import send_mail
 from settings import GMAPKEY, DEBUG
@@ -23,35 +23,22 @@ def index(request):
 	except HomerPager.DoesNotExist:
 		h = []
 	a = 'index'
-	bg = bricker('about','directors')
-	bgheight = brickerheight(bg)	
-	
-	return render_to_response('featured/bpa/index.html', {'homer': h,'active':a,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('index')	
+	return render_to_response('featured/bpa/index.html', {'homer': h,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 
 
 def list(request):
 	o = Opportunity.objects.all().order_by('sorter')
 	a = 'list'	
-	bg = bricker('about','directors')
-	bgheight = brickerheight(bg)	
-	
-	return render_to_response('featured/bpa/list.html', {'opp_list':o,'active':a,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
-
+	brick = getbrick('list')	
+	return render_to_response('featured/bpa/list.html', {'opp_list':o,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 
 	
 def detail(request, opp_id):
 	o = get_object_or_404(Opportunity, pk = opp_id)
 	a = 'list'	
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
-
-	return render_to_response('featured/bpa/detail.html', {'opp': o,'active':a,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('detail')
+	return render_to_response('featured/bpa/detail.html', {'opp': o,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 	
 	
 def contact(request):
@@ -60,18 +47,12 @@ def contact(request):
 	except RandyPage.DoesNotExist:
 		r = []
 	a = 'contact'		
-	bg = bricker('about','directors')
-	bgheight = brickerheight(bg)	
-	
-	return render_to_response('featured/bpa/randy.html', {'randy': r,'active':a,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('contact')	
+	return render_to_response('featured/bpa/randy.html', {'randy': r,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 
 	
 def contactdbsp(request):
-	# bg = BrickGroup.objects.get(name = 'index', section = "about")
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
+	brick = getbrick('contactdbsp')
 	if request.method == 'POST':
 		form = ContactDbspForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -85,22 +66,16 @@ def contactdbsp(request):
 			return HttpResponseRedirect('/initiatives/dynamic-business-startups/contact-dbsp/success/')
 		else:
 			form = ContactDbspForm(request.POST)
-			return render_to_response(
-				'featured/dbsp/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-				context_instance = RequestContext(request),
-			)
+			return render_to_response('featured/dbsp/contact.html', {'form':form,'brick':brick,},context_instance = RequestContext(request),)
 	else:
 		form = ContactDbspForm()
 		m = '.'
-	return render_to_response(
-		'featured/dbsp/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'m':m,},
-		context_instance = RequestContext(request),
-	)
+	return render_to_response('featured/dbsp/contact.html', {'form':form,'brick':brick,'m':m,},context_instance = RequestContext(request),)
+	
 
 def contactsuccessdbsp(request):
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)	
+	brick = getbrick('contactsuccessdbsp')	
+	return render_to_response('featured/dbsp/contact-success.html', {'brick':brick,},context_instance = RequestContext(request),)
 	
-	return render_to_response('featured/dbsp/contact-success.html', {'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	
+	

@@ -1,6 +1,7 @@
 # about/models.py
 from django.db import models
 from datetime import datetime, timedelta
+from django.contrib.auth.models import User
 from photologue.models import ImageModel, Photo
 from newsphotos.models import Video
 from projectsmodels.models import Project
@@ -62,3 +63,7 @@ class Staff(models.Model):
 			
 		return '<div style="width:82px;"><img src="/site_media/%s" style="height:60px;width:80px;"></img>%s</div>' %(im,ms)
 	pictured.allow_tags = True
+
+
+
+

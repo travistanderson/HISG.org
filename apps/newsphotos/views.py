@@ -6,12 +6,12 @@ from django.forms import ModelForm
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.template import RequestContext
 from datetime import datetime, timedelta
-from newsphotos.models import News, Partner, PartnerType, Post
+from newsphotos.models import News, Partner, PartnerType, Post, Galleryh
 from videos.models import Video
-from photologue.models import Gallery, Photo
+from photologue.models import Photo
 from countries.models import Region, Country
 from photologue.models import Photo
-from brick.views import bricker, brickerheight
+from brick.views import getbrick
 from videos.models import Video
 from about.forms import PulseForm
 from django.conf import settings
@@ -20,24 +20,15 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 
-
-
+# this view is apparently unused now
 def index(request):
 	n = News.objects.all().order_by('-date')[:3]
 	b = Post.objects.all()[:3]
-	g = Gallery.objects.filter(is_public=True).order_by('-date_added')[:3]
+	g = Galleryh.objects.filter(is_public=True).order_by('-date_added')[:3]
 	v = Video.objects.all()[:3]
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/index.html', {'news_list':n,
-														'blog_list':b,
-														'gallery_list':g,
-														'video_list':v,
-														'brickgroup': bg,
-														'brickheight':bgheight,
-														},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('index')
+	return render_to_response('projects-news/index.html',{'news_list':n,'blog_list':b,'gallery_list':g,'video_list':v,'brick':brick,},context_instance = RequestContext(request),)
+
 
 def newsindex(request, sort):
 	if sort == 'country':
@@ -48,27 +39,22 @@ def newsindex(request, sort):
 		n = News.objects.all().order_by('-date')
 	else:
 		n = News.objects.all()
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/news.html', {'news_list': n,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('newsindex')
+	return render_to_response('projects-news/news.html', {'news_list': n,'brick':brick,'sort':sort,},context_instance = RequestContext(request),)
+
 
 def newsdetail(request, news_id):
 	n = get_object_or_404(News, pk = news_id)
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/news_d.html', {'news': n,'brickgroup': bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('newsdetail')
+	return render_to_response('projects-news/news_d.html', {'news': n,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def newslatest(request):
 	n = News.objects.latest('date')	
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/news_d.html', {'news': n,'brickgroup': bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	bg = bricker('projects','news')
+	brick = getbrick('')
+	return render_to_response('projects-news/news_d.html', {'news': n,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def newscount(request):
 	n = News.objects.all()
@@ -76,11 +62,9 @@ def newscount(request):
 	start = datetime.min.replace(year=now.year, month=now.month, day=now.day)
 	end = (start + timedelta(days=1)) - timedelta.resolution
 	today = News.objects.all().filter(date__range=(start, end))
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/count.html', {'news': n, 'today': today,'brickgroup': bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('newscount')
+	return render_to_response('projects-news/count.html', {'news': n, 'today': today,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def blogindex(request, sort):
 	if sort == 'department':
@@ -91,19 +75,16 @@ def blogindex(request, sort):
 		p = Post.objects.all().order_by('-publish')
 	else:
 		p = Post.objects.all()
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/blog.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('blogindex')
+	return render_to_response('projects-news/blog.html', {'post_list': p,'brick':brick,'sort':sort,},context_instance = RequestContext(request),)
+	
 
 def pulse(request, sort):
 	if sort == 'author':
 		p = Post.objects.all().filter(department__exact = 'Pulse Report').order_by('author')
 	else:
 		p = Post.objects.all().filter(department__exact = 'Pulse Report')
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
+	brick = getbrick('pulse')
 	if request.method == 'POST':
 		form = PulseForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -114,69 +95,52 @@ def pulse(request, sort):
 			content = "This request came from hisg.org on the Pulse Report Page." + "\n\n" + "Please sign me (" + email + ") up for the Pulse Report Kyle."
 			send_mail(subject, content, email,[toemail,toemail2,])
 			m = "You are now signed up for the Pulse Report"
-			return render_to_response('projects-news/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form,'message':m},
-				context_instance = RequestContext(request),
-			)
+			return render_to_response('projects-news/pulse.html',{'post_list': p,'brick':brick,'sort':sort,'form':form,'message':m},context_instance=RequestContext(request),)
 		else:
 			form = PulseForm(request.POST)
 			return render_to_response(
-				'projects-news/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form,},
-				context_instance = RequestContext(request),
-			)
+				'projects-news/pulse.html', {'post_list': p,'brick':brick,'sort':sort,'form':form,},context_instance = RequestContext(request),)
 	else:
 		form = PulseForm()
-	return render_to_response('projects-news/pulse.html', {'post_list': p,'brickgroup': bg,'brickheight':bgheight,'sort':sort,'form':form},
-		context_instance = RequestContext(request),
-	)
+	return render_to_response('projects-news/pulse.html', {'post_list': p,'brick':brick,'sort':sort,'form':form},context_instance = RequestContext(request),)
 
 
 def blogdetail(request, blog_id):
 	p = get_object_or_404(Post, pk = blog_id)
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/blog_d.html', {'post': p,'brickgroup': bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('blogdetail')
+	return render_to_response('projects-news/blog_d.html', {'post': p,'brick':brick,},context_instance = RequestContext(request),)
+	
 
 def galleryindex(request, sort):
+	brick = getbrick('galleryindex')
 	if sort == 'date':
-		g = Gallery.objects.filter(is_public=True).order_by('-date_added')
+		g = Galleryh.objects.filter(is_public=True).order_by('-date_added')
 	elif sort == 'title':
-		g = Gallery.objects.filter(is_public=True).order_by('title')
+		g = Galleryh.objects.filter(is_public=True).order_by('title')
 	else:
-		g = Gallery.objects.filter(is_public=True)
-
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/gallery.html', {'gallery_list': g,'brickgroup': bg,'brickheight':bgheight,'sort':sort},
-		context_instance = RequestContext(request),
-	)
+		g = Galleryh.objects.filter(is_public=True)
+	return render_to_response('projects-news/gallery.html',{'gallery_list':g,'brick':brick,'sort':sort},context_instance = RequestContext(request),)
+	
 	
 def gallerydetail(request, gallery_id):
-	g = get_object_or_404(Gallery, pk = gallery_id)
+	g = get_object_or_404(Galleryh, pk = gallery_id)
 	if not g.is_public:
 		g = None
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/gallery_d.html', {'gallery': g,'brickgroup': bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('gallerydetail',gallery=g)
+	return render_to_response('projects-news/gallery_d.html', {'gallery': g,'brick': brick,},context_instance = RequestContext(request),)
+	
 	
 def galleryrecent(request):
-	g = Gallery.objects.filter(is_public=True).order_by('-date_added')
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/index.html', {'gallery_list': g,'brickgroup': bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	g = Galleryh.objects.filter(is_public=True).order_by('-date_added')
+	brick = getbrick('galleryrecent')
+	return render_to_response('projects-news/index.html', {'gallery_list': g,'brick':brick,},context_instance = RequestContext(request),)
+	
 
 def videos(request):
 	v = Video.objects.all().order_by('-date_created')
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/videos.html', {'video_list': v,'brickgroup': bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('videos')
+	return render_to_response('projects-news/videos.html', {'video_list': v,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def videos_detail(request, video_slug):
 	v = Video.objects.get(slug=video_slug)
@@ -189,35 +153,8 @@ def videos_detail(request, video_slug):
 	except Video.DoesNotExist:
 		n = None
 	path = "../../" + str(v.path)
-	bg = bricker('news','index')
-	bgheight = brickerheight(bg)
-	return render_to_response('projects-news/videos_detail.html', 
-		{'video': v,
-		'path':path,
-		'brickgroup': bg,
-		'brickheight':bgheight,
-		'next':n,
-		'prev':p,
-		},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('videos_detail')
+	return render_to_response('projects-news/videos_detail.html', {'video': v,'path':path,'brick':brick,'next':n,'prev':p,},context_instance = RequestContext(request),)
 
 
 
-# def videosdetail(request, video_id):
-# 	v = Video.objects.get(id = video_id)
-# 	pnum = int(video_id) - 1
-# 	nnum = int(video_id) + 1
-# 
-# 	try:
-# 		p = Video.objects.get(id = pnum)
-# 	except Video.DoesNotExist:
-# 		p = False
-# 	try:
-# 		n = Video.objects.get(id = nnum)
-# 	except Video.DoesNotExist:
-# 		n = False
-# 		
-# 	return render_to_response('life/videos_d.html', {'video': v,'prev':p,'next':n,},
-# 		context_instance = RequestContext(request),
-# 	)

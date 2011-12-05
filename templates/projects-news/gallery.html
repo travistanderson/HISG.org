@@ -7,8 +7,50 @@
 	{% include "brick/brick.html" %}
 {% endblock brick %}
 
-{% block body %}
+{% block extra_head %}
+	<script src="http://maps.googleapis.com/maps/api/js?key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var galleryarray = new Array();
+			{% for gallery in gallery_list %}
+			var gallery{{ forloop.counter }} = new Array();
+			gallery{{ forloop.counter }}.push("{{ gallery.title }}");
+			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lat }}");
+			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lng }}");
+			gallery{{ forloop.counter }}.push("{{ gallery.description|safe }}");
+			galleryarray.push(gallery{{ forloop.counter }});
+			{% endfor %}
+			var map;
+			function initialize() {
+				var mapcenter = new google.maps.LatLng(25.0,0.0);
+				var myOptions = {
+					zoom:2,
+					center:mapcenter,
+					mapTypeId:google.maps.MapTypeId.HYBRID,
+					mapTypeControl: true,
+					mapTypeControlOptions:{
+						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+					},}
+				map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 
+				{% for gallery in gallery_list %}
+				var gallerypoint{{ forloop.counter }} = new google.maps.LatLng({{ gallery.photolist.0.lat }},{{ gallery.photolist.0.lng }});
+				var marker{{ forloop.counter }} = new google.maps.Marker({position:gallerypoint{{ forloop.counter }},map:map,title:"{{ gallery.title }}"});
+				google.maps.event.addListener(marker{{ forloop.counter }}, 'click', function(){
+					gotogallery({{ gallery.id }});
+				});
+				{% endfor %}
+			}
+			initialize();
+			function gotogallery(url){
+				window.location.href = '/projects-and-news/gallery/' + url;
+			}
+		});
+	</script>
+{% endblock %}
+
+
+{% block body %}
 	<h2 class="center">Photos</h2><hr />
 	<ul class="sorter">
 		<li>
@@ -25,9 +67,9 @@
 				<a href="{% url gallery_title %}">Sort by Title</a>
 			{% endifequal %}
 		</li>
-
 	</ul>
 	<hr />
+	<div class="office_map" id="map_canvas" style="width: 628px; height: 350px"></div><br/><br/>
 	{% if gallery_list %}
 		{% autopaginate gallery_list 4 %}
 		{% for gallery in gallery_list %}
@@ -35,15 +77,15 @@
 				<a href='{% url gallery_detail gallery.id %}'>
 					<h4>{{ gallery.title }}</h4>
 					<div>
-						{% for photo in gallery.photos.all %}
+						{% for photo in gallery.photolist %}
 							{% ifequal forloop.counter 1 %}
-								<img class="gold5" src="{{ photo.get_medium_url }}" />
+								<img class="gold5" src="{{ photo.medium_url }}" />
 							{% endifequal %}
 							{% ifequal forloop.counter 2 %}
-								<img class="gold5" src="{{ photo.get_medium_url }}" />
+								<img class="gold5" src="{{ photo.medium_url }}" />
 							{% endifequal %}
 							{% ifequal forloop.counter 3 %}
-								<img class="gold5" src="{{ photo.get_medium_url }}" />
+								<img class="gold5" src="{{ photo.medium_url }}" />
 							{% endifequal %}
 						{% endfor %}
 					</div>
@@ -63,6 +105,5 @@
 	{% else %}
 		<p>No Photo Galleries.</p>
 	{% endif %}
-
 {% endblock %}
 

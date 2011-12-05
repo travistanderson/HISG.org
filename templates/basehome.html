@@ -118,6 +118,45 @@
 		impactersetup();
 		impacter();
 	</script>
+	<script src="http://maps.googleapis.com/maps/api/js?key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var galleryarray = new Array();
+			{% for gallery in gal %}
+			var gallery{{ forloop.counter }} = new Array();
+			gallery{{ forloop.counter }}.push("{{ gallery.title }}");
+			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lat }}");
+			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lng }}");
+			gallery{{ forloop.counter }}.push("{{ gallery.description|safe }}");
+			galleryarray.push(gallery{{ forloop.counter }});
+			{% endfor %}
+			var map;
+			function initialize() {
+				var mapcenter = new google.maps.LatLng(25.0,0.0);
+				var myOptions = {
+					zoom:2,
+					center:mapcenter,
+					mapTypeId:google.maps.MapTypeId.HYBRID,
+					mapTypeControl: true,
+					mapTypeControlOptions:{
+						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+					},}
+				map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+
+				{% for gallery in gal %}
+				var gallerypoint{{ forloop.counter }} = new google.maps.LatLng({{ gallery.photolist.0.lat }},{{ gallery.photolist.0.lng }});
+				var marker{{ forloop.counter }} = new google.maps.Marker({position:gallerypoint{{ forloop.counter }},map:map,title:"{{ gallery.title }}"});
+				google.maps.event.addListener(marker{{ forloop.counter }}, 'click', function(){
+					gotogallery({{ gallery.id }});
+				});
+				{% endfor %}
+			}
+			initialize();
+			function gotogallery(url){
+				window.location.href = '/projects-and-news/gallery/' + url;
+			}
+		});
+	</script>
 {% endblock %}
 
 {% block bodyholder %}bodyhome{% endblock %}
@@ -202,15 +241,20 @@
 
 	</div>{# end of lefthomer #}
 
-	<div class="homer" id="middlehomer">
-		{% chunk "homepage_middle_column" %}
-
-	</div>{# end of middlehomer #}
-
-	<div class="homer" id="righthomer">
-		{% chunk "homepage_right_column" %}
-
-	</div>{# end of right homer #}
+	{# <div class="homer" id="middlehomer"> #}
+	{# 	{% chunk "homepage_middle_column" %} #}
+	{#  #}
+	{# </div>{# end of middlehomer #}
+	{#  #}
+	{# <div class="homer" id="righthomer"> #}
+	{# 	{% chunk "homepage_right_column" %} #}
+	{#  #}
+	{# </div>{# end of right homer #}
+	<div class='homer' id='midrighthomer'>
+		<h3>HISG Photo Galleries around the world</h3>
+		<div class="office_map" id="map_canvas" style="width: 628px; height: 350px"></div><br/><br/>
+		<p>Click one of the red markers to view photos from that locale or click <a href='{% url gallery %}'>here</a> to view all galleries.</p>
+	</div>
 	<div style="clear:both"></div>
 {% endblock %}
 

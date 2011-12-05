@@ -1,0 +1,10 @@
+{# templates/brick/brickincludes/videos_latest.html #}
+
+<div class="br_ph_title">
+	Visit our Videos section to see more videos about community development and disaster response.
+</div>
+{% for video in brick.content.videolist %}
+	<div class="br_ph_photo"><img src="{% if video.embedid %}{{ video.getthumb }}{% else %}{{ video.frame.get_thumbnail_url }}{% endif %}" class="gold5"></img></div>
+{% endfor %}
+<div class="clearer"></div>
+

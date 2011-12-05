@@ -1,0 +1,8 @@
+{# templates/brick/brickincludes/gallery_latest.html #}
+
+<div class="br_ph_title">{{ brick.content.title }}</div>
+{% for photo in brick.content.photolist %}
+	<div class="br_ph_photo"><img src="{{ photo }}" class="gold5"></img></div>
+{% endfor %}
+<div class="clearer"></div>
+<div class="br_ph_body">{{ brick.content.description|truncatewords:16 }}</div>

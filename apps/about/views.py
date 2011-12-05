@@ -12,21 +12,15 @@ from about.forms import ContactForm, InternBecomeForm, InternFindForm, InternPla
 from videos.models import Video
 from countries.models import Region, Country, UsState
 from photologue.models import Photo
-from brick.views import bricker, brickerheight
+from brick.views import getbrick
 from training.models import Event
 from django.conf import settings
-# if "mailer" in settings.INSTALLED_APPS:
-#     from mailer import send_mail
-# else:
-#     from django.core.mail import send_mail
 from mailer import send_mail
 from settings import GMAPKEY, DEBUG
 
 	
 def contact(request):
-	# bg = BrickGroup.objects.get(name = 'index', section = "about")
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
+	brick = getbrick('contact')
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -41,25 +35,19 @@ def contact(request):
 		else:
 			form = ContactForm(request.POST)
 			return render_to_response(
-				'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
+				'about/contact.html', {'form':form,'brick':brick,},
 				context_instance = RequestContext(request),
 			)
 	else:
 		form = ContactForm()
 		m = '.'
-	return render_to_response(
-		'about/contact.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'m':m,},
-		context_instance = RequestContext(request),
-	)
+	return render_to_response('about/contact.html', {'form':form,'brick':brick,'m':m,},context_instance = RequestContext(request),)
+
 
 def contactsuccess(request):
 	d = Staff.objects.all().filter(director=True).order_by('sorter')
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)	
-	
-	return render_to_response('about/contact-success.html', {'director_list': d,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('contactsuccess')	
+	return render_to_response('about/contact-success.html', {'director_list': d,'brick':brick,},context_instance = RequestContext(request),)
 
 
 def contactperson(request, staff_id, fromp):
@@ -70,8 +58,7 @@ def contactperson(request, staff_id, fromp):
 	else:
 		t = ""
 		sub = ""
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
+	brick = getbrick('contactperson')
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		toemail = staff.email
@@ -90,91 +77,59 @@ def contactperson(request, staff_id, fromp):
 		else:
 			form = ContactForm(request.POST)
 			return render_to_response(
-				'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'event':t,},
+				'about/contactperson.html', {'form':form,'brick':brick,'staff':staff,'event':t,},
 				context_instance = RequestContext(request),
 			)
 	else:
-		# dictionary = {'name':'','email':'','subject':'hello','content':''}
 		form = ContactForm(initial={'subject':sub})
-		# form.fields.subject = "hello"
-	return render_to_response(
-		'about/contactperson.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,'staff':staff,'event':t,},
-		context_instance = RequestContext(request),
-	)
-	
+	return render_to_response('about/contactperson.html', {'form':form,'brick':brick,'staff':staff,'event':t,},context_instance = RequestContext(request),)
 
 
 def directors(request):
 	d = Staff.objects.all().filter(director=True).order_by('sorter')
-	bg = bricker('about','directors')
-	bgheight = brickerheight(bg)	
-	
-	return render_to_response('about/directors.html', {'director_list': d,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('directors')	
+	return render_to_response('about/directors.html', {'director_list': d,'brick':brick,},context_instance = RequestContext(request),)
 
 	
 def directors_detail(request, staff_id):
 	d = get_object_or_404(Staff, pk = staff_id)
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
-
-	return render_to_response('about/directors_detail.html', {'director': d,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('directors_detail')
+	return render_to_response('about/directors_detail.html', {'director': d,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def staff(request):
 	s = Staff.objects.all().filter(director=False).order_by('sorter')
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
+	brick = getbrick('staff')
+	return render_to_response('about/staff.html', {'staff_list': s,'brick':brick,},context_instance = RequestContext(request),)
 	
-	return render_to_response('about/staff.html', {'staff_list': s,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
 	
 def staff_detail(request, staff_id):
 	s = get_object_or_404(Staff, pk = staff_id)
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
-
-	return render_to_response('about/staff_detail.html', {'staff': s,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('staff_detail')
+	return render_to_response('about/staff_detail.html', {'staff': s,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def office(request):
 	t = datetime.today()
 	today = datetime.date(t)
 	o = Office.objects.all().order_by('sorter')
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
-	
-	return render_to_response('about/office.html', {'brickgroup':bg,'brickheight':bgheight,'office_list': o,'gmapkey':GMAPKEY,'debug': DEBUG,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('office')
+	return render_to_response('about/office.html', {'brick':brick,'office_list': o,'gmapkey':GMAPKEY,'debug': DEBUG,},context_instance = RequestContext(request),)
 
 	
 def office_detail(request, office_id):
 	o = get_object_or_404(Office, pk = office_id)
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
-
-	return render_to_response('about/office_d.html', {'office': o,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('office_detail')
+	return render_to_response('about/office_d.html', {'office': o,'brick':brick,},context_instance = RequestContext(request),)
 
 
 def intern(request):
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
-	
-	return render_to_response('about/intern.html', {'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	brick = getbrick('intern')
+	return render_to_response('about/intern.html', {'brick':brick,},context_instance = RequestContext(request),)
 
 	
 def internbecome(request):
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
+	brick = getbrick('internbecome')
 	if request.method == 'POST':
 		form = InternBecomeForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -188,20 +143,14 @@ def internbecome(request):
 			return HttpResponseRedirect('/about-hisg/intern/success/')
 		else:
 			form = InternBecomeForm(request.POST)
-			return render_to_response(
-				'about/intern-become.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-				context_instance = RequestContext(request),
-			)
+			return render_to_response('about/intern-become.html', {'form':form,'brick':brick,},context_instance = RequestContext(request),)
 	else:
 		form = InternBecomeForm()
-	return render_to_response(
-		'about/intern-become.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	return render_to_response('about/intern-become.html', {'form':form,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def internfind(request):
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
+	brick = getbrick('internfind')
 	if request.method == 'POST':
 		form = InternFindForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -215,20 +164,14 @@ def internfind(request):
 			return HttpResponseRedirect('/about-hisg/intern/success/')
 		else:
 			form = InternFindForm(request.POST)
-			return render_to_response(
-				'about/intern-find.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-				context_instance = RequestContext(request),
-			)
+			return render_to_response('about/intern-find.html', {'form':form,'brick':brick,},context_instance = RequestContext(request),)
 	else:
 		form = InternFindForm()
-	return render_to_response(
-		'about/intern-find.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
+	return render_to_response('about/intern-find.html', {'form':form,'brick':brick,},context_instance = RequestContext(request),)
+	
 	
 def internplace(request):
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)
+	brick = getbrick('internplace')
 	if request.method == 'POST':
 		form = InternPlaceForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -242,30 +185,17 @@ def internplace(request):
 			return HttpResponseRedirect('/about-hisg/intern/success/')
 		else:
 			form = InternPlaceForm(request.POST)
-			return render_to_response(
-				'about/intern-place.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-				context_instance = RequestContext(request),
-			)
+			return render_to_response('about/intern-place.html', {'form':form,'brick':brick,},context_instance = RequestContext(request),)
 	else:
 		form = InternPlaceForm()
-	return render_to_response(
-		'about/intern-place.html', {'form':form,'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)	
+	return render_to_response('about/intern-place.html', {'form':form,'brick':brick,},context_instance = RequestContext(request),)	
+	
 	
 def internsuccess(request):
-	bg = bricker('about','contact')
-	bgheight = brickerheight(bg)	
+	brick = getbrick('internsuccess')	
+	return render_to_response('about/intern-success.html', {'brick':brick,},context_instance = RequestContext(request),)
 	
-	return render_to_response('about/intern-success.html', {'brickgroup':bg,'brickheight':bgheight,},
-		context_instance = RequestContext(request),
-	)
-	
-# 	
-# 	
-# def anniversary(request):
-# 	
-# 	return render_to_response('about/anniversary.html', context_instance = RequestContext(request),)
+
 	
 	
 	

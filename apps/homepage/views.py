@@ -7,7 +7,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.template import RequestContext
 from datetime import datetime, timedelta
 from homepage.models import Impacter, Phrase
-from newsphotos.models import News
+from newsphotos.models import News, Galleryh
 from projectsmodels.models import Project
 from photologue.models import Photo
 
@@ -18,15 +18,8 @@ def homepage(request):
 	p = Project.objects.latest('year')
 	ph = Phrase.objects.all().order_by('order').filter(active=True)
 	phf = Phrase.objects.get(order=1)
-	# u = TiqUserProfile.objects.get(user=request.user)
+	g = Galleryh.objects.all()
 	
-	return render_to_response('basehome.html', {
-			'impacter_list': i,
-			'impacter_first': f,
-			'phrase_list':ph,
-			'phrase_first':phf,
-			'news_list': n,
-			# 'user':u,
-		},
+	return render_to_response('basehome.html',{'impacter_list':i,'impacter_first':f,'phrase_list':ph,'phrase_first':phf,'news_list':n,'gal':g,},
 		context_instance = RequestContext(request),
 	)	

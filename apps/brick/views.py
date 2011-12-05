@@ -1,137 +1,55 @@
 # bricks/views.py
-from brick.models import BrickGroup
-from photologue.models import Photo, Gallery
+from brick.models import BrickGroup, BrickChoice, BrickOrder
+from photologue.models import Photo
+from newsphotos.models import Galleryh
 from videos.models import Video
 
-def bricker(section,name):
-	bg = BrickGroup.objects.get(name = name, section = section)
-	return bg
-	
-def brickerheight(bg):
-	bgheight = {}  # set up an empty dictionary to pass all the objects in
-	# add up the height of all the bricks for this page and pass it as a variable
-	bgheight['height'] = int(bg.brick1.size) + int(bg.brick2.size) + int(bg.brick3.size) + int(bg.brick4.size) + 50
-	
-	# find out what the background image is and provide it
-	if bg.brick1.photo:
-		if bg.brick1.size == '160':
-			bgheight['b1path'] = bg.brick1.photo.get_brick_small_url()
-		elif bg.brick1.size == '230':
-			bgheight['b1path'] = bg.brick1.photo.get_brick_medium_url()
-		else:
-			bgheight['b1path'] = bg.brick1.photo.get_brick_large_url()
-	else:		
-		if bg.brick1.size == '160':
-			bgheight['b1path'] = "/site_media/images/sections/misc/brick_blank_small.jpg"	
-		elif bg.brick1.size == '230':
-			bgheight['b1path'] = "/site_media/images/sections/misc/brick_blank_medium.jpg"	
-		else:
-			bgheight['b1path'] = "/site_media/images/sections/misc/brick_blank_large.jpg"
-			
-	if bg.brick2.photo:
-		if bg.brick2.size == '160':
-			bgheight['b2path'] = bg.brick2.photo.get_brick_small_url()
-		elif bg.brick2.size == '230':
-			bgheight['b2path'] = bg.brick2.photo.get_brick_medium_url()
-		else:
-			bgheight['b2path'] = bg.brick2.photo.get_brick_large_url()
-	else:		
-		if bg.brick2.size == '160':
-			bgheight['b2path'] = "/site_media/images/sections/misc/brick_blank_small.jpg"	
-		elif bg.brick2.size == '230':
-			bgheight['b2path'] = "/site_media/images/sections/misc/brick_blank_medium.jpg"	
-		else:
-			bgheight['b2path'] = "/site_media/images/sections/misc/brick_blank_large.jpg"
 
-	if bg.brick3.photo:
-		if bg.brick3.size == '160':
-			bgheight['b3path'] = bg.brick3.photo.get_brick_small_url()
-		elif bg.brick3.size == '230':
-			bgheight['b3path'] = bg.brick3.photo.get_brick_medium_url()
-		else:
-			bgheight['b3path'] = bg.brick3.photo.get_brick_large_url()
-	else:		
-		if bg.brick3.size == '160':
-			bgheight['b3path'] = "/site_media/images/sections/misc/brick_blank_small.jpg"	
-		elif bg.brick3.size == '230':
-			bgheight['b3path'] = "/site_media/images/sections/misc/brick_blank_medium.jpg"	
-		else:
-			bgheight['b3path'] = "/site_media/images/sections/misc/brick_blank_large.jpg"
+def getbrick(viewname, **kwargs):
+	bricklist = []
+	try:
+		b = BrickChoice.objects.get(name=viewname)
+	except BrickChoice.DoesNotExist:
+		b = BrickChoice.objects.get(name='default')
+	bs = BrickOrder.objects.filter(brickchoice=b).order_by('orderer')
+	for brick in bs:
+		if brick.brick.special:
+			if brick.brick.name == 'gallery_latest':
+				brick.brick.content = gallery_latest()
+			if brick.brick.name == 'videos_latest':
+				brick.brick.content = videos_latest()
+			if brick.brick.name == 'galdemap':
+				gallery = kwargs['gallery']
+				brick.brick.content = galdemap(gallery)
+		bricklist.append(brick.brick)
+	return bricklist
 
-	if bg.brick4.photo:
-		if bg.brick4.size == '160':
-			bgheight['b4path'] = bg.brick4.photo.get_brick_small_url()
-		elif bg.brick4.size == '230':
-			bgheight['b4path'] = bg.brick4.photo.get_brick_medium_url()
-		else:
-			bgheight['b4path'] = bg.brick4.photo.get_brick_large_url()
-	else:		
-		if bg.brick4.size == '160':
-			bgheight['b4path'] = "/site_media/images/sections/misc/brick_blank_small.jpg"	
-		elif bg.brick4.size == '230':
-			bgheight['b4path'] = "/site_media/images/sections/misc/brick_blank_medium.jpg"	
-		else:
-			bgheight['b4path'] = "/site_media/images/sections/misc/brick_blank_large.jpg"
-			
 	
-	# test for the photo brick and provide the objects needed
-	if bg.brick1.name == 'gallery_latest':
-		g = Gallery.objects.latest('date_added')
-		if not g.is_public:
-			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
-			g=gal[0]
-		bgheight['b1gallery_latest'] = g
-		bgheight['b1gallery_latest_list'] = g.photos.all()[:4]
-	else:
-		bgheight['b1gallery_latest'] = ""
-	if bg.brick2.name == 'gallery_latest':
-		g = Gallery.objects.latest('date_added')
-		if not g.is_public:
-			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
-			g=gal[0]
-		bgheight['b2gallery_latest'] = g
-		bgheight['b2gallery_latest_list'] = g.photos.all()[:4]
-	else:
-		bgheight['b2gallery_latest'] = ""
-	if bg.brick3.name == 'gallery_latest':
-		g = Gallery.objects.latest('date_added')
-		if not g.is_public:
-			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
-			g=gal[0]
-		bgheight['b3gallery_latest'] = g
-		bgheight['b3gallery_latest_list'] = g.photos.all()[:4]
-	else:
-		bgheight['b3gallery_latest'] = ""
-	if bg.brick4.name == 'gallery_latest':
-		g = Gallery.objects.latest('date_added')
-		if not g.is_public:
-			gal = Gallery.objects.filter(is_public=True).order_by('-date_added')
-			g=gal[0]
-		bgheight['b4gallery_latest'] = g
-		bgheight['b4gallery_latest_list'] = g.photos.all()[:4]
-	else:
-		bgheight['b4gallery_latest'] = ""
-		
-		
-		
-	# test for the video brick and provide the objects needed
-	if bg.brick1.name == 'videos_latest':
-		bgheight['b1videos_latest'] = Video.objects.all().order_by('-id')[:4]
-	else:
-		bgheight['b1videos_latest'] = ""
-	if bg.brick2.name == 'videos_latest':
-		bgheight['b2videos_latest'] = Video.objects.all().order_by('-id')[:4]
-	else:
-		bgheight['b2videos_latest'] = ""
-	if bg.brick3.name == 'videos_latest':
-		bgheight['b3videos_latest'] = Video.objects.all().order_by('-id')[:4]
-	else:
-		bgheight['b3videos_latest'] = ""
-	if bg.brick4.name == 'videos_latest':
-		bgheight['b4videos_latest'] = Video.objects.all().order_by('-id')[:4]
-	else:
-		bgheight['b4videos_latest'] = ""
+# ========================here are the special brick functions	================
+def gallery_latest():
+	special = {}
+	g = Galleryh.objects.latest('date_added')
+	special['title'] = g.title
+	special['template'] = 'brick/brickincludes/gallery_latest.html'
+	special['description'] = g.description
+	plist = []
+	photos = g.photolist()
+	for photo in photos:
+		plist.append(photo['thumb_url'])
+	special['photolist'] = plist
+	return special
+
 	
-			
-			
-	return bgheight
+def videos_latest():
+	special = {}
+	special['template'] = 'brick/brickincludes/videos_latest.html'
+	special['videolist'] = Video.objects.all().order_by('-id')[:4]
+	return special
+
+def galdemap(gallery):
+	special = {}
+	special['template'] = 'brick/brickincludes/galdemap.html'
+	special['lat'] = gallery.photolist()[0]['lat']
+	special['lng'] = gallery.photolist()[0]['lng']
+	special['title'] = gallery.title
+	return special

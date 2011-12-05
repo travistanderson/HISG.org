@@ -1,13 +1,16 @@
-{# templates/projects-news/gallery_d.html #}
+{# templates/projects-news/gallery_d_test.html #}
 {% extends 'projects-news/base.html' %}
 {% block subarrive %}5{% endblock subarrive %}
 
 {% block extra_head %}
 	<link href="/site_media/css/galleria.css" rel="stylesheet" type="text/css" media="screen">
+	<script src="/site_media/js/smugmug.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/site_media/js/slideshowsm.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/site_media/js/jquery.galleria.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.gallery_demo_unstyled').addClass('gallery_demo'); 				// adds new class name to maintain degradability
+			var smugmug = {% if gallery.smugmug %}1{% else %}0{% endif %};
+			$('.gallery_demo_unstyled').addClass('gallery_demo'); // adds new class name to maintain degradability
 			$('ul.gallery_demo').galleria({
 				history   : true, 												//activates the history object for bookmarking, back-button etc.
 				clickNext : true, 												// helper for making the image clickable
@@ -20,7 +23,7 @@
 					thumb.fadeTo('fast',1).addClass('selected');				// fade in active thumbnail
 					image.attr('title','Next image >>');						// add a title for the clickable image
 				},
-				onThumb : function(thumb) { 									// thumbnail effects goes here
+				onThumb : function(thumb) { // thumbnail effects goes here
 					var _li = thumb.parents('li');								// fetch the thumbnail container
 					var _fadeTo = _li.is('.active') ? '1' : '0.3';				// if thumbnail is active, fade all the way.
 					thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);	// fade in the thumbnail when finnished loading
@@ -30,10 +33,37 @@
 					)
 				}
 			});
-			$.galleria.activate('{% for photo in gallery.photolist %}{% ifequal forloop.counter 1 %}{{ photo.gallery_url }}{% endifequal %}{% endfor %}');
+			if(smugmug==1){
+				nick = "hisg.org";
+				images = [];
+				$(function() {
+					albumID = "{{ gallery.albumid }}";
+					$.smugmug.login.anonymously(function() {
+						$.smugmug.images.get({AlbumID: albumID, Heavy: 1}, function(images) {
+							le = 0
+							for (var i=0; i < images['Images'].length; i++) {
+								le +=1;
+								var image = [];										// Caption,LargeURL,Latitude,Longitude,ThumbRUL
+								image['caption'] = images['Images'][i]['Caption'];
+								image['largeurl'] = images['Images'][i]['LargeURL'];
+								image['lat'] = images['Images'][i]['Latitude'];
+								image['lng'] = images['Images'][i]['Longitude'];
+								image['thumburl'] = images['Images'][i]['ThumbURL'];
+								images[i] = image;
+								$('.gallery_demo').append('<li><img src="' + image['thumburl'] + '" alt="' + image['caption'] + '"></img></li>')
+							};
+							$.galleria.activate(images[0]['largeurl']);
+							// alert(images[1]['caption']);
+						});
+					});
+				});
+			}else{
+				$.galleria.activate('{% for photo in gallery.photos.all %}{% ifequal forloop.counter 1 %}{{ photo.get_gallery_url }}{% endifequal %}{% endfor %}');				
+			}
 		});
 	</script>
 	<style media="screen,projection" type="text/css">
+		/* BEGIN DEMO STYLE */
 		h1,h2{font:bold 80% 'helvetica neue',sans-serif;letter-spacing:3px;text-transform:uppercase;}
 		a{color:#348;text-decoration:none;outline:none;}
 		a:hover{color:#67a;}
@@ -57,44 +87,46 @@
 {% endblock brick %}
 
 {% block body %}
-	<div style="padding:0 0 0 100px;float:right;">
-		{% include 'projects-news/includes/sharethiscode.html' %}
-	</div><div class="clearer"></div>
 
-	<h1 style="font-size:1.5em;text-align:center;">
-		{% if gallery %}
-			{{ gallery.title }}
-		{% else %}
-			This gallery is unavailable
-		{% endif %}
-	</h1>
-	<h3 style="text-align:center;">{{ gallery.description|safe }}</h3>
-	<div class="demo">
-		<div id="main_image"></div>
+<div style="padding:0 0 0 100px;float:right;">
+	{% include 'projects-news/includes/sharethiscode.html' %}
+</div><div class="clearer"></div>
 
-		<p class="nav">
-			<div class="left">
-				<a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a>
-			</div>
-			<div class="right">
-				<a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a>
-			</div>
-			<div class="clearer"></div>
-		</p><br/><br/>
+<h1 style="font-size:1.5em;text-align:center;">
+	{% if gallery %}
+		{{ gallery.title }}
+	{% else %}
+		This gallery is unavailable
+	{% endif %}
+</h1>
+<h3 style="text-align:center;">{{ gallery.description|safe }}</h3>
+<div class="demo">
+	<div id="main_image"></div>
 
-		<ul class="gallery_demo" style="width:640px;">
-			{% for photo in gallery.photolist %}
+	<p class="nav">
+		<div class="left">
+			<a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a>
+		</div>
+		<div class="right">
+			<a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a>
+		</div>
+		<div class="clearer"></div>
+	</p><br/><br/>
+
+	<ul class="gallery_demo" style="width:640px;">
+		{% if not gallery.smugmug %}
+			{% for photo in gallery.photos.all %}
 			    <li>
-					<img src="{{ photo.gallery_url }}" alt="{{ photo.caption }}"></img>
+					<img src="{{ photo.get_gallery_url }}" alt="{{ photo.title }}" title="{{ photo.caption }}"></img>
 				</li>
 			{% endfor %}
-		</ul>
-		<div class="clearer"></div>
-		<div class="center" style="padding:50px 0 0 0;">
-			<a href="{% url gallery %}">Back to Galleries</a>
-		</div>
-	</div>{# end of demo #}
-	<div class="info"></div>
+		{% endif %}
+	</ul>
+	<div class="clearer"></div>
+	<div class="center" style="padding:50px 0 0 0;">
+		<a href="{% url gallery %}">Back to Galleries</a>
+	</div>
+</div>{# end of demo #}
+<div class="info"></div>
+
 {% endblock %}
-
-

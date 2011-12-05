@@ -5,6 +5,30 @@
 	{% include "brick/brick.html" %}
 {% endblock brick %}
 
+{# {% block extra_head %} #}
+	{# <script src="/site_media/js/smugmug.js" type="text/javascript" charset="utf-8"></script> #}
+	{# <script src="/site_media/js/slideshowsm.js" type="text/javascript" charset="utf-8"></script> #}
+	{# <script type="text/javascript" charset="utf-8"> #}
+	{#   	nick = "hisg.org"; #}
+	{# 	$(function() { #}
+	{# 		// $("#slideshow").slideShow({ #}
+	{# 		// 	size: "Medium", #}
+	{# 		// 	// albumID: "11782063", #}
+	{# 			albumID= "19765539"; #}
+	{# 		// 	delay: 5000 #}
+	{# 		// }); #}
+	{# 		$.smugmug.login.anonymously(function() { #}
+	{# 			$.smugmug.images.get({AlbumID: albumID, Heavy: 1}, function(images) { #}
+	{# 				le = 0 #}
+	{# 				for (var i=0; i < images['Images'].length; i++) { #}
+	{# 					le +=1; #}
+	{# 				}; #}
+	{# 				alert(le); #}
+	{# 			}); #}
+	{# 		}); #}
+	{# 	}); #}
+	{# </script> #}
+{# {% endblock %} #}
 
 {% block body %}
 	<h2 class="center">Donor Login</h2><hr>
@@ -18,4 +42,6 @@
 	<div>
 		<img src="/site_media/images/sections/donation/chart.jpg"></img>
 	</div>
+
 {% endblock %}
+

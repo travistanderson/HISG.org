@@ -11,11 +11,10 @@ from videos.models import Video
 from photologue.models import Gallery, Photo
 from django.contrib.auth.models import User
 from pages.models import Page
-from brick.views import bricker, brickerheight
+from brick.views import getbrick
 
 def search(request):
-	bg = bricker('donate','index')
-	bgheight = brickerheight(bg)
+	brick = getbrick('search')
 	query = request.GET.get('q', '')
 	searchpage = True
 	choiceoffice = request.GET.get('office')
@@ -173,8 +172,7 @@ def search(request):
 		"photoresults": photoresults,
 		"pagesresults": pagesresults,
 		"query": query,
-		"brickgroup":bg,
-		'brickheight':bgheight,
+		"brick":brick,
 		"choiceoffice":choiceoffice,
 		"choicedirector":choicedirector,
 		"choicestaff":choicestaff,

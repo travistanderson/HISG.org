@@ -121,19 +121,15 @@
 					<h4>{{ gallery.title }}</h4>
 				</a>
 				<div>
-					{% for photo in gallery.photos.all %}
+					{% for photo in gallery.photolist %}
 						{% ifequal forloop.counter 1 %}
-							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
+							<img class="gold5 imgphoto" src="{{ photo.thumb_url }}"></img>{# 84*63 #}
 						{% endifequal %}
-					{% endfor %}
-					{% for photo in gallery.photos.all %}
 						{% ifequal forloop.counter 2 %}
-							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
+							<img class="gold5 imgphoto" src="{{ photo.thumb_url }}"></img>{# 84*63 #}
 						{% endifequal %}
-					{% endfor %}
-					{% for photo in gallery.photos.all %}
 						{% ifequal forloop.counter 3 %}
-							<img class="gold5" src="{{ photo.get_video_on_index_url }}"></img>
+							<img class="gold5 imgphoto" src="{{ photo.thumb_url }}"></img>{# 84*63 #}
 						{% endifequal %}
 					{% endfor %}
 				</div>

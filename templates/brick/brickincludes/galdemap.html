@@ -1,0 +1,26 @@
+{# templates/brick/brickincludes/galdemap.html #}
+<script src="http://maps.googleapis.com/maps/api/js?key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var map;
+		function initialize() {
+			var mapcenter = new google.maps.LatLng({{ brick.content.lat }},{{ brick.content.lng }});
+			var myOptions = {
+				zoom:2,
+				center:mapcenter,
+				mapTypeId:google.maps.MapTypeId.HYBRID,
+				mapTypeControl: true,
+				mapTypeControlOptions:{
+					style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+				},}
+			map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+			var gallerypoint = new google.maps.LatLng({{ brick.content.lat }},{{ brick.content.lng }});
+			var marker = new google.maps.Marker({position:gallerypoint,map:map,title:"{{ brick.content.title }}"});
+		}
+		initialize();
+	});
+</script>
+<h4 style='width:225px;margin:0 auto;'>These photos were taken here.</h4>
+<div class="" id="map_canvas" style="width:280px;height:304px;"></div>
+<div class="clearer"></div>
+

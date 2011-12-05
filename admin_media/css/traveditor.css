@@ -7,4 +7,6 @@
 #id_description{width:500px;margin:0 0 0 -13px;height:600px;}
 #id_story{width:500px;margin:0 0 0 -13px;height:600px;}
 .form-row div label[for='id_story']{display:none;}
+.form-row div label[for='id_content']{display:none;}
+.form-row div label[for='id_description']{display:none;}
 /*#id_url{width:400px;}*/

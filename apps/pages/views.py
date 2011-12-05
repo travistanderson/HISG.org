@@ -7,7 +7,7 @@ from django.http import Http404
 from django.conf import settings
 from django.core.xheaders import populate_xheaders
 from django.utils.safestring import mark_safe
-from brick.views import bricker, brickerheight
+from brick.views import getbrick
 
 DEFAULT_TEMPLATE = 'pages/default.html'
 
@@ -23,8 +23,7 @@ def pager(request, url):
 		raise Http404
 
 	if f.sidebar:
-		bg = bricker(str(f.bricks.section),str(f.bricks.name))
-		bgheight = brickerheight(bg)
+		brick = getbrick('pager')
 	else:
 		bg = None
 		bgheight = None
@@ -38,7 +37,7 @@ def pager(request, url):
 	f.content = mark_safe(f.content)
 	labelpic = ARRIVE_CHOICES[int(f.section)]
 
-	c = RequestContext(request,{'labelpic':labelpic,'pager': f,'brickgroup': bg,'brickheight':bgheight,})
+	c = RequestContext(request,{'labelpic':labelpic,'pager': f,'brick': brick,})
 	response = HttpResponse(t.render(c))
 	populate_xheaders(request, response, Page, f.id)
 	return response

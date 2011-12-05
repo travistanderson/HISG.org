@@ -124,10 +124,10 @@
 			var galleryarray = new Array();
 			{% for gallery in gal %}
 			var gallery{{ forloop.counter }} = new Array();
-			gallery{{ forloop.counter }}.push("{{ gallery.title }}");
+			gallery{{ forloop.counter }}.push("{{ gallery.title|escapejs }}");
 			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lat }}");
 			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lng }}");
-			gallery{{ forloop.counter }}.push("{{ gallery.description|safe }}");
+			// gallery{{ forloop.counter }}.push("{{ gallery.description|safe }}");
 			galleryarray.push(gallery{{ forloop.counter }});
 			{% endfor %}
 			var map;
@@ -145,7 +145,7 @@
 
 				{% for gallery in gal %}
 				var gallerypoint{{ forloop.counter }} = new google.maps.LatLng({{ gallery.photolist.0.lat }},{{ gallery.photolist.0.lng }});
-				var marker{{ forloop.counter }} = new google.maps.Marker({position:gallerypoint{{ forloop.counter }},map:map,title:"{{ gallery.title }}"});
+				var marker{{ forloop.counter }} = new google.maps.Marker({position:gallerypoint{{ forloop.counter }},map:map,title:"{{ gallery.title|escapejs }}"});
 				google.maps.event.addListener(marker{{ forloop.counter }}, 'click', function(){
 					gotogallery({{ gallery.id }});
 				});

@@ -15,7 +15,7 @@
 				},}
 			map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 			var gallerypoint = new google.maps.LatLng({{ brick.content.lat }},{{ brick.content.lng }});
-			var marker = new google.maps.Marker({position:gallerypoint,map:map,title:"{{ brick.content.title }}"});
+			var marker = new google.maps.Marker({position:gallerypoint,map:map,title:"{{ brick.content.title|escapejs }}"});
 		}
 		initialize();
 	});

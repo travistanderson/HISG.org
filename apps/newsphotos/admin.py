@@ -30,7 +30,8 @@ class PostAdmin(admin.ModelAdmin):
 class GalleryhAdmin(admin.ModelAdmin):
 	# form = PostAdminModelForm
 	prepopulated_fields = {'title_slug': ('title',)}
-	list_display = ('title', 'date_added','smugmug',)
+	list_display = ('title', 'date_added','smugmug','lat','lng')
+	list_editable = ('lat','lng',)
 	
 	
 admin.site.register(News, NewsAdmin)

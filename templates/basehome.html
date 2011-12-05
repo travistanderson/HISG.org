@@ -127,7 +127,6 @@
 			gallery{{ forloop.counter }}.push("{{ gallery.title|escapejs }}");
 			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lat }}");
 			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lng }}");
-			// gallery{{ forloop.counter }}.push("{{ gallery.description|safe }}");
 			galleryarray.push(gallery{{ forloop.counter }});
 			{% endfor %}
 			var map;

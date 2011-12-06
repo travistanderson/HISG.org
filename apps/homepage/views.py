@@ -10,6 +10,8 @@ from homepage.models import Impacter, Phrase
 from newsphotos.models import News, Galleryh
 from projectsmodels.models import Project
 from photologue.models import Photo
+import simplejson
+from django.core import serializers
 
 def homepage(request):
 	i = Impacter.objects.all().order_by('order').filter(active=True)
@@ -18,8 +20,19 @@ def homepage(request):
 	p = Project.objects.latest('year')
 	ph = Phrase.objects.all().order_by('order').filter(active=True)
 	phf = Phrase.objects.get(order=1)
+	# g = serializers.serialize("json",Galleryh.objects.all())
+	galleries = []
 	g = Galleryh.objects.all()
+	for gallery in g:
+		gdict = {}
+		gdict['id'] = gallery.id
+		gdict['title'] = gallery.title
+		gdict['lat'] = gallery.lat
+		gdict['lng'] = gallery.lng
+		galleries.append(gdict)
+	# g = simplejson.dumps(s, cls=simplejson.encoder.JSONEncoderForHTML)
 	
-	return render_to_response('basehome.html',{'impacter_list':i,'impacter_first':f,'phrase_list':ph,'phrase_first':phf,'news_list':n,'gal':g,},
+	
+	return render_to_response('basehome.html',{'impacter_list':i,'impacter_first':f,'phrase_list':ph,'phrase_first':phf,'news_list':n,'galleries':galleries,},
 		context_instance = RequestContext(request),
 	)	

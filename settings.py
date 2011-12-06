@@ -206,24 +206,15 @@ INSTALLED_APPS = (
 	'django.contrib.sites',
 	'django.contrib.humanize',
 	'django.contrib.markup',
-	# 'tiq_login',
 	'clogin',
 	'pages',
-	
 	# external
-	# 'emailconfirmation',
-	# 'django_extensions',
 	'robots',
 	'mailer',
 	'pagination',
 	'gravatar',
-	# 'threadedcomments',
-	# 'timezones',
-	# 'feedutil',
-	# 'ajax_validation',
 	'photologue',
 	'tagging',
-	# 'things',
 	'newsphotos',
 	'chunks',
 	'videos',
@@ -237,20 +228,9 @@ INSTALLED_APPS = (
 	'faqs',
 	'training',
 	'newadmin',
-
-	# added these to get the site working in mysql
-	# 'account',
-	# 'notification',
-	# 'messages',
-		
-	# internal (for now)
-	# 'analytics',
-	# 'misc',
 	'photos',
 	'rpc4django',
-	
 	'django.contrib.admin',
-
 )
 
 ABSOLUTE_URL_OVERRIDES = {

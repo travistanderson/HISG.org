@@ -68,11 +68,13 @@
 				var myOptions ={zoom:2,center:mapcenter,mapTypeId:google.maps.MapTypeId.HYBRID,
 					mapTypeControl: true,mapTypeControlOptions:{style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},}
 				map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-				var gallerypoint = new google.maps.LatLng(27,57);
-				var marker = new google.maps.Marker({position:gallerypoint,map:map,title:"helloworld"});
-				google.maps.event.addListener(marker, 'click', function(){
-					gotogallery('11');
-				});
+				{% for gallery in galleries %}
+					var gallerypoint = new google.maps.LatLng({{ gallery.lat }},{{ gallery.lng }});
+					marker{{ forloop.counter }}= new google.maps.Marker({position:gallerypoint,map:map,title:'{{ gallery.title|escapejs }}'});
+					google.maps.event.addListener(marker{{ forloop.counter }}, 'click', function(){
+						gotogallery({{ gallery.id }});
+					});
+				{% endfor %}
 			}
 			initialize();
 			function gotogallery(url){
@@ -149,16 +151,11 @@
 {% block basebody %}
 	<div class="homer" id="lefthomer">
 		<h3><a href="{% url news %}">NEWS UPDATES</a></h3>
-
 		{% for news in news_list %}
 			<div class="homenews">
-				<div class="date">
-					{{ news.date|date:"D. F d, Y. f A" }}
-				</div>
+				<div class="date">{{ news.date|date:"D. F d, Y. f A" }}</div>
 				<h4>
-					<a style="color:#000;" href="{% url news_detail news.id %}">
-						{{ news.name }}
-					</a>
+					<a style="color:#000;" href="{% url news_detail news.id %}">{{ news.name }}</a>
 				</h4>
 				<p>
 					{{ news.story|safe|truncatewords:30 }}

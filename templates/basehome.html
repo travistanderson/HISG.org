@@ -5,84 +5,36 @@
 
 {% block extra_head %}
 	<script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
 	<script type="text/javascript">
-		var photo = new Array();
-		var impacterthumb_color = new Array();
-		var impacterthumb_bw = new Array();
-		var buttoner = new Array();
-		var namer = new Array();
-		var body = new Array();
-		var link = new Array();
+		var impactarray = new Array();
 		{% for impacter in impacter_list %}
-		photo[{{ forloop.counter0 }}] ="{{ impacter.photo.get_impacter_url }}";
-		impacterthumb_color[{{ forloop.counter0 }}] ="{{ impacter.photo.get_impacterthumb_color_url }}";
-		impacterthumb_bw[{{ forloop.counter0 }}] ="{{ impacter.photo.get_impacterthumb_bw_url }}";
-		buttoner[{{ forloop.counter0 }}] ="{{ impacter.button }}";
-		namer[{{ forloop.counter0 }}] = "{{ impacter.name }}";
-		body[{{ forloop.counter0 }}] = "{{ impacter.body }}";
-		link[{{ forloop.counter0 }}] = "{{ impacter.link }}";
+		impact{{ forloop.counter0 }} = new Object;
+		impact{{ forloop.counter0 }}.photo = "{{ impacter.photo.get_impacter_url }}";
+		impact{{ forloop.counter0 }}.thumbc = "{{ impacter.photo.get_impacterthumb_color_url }}";
+		impact{{ forloop.counter0 }}.thumbbw = "{{ impacter.photo.get_impacterthumb_bw_url }}";
+		impact{{ forloop.counter0 }}.buttoner = "{{ impacter.button }}";
+		impact{{ forloop.counter0 }}.namer = "{{ impacter.name }}";
+		impact{{ forloop.counter0 }}.body = "{{ impacter.body }}";
+		impact{{ forloop.counter0 }}.link = "{{ impacter.link }}";
+		impactarray.push(impact{{ forloop.counter0 }});
 		{% endfor %}
 		var impacterlength = {{ impacter_list|length }} - 1;
-		$z = 0;
 		k = 0;
+		function changeimpacter(which){
+			$("#irp").attr("src",impactarray[which].photo);
+			$("#iln").replaceWith("<a href=\"" + impactarray[which].link + "\" id=\"iln\">" + impactarray[which].namer + "</a>");
+			$("#ilb").replaceWith("<a href='" + impactarray[which].link + "' id='ilb'>" + impactarray[which].body + "</a>");
+			$('.ilbuts').each(function(i){
+				$(this).attr("src",impactarray[i].thumbbw);
+			})
+			$("#ilbut" + String(which)).attr("src",impactarray[which].thumbc);
+			$('#buttoner_link').replaceWith("<a href='" + impactarray[which].link + "' id='buttoner_link'><div id='buttonerh'>" + impactarray[which].buttoner + "</div></a>");
+		}
 		function impacter(){
-			$(document).ready(function(){
-				$("#irp").everyTime(5000, function() {
-					if ( k == impacterlength ){
-						$(this).attr("src",photo[0]);
-						$("#iln").replaceWith("<a href=\"" + link[0] + "\" id=\"iln\">" + namer[0] + "</a>");
-						$("#ilb").replaceWith("<a href='" + link[0] + "' id='ilb'>" + body[0] + "</a>");
-						j = "#ilbut" + String(k);
-						$("#ilbut0").attr("src",impacterthumb_color[0]);
-						l = "#ilbut" + String(k);
-						$(l).attr("src",impacterthumb_bw[k]);
-						$('#buttoner_link').replaceWith("<a href='" + link[0] + "' id='buttoner_link'><div id='buttonerh'>" + buttoner[0] + "</div></a>");
-
-						k = 0;
-					}
-					else{
-						k = ++k;
-						$(this).attr("src",photo[k]);
-						$("#iln").replaceWith("<a href=\"" + link[k] + "\" id=\"iln\">" + namer[k] + "</a>");
-						$("#ilb").replaceWith("<a href=\"" + link[k] + "\" id=\"ilb\">" + body[k] + "</a>");
-						j = "#ilbut" + String(k);
-						$(j).attr("src",impacterthumb_color[k]);
-						l = "#ilbut" + String(k - 1);
-						$(l).attr("src",impacterthumb_bw[k - 1]);
-						$('#buttoner_link').replaceWith("<a href='" + link[k] + "' id='buttoner_link'><div id='buttonerh'>" + buttoner[k] + "</div></a>");
-					}
-				})
-			})
-		}
-
-		function impactersetup(){
-			$(document).ready(function (){
-				$("#ilbut0").attr("src",impacterthumb_color[0]);
-				$(".quickhide").css({display:"none"});
-			})
-		}
-
-		function gotoandstop(impacter){
-			$(document).ready(function (){
-				$("#irp").stopTime();
-				$("#irp").attr("src",photo[impacter]);
-				$("#iln").replaceWith("<a href=\"" + link[impacter] + "\" id=\"iln\">" + namer[impacter] + "</a>");
-				$("#ilb").replaceWith("<a href=\"" + link[impacter] + "\" id=\"ilb\">" + body[impacter] + "</a>");
-				$('#buttoner_link').replaceWith("<a href='" + link[impacter] + "' id='buttoner_link'><div id='buttonerh'>" + buttoner[impacter] + "</div></a>");
-				for (b = 0; b<= impacterlength; b = ++b){
-					l = "#ilbut" + String(b);
-					$(l).attr("src",impacterthumb_bw[b]);
-				}
-				j = "#ilbut" + String(impacter);
-				$(j).attr("src",impacterthumb_color[impacter]);
-			})
-		}
-
-		function timest(){
-			$(document).ready(function(){
-				$("#ai").click( function(){
-					$(this).css({backgroundImage: "url(/site_media/images/impact_b_dark.jpg)", color: "#F00"});
-				})
+			$("#irp").everyTime(5000, function() {
+				if(k == impacterlength){k = 0;changeimpacter(k);}
+				else{k = ++k;changeimpacter(k);}
 			})
 		}
 		var phrase_list = new Array();
@@ -92,46 +44,29 @@
 		var k1 =0;
 		var k2 = {{ phrase_list|length }} - 1;
 		function phraser(){
-			$(document).ready(function() {
-				// this first part fades out the initial after 11 seconds - it only does this once
-				$("#phrase_top").oneTime(11000, function(){
-					$(this).fadeOut(1000);
-				})
-				// this second part sets up a timer that sets up a recuring timer every 12 seconds and fades out the old one and fades in a new one
-				$("#phrase_top").everyTime(12000, function() {
-					if (k1 == k2){
-						$(this).html(phrase_list[0]);
-						$(this).fadeIn(1000);
-						k1 = 0;
-					}
-					else {
-						k1 = ++k1;
-						$(this).html(phrase_list[k1]);
-						$(this).fadeIn(1000);
-					}
-					$(this).oneTime(11000, function(){
-						$(this).fadeOut(1000);
-					})
-				})
+			$("#phrase_top").everyTime(7000, function(){
+				$(this).html(phrase_list[k1]);
+				$(this).fadeIn(2000);
+				$(this).animate({'color':'#783A11'},3000,function(){
+					$(this).fadeOut(2000);
+				});
+				if(k1==phrase_list.length){k1 = 0}else{k1 = ++k1};
 			})
 		}
-		impactersetup();
-		impacter();
-	</script>
-	<script src="http://maps.googleapis.com/maps/api/js?key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
+		$(document).ready(function(){
+			$(".quickhide").css({display:"none"});
+			impacter();
+			phraser();
+			$('.ilbuts').click(function(){
+				$("#irp").stopTime();
+				which = $(this).attr('id').split('ilbut')[1];
+				changeimpacter(which);
+			})
 			var map;
 			function initialize() {
 				var mapcenter = new google.maps.LatLng(25.0,0.0);
-				var myOptions = {
-					zoom:2,
-					center:mapcenter,
-					mapTypeId:google.maps.MapTypeId.HYBRID,
-					mapTypeControl: true,
-					mapTypeControlOptions:{
-						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-					},}
+				var myOptions ={zoom:2,center:mapcenter,mapTypeId:google.maps.MapTypeId.HYBRID,
+					mapTypeControl: true,mapTypeControlOptions:{style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},}
 				map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 				var gallerypoint = new google.maps.LatLng(27,57);
 				var marker = new google.maps.Marker({position:gallerypoint,map:map,title:"helloworld"});
@@ -170,9 +105,11 @@
 	<div id="impacter">
 		<div id="left-impacter">
 			<div id="phrase">
-				<div id="phrase_top">
-					{{ phrase_first }}
-				</div>{# end of phrase_top #}
+				<div id='phrasetopholder'>
+					<div id="phrase_top">
+						{{ phrase_first }}
+					</div>{# end of phrase_top #}&nbsp;
+				</div>
 				<div id="phrase_bottom">
 					<a href="/info/first-time-here/">First time visitor?</a>
 				</div>{# end of phrase bottom #}
@@ -192,8 +129,11 @@
 			</a>
 			<div id="thumber">
 				{% for impacter in impacter_list %}
-					<img src="{{ impacter.photo.get_impacterthumb_bw_url }}"  id="ilbut{{ forloop.counter0 }}"  style="cursor:pointer;padding:0 6px 0 0;" onclick="gotoandstop({{ forloop.counter0 }});">
-					</img>
+					{% ifequal forloop.counter0 0 %}
+						<img src="{{ impacter.photo.get_impacterthumb_color_url }}"  id="ilbut{{ forloop.counter0 }}" class='ilbuts' style="cursor:pointer;padding:0 6px 0 0;"></img>
+					{% else %}
+						<img src="{{ impacter.photo.get_impacterthumb_bw_url }}"  id="ilbut{{ forloop.counter0 }}" class='ilbuts' style="cursor:pointer;padding:0 6px 0 0;"></img>
+					{% endifequal %}
 				{% endfor %}
 			</div>
 		</div>{# end of left-impacter #}

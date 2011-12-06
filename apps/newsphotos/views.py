@@ -119,7 +119,16 @@ def galleryindex(request, sort):
 		g = Galleryh.objects.filter(is_public=True).order_by('title')
 	else:
 		g = Galleryh.objects.filter(is_public=True)
-	return render_to_response('projects-news/gallery.html',{'gallery_list':g,'brick':brick,'sort':sort},context_instance = RequestContext(request),)
+	galleries = []
+	gg = Galleryh.objects.all()
+	for gallery in gg:
+		gdict = {}
+		gdict['id'] = gallery.id
+		gdict['title'] = gallery.title
+		gdict['lat'] = gallery.lat
+		gdict['lng'] = gallery.lng
+		galleries.append(gdict)	
+	return render_to_response('projects-news/gallery.html',{'gallery_list':g,'galleries':galleries,'brick':brick,'sort':sort},context_instance = RequestContext(request),)
 	
 	
 def gallerydetail(request, gallery_id):

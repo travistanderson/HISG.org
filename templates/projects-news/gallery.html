@@ -11,15 +11,6 @@
 	<script src="http://maps.googleapis.com/maps/api/js?key={{ gmapkey }}&sensor=false" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var galleryarray = new Array();
-			{% for gallery in gallery_list %}
-			var gallery{{ forloop.counter }} = new Array();
-			gallery{{ forloop.counter }}.push("{{ gallery.title|escapejs }}");
-			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lat }}");
-			gallery{{ forloop.counter }}.push("{{ gallery.photolist.0.lng }}");
-			gallery{{ forloop.counter }}.push("{{ gallery.description|escapejs }}");
-			galleryarray.push(gallery{{ forloop.counter }});
-			{% endfor %}
 			var map;
 			function initialize() {
 				var mapcenter = new google.maps.LatLng(25.0,0.0);
@@ -32,13 +23,12 @@
 						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
 					},}
 				map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-
-				{% for gallery in gallery_list %}
-				var gallerypoint{{ forloop.counter }} = new google.maps.LatLng({{ gallery.photolist.0.lat }},{{ gallery.photolist.0.lng }});
-				var marker{{ forloop.counter }} = new google.maps.Marker({position:gallerypoint{{ forloop.counter }},map:map,title:"{{ gallery.title|escapejs }}"});
-				google.maps.event.addListener(marker{{ forloop.counter }}, 'click', function(){
-					gotogallery({{ gallery.id }});
-				});
+				{% for gallery in galleries %}
+					var gallerypoint = new google.maps.LatLng({{ gallery.lat }},{{ gallery.lng }});
+					marker{{ forloop.counter }}= new google.maps.Marker({position:gallerypoint,map:map,title:'{{ gallery.title|escapejs }}'});
+					google.maps.event.addListener(marker{{ forloop.counter }}, 'click', function(){
+						gotogallery({{ gallery.id }});
+					});
 				{% endfor %}
 			}
 			initialize();

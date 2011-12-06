@@ -20,7 +20,6 @@ def homepage(request):
 	p = Project.objects.latest('year')
 	ph = Phrase.objects.all().order_by('order').filter(active=True)
 	phf = Phrase.objects.get(order=1)
-	# g = serializers.serialize("json",Galleryh.objects.all())
 	galleries = []
 	g = Galleryh.objects.all()
 	for gallery in g:
@@ -30,8 +29,6 @@ def homepage(request):
 		gdict['lat'] = gallery.lat
 		gdict['lng'] = gallery.lng
 		galleries.append(gdict)
-	# g = simplejson.dumps(s, cls=simplejson.encoder.JSONEncoderForHTML)
-	
 	
 	return render_to_response('basehome.html',{'impacter_list':i,'impacter_first':f,'phrase_list':ph,'phrase_first':phf,'news_list':n,'galleries':galleries,},
 		context_instance = RequestContext(request),

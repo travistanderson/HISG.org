@@ -11,7 +11,7 @@ from brick.views import getbrick
 
 DEFAULT_TEMPLATE = 'pages/default.html'
 
-ARRIVE_CHOICES = ['empty-zero based list','home-not used','news.jpg','feature.jpg','project.jpg','about.jpg','donation.jpg','search.jpg','connect.jpg',]
+ARRIVE_CHOICES = ['empty-zero based list','home-not used','training.jpg','feature.jpg','project.jpg','about.jpg','donation.jpg','search.jpg','connect.jpg',]
 
 def pager(request, url):
 	if not url.endswith('/') and settings.APPEND_SLASH:

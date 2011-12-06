@@ -13,7 +13,7 @@ class PageAdmin(admin.ModelAdmin):
 	search_fields = ('url', 'title')
 	save_on_top = True
 	fieldsets = (
-		(None, {'fields': (('title','url'),('active','sidebar','bricks','templatr',))}),
+		(None, {'fields': (('title','url'),('active','sidebar','brickchoice','templatr',))}),
 		(None, {'fields': ('content',)}),
 		(None, {'fields': (('section','subarrive','hasnav','tininav',),('extrahead',))}),
 	)

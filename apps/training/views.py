@@ -25,16 +25,6 @@ def index(request):
 	brick = getbrick('index')
 	return render_to_response('training-models/index.html', {'brick':brick,},context_instance = RequestContext(request),)
 	
-
-def histmodel(request):
-	brick = getbrick('histmodel')
-	return render_to_response('training-models/histmodel.html', {'brick':brick,},context_instance = RequestContext(request),)
-	
-	
-def idrmodel(request):
-	brick = getbrick('idrmodel')
-	return render_to_response('training-models/idrmodel.html', {'brick':brick,},context_instance = RequestContext(request),)
-	
 	
 def training(request):
 	t = datetime.today()

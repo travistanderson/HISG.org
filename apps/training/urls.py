@@ -12,7 +12,4 @@ urlpatterns = patterns('',
 	# url(r'^training/signup/(?P<event_id>\d+)/success/$', 'training.views.trainingsuccess', name='training_ss'),
 	url(r'^training/cancel/(?P<event_id>\d+)/$', 'training.views.trainingcancel', name='training_cancel'),
 	url(r'^training/(?P<event_id>[-\w]+)/$', 'training.views.trainingd', name='training_d'),
-	
-	url(r'^models/hist-model/$', 'training.views.histmodel', name='histmodel'),
-	url(r'^models/idr-model/$', 'training.views.idrmodel', name='idrmodel'),
 )

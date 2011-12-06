@@ -21,6 +21,8 @@ class Page(models.Model):
 	hasnav = models.BooleanField(default=False,)
 	tininav = models.ForeignKey(Chunk,blank=True, null=True,help_text="optional",)
 	sidebar = models.BooleanField(default=True,help_text='True == Left hand sidebar included')
+	brickchoice = models.CharField(blank=True, max_length=100)
+# alter table pages_page add column brickchoice varchar(100) not null;	
 	class Meta:
 		ordering = ('url',)
 

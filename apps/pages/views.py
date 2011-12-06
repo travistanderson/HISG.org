@@ -23,7 +23,7 @@ def pager(request, url):
 		raise Http404
 
 	if f.sidebar:
-		brick = getbrick('pager')
+		brick = getbrick(f.brickchoice)
 	else:
 		brick = None
 

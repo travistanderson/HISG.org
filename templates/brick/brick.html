@@ -2,7 +2,7 @@
 <div id="left-column">{# start of left-column #}
 	<div id="left-backer">{# start of left-backer #}
 		{% for brick in brick %}
-			<div class="left-block" style="height:{{ brick.size }}px;{% if brick.photo %}background:url({{ brick.photo.get_bricku_url }}) no-repeat;{% endif %}">
+			<div class="left-block" style="height:{{ brick.size }}px;{% if brick.photo %}background:url({{ brick.photo.get_brickb_url }}) no-repeat;{% endif %}">
 				{% if brick.link %}
 					<a href="{{ brick.link }}" target="{% if brick.linktarget %}_blank{% else %}_self{% endif %}">					
 				{% endif %}

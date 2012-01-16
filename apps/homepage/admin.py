@@ -28,11 +28,11 @@ class PhraseAdmin(admin.ModelAdmin):
 
 
 class NavAdmin(admin.ModelAdmin):
-	ordering = ('level',)
-	list_display = ('pk','displayname','orderer','parent','raw','level','rank')
+	ordering = ('parent',)
+	list_display = ('pk','displayname','orderer','parent','raw',)
 	# raw_id_fields =('parent',)
 	list_per_page = 900 #we sould have all objects on one page 
-	list_editable = ('displayname','orderer','parent','level','rank',)
+	list_editable = ('displayname','orderer','parent',)
 
 	# def parent_id(self,obj):
 	# 	return obj.parent and obj.parent.id or '0'

@@ -7,7 +7,7 @@ except ImportError, exp:
 	 WHICH_ENVIRONMENT = 'production'
 
 if WHICH_ENVIRONMENT == 'development':
-	# Django settings on the local dev server for globalgrazer project.
+	# Django settings on the local dev server for hisg project.
 	DEBUG = True
 	TEMPLATE_DEBUG = DEBUG
 	TEMPLATE_DIRS = ('/Users/travis/Dropbox/hisg-dir/hisgWebsite/hisg/templates')
@@ -30,7 +30,7 @@ if WHICH_ENVIRONMENT == 'development':
 	SITESERVER = 'HISG'
 	XMLRPCIP = 'http://192.168.254.155:8000/RPC2'
 else:					 # WHICH_ENVIRONMENT == 'production':
-	# Django settings on the server for globalgrazer project.
+	# Django settings on the server for hisg project.
 	DEBUG = True
 	TEMPLATE_DEBUG = DEBUG
 	TEMPLATE_DIRS = ('/home/django/domains/hisg.org/hisg/templates')
@@ -104,12 +104,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	"django.core.context_processors.media",
 	"django.core.context_processors.request",
 	"homepage.models.context_navigation",
+	'homepage.models.settings_info',
 )
 
-COMBINED_INBOX_COUNT_SOURCES = (
-	"messages.context_processors.inbox",
-	"notification.context_processors.notification",
-)
 
 INSTALLED_APPS = (
 	# included
@@ -178,9 +175,7 @@ LOGGING_OUTPUT_ENABLED = True
 LOGGING_SHOW_METRICS = True
 LOGGING_LOG_SQL = True
 
-INTERNAL_IPS = (
-	'127.0.0.1',
-)
+INTERNAL_IPS = ('127.0.0.1',)
 
 ugettext = lambda s: s
 LANGUAGES = (('en', u'English'),('de', u'Deutsch'),('es', u'Español'),('fr', u'Français'),('sv', u'Svenska'),('pt-br', u'Português brasileiro'),
@@ -201,9 +196,6 @@ RESTRUCTUREDTEXT_FILTER_SETTINGS = { 'cloak_email_addresses': True,
 									 'warning_stream': NullStream(),
 									 'strip_comments': True,}
 
-# if Django is running behind a proxy, we need to do things like use
-# HTTP_X_FORWARDED_FOR instead of REMOTE_ADDR. This setting is used
-# to inform apps of this fact
 BEHIND_PROXY = False
 
 FORCE_LOWERCASE_TAGS = True
@@ -211,62 +203,7 @@ FORCE_LOWERCASE_TAGS = True
 SM_API_KEY = "ziy8yIrQzhDWsqsfEPgKUP6qyIplkoie"
 SM_APP_NAME = "hisg.org"
 
-# WIKI_REQUIRES_LOGIN = True
 
-# GMAPKEY = 'ABQIAAAAKkJhGIDc65pxzIU9FTCsAxTERECPkD_G2wCmHEPQuxrvMkpqRRS1zBq8SdWHxV6_Yp6aTKRlbKk31Q'
-
-# local_settings.py can be used to override environment-specific settings
-# like database and email that differ between development and production.
-# try:
-# 	from local_settings import *
-# except ImportError:
-# 	pass
-
-
-
-# HAYSTACK_SEARCH_ENGINE = 'whoosh'
-# HAYSTACK_WHOOSH_PATH = '~/symlinks/site-packages'
-
-
-
-
-# =======================old local settings file=============================
-
-# DEBUG = True
-# TEMPLATE_DEBUG = DEBUG
-# SITE_UP = False # This is for maintainence mode. Uncomment this line to take site down.
-
-# DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-# DATABASE_NAME = 'hisg3'             # Or path to database file if using sqlite3.
-# DATABASE_USER = 'hisguser'			# Not used with sqlite3.
-# DATABASE_PASSWORD = 'ujCY1qIq8Eto'		# Not used with sqlite3.
-# DATABASE_HOST = '192.168.254.153'		# Set to empty string for localhost. Not used with sqlite3.
-# DATABASE_PORT = ''					# Set to empty string for default. Not used with sqlite3.
-
-
-# DATABASE_ENGINE = 'sqlite3'		#'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-# DATABASE_NAME = 'dev.db6'			# Or path to database file if using sqlite3.
-# DATABASE_USER = ''				# Not used with sqlite3.
-# DATABASE_PASSWORD = ''			# Not used with sqlite3.
-# DATABASE_HOST = ''				# Set to empty string for localhost. Not used with sqlite3.
-# DATABASE_PORT = ''				# Set to empty string for default. Not used with sqlite3.
-
-
-
-
-# import os.path
-# MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "site_media")
-
-
-# GMAPKEY = 'ABQIAAAAKkJhGIDc65pxzIU9FTCsAxTpH3CbXHjuCVmaTc5MkkU4wO1RRhSJDl-ZXe3YDJR5e8jYO-NomOGXqg'
-
-
-# PATHTOKEYS = '/Users/travis/Dropbox/hisg-dir/hisgWebsite/hisg.org/projects/complete_project/keys/'
-# PATHTOKEYS = '/Users/travis/Dropbox/hisg-dir/hisgWebsite/hisg/keys/'
-# PATHTOSFPJS = 'http://192.168.1.153:8000/site_media/sfp/sfp_widget.js'
-# PATHTOSFP = 'http://192.168.1.153:8000/'
-# SITESERVER = 'HISG'
-
-
-# XMLRPCIP = 'http://127.0.0.1:8000/RPC2'
-# XMLRPCIP = 'http://192.168.1.153:8000/RPC2'
+	
+	
+	

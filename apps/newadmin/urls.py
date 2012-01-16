@@ -10,4 +10,5 @@ urlpatterns = patterns('',
 	url(r'^hidden/$', 'newadmin.views.hidden', name='newadminhidden'),
 	url(r'^old-admin/$', 'newadmin.views.oldadmin', name='newadminoldadmin'),
 	url(r'^homepage/navlist/$', 'newadmin.views.navlist', name='newadminnavlist'),
+	url(r'^homepage/navlistajax/$', 'newadmin.views.navlistajax', name='newadminnavlistajax'),
 )

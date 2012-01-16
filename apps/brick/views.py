@@ -1,29 +1,39 @@
 # bricks/views.py
-from brick.models import BrickGroup, BrickChoice, BrickOrder
+from brick.models import BrickGroup
 from photologue.models import Photo
 from newsphotos.models import Galleryh
 from videos.models import Video
 
 
-def getbrick(viewname, **kwargs):
+def getbrick(viewname,sectionname,**kwargs):
 	bricklist = []
 	try:
-		b = BrickChoice.objects.get(name=viewname)
-	except BrickChoice.DoesNotExist:
-		b = BrickChoice.objects.get(name='default')
-	bs = BrickOrder.objects.filter(brickchoice=b).order_by('orderer')
-	for brick in bs:
-		if brick.brick.special:
-			if brick.brick.name == 'gallery_latest':
-				brick.brick.content = gallery_latest()
-			if brick.brick.name == 'videos_latest':
-				brick.brick.content = videos_latest()
-			if brick.brick.name == 'galdemap':
-				gallery = kwargs['gallery']
-				brick.brick.content = galdemap(gallery)
-		bricklist.append(brick.brick)
+		b = BrickGroup.objects.get(name=viewname)
+		match = True
+	except BrickGroup.DoesNotExist:
+		match = False
+	if not match:
+		try:
+			b = BrickGroup.objects.get(name=sectionname)
+		except BrickGroup.DoesNotExist:
+			b = BrickGroup.objects.get(name='default')
+	bricklist.append(_checkspecial(b.brick1))
+	bricklist.append(_checkspecial(b.brick2))
+	bricklist.append(_checkspecial(b.brick3))
+	bricklist.append(_checkspecial(b.brick4))
 	return bricklist
 
+
+def _checkspecial(brick):
+	if brick.special:
+		if brick.name == 'gallery_latest':
+			brick.content = gallery_latest()
+		if brick.name == 'videos_latest':
+			brick.content = videos_latest()
+		if brick.name == 'galdemap':
+			gallery = kwargs['gallery']
+			brick.content = galdemap(gallery)
+	return brick
 	
 # ========================here are the special brick functions	================
 def gallery_latest():
@@ -54,3 +64,9 @@ def galdemap(gallery):
 	special['lng'] = gallery.photolist()[0]['lng']
 	special['title'] = gallery.title
 	return special
+	
+	
+# training
+# galleryindex
+# default
+# gallerydetail	

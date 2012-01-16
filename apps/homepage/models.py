@@ -38,9 +38,10 @@ class Nav(models.Model):
 	url = models.CharField(blank=True,null=True,max_length=100)
 	raw = models.BooleanField(default=True,help_text='True == plain url, False == get by name.')
 	parent = models.ForeignKey('self',blank=True,null=True)
-	orderer = models.IntegerField(blank=True, null=True)
-	level = models.IntegerField(blank=True, null=True)
-	rank = models.IntegerField(blank=True, null=True)
+	orderer = models.IntegerField(blank=True, null=True) # this is the one used in request context it also uses parent
+
+	# level = models.IntegerField(blank=True, null=True) # this is the good one - maybe redundant (this uses one number to order the whole list)
+	# rank = models.IntegerField(blank=True, null=True) # this means how many parents does it have - redundant
 	
 	def __unicode__(self):
 		return self.displayname
@@ -52,6 +53,9 @@ class Nav(models.Model):
 			return reverse(self.name)
 	
 
+
+
+# ======================== context processor ====================================
 
 def context_navigation(request):
 	navs = Nav.objects.all()
@@ -123,3 +127,12 @@ def context_navigation(request):
 	# except Exception, e:
 		# return {'rootnavs':'home','exception':e,'spath':len(spath)}
 
+
+
+def settings_info(request):
+	settingsinfo = {}
+	settingsinfo['environment'] = settings.WHICH_ENVIRONMENT
+	return settingsinfo
+	
+	
+	

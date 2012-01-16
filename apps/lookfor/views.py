@@ -14,7 +14,7 @@ from pages.models import Page
 from brick.views import getbrick
 
 def search(request):
-	brick = getbrick('search')
+	brick = getbrick('search','lookfor')
 	query = request.GET.get('q', '')
 	searchpage = True
 	choiceoffice = request.GET.get('office')
@@ -156,6 +156,7 @@ def search(request):
 		pagesresults = []
 	
 	return render_to_response("lookfor/search.html", {
+		"brick":brick,
 		"searchpage": searchpage,
 		"officeresults": officeresults,
 		"directorsresults": directorsresults,
@@ -172,7 +173,6 @@ def search(request):
 		"photoresults": photoresults,
 		"pagesresults": pagesresults,
 		"query": query,
-		"brick":brick,
 		"choiceoffice":choiceoffice,
 		"choicedirector":choicedirector,
 		"choicestaff":choicestaff,

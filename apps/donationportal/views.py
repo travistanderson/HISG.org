@@ -9,13 +9,12 @@ from donationportal.models import Donation
 from brick.views import getbrick
 
 
-def index(request):
+def donation_index(request):
+	brick = getbrick('donation_index','donation')
 	d = Donation.objects.all().order_by('list_order')
-	brick = getbrick('index')	
 	return render_to_response('donation-portal/index.html', {'donations_list': d,'brick':brick,},context_instance = RequestContext(request),)
 
 
-def detail(request):
-	bg = bricker('donate','index')
-	brick = getbrick('detail')
+def donation_detail(request):
+	brick = getbrick('donation_detail','donation')
 	return render_to_response('donation-portal/detail.html',{'brick':brick,},context_instance = RequestContext(request),)

@@ -7,8 +7,13 @@
 		{% block extrastyle %}{% endblock %}
 		<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% load adminmedia %}{% admin_media_prefix %}css/ie.css{% endblock %}" /><![endif]-->
 		{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% admin_media_prefix %}css/rtl.css{% endblock %}" />{% endif %}
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-		<script src="/site_media/js/jquery-ui-1.8.12.min.js" type="text/javascript" charset="utf-8"></script>
+		{% ifequal environment 'development' %}
+		<script type="text/javascript" src="/site_media/js/jquery-1.6.min.js"></script>
+		<script type="text/javascript" src="/site_media/js/jquery-ui-1.8.12.min.js"></script>
+		{% else %}
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+		{% endifequal %}
 		<script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {
 				var holder=0;
@@ -45,7 +50,7 @@
 	    <!-- Header -->
 	    <div id="header">
 	        <div id="branding">
-	        {% block branding %}{% endblock %}
+		        {% block branding %}{% endblock %}
 	        </div>
 			
 			<a href="/">
@@ -104,6 +109,7 @@
 				</a>
 				<div><a href="/admin/homepage/">Homepage</a></div>
 				<span><a href="/admin/homepage/impacter/">Impacters</a></span>
+				<span><a href="/admin/homepage/nav/">Navs</a></span>
 				<span><a href="/admin/homepage/phrase/">Phrases</a></span>
 			</div>
 			<div class="holderthing">
@@ -119,6 +125,7 @@
 					<img src="/admin_media/img/admin/icons/news.jpg" class="left" alt="pic"></img>
 				</a>
 				<div><a href="/admin/newsphotos/">News/Blog</a></div>
+				<span><a href="/admin/newsphotos/galleryh/">Galleryhs</a></span>
 				<span><a href="/admin/newsphotos/news/">News</a></span>
 				<span><a href="/admin/newsphotos/post/">Posts</a></span>
 			</div>
@@ -133,7 +140,7 @@
 					<img src="/admin_media/img/admin/icons/camera.jpg" class="left" alt="pic"></img>
 				</a>
 				<div><a href="/admin/photologue/">Photos</a></div>
-				<span><a href="/admin/photologue/gallery/">Galleries</a></span>
+				{# <span><a href="/admin/photologue/gallery/">Galleries</a></span> #}
 				<span><a href="/admin/photologue/photosize/">Photo Sizes</a></span>
 				<span><a href="/admin/photologue/photo/">Photos</a></span>
 			</div>

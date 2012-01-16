@@ -3,7 +3,7 @@ from django import forms
 from django.forms.models import ModelForm
 from django.db.models import get_model
 from pages.widgets import WMDEditor
-from homepage.models import Impacter
+from homepage.models import Impacter, Nav
 
 		
 class ImpacterAdminModelForm(forms.ModelForm):
@@ -11,3 +11,10 @@ class ImpacterAdminModelForm(forms.ModelForm):
 
     class Meta:
         model = get_model('homepage', 'impacter')
+
+
+class NavForm(forms.ModelForm):
+
+	class Meta:
+		model = get_model('homepage', 'nav')
+		exclude = ('parent','orderer',)

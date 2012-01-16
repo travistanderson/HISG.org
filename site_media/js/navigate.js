@@ -1,10 +1,6 @@
 //site_media/js/navigate2.js
 
 var activenav = ""
-var navarrayhome = new Array(0,0,50,343,450,750);			// this array spaces out the subnav on the homepage
-var navarraysecond = new Array(0,0,80,50,420,500,800);		// this array spaces out the subnav on all the other pages
-
-
 $(document).ready(function(){
 	$('.subnav > li').hide();						// hide all the subnav groups at page load
 	$('#navigation > li').each(function(i){			// find which nav is active by id 
@@ -17,7 +13,6 @@ $(document).ready(function(){
 		$('.sub_' + an).each(function(i){
 			totwid = totwid + parseInt($(this).outerWidth());
 		});
-		// alert(totwid);
 		if(totwid<1025){						// we have 1025 pixels of total width to work with
 			extra = 1025 - totwid;
 			if(activenav == 1){
@@ -69,8 +64,6 @@ $(document).ready(function(){
 	)
 
 
-	// here is the function to rotate around the photos on a photopicker.html include
-
 	function makeImage(v){
 		imgstring = "<img class='gold5' src='" + v +"' />";
 		return imgstring;
@@ -89,15 +82,3 @@ $(document).ready(function(){
 });
 
 
-// function tininav(){
-// 	var text = $(".tini_highlight").text();
-// 	var tiniArray = new Array();
-// 	tiniArray = text.split(",");
-// 	for (i=0;i<tiniArray.length;i++){
-// 		var whichone = "#tini" + tiniArray[i];
-//  		$(whichone).css({color: "#3f97ba",});
-// 	}
-// }
-
-
-// the end

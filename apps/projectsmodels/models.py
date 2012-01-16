@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from photologue.models import Photo
 from videos.models import Video
 from countries.models import Region, Country, UsState
-# from histidr.models import HistIdr
 from newsphotos.models import Partner, News
 from django.utils.safestring import mark_safe
 

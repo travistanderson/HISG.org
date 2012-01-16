@@ -19,17 +19,12 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 from settings import GMAPKEY, DEBUG
-
-
-def index(request):
-	brick = getbrick('index')
-	return render_to_response('training-models/index.html', {'brick':brick,},context_instance = RequestContext(request),)
 	
 	
-def training(request):
+def trainingindex(request):
+	brick = getbrick('trainingindex','training')
 	t = datetime.today()
 	today = datetime.date(t)
-	brick = getbrick('training')
 	tf = Event.objects.all().filter(end_date__gte = today).order_by('start_date')
 	for event in tf:
 		event.button = False
@@ -39,8 +34,8 @@ def training(request):
 	return render_to_response('training-models/training.html', {'brick':brick,'training_list':tf,'past_list':tp,'today':today,},context_instance = RequestContext(request),)
 	
 
-def trainingd(request,event_id):
-	brick = getbrick('trainingd')
+def trainingdetail(request,event_id):
+	brick = getbrick('trainingdetail','training')
 	t = datetime.today()
 	today = datetime.date(t)
 	e = Event.objects.get(id = event_id)
@@ -50,7 +45,7 @@ def trainingd(request,event_id):
 	
 @login_required	
 def trainingsu(request, event_id):
-	brick = getbrick('trainingsu')
+	brick = getbrick('trainingsu','training')
 	today = datetime.today()
 	e = Event.objects.get(id=event_id)
 	u = User.objects.get(id=request.user.id)
@@ -112,7 +107,7 @@ def trainingsu(request, event_id):
 
 @login_required	
 def trainingpic(request):
-	brick = getbrick('trainingpic')
+	brick = getbrick('trainingpic','training')
 	u = User.objects.get(id=request.user.id)
 	try:
 		ph = BadgePhoto.objects.get(user=request.user.id)
@@ -138,7 +133,7 @@ def trainingpic(request):
 
 @login_required	
 def trainingcancel(request, event_id):
-	brick = getbrick('trainingcancel')
+	brick = getbrick('trainingcancel','training')
 	e = Event.objects.get(id=event_id)
 	u = User.objects.get(id=request.user.id)
 	if request.method == 'POST':

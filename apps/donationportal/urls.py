@@ -5,6 +5,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # url(r'^$', 'donationportal.views.index', name='donation'),
-	url(r'^login/$', 'donationportal.views.detail', name='donation_login'),
+    # url(r'^$', 'donationportal.views.donation_index', name='donation'),
+	url(r'^login/$', 'donationportal.views.donation_detail', name='donation_detail'),
 )

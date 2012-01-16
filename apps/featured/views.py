@@ -17,42 +17,42 @@ from settings import GMAPKEY, DEBUG
 
 
 
-def index(request):
+def bpaindex(request):
+	brick = getbrick('bpaindex','featured')
 	try:
 		h = HomerPager.objects.get(id=1)
 	except HomerPager.DoesNotExist:
 		h = []
 	a = 'index'
-	brick = getbrick('index')	
 	return render_to_response('featured/bpa/index.html', {'homer': h,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 
 
-def list(request):
+def bpalist(request):
+	brick = getbrick('bpalist','featured')
 	o = Opportunity.objects.all().order_by('sorter')
 	a = 'list'	
-	brick = getbrick('list')	
 	return render_to_response('featured/bpa/list.html', {'opp_list':o,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 
 	
-def detail(request, opp_id):
+def bpadetail(request, opp_id):
+	brick = getbrick('bpadetail','featured')
 	o = get_object_or_404(Opportunity, pk = opp_id)
 	a = 'list'	
-	brick = getbrick('detail')
 	return render_to_response('featured/bpa/detail.html', {'opp': o,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 	
 	
-def contact(request):
+def bpacontact(request):
+	brick = getbrick('bpacontact','featured')
 	try:
 		r = RandyPage.objects.get(id=1)
 	except RandyPage.DoesNotExist:
 		r = []
 	a = 'contact'		
-	brick = getbrick('contact')	
 	return render_to_response('featured/bpa/randy.html', {'randy': r,'active':a,'brick':brick,},context_instance = RequestContext(request),)
 
 	
 def contactdbsp(request):
-	brick = getbrick('contactdbsp')
+	brick = getbrick('contactdbsp','featured')
 	if request.method == 'POST':
 		form = ContactDbspForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -74,7 +74,7 @@ def contactdbsp(request):
 	
 
 def contactsuccessdbsp(request):
-	brick = getbrick('contactsuccessdbsp')	
+	brick = getbrick('contactsuccessdbsp','featured')	
 	return render_to_response('featured/dbsp/contact-success.html', {'brick':brick,},context_instance = RequestContext(request),)
 	
 	

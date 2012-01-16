@@ -20,7 +20,7 @@ from settings import GMAPKEY, DEBUG
 
 	
 def contact(request):
-	brick = getbrick('contact')
+	brick = getbrick('contact','about')
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -45,12 +45,13 @@ def contact(request):
 
 
 def contactsuccess(request):
+	brick = getbrick('contactsuccess','about')
 	d = Staff.objects.all().filter(director=True).order_by('sorter')
-	brick = getbrick('contactsuccess')	
 	return render_to_response('about/contact-success.html', {'director_list': d,'brick':brick,},context_instance = RequestContext(request),)
 
 
 def contactperson(request, staff_id, fromp):
+	brick = getbrick('contactperson','about')
 	staff = Staff.objects.get(id=staff_id)
 	if fromp != "about":
 		t = Event.objects.get(pk = fromp)
@@ -58,7 +59,6 @@ def contactperson(request, staff_id, fromp):
 	else:
 		t = ""
 		sub = ""
-	brick = getbrick('contactperson')
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		toemail = staff.email
@@ -86,50 +86,50 @@ def contactperson(request, staff_id, fromp):
 
 
 def directors(request):
+	brick = getbrick('directors','about')
 	d = Staff.objects.all().filter(director=True).order_by('sorter')
-	brick = getbrick('directors')	
 	return render_to_response('about/directors.html', {'director_list': d,'brick':brick,},context_instance = RequestContext(request),)
 
 	
 def directors_detail(request, staff_id):
+	brick = getbrick('directors_detail','about')
 	d = get_object_or_404(Staff, pk = staff_id)
-	brick = getbrick('directors_detail')
 	return render_to_response('about/directors_detail.html', {'director': d,'brick':brick,},context_instance = RequestContext(request),)
 	
 	
 def staff(request):
+	brick = getbrick('staff','about')
 	s = Staff.objects.all().filter(director=False).order_by('sorter')
-	brick = getbrick('staff')
 	return render_to_response('about/staff.html', {'staff_list': s,'brick':brick,},context_instance = RequestContext(request),)
 	
 	
 def staff_detail(request, staff_id):
+	brick = getbrick('staff_detail','about')
 	s = get_object_or_404(Staff, pk = staff_id)
-	brick = getbrick('staff_detail')
 	return render_to_response('about/staff_detail.html', {'staff': s,'brick':brick,},context_instance = RequestContext(request),)
 	
 	
 def office(request):
+	brick = getbrick('office','about')
 	t = datetime.today()
 	today = datetime.date(t)
 	o = Office.objects.all().order_by('sorter')
-	brick = getbrick('office')
 	return render_to_response('about/office.html', {'brick':brick,'office_list': o,'gmapkey':GMAPKEY,'debug': DEBUG,},context_instance = RequestContext(request),)
 
 	
 def office_detail(request, office_id):
+	brick = getbrick('office_detail','about')
 	o = get_object_or_404(Office, pk = office_id)
-	brick = getbrick('office_detail')
 	return render_to_response('about/office_d.html', {'office': o,'brick':brick,},context_instance = RequestContext(request),)
 
 
 def intern(request):
-	brick = getbrick('intern')
+	brick = getbrick('intern','about')
 	return render_to_response('about/intern.html', {'brick':brick,},context_instance = RequestContext(request),)
 
 	
 def internbecome(request):
-	brick = getbrick('internbecome')
+	brick = getbrick('internbecome','about')
 	if request.method == 'POST':
 		form = InternBecomeForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -150,7 +150,7 @@ def internbecome(request):
 	
 	
 def internfind(request):
-	brick = getbrick('internfind')
+	brick = getbrick('internfind','about')
 	if request.method == 'POST':
 		form = InternFindForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -171,7 +171,7 @@ def internfind(request):
 	
 	
 def internplace(request):
-	brick = getbrick('internplace')
+	brick = getbrick('internplace','about')
 	if request.method == 'POST':
 		form = InternPlaceForm(request.POST)
 		toemail = 'tanderson@hisg.org'
@@ -192,7 +192,7 @@ def internplace(request):
 	
 	
 def internsuccess(request):
-	brick = getbrick('internsuccess')	
+	brick = getbrick('internsuccess','about')
 	return render_to_response('about/intern-success.html', {'brick':brick,},context_instance = RequestContext(request),)
 	
 

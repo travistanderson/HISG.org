@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'projectsmodels.views.index', name='projectsnews'),
+    url(r'^$', 'projectsmodels.views.prneindex', name='projectsnews'),
 	url(r'^projects/$', 'projectsmodels.views.projectindex', {'sort': 'date'}, name='project'),
 	url(r'^projects/sort-by-country/$', 'projectsmodels.views.projectindex', {'sort': 'country'}, name='project_country'),
 	url(r'^projects/sort-by-region/$', 'projectsmodels.views.projectindex', {'sort': 'region'}, name='project_region'),	

@@ -4,37 +4,136 @@
 {% block extrastyle %}
 	<link rel="stylesheet" href="/admin_media/css/ui-darkness/jquery-ui-1.8.12.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<style type="text/css" media="screen">
-		#nav{background:white;margin-top:2em;padding:20px;}
-		#sortable{}
-		#sortable li{margin:10px;padding:5px 12px;width:200px;-moz-border-radius:5px;-webkit-border-radius:5px;list-style:none;cursor:pointer;}
-		#sortable li.rank_2{margin-left:50px;}
-		#sortable li.rank_3{margin-left:100px;}
-		#sortable li.rank_4{margin-left:150px;}
+		#navholder{background:white;margin-top:2em;padding:20px;}
+		#nav{}
+		#navlist{}
+		#navlist li{margin:10px;padding:5px 12px;width:200px;-moz-border-radius:5px;-webkit-border-radius:5px;list-style:none;cursor:pointer;}
+		#navlist li.rank_2{margin-left:50px;}
+		#navlist li.rank_3{margin-left:100px;}
+		#navlist li.rank_4{margin-left:150px;}
+		.test{color:black;background:white;}
+		.buttonrow{width:500px;float:right;height:40px;}
+		.buttons{float:left;height:20px;margin-right:50px;background:#27AAEE;-moz-border-radius:5px;-webkit-border-radius:5px;color:white;cursor:pointer;font-weight:bold;padding:6px 10px 2px;}
+		.formholder{width:500px;float:right;height:205px;background:#efefef;display:none;}
+		.formholder table{background:#e2e2e2;margin:20px;}
+		#deleteconfirm{width:500px;float:right;height:100px;background:#efefef;display:none;padding:20px;}
+		#deleteempty{width:110px;float:right;background:#555;color:white;font-weight:bold;margin:30px 200px 0 0;padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;display:none;}
+		#thecancel{float:right;margin:20px 160px 0 0;}
 	</style>
 {% endblock %}
 {% block extrahead %}
-	{# // <script src="/site_media/js/jstree/jquery.jstree.js" type="text/javascript" charset="utf-8"></script> #}
+	<script src="/admin_media/js/jstree/jquery.jstree.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
-		listlev = 1;
-		$(document).ready(function() {
-			$("#sortable").sortable({
-				revert: true
+		$(function(){
+			$("#nav").jstree({
+				"plugins":["themes","html_data",'dnd','crrm','ui']
+			}).bind('move_node.jstree',function(e,data){
+				data.rslt.o.each(function(i){
+					$.ajax({
+						url:'/admin/homepage/navlistajax/',
+						data:{
+							'operation':'move_node',
+							"id" : $(this).attr("id").replace("phtml_",""),
+							"ref" : data.rslt.r.attr('id').replace("phtml_",""),
+							"position" : data.rslt.p,
+						}
+					})
+				})
+			})
+			// ==============   create   ======================================
+			function createisreallydone(){return true;}
+			function createisdone(){
+				$("#nav").jstree("create",null,'after',js,createisreallydone,true);
+				$('.formholder').slideUp('slow');
+				// make sure to highlight the new one
+			}
+			$('.createnavopen').click(function(){$('.formholder').slideDown('slow');});
+			$('.createnav').click(function(e){
+				e.preventDefault();
+				sel = $('#nav').jstree('get_selected');
+				if(sel.length==0){		// pick the last one and put it after that
+					ref = '';
+				}else{		//this one is selected put it after this and use it's parent
+					ref = sel.attr('id').replace('phtml_','');									
+				}
+				cname = $('#id_name').val();
+				cdisplayname = $('#id_displayname').val();
+				curl = $('#id_url').val();
+				craw = $('#id_raw').val();
+				js = {state:'open',data:cdisplayname}
+				$.ajax({		// this is where I should put some ajax to actually create the element in django
+					url:'/admin/homepage/navlistajax/',
+					data:{
+						'operation':'create_node',
+						"ref" : ref,
+						'cname':cname,
+						'cdisplayname':cdisplayname,
+						'curl':curl,
+						'craw':craw
+					},
+					success:createisdone()
+				})
 			});
-			$("#draggable").draggable({
-				connectToSortable: "#sortable",
-				helper: "clone",
-				revert: "invalid"
-			});
-			$("ul, li").disableSelection();
-			listlev = 1;
-			oldid = 0;
-			{% for nav in navs %}
-			nlistlev = {{ nav.rank }};
-			liel = '<li class="ui-state-default rank_{{ nav.rank }}" id="nav_{{ nav.id }}">{{ nav.displayname }}</li>';
-			$('#sortable').append(liel);
-			listlev = nlistlev;
-			oldid = {{ nav.id }};
-			{% endfor %}
+			$('#thecancel').click(function(){
+				$('#id_name').val('');
+				$('#id_displayname').val('');
+				$('#id_url').val('');
+				$('#id_raw').val('');
+				$('.formholder').slideUp('slow');
+			})
+			
+			
+			// ==============   edit   ======================================
+			$('.editnav').click(function(){
+				sel = $('#nav').jstree('get_selected');
+				if(sel.length!=0){		// pick the last one and put it after that
+					id = sel.attr('id').replace('phtml_','');
+					// $.get('/admin/homepage/navlistajax/',{'operation':'get_node',"id" : id},editpop());
+					$.get('/admin/homepage/navlistajax/',
+						dataType: 'text json',
+						{'operation':'get_node',"id" : id})
+						.success(function(data){alert('success' + data)})
+						.error(function(a,b,c){alert('a = ' + a + ' and b = ' + b + ' and c = ' + c)});
+				}else{
+					$('#deleteempty').slideDown('slow');		// nothing selected
+					$('#deleteempty').hide(3000);
+				}
+			})
+			function editpop(data){
+				alert('someint'+ data);
+			}
+			
+			// ==============   delete   ======================================
+			function deletenav(){
+				$("#nav").jstree("remove");
+			}
+			$('#dothedelete').click(function(){
+				$.ajax({		// this is where I should put some ajax to actually create the element in django
+					url:'/admin/homepage/navlistajax/',
+					data:{
+						'operation':'delete_node',
+						"id" : id
+					},
+					success:deletenav()
+				})
+			})
+			$('.deletenav').click(function(){
+				sel = $('#nav').jstree('get_selected');
+				if(sel.length!=0){		// pick the last one and put it after that
+					id = sel.attr('id').replace('phtml_','');
+					name = sel.html();
+					$('#sentence').html(name);
+					// show the deleteconfirm
+					$('#deleteconfirm').slideDown('slow');
+				}else{
+					$('#deleteempty').slideDown('slow');		// nothing selected
+					$('#deleteempty').hide(3000);
+				}
+			})
+			$('#dothecancel').click(function(){
+				$('#sentence').html('');
+				$('#deleteconfirm').slideUp('slow');
+			})
 		});
 	</script>
 {% endblock %}
@@ -44,7 +143,7 @@
 
 {% block breadcrumbs %}
 	<div class="breadcrumbs">
-		<a href="../../">Home</a><a href="../">Homepage</a><div class="endofbreadcrumbs">Nav List Fancy</div>
+		<a href="../../">Home</a><a href="../">Homepage</a><div class="endofbreadcrumbs">NavList +</div>
 	</div>
 {% endblock %}
 
@@ -52,16 +151,78 @@
 	<div id="content-main">
 		<ul class="object-tools" style='margin-top:0em;'>
 			<li>
-				<a href='/admin/homepage/nav/'>Normal ChangeList</a>
+				<a href='/admin/homepage/nav/'>BackStage NavList</a>
 			</li>
 		</ul>
 		
-		<div id='nav'>
+		<div id='navholder'>
 			<h1>Navigation Items</h1>
-			<ul id='sortable' class='ui-sortable ul_1'>
+			<div class='buttonrow'>
+				<div class='createnavopen buttons'>Create Nav</div>
+				<div class='editnav buttons'>Edit Nav</div>
+				<div class='deletenav buttons'>Delete Nav</div>
 				
-			</ul>
-
+			</div>
+			<div class='clearer'></div>
+			<div class='formholder'>
+				<div id='thecancel' class='buttons'>Cancel</div>
+				<table>
+					{% for field in form %}
+						<tr>
+							<td>{{ field.label }}</td>
+							<td>{{ field }}</td>
+						</tr>
+					{% endfor %}
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type='submit' value='Create' class='createnav'></input></td>
+					</tr>
+				</table>
+			</div>
+			<div id='deleteconfirm'>
+				<p>Are you sure you want to delete <span id='sentence'></span>?</p>
+				<div id='dothedelete' class='buttons'>Delete</div>
+				<div id='dothecancel' class='buttons'>Cancel</div>
+			</div>
+			<div id='deleteempty'>
+				Nothing Selected
+			</div>
+			<div id='nav'>
+				<ul id='navlist'>
+					{% for nav in navs.children %}
+						<li id='phtml_{{ nav.id }}' class='jstree-open'>
+							<a href=''>{{ nav.displayname }}</a>
+							{% if nav.children %}
+								<ul>
+									{% for nav2 in nav.children %}
+										<li id='phtml_{{ nav2.id }}' class='jstree-open'><a href=''>{{ nav2.displayname }}</a>
+											{% if nav2.children %}
+												<ul>
+													{% for nav3 in nav2.children %}
+														<li id='phtml_{{ nav3.id }}' class='jstree-open'><a href=''>{{ nav3.displayname }}</a>
+															{% if nav3.children %}
+																<ul>
+																	{% for nav4 in nav3.children %}
+																		<li id='phtml_{{ nav4.id }}' class='jstree-open'><a href=''>{{ nav4.displayname }}</a></li>
+																	{% endfor %}
+																</ul>
+															{% endif %}
+														</li>
+													{% endfor %}
+												</ul>
+											{% endif %}
+										</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>{# end of nav #}
+		</div>{# end of navholder #}
+		<div class='test'>
+			<div id='togglenode'>Toggle Node</div>
+			
 		</div>
 	</div>{# end of content-main #}
 {% endblock %}

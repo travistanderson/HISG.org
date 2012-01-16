@@ -12,6 +12,7 @@ from brick.views import getbrick
 DEFAULT_TEMPLATE = 'pages/default.html'
 
 ARRIVE_CHOICES = ['empty-zero based list','home-not used','training.jpg','feature.jpg','project.jpg','about.jpg','donation.jpg','search.jpg','connect.jpg',]
+SECTIONS = [('about-hisg','about'),('donation-portal','donation'),('info','faq'),('initiatives','featured'),('search','lookfor'),('projects-and-news','projectsnews'),('training-and-models','training'),]
 
 def pager(request, url):
 	if not url.endswith('/') and settings.APPEND_SLASH:
@@ -23,7 +24,12 @@ def pager(request, url):
 		raise Http404
 
 	if f.sidebar:
-		brick = getbrick(f.brickchoice)
+		sectionurl = url.split('/')[1]
+		section = ''
+		for sec in SECTIONS:
+			if sec[0] == sectionurl:
+				section = sec[1]
+		brick = getbrick(f.brickchoice,section)
 	else:
 		brick = None
 

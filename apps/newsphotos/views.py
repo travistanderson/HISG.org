@@ -131,10 +131,10 @@ def galleryindex(request, sort):
 	
 	
 def gallerydetail(request, gallery_id):
-	brick = getbrick('gallerydetail','projectsnews',gallery=g)
 	g = get_object_or_404(Galleryh, pk = gallery_id)
 	if not g.is_public:
 		g = None
+	brick = getbrick('gallerydetail','projectsnews',gallery=g)
 	return render_to_response('projects-news/gallery_d.html', {'gallery': g,'brick': brick,},context_instance = RequestContext(request),)
 	
 	

@@ -1,6 +1,6 @@
 # projectsmodels/admin.py
 from django.contrib import admin
-from projectsmodels.models import Project
+from projectsmodels.models import Project, Link, Partner
 from projectsmodels.forms import ProjectAdminModelForm
 from histidr.models import HistIdr
 from histidr.widgets import HistidrSelector
@@ -34,5 +34,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(Link)
+admin.site.register(Partner)
 
 

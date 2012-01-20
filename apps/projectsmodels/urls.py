@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 	url(r'^projects/idr/sort-by-country/$', 'projectsmodels.views.idrprojectindex', {'sort': 'country'}, name='idrproject_country'),
 	url(r'^projects/idr/sort-by-region/$', 'projectsmodels.views.idrprojectindex', {'sort': 'region'}, name='idrproject_region'),	
 	url(r'^projects/idr/(?P<proj_id>\d+)/$', 'projectsmodels.views.idrprojectdetail', name='idrproject_detail'),
+	url(r'^partners-and-links/$', 'projectsmodels.views.partnerlinks', name='partnerlinks'),
 	
     # url(r'^$', 'newsphotos.views.index', name='newsphotos'),
 	url(r'^news/$', 'newsphotos.views.newsindex', {'sort': 'date'}, name='news'),

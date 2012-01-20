@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.forms import ModelForm
 from django.template import RequestContext
 from datetime import datetime, timedelta
-from projectsmodels.models import Project
+from projectsmodels.models import Project, Link, Partner
 from newsphotos.models import News, Galleryh
 from videos.models import Video
 # from photologue.models import Photo
@@ -64,4 +64,11 @@ def idrprojectdetail(request, proj_id):
 	p = get_object_or_404(Project, pk = proj_id)
 	return render_to_response('projects-news/idrproject_d.html', {'project': p,'brick':brick,},context_instance = RequestContext(request),)
 
+
+def partnerlinks(request):
+	brick = getbrick('partnerlinks','projectsnews')
+	p = Partner.objects.all()
+	l = Link.objects.all()
+	return render_to_response('projects-news/partnerlinks.html', {'partners': p,'links':l,'brick':brick,},context_instance = RequestContext(request),)
 	
+		

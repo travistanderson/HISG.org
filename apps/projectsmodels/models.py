@@ -35,3 +35,19 @@ class Project(models.Model):
 	
 
 
+class Link(models.Model):
+	name = models.CharField(blank=True, max_length=100)
+	content = models.TextField(blank=True)
+	link = models.URLField(blank=True, verify_exists=True)
+
+	def __unicode__(self):
+		return self.name
+
+
+class Partner(models.Model):
+	name = models.CharField(blank=True, max_length=100)
+	content = models.TextField(blank=True)
+	link = models.URLField(blank=True, verify_exists=True)
+
+	def __unicode__(self):
+		return self.name

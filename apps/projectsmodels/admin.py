@@ -9,15 +9,6 @@ class HistIdrInline(admin.StackedInline):
 	model = HistIdr
 	fk_name = "project"
 	max_num = 1
-	# template = 'my_new_template_tabular.html'
-	
-	# def formfield_for_dbfield(self, db_field, **kwargs):
-	# 	# attrs = { 'size': 15 }
-	# 	if db_field.name == 'histidr_set-0-hist1':
-	# 		# kwargs['widget'] = HistidrSelector
-	# 		field.widget.attrs['class'] = "my_new_class"
-	# 		return field
-	# 	return super(HistIdrInline,self).formfield_for_dbfield(db_field,**kwargs)
 	
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -30,11 +21,20 @@ class ProjectAdmin(admin.ModelAdmin):
 		(None, {'fields': (('name', 'active_now', 'year',),('country','region',),('partner','video',),'news', 'description',)}),
 		(None, {'fields': ('photo',)}),
 	)
+
 	
+class LinkAdmin(admin.ModelAdmin):
+	list_display = ('name', 'orderer',)
+	list_editable = ('orderer',)
+
+	
+class PartnerAdmin(admin.ModelAdmin):
+	list_display = ('name', 'orderer',)
+	list_editable = ('orderer',)	
 
 
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Link)
-admin.site.register(Partner)
+admin.site.register(Link, LinkAdmin)
+admin.site.register(Partner, PartnerAdmin)
 
 

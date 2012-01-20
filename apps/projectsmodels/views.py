@@ -67,8 +67,8 @@ def idrprojectdetail(request, proj_id):
 
 def partnerlinks(request):
 	brick = getbrick('partnerlinks','projectsnews')
-	p = Partner.objects.all()
-	l = Link.objects.all()
+	p = Partner.objects.all().order_by('orderer')
+	l = Link.objects.all().order_by('orderer')
 	return render_to_response('projects-news/partnerlinks.html', {'partners': p,'links':l,'brick':brick,},context_instance = RequestContext(request),)
 	
 		

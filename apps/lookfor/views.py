@@ -135,8 +135,8 @@ def search(request):
 		photoresults = Photo.objects.filter(photoqset).distinct()
 		
 		pagesqset = (
-			Q(title__icontains=query) |
-			Q(content__icontains=query)
+			Q(title__icontains=query,active=True) |
+			Q(content__icontains=query,active=True)
 		)
 		pagesresults = Page.objects.filter(pagesqset).distinct()
 	else:

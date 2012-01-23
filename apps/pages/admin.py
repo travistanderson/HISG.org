@@ -9,7 +9,7 @@ from pages.forms import PageAdminModelForm
 
 class PageAdmin(admin.ModelAdmin):
 	form = PageAdminModelForm
-	list_display = ('url', 'title')
+	list_display = ('url', 'title','active')
 	search_fields = ('url', 'title')
 	save_on_top = True
 	fieldsets = (

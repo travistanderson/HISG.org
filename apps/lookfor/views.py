@@ -1,6 +1,7 @@
 # lookfor/views.py
 from django.db.models import Q
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 from about.models import Office, Staff
 from histidr.models import HistIdr
 from homepage.models import Impacter
@@ -186,7 +187,7 @@ def search(request):
 		"choicegallery":choicegallery,
 		"choiceother":choiceother,
 		"choiceall":choiceall,
-	})
+	},context_instance = RequestContext(request),)
 
 
 

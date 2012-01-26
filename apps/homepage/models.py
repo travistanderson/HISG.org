@@ -65,7 +65,7 @@ def context_navigation(request):
 	spath = path.split('/')
 	# try:
 	rootn = Nav.objects.get(displayname='Root')
-	rootnavs = Nav.objects.filter(parent=rootn)
+	rootnavs = Nav.objects.filter(parent=rootn).order_by('orderer')
 	rootnavhtml = "<div id='nav'><ul id='navigation'>"
 	subnavhtml = "<div id='subnavigation'><ul class='subnav'>"
 	for nav in rootnavs:
@@ -87,7 +87,7 @@ def context_navigation(request):
 				active = 1
 			else:
 				rootnavhtml += "<li id='li_%s' class='rootnav 4'><a href='%s'>%s</a></li>" %(nav.orderer,theurl,nav.displayname)
-		subnavs = Nav.objects.filter(parent=nav)
+		subnavs = Nav.objects.filter(parent=nav).order_by('orderer')
 		for (counter,subnav) in enumerate(subnavs):
 			if counter + 1 == subnavs.count():
 				last = ''

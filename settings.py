@@ -190,12 +190,6 @@ class NullStream(object):
 	writeline = write
 	writelines = write
 
-RESTRUCTUREDTEXT_FILTER_SETTINGS = { 'cloak_email_addresses': True,
-									 'file_insertion_enabled': False,
-									 'raw_enabled': False,
-									 'warning_stream': NullStream(),
-									 'strip_comments': True,}
-
 BEHIND_PROXY = False
 
 FORCE_LOWERCASE_TAGS = True

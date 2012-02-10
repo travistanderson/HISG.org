@@ -1,0 +1,37 @@
+{# template/pages/default.html #}
+{% extends "basesecond.html" %}
+
+{% load i18n %}
+{% block labelpic %}{{ labelpic }}{% endblock labelpic %}
+{% block pagetitle %}{{ pager.title }}{% endblock %}
+{% block arrive %}{{ pager.section }}{% endblock arrive %}
+{% block subarrive %}{{ pager.subarrive }}{% endblock subarrive %}
+
+{% block head_title %}{% trans "About" %}{% endblock %}
+
+
+{% block tininav %}
+	{% if pager.hasnav %}
+		<div class="tininav">
+			<ul>
+				{{ pager.tininav.content|safe }}
+			</ul>
+		</div>
+		<div class="clearer"></div>
+	{% endif %}
+{% endblock tininav %}
+
+{% block body %}
+	{% if not pager.sidebar %}
+		<style type="text/css" media="screen">
+			#left-column{width:0px;display:none;}
+			#right-column{width:970px;}
+		</style>
+	{% endif %}
+
+	{{ pager.content }} {# this is already escaped safe #}
+{% endblock %}
+
+{% block extra_head %}
+	{{ pager.extrahead|safe }}
+{% endblock %}

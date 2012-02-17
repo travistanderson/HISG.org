@@ -139,6 +139,7 @@ INSTALLED_APPS = (
 	'training',
 	'newadmin',
 	'photos',
+	'redirect',
 	'rpc4django',
 	'django.contrib.admin',
 )

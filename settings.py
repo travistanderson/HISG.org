@@ -87,12 +87,11 @@ MIDDLEWARE_CLASSES = (
 	'django.middleware.common.CommonMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	# 'account.middleware.LocaleMiddleware',
 	'django.middleware.doc.XViewMiddleware',
 	'pagination.middleware.PaginationMiddleware',
-	# 'misc.middleware.SortOrderMiddleware',
 	'django.middleware.transaction.TransactionMiddleware',
 	'pages.middleware.PageFallbackMiddleware',
+	'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'hisg.urls'
@@ -116,6 +115,7 @@ INSTALLED_APPS = (
 	'django.contrib.sites',
 	'django.contrib.humanize',
 	'django.contrib.markup',
+	'django.contrib.redirects',
 	'clogin',
 	'pages',
 	# external
@@ -139,7 +139,6 @@ INSTALLED_APPS = (
 	'training',
 	'newadmin',
 	'photos',
-	'redirect',
 	'rpc4django',
 	'django.contrib.admin',
 )

@@ -132,6 +132,7 @@ def context_navigation(request):
 def settings_info(request):
 	settingsinfo = {}
 	settingsinfo['environment'] = settings.WHICH_ENVIRONMENT
+	settingsinfo['thisyear'] = datetime.today().year
 	return settingsinfo
 	
 	

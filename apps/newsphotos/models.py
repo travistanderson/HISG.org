@@ -131,6 +131,7 @@ class Galleryh(Gallery):
 		return photolist
 
 	def save(self,*args,**kwargs):
+		match = True
 		if self.smugmug == True:
 			# get the images in the album
 			sm = SmugMug(api_key=settings.SM_API_KEY, api_version='1.2.2',app_name=settings.SM_APP_NAME)
@@ -142,26 +143,29 @@ class Galleryh(Gallery):
 				p = sm.images_getInfo(ImageID=image['id'],ImageKey=image['Key'])
 				imagelist.append(p)
 			# check if there are already images
-			alreadyphotohs = self.photoh.all()
-			# check if they match the ones from smugmug
-			match = True
-			if len(alreadyphotohs) == len(imagelist):
-				for i, photo in enumerate(alreadyphotohs):
-					if photo.imageid != imagelist[i]['Image']['id']:
-						match = False
-						break
-			else:
+			try:
+				alreadyphotohs = self.photoh.all()
+				# check if they match the ones from smugmug
+				if len(alreadyphotohs) == len(imagelist):
+					for i, photo in enumerate(alreadyphotohs):
+						if photo.imageid != imagelist[i]['Image']['id']:
+							match = False
+							break
+				else:
+					match = False
+			except Exception, e:
 				match = False
-			# create photohs and save them to the galleryh
-			if not match:
-				for photo in imagelist:
-					try:
-						p = Photoh.objects.get(imageid=photo['Image']['id'])
-					except Photoh.DoesNotExist:
-						p = Photoh(imageid=photo['Image']['id'],imagekey=photo['Image']['Key'],caption=photo['Image']['Caption'],largeurl=photo['Image']['LargeURL'],mediumurl=photo['Image']['MediumURL'],thumburl=photo['Image']['ThumbURL'],lat=photo['Image']['Latitude'],lng=photo['Image']['Longitude'])
-						p.save()
-					self.photoh.add(p)
 		super(Galleryh, self).save(*args,**kwargs)
+		# create photohs and save them to the galleryh
+		if not match:
+			for photo in imagelist:
+				try:
+					p = Photoh.objects.get(imageid=photo['Image']['id'])
+				except Photoh.DoesNotExist:
+					p = Photoh(imageid=photo['Image']['id'],imagekey=photo['Image']['Key'],caption=photo['Image']['Caption'],largeurl=photo['Image']['LargeURL'],mediumurl=photo['Image']['MediumURL'],thumburl=photo['Image']['ThumbURL'],lat=photo['Image']['Latitude'],lng=photo['Image']['Longitude'])
+					p.save()
+				# self.photoh.add(p)
+			super(Galleryh, self).save(*args,**kwargs)
 
 
 		

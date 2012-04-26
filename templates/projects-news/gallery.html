@@ -85,7 +85,12 @@
 					{{ gallery.date_added|date:"M d, Y" }}
 				</span>
 				<span style="float:left;width:300px;display:inline;">
-					Photos: {{ gallery.photos.all|length }}
+					Photos: 
+					{% if gallery.photos.all %}
+						{{ gallery.photos.all|length }}
+					{% else %}
+						{{ gallery.photoh.all|length }}
+					{% endif %}
 				</span>
 				<div class="clearer"></div>
 			</div>{# end of rowergallery #}

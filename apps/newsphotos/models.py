@@ -8,6 +8,9 @@ from photologue.models import Photo, Gallery
 from videos.models import Video
 from countries.models import Region, Country, UsState
 from smugpy import SmugMug
+from django.core.signals import request_finished
+from django.db.models.signals import post_save, pre_save, post_init
+# from django.dispatch import receiver
 
 LIVE_STATUS = 1
 DRAFT_STATUS = 2
@@ -107,7 +110,6 @@ class Galleryh(Gallery):
 
 	def photolist(self):
 		photolist = []
-		# photolist = ['hello',]
 		if self.smugmug:
 			for photo in self.photoh.all():
 				p = {}
@@ -131,41 +133,44 @@ class Galleryh(Gallery):
 		return photolist
 
 	def save(self,*args,**kwargs):
-		match = True
-		if self.smugmug == True:
-			# get the images in the album
-			sm = SmugMug(api_key=settings.SM_API_KEY, api_version='1.2.2',app_name=settings.SM_APP_NAME)
-			sm.login_anonymously()
-			album = sm.images_get(AlbumID=self.albumid,AlbumKey=self.albumkey)
-			images = album['Album']['Images']		# here are the ids but not the urls
-			imagelist = []
-			for image in images:
-				p = sm.images_getInfo(ImageID=image['id'],ImageKey=image['Key'])
-				imagelist.append(p)
-			# check if there are already images
-			try:
-				alreadyphotohs = self.photoh.all()
-				# check if they match the ones from smugmug
-				if len(alreadyphotohs) == len(imagelist):
-					for i, photo in enumerate(alreadyphotohs):
-						if photo.imageid != imagelist[i]['Image']['id']:
-							match = False
-							break
-				else:
-					match = False
-			except Exception, e:
-				match = False
+		if not self.lat:
+			self.lat = 0.0
+		if not self.lng:
+			self.lng = 0.0	
 		super(Galleryh, self).save(*args,**kwargs)
-		# create photohs and save them to the galleryh
-		if not match:
-			for photo in imagelist:
-				try:
-					p = Photoh.objects.get(imageid=photo['Image']['id'])
-				except Photoh.DoesNotExist:
-					p = Photoh(imageid=photo['Image']['id'],imagekey=photo['Image']['Key'],caption=photo['Image']['Caption'],largeurl=photo['Image']['LargeURL'],mediumurl=photo['Image']['MediumURL'],thumburl=photo['Image']['ThumbURL'],lat=photo['Image']['Latitude'],lng=photo['Image']['Longitude'])
-					p.save()
-				# self.photoh.add(p)
-			super(Galleryh, self).save(*args,**kwargs)
+
+
+def photoh_updater(sender, **kwargs):
+	obj = kwargs['instance']
+	
+	if obj.smugmug == True:						# get the images in the album
+		if obj.albumid is not None:
+			if len(obj.photoh.all()) == 0:
+				sm = SmugMug(api_key=settings.SM_API_KEY, api_version='1.2.2',app_name=settings.SM_APP_NAME)
+				sm.login_anonymously()
+				album = sm.images_get(AlbumID=obj.albumid,AlbumKey=obj.albumkey)
+				images = album['Album']['Images']		# here are the ids but not the urls
+				imagelist = []
+				for image in images:
+					p = sm.images_getInfo(ImageID=image['id'],ImageKey=image['Key'])
+					imagelist.append(p)
+				# create photohs and save them to the galleryh
+				for photo in imagelist:
+					try:
+						thephotoh = Photoh.objects.get(imageid=photo['Image']['id'])
+					except Photoh.DoesNotExist:
+						thephotoh = Photoh(imageid=photo['Image']['id'],imagekey=photo['Image']['Key'],caption=photo['Image']['Caption'],largeurl=photo['Image']['LargeURL'],mediumurl=photo['Image']['MediumURL'],thumburl=photo['Image']['ThumbURL'],lat=photo['Image']['Latitude'],lng=photo['Image']['Longitude'])
+						thephotoh.save()
+					obj.photoh.add(thephotoh)
+
+
+post_init.connect(photoh_updater, sender=Galleryh)
+
+
+
+
+
+
 
 
 		

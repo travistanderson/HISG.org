@@ -1,7 +1,8 @@
 # newsphotos/admin.py
 from django.contrib import admin
-from newsphotos.models import News, Partner, PartnerType, Post, Galleryh
+from newsphotos.models import News, Partner, PartnerType, Post, Galleryh, Photoh
 from newsphotos.forms import PostAdminModelForm, PartnerAdminModelForm, NewsAdminModelForm
+
 
 class NewsAdmin(admin.ModelAdmin):
 	form = NewsAdminModelForm
@@ -32,6 +33,7 @@ class GalleryhAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'title_slug': ('title',)}
 	list_display = ('title', 'date_added','smugmug','lat','lng')
 	list_editable = ('lat','lng',)
+	
 	
 	
 admin.site.register(News, NewsAdmin)

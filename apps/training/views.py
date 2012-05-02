@@ -1,9 +1,9 @@
 # training/views.py
-from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm
-from django.template import RequestContext
+from django.template import RequestContext, loader
 from datetime import datetime, timedelta
 from photologue.models import Gallery, Photo
 from countries.models import Region, Country
@@ -11,7 +11,7 @@ from django.contrib.auth.models import User, Message
 from django.contrib.auth.decorators import login_required
 from brick.views import getbrick
 from training.models import Answer, BadgePhoto, Choice, Event, Question, QuestionOrder, QuestionSet, SignupDate
-from training.forms import EventForm, BadgeForm
+from training.forms import EventForm, BadgeForm, VidAuthForm
 from training.mailcontents import sumail, cancelmail
 from django.conf import settings
 if "mailer" in settings.INSTALLED_APPS:
@@ -153,3 +153,43 @@ def trainingcancel(request, event_id):
 	else:
 		return render_to_response('training-models/cancel.html', {'brick':brick,'event':e,'user':u,},context_instance = RequestContext(request),)
 
+
+
+	
+	
+def trainingvidauth(request):
+	brick = getbrick('trainingindex','training')
+	# put a form here and on success redirect to the training video page
+	if request.method == 'POST':
+		form = VidAuthForm(request.POST)
+		if form.is_valid():
+			# t = loader.get_template('training-models/trainingvidauthsuccess.html')
+			# c = RequestContext(request,{'brick': brick,})
+			response = redirect(reverse('trainingvidauthsuccess'))
+			response.set_cookie('trainingvideoauth','authenticated')			# set the cookie here
+			subject = 'HIST and IDR Training video viewing'
+			content = '''Tom, Norm and David,
+			
+			%s %s with the email %s and from the country %s is viewing the HIST and IDR trainig videos.''' %(form.cleaned_data['firstname'],form.cleaned_data['lastname'],form.cleaned_data['email'],form.cleaned_data['country'])
+			fromemail = 'contact@hisg.org'
+			toemail = ['tjennings@hisg.org','nbrinkley@hisg.org','dbopp@hisg.org',]
+			send_mail(subject,content,fromemail,toemail)
+			return response
+		else:
+			form = VidAuthForm(request.POST)
+		return render_to_response('training-models/trainingvidauth.html', {'brick':brick,'form':form,},context_instance = RequestContext(request),)
+	else:
+		form = VidAuthForm()
+	return render_to_response('training-models/trainingvidauth.html', {'brick':brick,'form':form,},context_instance = RequestContext(request),)
+
+
+	
+	
+def trainingvidauthsuccess(request):
+	return HttpResponseRedirect('/training-and-models/training-videos/')
+
+
+
+
+
+	

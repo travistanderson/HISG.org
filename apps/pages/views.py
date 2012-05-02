@@ -2,6 +2,7 @@
 from pages.models import Page
 from django.template import loader, RequestContext
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
 from django.conf import settings
@@ -42,8 +43,16 @@ def pager(request, url):
 	f.content = mark_safe(f.content)
 	labelpic = ARRIVE_CHOICES[int(f.section)]
 
-	c = RequestContext(request,{'labelpic':labelpic,'pager': f,'brick': brick,})
+	# if request.COOKIES.has_key('trainingvideoauth'):
+	# 	value = request.COOKIES['trainingvideoauth']
+	# else:
+	# 	value = None
+	value = request.COOKIES.get('trainingvideoauth', None)
+	if url == '/training-and-models/training-videos/' and value == None:
+		return HttpResponseRedirect(reverse('training_vidauth'))
+	c = RequestContext(request,{'labelpic':labelpic,'pager': f,'brick': brick,'value':value,})
 	response = HttpResponse(t.render(c))
+	# response.delete_cookie('trainingvideoauth')
 	populate_xheaders(request, response, Page, f.id)
 	return response
 

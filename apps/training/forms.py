@@ -60,7 +60,11 @@ class EventForm(forms.Form):
 				)
 
 
-
+class VidAuthForm(forms.Form):
+	firstname = forms.CharField(required=True,label='First Name')
+	lastname = forms.CharField(required=True,label='Last Name')
+	email = forms.EmailField(required=True,label='Email')
+	country = forms.CharField(required=True,label='Country')
     
 
 

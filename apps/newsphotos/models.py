@@ -98,6 +98,13 @@ class Photoh(models.Model):
 			return self.caption[0:20]
 		else:
 			return 'Photoh #' + str(self.imageid)
+			
+	def gallery(self):
+		try:
+			return self.galleryh_set.all()[0]
+		except Exception, e:
+			return 'None'
+		
 	
 
 class Galleryh(Gallery):
@@ -133,10 +140,16 @@ class Galleryh(Gallery):
 		return photolist
 
 	def save(self,*args,**kwargs):
-		if not self.lat:
+		if not self.lat and not self.lng:
+			try:
+				self.lat = self.photoh.all()[0].lat
+				self.lng = self.photoh.all()[0].lng
+			except Exception, e:
+				self.lat = 0.0
+				self.lng = 0.0
+		else:
 			self.lat = 0.0
-		if not self.lng:
-			self.lng = 0.0	
+			self.lng = 0.0		
 		super(Galleryh, self).save(*args,**kwargs)
 
 
@@ -155,11 +168,30 @@ def photoh_updater(sender, **kwargs):
 					p = sm.images_getInfo(ImageID=image['id'],ImageKey=image['Key'])
 					imagelist.append(p)
 				# create photohs and save them to the galleryh
-				for photo in imagelist:
+				firstlat = 0.0
+				firstlng = 0.0
+				for i, photo in enumerate(imagelist):
 					try:
 						thephotoh = Photoh.objects.get(imageid=photo['Image']['id'])
 					except Photoh.DoesNotExist:
-						thephotoh = Photoh(imageid=photo['Image']['id'],imagekey=photo['Image']['Key'],caption=photo['Image']['Caption'],largeurl=photo['Image']['LargeURL'],mediumurl=photo['Image']['MediumURL'],thumburl=photo['Image']['ThumbURL'],lat=photo['Image']['Latitude'],lng=photo['Image']['Longitude'])
+						if i == 0:
+							try:
+								firstlat = photo['Image']['Latitude']
+								firstlng = photo['Image']['Longitude']
+							except Exception, e:
+								firstlat = 0.0
+								firstlng = 0.0
+						thephotoh = Photoh(imageid=photo['Image']['id'],imagekey=photo['Image']['Key'],caption=photo['Image']['Caption'],mediumurl=photo['Image']['MediumURL'],thumburl=photo['Image']['ThumbURL'])
+						try:
+							thephotoh.lat = photo['Image']['Latitude']
+							thephotoh.lng = photo['Image']['Longitude']
+						except Exception, e:
+							thephotoh.lat = firstlat
+							thephotoh.lng = firstlng
+						try:
+							thephotoh.largeurl=photo['Image']['LargeURL']
+						except Exception, e:
+							thephotoh.largeurl=''
 						thephotoh.save()
 					obj.photoh.add(thephotoh)
 

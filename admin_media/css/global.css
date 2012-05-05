@@ -190,7 +190,8 @@ font-size:15px;font-weight:bold;margin:0;padding:4px 0px 0px 10px;background:#7C
 .littlequestion{font-size:9px;}
 
 
-
+#content p{background:white;}
+#content ul{background:white;}
 
 /*   generic stuff  */
 

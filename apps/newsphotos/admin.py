@@ -34,12 +34,19 @@ class GalleryhAdmin(admin.ModelAdmin):
 	list_display = ('title', 'date_added','smugmug','lat','lng')
 	list_editable = ('lat','lng',)
 	
-	
+
+
+class PhotohAdmin(admin.ModelAdmin):
+	# form = PostAdminModelForm
+	# prepopulated_fields = {'title_slug': ('title',)}
+	list_display = ('pk','lat','lng','gallery')
+	# list_editable = ('lat','lng',)	
 	
 admin.site.register(News, NewsAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(PartnerType, PartnerTypeAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Galleryh, GalleryhAdmin)
+admin.site.register(Photoh, PhotohAdmin)
 
 

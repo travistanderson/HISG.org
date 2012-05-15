@@ -9,6 +9,7 @@ from django.conf import settings
 from django.core.xheaders import populate_xheaders
 from django.utils.safestring import mark_safe
 from brick.views import getbrick
+from chunks.models import Chunk
 
 DEFAULT_TEMPLATE = 'pages/default.html'
 
@@ -43,12 +44,13 @@ def pager(request, url):
 	f.content = mark_safe(f.content)
 	labelpic = ARRIVE_CHOICES[int(f.section)]
 
-	# if request.COOKIES.has_key('trainingvideoauth'):
-	# 	value = request.COOKIES['trainingvideoauth']
-	# else:
-	# 	value = None
+	try:
+		cookieurls = Chunk.objects.get(key='videocookieurls').content.split(',')
+	except Exception, e:
+		cookieurls = []
+	# print cookieurls
 	value = request.COOKIES.get('trainingvideoauth', None)
-	if url == '/training-and-models/training-videos/' and value == None:
+	if url in cookieurls and value == None:
 		return HttpResponseRedirect(reverse('training_vidauth'))
 	c = RequestContext(request,{'labelpic':labelpic,'pager': f,'brick': brick,'value':value,})
 	response = HttpResponse(t.render(c))

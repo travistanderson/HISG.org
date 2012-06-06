@@ -5,7 +5,7 @@ from newsphotos.forms import PostAdminModelForm, PartnerAdminModelForm, NewsAdmi
 
 
 class NewsAdmin(admin.ModelAdmin):
-	form = NewsAdminModelForm
+	# form = NewsAdminModelForm
 	list_display = ('name', 'id', 'date',)
 	list_filter = ['date', 'region','country']
 	search_fields = ['name',]

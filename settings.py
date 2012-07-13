@@ -31,7 +31,7 @@ if WHICH_ENVIRONMENT == 'development':
 	XMLRPCIP = 'http://192.168.254.155:8000/RPC2'
 else:					 # WHICH_ENVIRONMENT == 'production':
 	# Django settings on the server for hisg project.
-	DEBUG = False
+	DEBUG = True
 	TEMPLATE_DEBUG = DEBUG
 	TEMPLATE_DIRS = ('/home/django/domains/hisg.org/hisg/templates')
 	MEDIA_ROOT = '/home/django/domains/hisg.org/media/site_media'
